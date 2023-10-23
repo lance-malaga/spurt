@@ -9,7 +9,6 @@ import Community from "./src/screens/Community";
 import YourGarden from "./src/screens/YourGarden";
 import Card from "./src/components/Card";
 import DetailScreen from "./src/components/DetailScreen";
-import YourGarden from "./src/screens/YourGarden";
 
 const Stack = createStackNavigator();
 
@@ -73,13 +72,6 @@ function App() {
         options={{
           headerShown: false,
         }}
-        />
-        <Stack.Screen
-          name="YourGarden"
-          component={YourGarden}
-          options={{
-            headerShown: false,
-          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
