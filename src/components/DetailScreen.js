@@ -26,7 +26,7 @@ export default function DetailScreen({ route }) {
   const handleGoBack = () => {
     navigation.goBack();
   };
-
+  //Function to map the data onto the care section cards
   function renderCareSection(title, content, isShown, toggleFunction, iconSource) {
     const sectionColor = careSectionColors[title];
   
@@ -257,11 +257,14 @@ const styles = StyleSheet.create({
   careSection: {
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: 30,
+    padding: 35,
     marginTop: -10,
-    paddingLeft: 20,
+    paddingLeft: 34,
     borderTopLeftRadius: 16,
     borderBottomLeftRadius: 16,
+    marginLeft: -18,
+
+
   },
   careHeader: {
     flexDirection: "row",

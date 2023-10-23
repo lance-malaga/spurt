@@ -20,53 +20,59 @@ const CategoryResults = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <View>
       <Image source={require('../../assets/images/background-blur-cool-1.png')} style={styles.bgImg} />
-      
-      {vegetables.map((vegetable, index) => (
-        <View key={index} style={styles.card}>
+      <ScrollView>
+        <Text style={styles.resultHeader}>Results (3)</Text>
+        <View style={styles.container}>
+        {vegetables.map((vegetable, index) => (
+          <View key={index} style={styles.card}>
           <Image
             source={imageMapping[vegetable.name]}
             style={styles.image}
           />
-          <View style={styles.cardDetails}>
-            <Text style={styles.cardName}>{vegetable.name}</Text>
-            <Text style={styles.cardScientific}>{vegetable.scientificName}</Text>
-            <Text style={styles.cardLevel}>{vegetable.difficultyLevel}</Text>
-          </View>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => handleViewPress(vegetable)}
-            >
-              <Text style={styles.buttonView}>View</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => handleAddPress(vegetable)}
-            >
-              <Text style={styles.buttonAdd}>Add</Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.cardDetails}>
+              <Text style={styles.cardName}>{vegetable.name}</Text>
+              <Text style={styles.cardScientific}>{vegetable.scientificName}</Text>
+              <Text style={styles.cardLevel}>{vegetable.difficultyLevel}</Text>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => handleViewPress(vegetable)}
+              >
+                <Text style={styles.buttonView}>View</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => handleAddPress(vegetable)}
+              >
+                <Text style={styles.buttonAdd}>Add</Text>
+              </TouchableOpacity>
+            </View>
+      </View>
+))}
         </View>
-      ))}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 80,
+    alignItems: "center",
   },
   bgImg: {
     position: "absolute",
-    top: 0,
     width: "100%",
-    height: "100%",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 0,
+  },
+  resultHeader:{
+    fontSize: 16,
+    fontWeight:"500",
+    marginLeft: 20,
+    marginTop:20,
   },
   card: {
     backgroundColor: "#ffffff",
@@ -76,18 +82,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    height: 130,
-    elevation:5,
+    height: 160,
+    width: 380,
+    elevation:3,
+    marginTop: 26,
   },
   image: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
+    width: 120,
+    height: 150,
+    zIndex: 1,
+    position:"absolute",
   },
   cardDetails: {
     flex: 1,
-    marginLeft:50,
-    marginBottom: 50,
+    paddingLeft: 120,
+    marginBottom: 50, 
   },
   cardName: {
     fontWeight: "bold",
@@ -106,22 +115,22 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    gap: 10,
+    gap: 4,
     alignItems: "center",
-    marginTop: 60
+    marginTop: 95
   },
   buttonAdd: {
     backgroundColor: "#000",
     borderRadius: 30,
-    paddingHorizontal: 25,
-    paddingVertical: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
     color:"#fff"
   },
   buttonView:{
     backgroundColor: "transparent",
     borderRadius: 30,
-    paddingHorizontal: 20,
-    paddingVertical: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     borderColor: "#000",
     borderWidth: 2
   },
