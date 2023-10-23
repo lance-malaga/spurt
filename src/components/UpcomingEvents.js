@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     upcoming_events: {
         marginTop: 25,
-        backgroundColor: "#C7F3C2",
+        backgroundColor: "#FFCB44",
         borderTopLeftRadius: 15,
         borderTopRightRadius: 30,
         borderBottomLeftRadius: 15,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     line: {
         borderBottomWidth: 1,
-        borderBottomColor: "#8CB953",
+        borderBottomColor: "#CC9A18",
         width: "80%",
         position: "absolute",
         right: 0, 
