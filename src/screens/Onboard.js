@@ -54,14 +54,15 @@ export default function Onboard(props) {
 const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
   container: {
     flexGrow: 1,
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
+    paddingTop: 100,
   },
   image_container: {
     alignItems: "center",

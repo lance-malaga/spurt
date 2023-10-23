@@ -2,9 +2,12 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+
 import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
+import Card from "./src/components/Card";
+import DetailScreen from "./src/components/DetailScreen";
 
 const Stack = createStackNavigator();
 
@@ -23,13 +26,26 @@ function App() {
           name="Look for a plant"
           component={Search}
           options={{
-            headerTitleAlign: "center",
+            headerTitleAlign: "left",
             headerStyle: {
-              backgroundColor: "transparent",
+              backgroundColor: "#fff",
             },
             headerTitleStyle: {
-              fontWeight: "bold",
             },
+          }}
+        />
+        <Stack.Screen
+          name="Card"
+          component={Card}
+          options={{
+            title: "Card",
+          }}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={DetailScreen}
+          options={{
+            headerShown: false,
           }}
         />
         <Stack.Screen
