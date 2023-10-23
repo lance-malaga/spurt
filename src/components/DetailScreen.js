@@ -29,7 +29,7 @@ export default function DetailScreen({ route }) {
 
   function renderCareSection(title, content, isShown, toggleFunction, iconSource) {
     const sectionColor = careSectionColors[title];
-
+  
     const closeOtherSections = () => {
       setShowTemperature(false);
       setShowWater(false);
@@ -37,13 +37,13 @@ export default function DetailScreen({ route }) {
       setShowSoil(false);
       setShowLightLevels(false);
     };
-
+  
     return (
       <View
         style={[
           styles.careSection,
           isShown && styles.careSectionExpanded,
-          { backgroundColor: isShown ? sectionColor : "transparent", marginLeft: isShown ? -10 : 0 },
+          { backgroundColor: isShown ? sectionColor : "transparent" },
         ]}
       >
         <View style={styles.careHeader}>
@@ -58,7 +58,11 @@ export default function DetailScreen({ route }) {
             >
               <Image
                 source={require("../../assets/icons/ChevDownIcon.png")}
-                style={[styles.chevIcon, isShown && styles.chevIconRotated]}
+                style={[
+                  styles.chevIcon,
+                  isShown && styles.chevIconRotated,
+                  { marginLeft: 10 },
+                ]}
               />
             </TouchableOpacity>
           </View>
@@ -145,7 +149,6 @@ export default function DetailScreen({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontFamily: "Poppins"
   },
   bgBlur: {
     position: "absolute",
@@ -274,6 +277,12 @@ const styles = StyleSheet.create({
   chevIcon: {
     width: 18,
     height: 10,
+    alignItems:"flex-end"
+  },
+  careChevronContainer: {
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
+    flex: 1,
   },
   chevIconRotated: {
     transform: [{ rotate: "180deg" }],
