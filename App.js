@@ -1,10 +1,12 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Link } from 'expo-router';
 
 import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
+import Community from "./src/screens/Community";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +39,16 @@ function App() {
           component={Dashboard}
           options={{
             headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Community"
+          component={Community}
+          options={{
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            }
           }}
         />
       </Stack.Navigator>
