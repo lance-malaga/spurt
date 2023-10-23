@@ -2,10 +2,11 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-
 import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
+import Community from "./src/screens/Community";
+import YourGarden from "./src/screens/YourGarden";
 import Card from "./src/components/Card";
 import DetailScreen from "./src/components/DetailScreen";
 import YourGarden from "./src/screens/YourGarden";
@@ -55,6 +56,23 @@ function App() {
           options={{
             headerShown: false,
           }}
+        />
+        <Stack.Screen
+          name="Community"
+          component={Community}
+          options={{
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            }
+          }}
+        />
+        <Stack.Screen 
+        name="YourGarden"
+        component={YourGarden}
+        options={{
+          headerShown: false,
+        }}
         />
         <Stack.Screen
           name="YourGarden"

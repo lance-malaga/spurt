@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function Onboard(props) {
   const { title = "YES" } = props;
   const { title2 = "Skip to Dashboard" } = props;
+  const { title3 = "Community" } = props;
   const navigation = useNavigation();
 
   const handleYesClick = () => {
@@ -13,6 +14,10 @@ export default function Onboard(props) {
 
   const handleSTDClick = () => {
     navigation.navigate("Dashboard")
+  }
+
+  const clickToCommunity = () => {
+    navigation.navigate("Community");
   }
 
   return (
@@ -43,6 +48,14 @@ export default function Onboard(props) {
             <Text
               style={[styles.button2Text,{color: pressed ? "blue" : "black",},]}>
               {title2}
+            </Text>
+          )}
+        </Pressable>
+        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToCommunity}>
+          {({ pressed }) => (
+            <Text
+              style={[styles.button2Text,{color: pressed ? "pink" : "green",},]}>
+              {title3}
             </Text>
           )}
         </Pressable>
