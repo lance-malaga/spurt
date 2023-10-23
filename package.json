@@ -17,6 +17,10 @@
     "expo": "~49.0.13",
     "expo-status-bar": "~1.6.0",
 <<<<<<< HEAD
+    "react-native-linear-gradient": "^2.8.3",
+    "react-native-reanimated": "^3.5.4"
+=======
+<<<<<<< HEAD
     "expo-router": "^2.0.0",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
@@ -27,6 +31,7 @@
 =======
     "react-native-reanimated": "^3.5.4"
 >>>>>>> 2405a7a35c46daa9267215d10cfce22e4d5ad435
+>>>>>>> 70bc68cc0ef21e9c04e5753087f78708e096833b
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

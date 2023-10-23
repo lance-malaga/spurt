@@ -1,62 +1,95 @@
-import React from 'react';
-import { View, StyleSheet, Pressable, Text, ScrollView, Image } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import Card from '../components/Card'
-import CategoriesCard from '../components/CategoriesCard';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  Text,
+  Image,
+  ScrollView,
+} from "react-native";
+import SearchBar from "../components/SearchBar";
+import Card from "../components/Card";
+import CategoriesCard from "../components/CategoriesCard";
 
-export default function Search({ navigation }) {
+export default function Search() {
   const handleCameraPress = () => {};
   const handleGalleryPress = () => {};
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.searchContainer}>
         <SearchBar />
       </View>
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.button} onPress={handleCameraPress}>
-          <Text style={styles.buttonText}>Camera</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={handleGalleryPress}>
-          <Text style={styles.buttonText}>Gallery</Text>
-        </Pressable>
+        <View style={styles.buttonGroup}>
+          <Pressable style={styles.button} onPress={handleCameraPress}>
+            <Image source={require("../../assets/icons/camera-icon.png")} />
+            <Text style={styles.buttonText}>Camera</Text>
+          </Pressable>
+        </View>
+        <View style={styles.buttonGroup}>
+          <Pressable style={styles.button2} onPress={handleGalleryPress}>
+            <Image source={require("../../assets/icons/gallery.png")} />
+            <Text style={styles.buttonText2}>Gallery</Text>
+          </Pressable>
+        </View>
       </View>
-      <Text style={styles.picksHeader}>Top picks for summer</Text>
-      <View style={styles.cardScroll}>
-        <Card/>
+      <View style={styles.picksContainer}>
+        <Text style={styles.picksHeader}>Top picks for summer</Text>
+        <Text style={styles.picksDesc}>
+          Check out the plants ready this summer
+        </Text>
       </View>
-      <View style={styles.categories}>
-        <Text style={styles.categoryHeader}></Text>
-        <CategoriesCard/>
+      <View style={styles.cardContainer}>
+        <Card />
       </View>
-    </View>
+      <View style={styles.categoriesContainer}>
+        <Text style={styles.categoriesHeader}>Categories</Text>
+        <Text style={styles.categoriesDesc}>
+          Care guides and tips for every plant
+        </Text>
+      </View>
+      <View style={styles.categoriesCardContainer}>
+        <CategoriesCard />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginTop: 0,
+    backgroundColor: "#fff",
+  },
+  cardContainer: {
+    paddingLeft: 20,
   },
   searchContainer: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  categoriesCardContainer: {
+    width: "100%",
+    alignItems: "center",
+    marginTop: 16,
+    paddingBottom: 25,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     marginTop: 10,
   },
-  button: {
-    backgroundColor: 'white',
-    paddingHorizontal: 60,
-    paddingVertical: 10,
-    borderRadius: 10,
+  buttonGroup: {
+    alignItems: "center",
     marginHorizontal: 5,
-    shadowColor: '#000',
+  },
+  button: {
+    backgroundColor: "#000",
+    paddingHorizontal: 45,
+    paddingVertical: 15,
+    borderRadius: 24,
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -64,23 +97,65 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  button2: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 50,
+    paddingVertical: 15,
+    borderRadius: 24,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    flexDirection: "row",
+    alignItems: "center",
   },
   buttonText: {
-    color: 'darkgrey',
-    textAlign: 'center',
-  },
-  categoryHeader: {
-    fontSize: 18,
-    color: 'darkgrey',
-    paddingBottom: 15,
+    color: "#fff",
+    textAlign: "center",
     marginLeft: 10,
-    marginTop: -400,
+  },
+  buttonText2: {
+    color: "#000",
+    textAlign: "center",
+    marginLeft: 10,
+  },
+  picksContainer: {
+    alignItems: "flex-start",
+    paddingTop: 30,
+    paddingBottom: 10,
+    paddingLeft: 30,
   },
   picksHeader: {
-    fontSize: 18,
-    color: 'darkgrey',
-    paddingTop: 40,
-    paddingBottom: 15,
-    marginLeft: -160,
+    fontSize: 14,
+    color: "#000",
+    fontWeight: "bold",
+    paddingBottom: 5,
+  },
+  picksDesc: {
+    fontSize: 12,
+    color: "#000",
+    marginTop: -5,
+  },
+  categoriesHeader: {
+    fontSize: 14,
+    color: "#000",
+    fontWeight: "bold",
+    paddingBottom: 5,
+  },
+  categoriesDesc: {
+    fontSize: 12,
+    color: "#000",
+    marginTop: -5,
+  },
+  categoriesContainer: {
+    paddingLeft: 30,
+    marginTop: 10,
   },
 });

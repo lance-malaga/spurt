@@ -1,0 +1,55 @@
+[
+  {
+    "type": "Fruit",
+    "name": "Tomatoes",
+    "difficulty": "Beginner-friendly",
+    "id": 1,
+    "detail": "Tomato Plant",
+    "description": "The tomato is a widely cultivated plant that can thrive in both garden beds and small containers with minimal maintenance.",
+    "water": "Watering requirements for tomatoes vary during different growth stages. It's best to water once a day, preferably in the morning or late afternoon when the soil is nearly dry. Maintaining high soil humidity (about 75%) during germination and harvest is crucial for fruit quality. Avoid overwatering to prevent fruit cracking.",
+    "temperature": "Tomatoes commonly thrive in warm climates, favoring daytime temperatures of 20-25°C and nighttime temperatures of 15-18°C. Extreme heat above 45°C can lead to damage, while freezing temperatures at or below -1°C can be fatal.",
+    "fertilize":"Use compound fertilizer with calcium superphosphate during planting. Add a bit of urea a week after transplanting, and as the first fruits emerge, apply NPK compound fertilizer to promote subsequent growth. Adjust the amounts based on the tomato variety and growth conditions for optimal results.",
+    "soil": "Tomatoes are adaptable to various soil types, with the ideal soil being permeable, well-drained loam or sandy loam enriched with organic matter, and slightly acidic. A soil pH of 6.0-6.5 is optimal. For potted plants, the recommended medium ratio is garden soil, peat, mushroom compost, and vermiculite in equal parts, combined with manure or potassium sulfate compound fertilizer.",
+    "light":"Tomatoes require ample sunlight, ideally 12-14 hours daily. Satisfactory sunlight not only fosters vegetative growth but also encourages the development of flowers and fruits. Plant tomatoes in open areas with no cover, like the sunny side of your house, ensuring they are not shaded by trees or bushes."
+  },
+  {
+    "type": "Fruit",
+    "name": "Strawberries",
+    "difficulty": "Beginner-friendly",
+    "id": 2,
+    "detail": "Strawberry Plant",
+    "description": "Strawberries are delicious and easy to grow in various climates."
+  },
+  {
+    "type": "Vegetable",
+    "name": "Cucumbers",
+    "difficulty": "Cucumbers",
+    "id": 3,
+    "detail": "Cucumber Plant",
+    "description": "Cucumbers are a popular vegetable for salads and pickles."
+  },
+  {
+    "type": "Vegetable",
+    "name": "Squash",
+    "difficulty": "Beginner-friendly",
+    "id": 4,
+    "detail": "Squash Plant",
+    "description": "Squash is a versatile vegetable used in a variety of dishes."
+  },
+  {
+    "type": "Fruit",
+    "name": "Orange",
+    "difficulty": "Medium",
+    "id": 5,
+    "detail": "Orange Plant",
+    "description": "Oranges are a good source of vitamin C and have a refreshing taste."
+  },
+  {
+    "type": "Vegetable",
+    "name": "Spinach",
+    "difficulty": "Intermediate",
+    "id": 6,
+    "detail": "Spinach Plant",
+    "description": "Spinach is a leafy green vegetable rich in iron and nutrients."
+  }
+]
