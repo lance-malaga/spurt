@@ -1,17 +1,20 @@
 import React from "react";
-import { 
-  View, 
-  StyleSheet, 
-  Text, 
-  Image, 
-  ScrollView 
-} from "react-native";
+import { View, StyleSheet, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native"; 
 
 export default function CategoriesCard() {
+  const navigation = useNavigation(); 
+  const navigateToCategory = (categoryName) => {
+    navigation.navigate("CategoryResults", { category: categoryName });
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.row}>
-        <View style={styles.vegetableCard}>
+        <TouchableOpacity
+          style={styles.vegetableCard}
+          onPress={() => navigateToCategory("Vegetable")}
+        >
           <Text style={styles.header}>Vegetable</Text>
           <View style={styles.arrowContainer}>
             <Text style={styles.exploreText}>explore</Text>
@@ -20,8 +23,12 @@ export default function CategoriesCard() {
               style={styles.arrowSelect}
             />
           </View>
-        </View>
-        <View style={styles.fruitCard}>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.fruitCard}
+          onPress={() => navigateToCategory("Fruit")}
+        >
           <Text style={styles.header}>Fruit</Text>
           <View style={styles.arrowContainer}>
             <Text style={styles.exploreText}>explore</Text>
@@ -30,10 +37,14 @@ export default function CategoriesCard() {
               style={styles.arrowSelect}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
+
       <View style={styles.row}>
-        <View style={styles.herbsCard}>
+        <TouchableOpacity
+          style={styles.herbsCard}
+          onPress={() => navigateToCategory("Herbs")}
+        >
           <Text style={styles.header}>Herbs</Text>
           <View style={styles.arrowContainer}>
             <Text style={styles.exploreText}>explore</Text>
@@ -42,8 +53,12 @@ export default function CategoriesCard() {
               style={styles.arrowSelect}
             />
           </View>
-        </View>
-        <View style={styles.legumesCard}>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.legumesCard}
+          onPress={() => navigateToCategory("Legumes")}
+        >
           <Text style={styles.header}>Legumes</Text>
           <View style={styles.arrowContainer}>
             <Text style={styles.exploreText}>explore</Text>
@@ -52,10 +67,14 @@ export default function CategoriesCard() {
               style={styles.arrowSelect}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
+
       <View style={styles.row}>
-        <View style={styles.flowersCard}>
+        <TouchableOpacity
+          style={styles.flowersCard}
+          onPress={() => navigateToCategory("Flowers")}
+        >
           <Text style={styles.header}>Flowers</Text>
           <View style={styles.arrowContainer}>
             <Text style={styles.exploreText}>explore</Text>
@@ -64,7 +83,7 @@ export default function CategoriesCard() {
               style={styles.arrowSelect}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

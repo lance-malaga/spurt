@@ -17,8 +17,8 @@ export default function Card() {
     2: strawberryCardImage,
     3: cucumberCardImage,
     4: squashCardImage,
-    5: spinachCardImage,
-    6: orangeCardImage,
+    5: orangeCardImage,
+    6: spinachCardImage,
   };
   const navigation = useNavigation();
 

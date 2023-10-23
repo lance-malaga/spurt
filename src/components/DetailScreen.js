@@ -239,10 +239,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 19,
-    alignItems:"center",
+    alignItems: "center",
     flex: 1,
-    justifyContent: "center"
-
+    justifyContent: "center",
   },
   filterTag: {
     backgroundColor: "#AFD1F3",
@@ -277,7 +276,7 @@ const styles = StyleSheet.create({
   chevIcon: {
     width: 18,
     height: 10,
-    alignItems:"flex-end"
+    alignItems: "flex-end",
   },
   careChevronContainer: {
     alignItems: "flex-end",
@@ -307,6 +306,6 @@ const styles = StyleSheet.create({
   },
   collectionButtonContainer: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
 });
