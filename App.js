@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
+import YourGarden from "./src/screens/YourGarden";
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,13 @@ function App() {
         <Stack.Screen
           name="Dashboard"
           component={Dashboard}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="YourGarden"
+          component={YourGarden}
           options={{
             headerShown: false,
           }}
