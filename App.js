@@ -7,6 +7,7 @@ import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
 import Community from "./src/screens/Community";
+import YourGarden from "./src/screens/YourGarden";
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,13 @@ function App() {
               backgroundColor: "transparent",
             }
           }}
+        />
+        <Stack.Screen 
+        name="YourGarden"
+        component={YourGarden}
+        options={{
+          headerShown: false,
+        }}
         />
       </Stack.Navigator>
     </NavigationContainer>
