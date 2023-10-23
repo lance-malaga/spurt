@@ -35,7 +35,7 @@ export default function Search() {
         </View>
       </View>
       <View style={styles.picksContainer}>
-        <Text style={styles.picksHeader}>Top picks for summer</Text>
+        <Text style={styles.picksHeader}>TOP PICKS FOR SUMMER</Text>
         <Text style={styles.picksDesc}>
           Check out the plants ready this summer
         </Text>
@@ -44,7 +44,7 @@ export default function Search() {
         <Card />
       </View>
       <View style={styles.categoriesContainer}>
-        <Text style={styles.categoriesHeader}>Categories</Text>
+        <Text style={styles.categoriesHeader}>CATEGORIES</Text>
         <Text style={styles.categoriesDesc}>
           Care guides and tips for every plant
         </Text>
@@ -59,7 +59,7 @@ export default function Search() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FAFAFA",
   },
   cardContainer: {
     paddingLeft: 20,
