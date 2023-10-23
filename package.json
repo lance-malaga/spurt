@@ -16,7 +16,8 @@
     "@react-navigation/stack": "^6.3.18",
     "expo": "~49.0.13",
     "expo-status-bar": "~1.6.0",
-    "react-native-linear-gradient": "^2.8.3"
+    "react-native-linear-gradient": "^2.8.3",
+    "react-native-reanimated": "^3.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -8,6 +8,7 @@ import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
 import Card from "./src/components/Card";
 import DetailScreen from "./src/components/DetailScreen";
+import YourGarden from "./src/screens/YourGarden";
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,13 @@ function App() {
         <Stack.Screen
           name="Dashboard"
           component={Dashboard}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="YourGarden"
+          component={YourGarden}
           options={{
             headerShown: false,
           }}
