@@ -1,10 +1,12 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Link } from 'expo-router';
 
 import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
+import Community from "./src/screens/Community";
 import YourGarden from "./src/screens/YourGarden";
 
 const Stack = createStackNavigator();
@@ -41,11 +43,21 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="YourGarden"
-          component={YourGarden}
+          name="Community"
+          component={Community}
           options={{
-            headerShown: false,
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            }
           }}
+        />
+        <Stack.Screen 
+        name="YourGarden"
+        component={YourGarden}
+        options={{
+          headerShown: false,
+        }}
         />
       </Stack.Navigator>
     </NavigationContainer>
