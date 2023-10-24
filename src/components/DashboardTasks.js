@@ -33,15 +33,15 @@ export default function DashboardTasks() {
             </View>
             <View style={styles.plant_card}>
                 <View style={styles.plant_item}>
-                    <Image source={require('../../assets/images/2.0_lettuce.png')} alt="lettuce" style={styles.plant_img} />
+                    <Image source={require('../../assets/images/2.0_tomato.png')} alt="lettuce" style={styles.plant_img} />
                     <View style={styles.plant_item__text}>
                         <CustomText
-                            text={'My Lettuce Patch'}
+                            text={'My Tomato Plants'}
                             fontSize={18}
                             fontWeight={500}
                         />
                         <CustomText
-                            text={'Lettuce'}
+                            text={'Tomato'}
                             fontSize={12}
                             color={'#727272'}
                         />
@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
     },
     plant_item__text: {
         bottom: 10,
+    },
+    plant_img: {
+        marginTop: -10
     },
     task: {
         gap: 8,
