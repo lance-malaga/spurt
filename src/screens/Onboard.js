@@ -58,11 +58,11 @@ export default function Onboard(props) {
             </Text>
           )}
         </Pressable>
-        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToFindCommunity}>
+        {/* <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToFindCommunity}>
           {({ pressed }) => (
             <Text
               style={[styles.button2Text,{color: pressed ? "pink" : "green",},]}>
-              {/* {title3} */}
+              {title3}
             </Text>
           )}
         </Pressable>
@@ -81,7 +81,7 @@ export default function Onboard(props) {
               {title4}
             </Text>
           )}
-        </Pressable>
+        </Pressable> */}
       </View>
     </ScrollView>
   );
