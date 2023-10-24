@@ -83,10 +83,10 @@ export default function YourGarden() {
                                 {taskList.map((a, index) => {
                                     return (
                                         <CollectionCard 
-                                        key={index}
-                                        name={a.name}
-                                        status={a.status}
-                                        image={a.image}
+                                            key={index}
+                                            name={a.name}
+                                            status={a.status}
+                                            image={a.image}
                                         />
                                     );
                                 })}
@@ -131,14 +131,12 @@ const styles = StyleSheet.create({
     your_garden_content: {
         paddingBottom: 150,
         paddingHorizontal: 24,
-        // width: "100%",
     },
     bg_img: {
         position: "absolute",
         top: 0,
         zIndex: -1,
         width: "100%",
-        // marginTop: 30,
     },
     filter_header: {
         flexDirection: "row",

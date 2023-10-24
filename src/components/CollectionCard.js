@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         paddingHorizontal: 15,
         paddingVertical: 5,
+        paddingBottom: 5,
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: 16,
@@ -47,5 +48,6 @@ const styles = StyleSheet.create({
     },
     arrow: {
         marginTop: "auto",
+        bottom: 10,
     }
 });
