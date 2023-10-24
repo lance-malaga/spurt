@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View, Pressable, Image, TouchableOpacity} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function FindCommunity() {
+export default function FindCommunity({navigation}) {
 
     return (
         <View>
@@ -46,7 +46,7 @@ export default function FindCommunity() {
                                 alt={"gardener_img"}
                             />
                             <TouchableOpacity
-                                // onPress={() => navigation.push('JoinedCommunity')}
+                                onPress={() => navigation.push('JoinedCommunity')}
                                 style={styles.findButton}
                             >
                                 <Text style={{color: 'white', textAlign: 'center'}}>Find a group</Text>

@@ -33,7 +33,7 @@ export default function NavBar() {
             styles: styles.plantAidIcon
         },
         {
-            name: 'Community',
+            name: 'FindCommunity',
             image_active: require('../../assets/icons/nav_comm.png'),
             image_inactive: require('../../assets/icons/nav_wh_comm.png'),
             styles: styles.commIcon
@@ -48,9 +48,10 @@ export default function NavBar() {
         } 
         // else if (screen === "PlantAid") {
         //     navigation.navigate("PlantAid");
-        // } else if (screen === "Community") {
-        //     navigation.navigate("Community");
-        // }
+        // } 
+        else if (screen === "FindCommunity") {
+            navigation.navigate("FindCommunity");
+        }
     }
 
     return (

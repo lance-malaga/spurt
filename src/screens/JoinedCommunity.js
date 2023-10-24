@@ -1,10 +1,10 @@
-import { ScrollView, StyleSheet, View, Text, Image, Pressable } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Image, Pressable, Button } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 // Components
 import ScheduleCard from '../components/ScheduleCard';
 
-export default function JoinedCommunity () {
+export default function JoinedCommunity ({navigation}) {
   return(
       <View>
         <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
@@ -143,6 +143,7 @@ export default function JoinedCommunity () {
                 />
               </View>
             </View>
+            <Button title="Go Back" onPress={() => navigation.goBack()}/>
         </ScrollView>
       </View>
       
