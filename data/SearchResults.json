@@ -1,0 +1,23 @@
+{
+    "vegetables": [
+      {
+        "name": "Lettuce",
+        "scientificName": "Lactuca sativa",
+        "difficultyLevel": "Beginner",
+        "image": "../assets/images/big-lettuce-png.png"
+      },
+      {
+        "name": "Spinach",
+        "scientificName": "Spinacia oleracea",
+        "difficultyLevel": "Intermediate",
+        "image": "../assets/images/big-spinach-img.png"
+      },
+      {
+        "name": "Summer Squash",
+        "scientificName": "Cucurbita pepo subsp. pepo",
+        "difficultyLevel": "Beginner",
+        "image": "../assets/images/big-squash-img.png"
+      }
+    ]
+  }
+  

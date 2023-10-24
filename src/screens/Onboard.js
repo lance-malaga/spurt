@@ -3,10 +3,11 @@ import { StyleSheet, Text, View, ScrollView, Image, Pressable } from "react-nati
 import { useNavigation } from "@react-navigation/native";
 
 export default function Onboard(props) {
-  const { title = "YES" } = props;
+  const { title = "Yes" } = props;
   const { title2 = "Skip to Dashboard" } = props;
   const { title3 = "Find Community" } = props;
   const { title4 = "Joined Community" } = props;
+  // const { title3 = "Community" } = props;
   const navigation = useNavigation();
 
   const handleYesClick = () => {
@@ -31,7 +32,7 @@ export default function Onboard(props) {
       <View style={styles.image_container}>
         <Image
           source={require("../../assets/images/onboardingImg.png")}
-          style={{ height: 330, width: 342 }}
+          style={{ height: 196, width: 263 }}
           alt={"welcome_img"}
         />
       </View>
@@ -61,7 +62,15 @@ export default function Onboard(props) {
           {({ pressed }) => (
             <Text
               style={[styles.button2Text,{color: pressed ? "pink" : "green",},]}>
-              {title3}
+              {/* {title3} */}
+            </Text>
+          )}
+        </Pressable>
+        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToJoinedCommunity}>
+          {({ pressed }) => (
+            <Text
+              style={[styles.button2Text,{color: pressed ? "coral" : "teal",},]}>
+              {title4}
             </Text>
           )}
         </Pressable>
@@ -94,11 +103,11 @@ const styles = StyleSheet.create({
   image_container: {
     alignItems: "center",
     justifyContent: "start",
-    marginTop: 50,
+    marginTop: 80,
   },
   text_container: {
     alignItems: "center",
-    marginTop: 25,
+    marginTop: 50,
   },
   welcome_text: {
     fontSize: 24,

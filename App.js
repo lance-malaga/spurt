@@ -10,6 +10,8 @@ import JoinedCommunity from "./src/screens/JoinedCommunity";
 import YourGarden from "./src/screens/YourGarden";
 import Card from "./src/components/Card";
 import DetailScreen from "./src/components/DetailScreen";
+import CategoriesCard from "./src/components/CategoriesCard";
+import CategoryResults from "./src/components/CategoryResults";
 
 const Stack = createStackNavigator();
 
@@ -33,7 +35,8 @@ function App() {
               backgroundColor: "#fff",
             },
             headerTitleStyle: {
-            },
+              fontWeight: "bold"
+            }
           }}
         />
         <Stack.Screen
@@ -49,6 +52,20 @@ function App() {
           options={{
             headerShown: false,
           }}
+        />
+        <Stack.Screen
+          name="CategoriesCard"
+          component={CategoriesCard}
+          options={{
+            title: "Categories",
+          }}
+        />
+        <Stack.Screen
+          name="CategoryResults"
+          component={CategoryResults}
+          options={({ route }) => ({
+            title: route.params.category || "Category Results",
+          })}
         />
         <Stack.Screen
           name="Dashboard"
@@ -74,15 +91,15 @@ function App() {
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "transparent",
-            }
+            },
           }}
         />
-        <Stack.Screen 
-        name="YourGarden"
-        component={YourGarden}
-        options={{
-          headerShown: false,
-        }}
+        <Stack.Screen
+          name="YourGarden"
+          component={YourGarden}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

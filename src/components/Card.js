@@ -17,8 +17,8 @@ export default function Card() {
     2: strawberryCardImage,
     3: cucumberCardImage,
     4: squashCardImage,
-    5: spinachCardImage,
-    6: orangeCardImage,
+    5: orangeCardImage,
+    6: spinachCardImage,
   };
   const navigation = useNavigation();
 
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "white",
     shadowColor: "grey",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.5,
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 1,
     shadowRadius: 4,
     elevation: 4,
     marginTop: 100,
