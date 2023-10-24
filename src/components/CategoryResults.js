@@ -14,23 +14,22 @@ const CategoryResults = () => {
   };
 
   const imageMapping = {
-    "Lettuce": require("../../assets/images/big-lettuce-png.png"),
-    "Spinach": require("../../assets/images/big-spinach-img.png"),
-    "Summer Squash": require("../../assets/images/big-squash-img.png"),
+    "Lettuce": require("../../assets/images/lettuce-img.png"),
+    "Spinach": require("../../assets/images/spinach-img.png"),
+    "Summer Squash": require("../../assets/images/squash-img.png"),
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={require('../../assets/images/background-blur-cool-1.png')} style={styles.bgImg} />
       <ScrollView>
         <Text style={styles.resultHeader}>Results (3)</Text>
-        <View style={styles.container}>
         {vegetables.map((vegetable, index) => (
           <View key={index} style={styles.card}>
-          <Image
-            source={imageMapping[vegetable.name]}
-            style={styles.image}
-          />
+            <Image
+              source={imageMapping[vegetable.name]}
+              style={styles.image}
+            />
             <View style={styles.cardDetails}>
               <Text style={styles.cardName}>{vegetable.name}</Text>
               <Text style={styles.cardScientific}>{vegetable.scientificName}</Text>
@@ -50,9 +49,8 @@ const CategoryResults = () => {
                 <Text style={styles.buttonAdd}>Add</Text>
               </TouchableOpacity>
             </View>
-      </View>
-))}
-        </View>
+          </View>
+        ))}
       </ScrollView>
     </View>
   );
@@ -61,18 +59,17 @@ const CategoryResults = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 80,
     alignItems: "center",
   },
   bgImg: {
     position: "absolute",
     width: "100%",
   },
-  resultHeader:{
+  resultHeader: {
     fontSize: 16,
-    fontWeight:"500",
-    marginLeft: 20,
-    marginTop:20,
+    fontWeight: "500",
+    marginTop: 20,
+    marginLeft: 25,
   },
   card: {
     backgroundColor: "#ffffff",
@@ -84,55 +81,55 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     height: 160,
     width: 380,
-    elevation:3,
-    marginTop: 26,
+    elevation: 3,
+    marginTop: 30,
   },
   image: {
-    width: 120,
-    height: 150,
+    width: 140,
+    height: 155,
     zIndex: 1,
-    position:"absolute",
+    position: "absolute",
+    left: -10,
+    top: 10,
   },
   cardDetails: {
     flex: 1,
-    paddingLeft: 120,
-    marginBottom: 50, 
+    position: "relative",
+    left: 150,
+    top: -25,
   },
   cardName: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 18,
   },
-  cardScientific:{
-    fontSize: 12,
+  cardScientific: {
+    fontSize: 16,
     fontWeight: "500",
-    color:"#7C7C7C"
+    color: "#7C7C7C",
   },
   cardLevel: {
-    fontSize: 10,
-  },
-  cardText: {
-    fontSize: 16,
+    fontSize: 14,
   },
   buttonContainer: {
     flexDirection: "row",
     gap: 4,
     alignItems: "center",
-    marginTop: 95
+    marginTop: 95,
   },
   buttonAdd: {
     backgroundColor: "#000",
     borderRadius: 30,
-    paddingHorizontal: 14,
+    paddingHorizontal: 22,
     paddingVertical: 8,
-    color:"#fff"
+    color: "#fff",
   },
-  buttonView:{
+  buttonView: {
     backgroundColor: "transparent",
     borderRadius: 30,
-    paddingHorizontal: 10,
+    paddingHorizontal: 19,
     paddingVertical: 5,
     borderColor: "#000",
-    borderWidth: 2
+    borderWidth: 2,
   },
   buttonText: {
     color: "#ffffff",

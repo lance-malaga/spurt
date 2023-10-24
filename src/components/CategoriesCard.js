@@ -64,6 +64,10 @@ export default function CategoriesCard() {
           onPress={() => navigateToCategory("Flowers")}
         >
           <Text style={styles.header}>Flowers</Text>
+          <Image
+              source={require("../../assets/images/flowerCardImg.png")}
+              style={styles.flowersCardImg}
+            />
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -74,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "flex-start",
-    backgroundColor: "#fff",
+    backgroundColor: "#FAFAFAFA",
     width: 375,
   },
   row: {
@@ -95,6 +99,10 @@ const styles = StyleSheet.create({
   vegetableCardImg: {
     marginLeft: 24,
     marginTop: -14,
+  },
+  flowersCardImg:{
+    marginTop: -35,
+    marginLeft: -20,
   },
   vegetableCard: {
     flex: 1,
