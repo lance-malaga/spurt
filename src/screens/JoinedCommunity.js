@@ -1,20 +1,14 @@
-import { ScrollView, StyleSheet, View, Text, Image, Pressable, ImageBackground } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 // Components
 import ScheduleCard from '../components/ScheduleCard';
 
-export default function Community () {
-  const image = require('../../assets/images/background/blur-cool-2.png')
-
+export default function JoinedCommunity () {
   return(
-      <>
+      <View>
+        <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
         <ScrollView>
-          <ImageBackground
-            source={image}
-            resizeMode='cover'
-            style={styles.gradientBackground}
-          >
             <View style={styles.container}>
               {/* Welcome Message */}
               <View style={styles.textContainer}>
@@ -141,7 +135,7 @@ export default function Community () {
                 </View>
               </View>
               {/* Reminders */}
-              <View style={styles.reminder}>
+              <View>
                 <Text style={{margin: 20, fontSize:18, fontWeight:'700'}}>Group Reminders</Text>             
                 <Image 
                   source={require("../../assets/images/community/group_reminders.png")}
@@ -149,25 +143,23 @@ export default function Community () {
                 />
               </View>
             </View>
-          </ImageBackground>
         </ScrollView>
-      </>
+      </View>
+      
   )
 }
 
 const styles = StyleSheet.create({
   
-  // Gradient Background
-  gradientBackground: {
-    flex: 1,
-    width: '100%',
-    height: '100%'
+  // Background Image
+  backgroundImage: {
+    position: 'absolute',
+    width: '100%'
   },
   
   // Main Container
   container: {
     flex: 1,
-    backgroundColor: "white",
     gap: 8
   }, 
 
@@ -286,9 +278,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 3
   },
-
-  // Reminders
-  reminder: {
-    // alignItems:
-  }
 })
