@@ -5,6 +5,8 @@ import { useNavigation } from "@react-navigation/native";
 export default function Onboard(props) {
   const { title = "Yes" } = props;
   const { title2 = "Skip to Dashboard" } = props;
+  const { title3 = "Find Community" } = props;
+  const { title4 = "Joined Community" } = props;
   // const { title3 = "Community" } = props;
   const navigation = useNavigation();
 
@@ -15,10 +17,15 @@ export default function Onboard(props) {
   const handleSTDClick = () => {
     navigation.navigate("Dashboard")
   }
-
-  const clickToCommunity = () => {
-    navigation.navigate("Community");
+  
+  const clickToFindCommunity = () => {
+    navigation.navigate("FindCommunity");
   }
+
+  const clickToJoinedCommunity = () => {
+    navigation.navigate("JoinedCommunity");
+  }
+
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -51,11 +58,27 @@ export default function Onboard(props) {
             </Text>
           )}
         </Pressable>
-        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToCommunity}>
+        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToFindCommunity}>
           {({ pressed }) => (
             <Text
               style={[styles.button2Text,{color: pressed ? "pink" : "green",},]}>
               {/* {title3} */}
+            </Text>
+          )}
+        </Pressable>
+        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToJoinedCommunity}>
+          {({ pressed }) => (
+            <Text
+              style={[styles.button2Text,{color: pressed ? "coral" : "teal",},]}>
+              {title4}
+            </Text>
+          )}
+        </Pressable>
+        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={clickToJoinedCommunity}>
+          {({ pressed }) => (
+            <Text
+              style={[styles.button2Text,{color: pressed ? "coral" : "teal",},]}>
+              {title4}
             </Text>
           )}
         </Pressable>

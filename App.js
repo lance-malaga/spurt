@@ -5,7 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Onboard from "./src/screens/Onboard";
 import Search from "./src/screens/Search";
 import Dashboard from "./src/screens/Dashboard";
-import Community from "./src/screens/Community";
+import FindCommunity from "./src/screens/FindCommunity";
+import JoinedCommunity from "./src/screens/JoinedCommunity";
 import YourGarden from "./src/screens/YourGarden";
 import Card from "./src/components/Card";
 import DetailScreen from "./src/components/DetailScreen";
@@ -74,8 +75,18 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="Community"
-          component={Community}
+          name="FindCommunity"
+          component={FindCommunity}
+          options={{
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "transparent",
+            }
+          }}
+        />
+        <Stack.Screen
+          name="JoinedCommunity"
+          component={JoinedCommunity}
           options={{
             headerTitleAlign: "center",
             headerStyle: {
