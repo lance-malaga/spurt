@@ -46,9 +46,9 @@ export default function NavBar() {
         } else if (screen === "YourGarden") {
             navigation.navigate("YourGarden");
         } 
-        // else if (screen === "PlantAid") {
-        //     navigation.navigate("PlantAid");
-        // } 
+        else if (screen === "PlantAid") {
+            navigation.navigate("PlantAidOnboarding");
+        } 
         else if (screen === "FindCommunity") {
             navigation.navigate("FindCommunity");
         }

@@ -12,6 +12,8 @@ import Card from "./src/components/Card";
 import DetailScreen from "./src/components/DetailScreen";
 import CategoriesCard from "./src/components/CategoriesCard";
 import CategoryResults from "./src/components/CategoryResults";
+import PlantAid from "./src/screens/PlantAid";
+import PlantAidOnboarding from "./src/screens/PlantAidOnboarding";
 
 const Stack = createStackNavigator();
 
@@ -35,8 +37,8 @@ function App() {
               backgroundColor: "#fff",
             },
             headerTitleStyle: {
-              fontWeight: "bold"
-            }
+              fontWeight: "bold",
+            },
           }}
         />
         <Stack.Screen
@@ -81,7 +83,7 @@ function App() {
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "transparent",
-            }
+            },
           }}
         />
         <Stack.Screen
@@ -97,6 +99,20 @@ function App() {
         <Stack.Screen
           name="YourGarden"
           component={YourGarden}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="PlantAidOnboarding"
+          component={PlantAidOnboarding}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="PlantAid"
+          component={PlantAid}
           options={{
             headerShown: false,
           }}
