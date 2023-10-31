@@ -462,5 +462,99 @@
         }
       ]
     }
+  },
+  {
+    "id": 9,
+    "type": "Flowers",
+    "name": "Zucchini",
+    "scientificName": "Cucurbita Pepo",
+    "difficulty": "Beginner",
+    "petFriendly": true,
+    "description": "It is a popular warm-season vegetable that belongs to the gourd family. It is known for its tender, edible skin and mild flavor. Zucchini comes in various shapes and colors, including zucchini, yellow squash, and pattypan squash, making it a versatile and easy-to-grow choice for gardeners",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img02.jpeg"
+    },
+    "care": {
+      "water": "It requires consistent and even moisture. Water them deeply when the top inch of soil feels dry. Avoid overhead watering, as it can promote fungal diseases. Water at the base of the plant to keep the foliage dry",
+      "temperature": "It thrives in warm temperatures between 70°F to 95°F (21°C to 35°C). They prefer low to moderate humidity levels. High humidity can increase the risk of fungal diseases, so ensure good air circulation",
+      "fertilize": "Use a balanced, all-purpose fertilizer with a ratio of 10-10-10 or similar. Begin by applying a slow-release fertilizer when planting, and then side-dress with additional fertilizer during the growing season, usually about every 3-4 weeks. Be cautious not to over-fertilize, as it can lead to excessive foliage growth and reduced fruit production",
+      "soil": "It prefers well-draining, fertile soil with a pH level around 6.0 to 6.8. Amending the soil with compost before planting will help improve its nutrient content and water retention",
+      "sunlight": "Zucchini plants thrive in full sun, receiving at least 6-8 hours of direct sunlight daily. Ensure they are planted in a location with ample sunlight to promote healthy growth and fruit development",
+      "prune": "While it's not necessary, you can prune zucchini plants to improve air circulation and fruit production. Remove any dead or diseased leaves, as well as any overly crowded branches. This helps prevent disease and ensures that the plant's energy is directed towards fruit production",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "Aphids are tiny, soft-bodied insects that suck the sap from plant leaves. To deal with them, simply spray affected plants with a strong stream of water to dislodge them or introduce natural predators like ladybugs to control the population"
+        },
+        {
+          "name": "Squash Bugs",
+          "description": "Squash bugs are flat, shield-shaped insects that feed on squash plants, causing wilting and damage. Handpick and remove them from plants, and use row covers early in the season to prevent infestations"
+        },
+        {
+          "name": "Cucumber Beetles",
+          "description": "These beetles feed on leaves and transmit diseases to squash plants. Use row covers in the early season, apply neem oil or insecticidal soap for control, and regularly monitor plants for their presence"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Powdery Mildew",
+          "description": "Powdery mildew is a fungal disease characterized by white, powdery growth on leaves. To manage it, select mildew-resistant varieties, maintain good air circulation, and apply fungicidal sprays when necessary"
+        },
+        {
+          "name": "Downy Mildew",
+          "description": "Downy mildew causes yellow lesions on leaves. To address it, practice crop rotation and use copper-based fungicides as a preventive measure"
+        },
+        {
+          "name": "Bacterial Wilt",
+          "description": "Bacterial wilt, transmitted by cucumber beetles, leads to sudden wilting. Control cucumber beetle populations and remove and destroy infected plants to prevent the spread of the disease"
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "type": "Fruits",
+    "name": "Strawberry",
+    "scientificName": "Fragaria X Ananassa",
+    "difficulty": "Beginner",
+    "petFriendly": true,
+    "description": "Strawberries (Fragaria x ananassa) are delightful, sweet, and juicy fruits that are easy to grow in a garden. They're known for their vibrant red color, and they're perfect for snacking, baking, and making jams",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img02.jpeg"
+    },
+    "care": {
+      "water": "Keep soil consistently moist, providing about 1-1.5 inches of water per week",
+      "temperature": "Thrive in temperatures between 60-80°F (15-27°C) and prefer moderate humidity levels",
+      "fertilize": "Apply a balanced, all-purpose fertilizer early in the growing season and after the first harvest",
+      "soil": "Plant in well-drained, loamy soil with a pH level between 5.5 and 6.5",
+      "sunlight": "Requires full sun, with at least 6-8 hours of direct sunlight daily",
+      "prune": "Remove runners (long stems) to encourage fruit production",
+      "pests": [
+        {
+          "name": "Slugs",
+          "description": "To prevent slug damage, place traps near your strawberry plants, such as shallow containers filled with beer or a mixture of water and sugar. This will attract and drown the slugs"
+        },
+        {
+          "name": "Aphids",
+          "description": "Encourage natural aphid predators like ladybugs and lacewings. You can also use a strong stream of water to dislodge aphids from the plants. For severe infestations, consider using insecticidal soap"
+        },
+        {
+          "name": "Birds",
+          "description": "Use bird netting to protect your strawberries from birds. Hanging shiny objects like aluminum foil strips or reflective tape can also deter them"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Powdery Mildew",
+          "description": "Ensure good air circulation by providing adequate spacing between strawberry plants. If powdery mildew appears, apply a fungicidal spray designed for this specific disease according to the product's instructions"
+        },
+        {
+          "name": "Gray Mold (Botrytis)",
+          "description": "Remove and destroy strawberries showing signs of gray mold. Maintain good air circulation and avoid overhead watering"
+        }
+      ]
+    }
   }
 ]
