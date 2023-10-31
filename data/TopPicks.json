@@ -1,55 +1,466 @@
 [
   {
-    "type": "Fruit",
-    "name": "Tomatoes",
-    "difficulty": "Beginner-friendly",
     "id": 1,
-    "detail": "Tomato Plant",
-    "description": "The tomato is a widely cultivated plant that can thrive in both garden beds and small containers with minimal maintenance.",
-    "water": "Watering requirements for tomatoes vary during different growth stages. It's best to water once a day, preferably in the morning or late afternoon when the soil is nearly dry. Maintaining high soil humidity (about 75%) during germination and harvest is crucial for fruit quality. Avoid overwatering to prevent fruit cracking.",
-    "temperature": "Tomatoes commonly thrive in warm climates, favoring daytime temperatures of 20-25°C and nighttime temperatures of 15-18°C. Extreme heat above 45°C can lead to damage, while freezing temperatures at or below -1°C can be fatal.",
-    "fertilize":"Use compound fertilizer with calcium superphosphate during planting. Add a bit of urea a week after transplanting, and as the first fruits emerge, apply NPK compound fertilizer to promote subsequent growth. Adjust the amounts based on the tomato variety and growth conditions for optimal results.",
-    "soil": "Tomatoes are adaptable to various soil types, with the ideal soil being permeable, well-drained loam or sandy loam enriched with organic matter, and slightly acidic. A soil pH of 6.0-6.5 is optimal. For potted plants, the recommended medium ratio is garden soil, peat, mushroom compost, and vermiculite in equal parts, combined with manure or potassium sulfate compound fertilizer.",
-    "light":"Tomatoes require ample sunlight, ideally 12-14 hours daily. Satisfactory sunlight not only fosters vegetative growth but also encourages the development of flowers and fruits. Plant tomatoes in open areas with no cover, like the sunny side of your house, ensuring they are not shaded by trees or bushes."
+    "type": "Vegetable",
+    "name": "Lettuce",
+    "scientificName": "Lactuca Sativa",
+    "difficulty": "Beginner",
+    "petFriendly": true,
+    "description": "Lettuce is a popular and easy-to-grow leafy vegetable in gardening. It thrives in cool climates and can be sown directly in the garden or grown in containers, making it a versatile choice for both beginner and experienced gardeners. Its rapid growth and versatility make it a staple in many home gardens, providing fresh, crisp leaves for salads and sandwiches throughout the growing season",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img02.jpeg"
+    },
+    "care": {
+      "water": "Lettuce requires consistent moisture to prevent it from becoming bitter and to promote tender, crisp leaves. Water deeply and regularly, ensuring the soil remains consistently moist but not waterlogged",
+      "temperature": "Lettuce prefers cool temperatures and is best suited for growing in the spring and fall. Ideal temperatures range from 45 to 75°F (7 to 24°C). It's essential to protect lettuce from extreme heat, as high temperatures can cause bolting (premature flowering) and bitter leaves. Lettuce generally thrives in moderate humidity",
+      "fertilize":"Use a balanced, all-purpose fertilizer to provide essential nutrients for healthy lettuce growth. Apply the fertilizer according to the manufacturer's recommendations, typically during planting or a few weeks after. Avoid over-fertilizing, as it can lead to excessive leaf growth at the expense of flavor",
+      "soil": "Lettuce prefers well-draining, loamy soil with a pH level around 6.0 to 6.8. Amending the soil with organic matter, such as compost, can improve soil structure and nutrient content. Raised beds or containers are also suitable for growing lettuce if your garden soil is less than ideal",
+      "sunlight":"Lettuce is a cool-season crop that benefits from partial to full sun, depending on your local climate. In hot regions, provide partial shade during the hottest part of the day to prevent wilting and bolting. In cooler climates, full sun is generally preferred",
+      "prune": "While lettuce doesn't require extensive pruning, you can selectively harvest outer leaves as the plant grows to encourage a continuous harvest and prevent overcrowding. This method is often referred to as 'cut-and-come-again'",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "Spray them off with a strong stream of water, applying insecticidal soap, or introducing natural predators like ladybugs"
+        },
+        {
+          "name": "Slugs and Snails",
+          "description": "Use slug and snail baits or traps to keep them under control. Additionally, providing a barrier, like copper tape, around your lettuce can help deter them"
+        },
+        {
+          "name": "Caterpillars",
+          "description": "Hand-pick the caterpillars or using Bacillus thuringiensis (Bt) insecticide can help manage these pests"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Downy Mildew",
+          "description": "Maintain good air circulation by spacing plants properly. Fungicides may also be used for control"
+        },
+        {
+          "name": "Botrytis (Lettuce Drop)",
+          "description": "Avoid overhead watering, thin out overcrowded plants, and ensure good air circulation. Remove and dispose of infected plants to prevent further spread"
+        },
+        {
+          "name": "Lettuce Mosaic Virus",
+          "description": "Control aphid populations and remove and destroy infected plants to prevent the spread of the disease"
+        },
+        {
+          "name": "Tipburn",
+          "description": "Ensure consistent watering and provide adequate calcium by amending the soil or using calcium-containing fertilizers"
+        }
+      ]
+    }
   },
   {
-    "type": "Fruit",
-    "name": "Strawberries",
-    "difficulty": "Beginner-friendly",
     "id": 2,
-    "detail": "Strawberry Plant",
-    "description": "Strawberries are delicious and easy to grow in various climates."
-  },
-  {
-    "type": "Vegetable",
-    "name": "Cucumbers",
-    "difficulty": "Cucumbers",
-    "id": 3,
-    "detail": "Cucumber Plant",
-    "description": "Cucumbers are a popular vegetable for salads and pickles."
-  },
-  {
-    "type": "Vegetable",
-    "name": "Squash",
-    "difficulty": "Beginner-friendly",
-    "id": 4,
-    "detail": "Squash Plant",
-    "description": "Squash is a versatile vegetable used in a variety of dishes."
-  },
-  {
     "type": "Fruit",
-    "name": "Orange",
-    "difficulty": "Medium",
-    "id": 5,
-    "detail": "Orange Plant",
-    "description": "Oranges are a good source of vitamin C and have a refreshing taste."
+    "name": "Tomato",
+    "scientificName": "Solanum Lycopersicum",
+    "difficulty": "Intermediate",
+    "petFriendly": false,
+    "description": "The tomato is a widely cultivated plant that can thrive in both garden beds and small containers with minimal maintenance",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img01.jpg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img02.jpg"
+    },
+    "care": {
+      "water": "Watering requirements for tomatoes vary during different growth stages. It's best to water once a day, preferably in the morning or late afternoon when the soil is nearly dry. Maintaining high soil humidity (about 75%) during germination and harvest is crucial for fruit quality. Avoid overwatering to prevent fruit cracking",
+      "temperature": "Tomatoes commonly thrive in warm climates, favoring daytime temperatures of 20-25°C and nighttime temperatures of 15-18°C. Extreme heat above 45°C can lead to damage, while freezing temperatures at or below -1°C can be fatal",
+      "fertilize":"Use compound fertilizer with calcium superphosphate during planting. Add a bit of urea a week after transplanting, and as the first fruits emerge, apply NPK compound fertilizer to promote subsequent growth. Adjust the amounts based on the tomato variety and growth conditions for optimal results",
+      "soil": "Tomatoes are adaptable to various soil types, with the ideal soil being permeable, well-drained loam or sandy loam enriched with organic matter, and slightly acidic. A soil pH of 6.0-6.5 is optimal. For potted plants, the recommended medium ratio is garden soil, peat, mushroom compost, and vermiculite in equal parts, combined with manure or potassium sulfate compound fertilizer",
+      "sunlight":"Tomatoes require ample sunlight, ideally 12-14 hours daily. Satisfactory sunlight not only fosters vegetative growth but also encourages the development of flowers and fruits. Plant tomatoes in open areas with no cover, like the sunny side of your house, ensuring they are not shaded by trees or bushes",
+      "prune": "Tomato plants produce 'suckers,' which are small shoots that develop in the leaf axils, the area where a leaf stem attaches to the main stem. Suckers grow between the main stem and a branch. Suckers under 2 inches long can simply be pinched off with your fingers. For larger suckers, use a pair of clean pruners, disinfecting them as you move from plant to plant to protect against spreading diseases",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "These tiny insects feed on plant sap, causing leaves to curl and become distorted. Aphids can transmit viruses to tomato plants"
+        },
+        {
+          "name": "Whiteflies",
+          "description": "Whiteflies are small, white insects that feed on the underside of leaves, causing yellowing and wilting. They also secrete a sticky substance called honeydew, which can lead to sooty mold growth"
+        },
+        {
+          "name": "Tomato Hornworms",
+          "description": "These large green caterpillars can defoliate a tomato plant quickly. They are often found on the leaves and can be identified by their horn-like appendage on the rear end"
+        },
+        {
+          "name": "Cutworms",
+          "description": "Cutworms are nocturnal caterpillars that feed on young tomato plants, cutting them off at the base. They are often found at the soil line"
+        },
+        {
+          "name": "Spider Mites",
+          "description": "These tiny arachnids suck the juices from leaves, causing stippling, discoloration, and webbing on the plant"
+        },
+        {
+          "name": "Flea Beetles",
+          "description": "Flea beetles chew small holes in the leaves, leaving behind a characteristic 'shot-hole' appearance"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Early Blight",
+          "description": "This fungal disease causes dark, concentric rings on leaves, stems, and fruit. It can lead to premature leaf drop and reduced fruit production"
+        },
+        {
+          "name": "Late Blight",
+          "description": "It is a devastating disease that causes dark, water-soaked lesions on leaves, stems, and fruit. It can quickly destroy an entire plant"
+        },
+        {
+          "name": "Septoria Leaf Spot",
+          "description": "It presents as small, dark spots with lighter centers on lower leaves. As the disease progresses, leaves may yellow and drop"
+        },
+        {
+          "name": "Blossom End Rot",
+          "description": "This physiological disorder is caused by calcium deficiency and appears as a dark, sunken area on the blossom end of fruit"
+        },
+        {
+          "name": "Fusarium Wilt",
+          "description": "This soil-borne fungus causes yellowing and wilting of lower leaves. It can lead to plant death"
+        },
+        {
+          "name": "Verticillium Wilt",
+          "description": "Like Fusarium wilt, this fungal disease causes wilting and yellowing of leaves, often on one side of the plant"
+        }
+      ]
+    }
   },
   {
-    "type": "Vegetable",
-    "name": "Spinach",
+    "id": 3,
+    "type": "Fruit",
+    "name": "Cucumber",
+    "scientificName": "Cucumis sativus",
     "difficulty": "Intermediate",
+    "petFriendly": true,
+    "description": "Cucumber plants are prolific producers, gracing the garden with an abundance of crisp, refreshing fruits. With its vibrant green vines, sprawling leaves, and tendrils that reach out to intertwine with neighboring plants, it embodies the spirit of communal cooperation and the sharing of abundance",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img02.jpeg"
+    },
+    "care": {
+      "water": "Keep the soil consistently moist, especially during flowering and fruiting. Avoid overhead watering, as wet foliage can lead to disease",
+      "temperature": "Cucumber plants are sensitive to temperature, and the ideal temperature range for their growth and fruit development is between 70°F to 95°F (21°C to 35°C)",
+      "fertilize":"Use a balanced, slow-release fertilizer or organic compost when planting. Apply a side-dressing of fertilizer or compost during the growing season",
+      "soil": "Cucumber plants prefer soil that drains well. Soil that retains excess moisture can lead to root rot and other diseases. Sandy loam or loamy soil types are ideal for cucumbers",
+      "sunlight":"Cucumber plants require abundant sunlight to grow and produce fruit. Choose a location in your garden that receives full sun exposure, preferably in a spot with at least 6-8 hours of direct sunlight daily",
+      "prune": "Regularly remove dead or yellowing leaves to improve air circulation and prevent disease. Prune lateral vines if they become too dense",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "These tiny insects feed on the sap of cucumber plants and can transmit diseases"
+        },
+        {
+          "name": "Cucumber Beetles",
+          "description": "Both striped and spotted cucumber beetles can damage plants by feeding on leaves and transmitting bacterial wilt"
+        },
+        {
+          "name": "Spider Mites",
+          "description": "These arachnids are tiny and often go unnoticed until they cause stippling and damage to cucumber leaves"
+        },
+        {
+          "name": "Whiteflies",
+          "description": "They feed on cucumber plant sap and can transmit diseases while weakening the plant"
+        },
+        {
+          "name": "Thrips",
+          "description": "They are slender insects that can scar cucumber fruits and leaves while spreading diseases"
+        },
+        {
+          "name": "Slugs and Snails",
+          "description": "These mollusks can chew holes in cucumber leaves and damage fruit"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Powdery Mildew",
+          "description": "Powdery mildew is a fungal disease that appears as a white, powdery substance on cucumber leaves, affecting photosynthesis and overall plant health"
+        },
+        {
+          "name": "Downy Mildew",
+          "description": "This fungal disease can cause yellowing of leaves and affect cucumber fruit quality"
+        },
+        {
+          "name": "Bacterial Wilt",
+          "description": "Cucumber beetles are carriers of this disease, which can cause wilting and eventual death of cucumber plants"
+        },
+        {
+          "name": "Anthracnose",
+          "description": "It is a fungal disease that leads to dark lesions on cucumber fruits, reducing their quality"
+        },
+        {
+          "name": "Angular Leaf Spot",
+          "description": "This bacterial disease causes angular lesions on cucumber leaves and can reduce plant vigor"
+        },
+        {
+          "name": "Cucumber Mosaic Virus",
+          "description": "This viral disease can result in mosaic-like patterns on leaves, stunted growth, and reduced fruit quality"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "type": "Legumes",
+    "name": "Green Beans",
+    "scientificName": "Phaseolus vulgaris",
+    "difficulty": "Intermediate",
+    "petFriendly": true,
+    "description": "They are vibrant and slender edible pods harvested from the common bean plant. They are typically green in color, with a crisp texture and a slightly sweet, earthy flavor. Green beans are a popular vegetable in many cuisines and can be steamed, sautéed, stir-fried, or enjoyed in various dishes ranging from salads to casseroles",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img02.jpeg"
+    },
+    "care": {
+      "water": "Water green beans every 2 to 3 days, with about 1 inch of water per week, divided into two to three waterings",
+      "temperature": "Temperatures between 70-85°F (21-29°C). Moderate humidity levels of around 60-70%",
+      "fertilize":"Fertilize at the time of planting and The second application of fertilizer should occur when the green bean plants are about 4-6 inches tall and have started to flower. Select a balanced, all-purpose granular fertilizer with equal or similar amounts of nitrogen (N), phosphorus (P), and potassium (K), such as a 10-10-10 or 20-20-20 fertilizer. Use about 1-2 pounds of fertilizer per 100 square feet",
+      "soil": "Loam soil. It's a balanced mixture of sand, silt, and clay, providing good drainage while retaining moisture and nutrients",
+      "sunlight":"Full sunlight. 6-8 hours of direct sunlight per day",
+      "prune": "If you notice that some parts of your green bean plants are affected by diseases or infested by pests, you can prune those affected leaves or stems to prevent the issue from spreading. Be sure to dispose of the pruned parts to avoid further contamination",
+      "pests": [
+        {
+          "name": "Aphids, Mexican Bean Beetles, Bean Leaf Beetles, and Thrips",
+          "description": "Spray affected plants with a strong stream of water to dislodge the pests. Consider using insecticidal soap or neem oil as a natural control method. In severe infestations, chemical insecticides may be necessary"
+        },
+        {
+          "name": "Cutworms",
+          "description": "Use cardboard collars or barriers around the base of young plants to prevent cutworm damage. Handpick cutworms during evening hours when they are active"
+        },
+        {
+          "name": "Japanese Beetles",
+          "description": "Handpick Japanese beetles early in the morning when they are less active. Consider using traps to lure and capture these pests. Neem oil or insecticidal soap can be effective against Japanese beetles"
+        },
+        {
+          "name": "Spider Mites",
+          "description": "Increase humidity around the plants by misting them with water. Use insecticidal soap or neem oil to control spider mites"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Rust",
+          "description": "Remove and destroy infected leaves to prevent the spread of the disease. Apply a fungicide labeled for rust control"
+        },
+        {
+          "name": "Anthracnose, Powdery Mildew, and Bacterial Blight",
+          "description": "Remove and destroy affected plant parts to reduce disease spread. Apply fungicides as recommended for specific diseases"
+        },
+        {
+          "name": "Common Bean Mosaic Virus and Bean Common Mosaic Virus",
+          "description": "There are no chemical treatments for viral diseases. Focus on disease prevention by using virus-free seeds and controlling aphids, which can transmit these viruses"
+        },
+        {
+          "name": "Pythium and Rhizoctonia Root Rot",
+          "description": "Improve soil drainage to prevent waterlogged conditions. Plant green beans in well-drained soil"
+        },
+        {
+          "name": "Preventative Measures",
+          "description": "Maintain proper garden hygiene by removing plant debris and weeds. Practice crop rotation to reduce the buildup of pests and diseases in the soil. Choose bean varieties that are resistant to specific pests and diseases"
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "type": "Vegetables",
+    "name": "Raddish",
+    "scientificName": "Raphanus Sativus",
+    "difficulty": "Beginner",
+    "petFriendly": true,
+    "description": "Radishes are crisp and peppery root vegetables that belong to the Brassicaceae family. They are an excellent choice for beginners, as they are easy to cultivate, fast-growing, and can be sown directly in the garden. They add a refreshing crunch and a slightly spicy kick to salads and other dishes, making them a popular choice in the culinary world",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img02.jpeg"
+    },
+    "care": {
+      "water": "Radishes need consistent moisture, so water them regularly, ensuring the soil stays evenly moist but not waterlogged",
+      "temperature": "Ideal temperatures are between 50-70°F (10-24°C) with moderate humidity",
+      "fertilize":"Use a balanced fertilizer when planting, but avoid excessive nitrogen to prevent excessive foliage growth at the expense of root development",
+      "soil": "Plant radishes in well-draining, loose soil that is rich in organic matter, which helps promote healthy root growth",
+      "sunlight":"Radishes prefer full sun, but they can tolerate partial shade. Ensure they receive at least 6 hours of sunlight daily for optimal growth",
+      "prune": "Radishes do not require pruning, but thinning seedlings to the appropriate spacing (about 2 inches apart) will help them develop larger roots",
+      "pests": [
+        {
+          "name": "Flea Beetles",
+          "description": "Small, shiny, and jumping insects that create tiny holes in radish leaves. To handle them, use row covers to protect young radish plants, and consider using insecticidal sprays if the infestation is severe"
+        },
+        {
+          "name": "Aphids",
+          "description": "Small, soft-bodied insects that feed on radish sap. Handle aphids by spraying plants with a strong stream of water or using insecticidal soap or neem oil if necessary"
+        },
+        {
+          "name": "Cabbage Root Fly",
+          "description": "These flies lay their eggs near radish roots, leading to root damage. Prevent infestation by using root collars or floating row covers, and practice crop rotation"
+        },
+        {
+          "name": "Root-Knot Nematodes",
+          "description": "These microscopic worms infest radish roots. Employ crop rotation, choose nematode-resistant radish varieties, and improve soil health to reduce nematode populations"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Powdery Mildew",
+          "description": "Manage powdery mildew by improving air circulation, reducing humidity, and applying fungicides if necessary"
+        },
+        {
+          "name": "Black Rot",
+          "description": "Unfortunately, there's no effective treatment for black rot once it's established. Practice good sanitation and remove affected plants to prevent the spread of the disease"
+        },
+        {
+          "name": "Bacterial Soft Rot",
+          "description": "Prevent bacterial soft rot by maintaining good hygiene, avoiding overwatering, and promptly removing and destroying infected plants"
+        }
+      ]
+    }
+  },
+  {
     "id": 6,
-    "detail": "Spinach Plant",
-    "description": "Spinach is a leafy green vegetable rich in iron and nutrients."
+    "type": "Herbs",
+    "name": "Parsley",
+    "scientificName": "Petroselinum Crispum",
+    "difficulty": "Beginner",
+    "petFriendly": true,
+    "description": "Parsley is a biennial herb with bright green, curly or flat leaves, and a fresh, slightly peppery taste. It is widely used in culinary dishes, adding a burst of flavour and a vibrant touch as a garnish. Parsley is rich in vitamins A, C, and K, as well as antioxidants and essential nutrients",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img02.jpeg"
+    },
+    "care": {
+      "water": "Water parsley regularly, keeping the soil consistently moist but not waterlogged",
+      "temperature": "Parsley thrives in temperatures between 60-70°F (15-21°C) and moderate humidity levels",
+      "fertilize":"Apply a balanced fertilizer once every 4-6 weeks during the growing season, using a diluted liquid fertilizer with a balanced NPK ratio",
+      "soil": "Well-draining, nutrient-rich soil with a pH of 6.0-7.0 is ideal for parsley growth",
+      "sunlight": "Parsley prefers partial shade, particularly in hotter climates, and requires 4-6 hours of sunlight per day",
+      "prune": "Regularly harvest the outer leaves to encourage new growth and prevent the plant from bolting. Pinch off any flowers that emerge to extend the plant's life cycle",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "pray affected plants with a strong stream of water or use insecticidal soap or neem oil"
+        },
+        {
+          "name": "Caterpillars",
+          "description": "Handpick caterpillars during active periods"
+        },
+        {
+          "name": "Mites",
+          "description": "Encourage beneficial insects that prey on these pests. Handpick mites during active periods"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Root Rot",
+          "description": "Ensure good air circulation and avoid overwatering to prevent root rot"
+        },
+        {
+          "name": "Powdery Mildew",
+          "description": "Remove and destroy any infected plant material"
+        },
+        {
+          "name": "Leaf Spot",
+          "description": "Apply appropriate fungicides labelled for specific diseases as recommended"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "type": "Flowers",
+    "name": "Sunflower",
+    "scientificName": "Helianthus Annuus",
+    "difficulty": "Beginner",
+    "petFriendly": true,
+    "description": "They are iconic summer blooms known for their striking yellow petals and tall, sturdy stems. These cheerful flowers are easy to grow and attract pollinators",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img02.jpeg"
+    },
+    "care": {
+      "water": "Sunflowers typically require about 1 inch (2.5 cm) of water per week. Use a rain gauge or monitor the soil to ensure consistent moisture, especially during dry periods",
+      "temperature": "Sunflowers thrive in temperatures between 70-78°F (21-26°C). They prefer low humidity and well-ventilated conditions to prevent mold or mildew",
+      "fertilize": "Apply a balanced, all-purpose fertilizer with an N-P-K (nitrogen (N), phosphorus (P), and potassium (K)) ratio of around 10-10-10. Use approximately 1.5 tablespoons of fertilizer per plant when they are about 12 inches (30 cm) tall",
+      "soil": "Sunflowers prefer well-drained, loamy soil with a pH level between 6.0 and 7.5. Depth of 12-18 inches (30-45 cm) for optimal root growth",
+      "sunlight":"Sunflowers require full sun, with at least 6-8 hours of direct sunlight per day",
+      "prune": " Deadhead spent flowers by cutting the stem a few inches below the spent bloom to encourage continuous blooming",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "Aphids are tiny insects that suck on plant sap, often found under leaves. Invite natural predators like ladybugs or use a strong stream of water to remove them. If needed, try insecticidal soap"
+        },
+        {
+          "name": "Sunflower Moth",
+          "description": "Sunflower moth larvae can harm the flower head. Keep an eye on flower heads for damage. Remove affected heads to stop further issues"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Powdery Mildew",
+          "description": "Powdery mildew looks like white powder on leaves and stems. Space plants well for air circulation. If you see it, use a fungicidal spray as directed"
+        },
+        {
+          "name": "Downy Mildew",
+          "description": "Downy mildew causes yellow or brown spots on leaves with a fuzzy growth underneath. Avoid overhead watering and ensure plants have room to breathe. You may need a fungicidal treatment"
+        },
+        {
+          "name": "Botrytis (Gray Mold)",
+          "description": "Gray mold is a fungal disease that creates grayish brown patches on flowers. Remove affected flowers. Keep the area airy and avoid watering from above"
+        },
+        {
+          "name": "Rust",
+          "description": "Rust looks like reddish-brown bumps on leaves and stems. Choose rust-resistant varieties. If rust shows up, get rid of affected leaves and use an appropriate fungicide"
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "type": "Flowers",
+    "name": "Rose",
+    "scientificName": "Rosa",
+    "difficulty": "Beginner-Intermediate",
+    "petFriendly": true,
+    "description": "They are classic, elegant flowers known for their vibrant colors and sweet fragrance. They come in various types, from shrub and landscape roses to hybrid tea and old garden roses, making them a versatile addition to any garden",
+    "image": {
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img01.jpeg",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img02.jpeg"
+    },
+    "care": {
+      "water": "Roses require consistent moisture to thrive. Water deeply, and ensure the soil remains evenly moist but not waterlogged. Watering early in the day allows the foliage to dry before evening, reducing the risk of fungal diseases",
+      "temperature": "Roses prefer moderate temperatures. Most rose varieties thrive in regions with a typical annual temperature range. They can handle a variety of humidity levels, but good air circulation can help prevent fungal issues",
+      "fertilize": "Apply a balanced, slow-release rose fertilizer in the spring as new growth begins and again in mid-summer to encourage continuous blooms. Avoid excessive nitrogen, as it can promote lush foliage at the expense of blooms",
+      "soil": "Roses grow best in well-drained soil that's rich in organic matter. Amending the soil with compost can improve its texture and nutrient content, providing a healthy environment for your roses",
+      "sunlight": "Roses need a minimum of 6 hours of direct sunlight per day. Full sun exposure ensures robust growth and abundant blooms. If your garden doesn't receive enough sunlight, consider selecting shade-tolerant rose varieties",
+      "prune": "Regular pruning is crucial for maintaining healthy roses. Prune in the late winter or early spring before new growth begins. Remove dead or diseased wood, shape the plant, and encourage new growth. Different types of roses may require specific pruning techniques, so research your specific variety for guidance",
+      "pests": [
+        {
+          "name": "Aphids",
+          "description": "Aphids are small, soft-bodied insects that feed on the sap of rose plants. They can cause distortion of new growth and the spread of viruses. You can control aphids by spraying them off with a strong stream of water or by using insecticidal soap"
+        },
+        {
+          "name": "Japanese Beetles",
+          "description": "Japanese beetles are known for their voracious appetite for rose leaves. They chew on the foliage, leaving behind skeletonized leaves. Handpick beetles or use traps to manage their populations. Neem oil or pyrethrin-based sprays can also provide control"
+        },
+        {
+          "name": "Spider Mites",
+          "description": "Spider mites are tiny arachnids that can infest rose plants. They suck the sap from the leaves, causing stippling, discoloration, and sometimes webbing. Miticides or insecticidal soap can be used to control spider mites"
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Black Spot",
+          "description": "Black spot is a common fungal disease that appears as black or dark brown spots with fringed edges on rose leaves. It can lead to defoliation and weaken the plant. Preventive measures include choosing resistant rose varieties and applying fungicide"
+        },
+        {
+          "name": "Powdery Mildew",
+          "description": "Powdery mildew is a white, powdery fungal growth that typically affects new leaves and shoots. It can distort leaves and stunt growth. Proper spacing, good air circulation, and applying fungicides can help control powdery mildew"
+        },
+        {
+          "name": "Rust",
+          "description": "Rose rust appears as rust-colored pustules on the undersides of leaves and can spread to stems and buds. It can weaken the plant and affect its overall health. Pruning infected parts and applying fungicides can help manage rust"
+        },
+        {
+          "name": "Botrytis Blight",
+          "description": "Botrytis blight, or gray mold, is a fungal disease that causes brown or gray mold on rose petals and foliage. It often affects flowers, especially in damp conditions. Pruning infected parts and ensuring good air circulation can prevent its spread"
+        }
+      ]
+    }
   }
 ]
