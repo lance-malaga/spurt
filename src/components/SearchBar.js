@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, Image } from 'react-native';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ searchInput, setSearchInput }) => {
+  const handleSearch = (searchValue) => {
+		setSearchInput(searchValue);
+	};
+
   return (
     <View style={styles.container}>
       <Image
@@ -11,7 +15,8 @@ const SearchBar = ({ onSearch }) => {
       <TextInput
         style={styles.input}
         placeholder="Search"
-        onChangeText={onSearch}
+        value={searchInput}
+        onChangeText={handleSearch}
       />
     </View>
   );
