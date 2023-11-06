@@ -43,7 +43,8 @@ export default function NavBar() {
     const handleNavigate = (screen) => {
         if (screen === "Dashboard") {
             navigation.navigate("Dashboard");
-        } else if (screen === "YourGarden") {
+        } 
+        else if (screen === "YourGarden") {
             navigation.navigate("YourGarden");
         } 
         else if (screen === "PlantAid") {

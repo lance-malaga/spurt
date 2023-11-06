@@ -14,6 +14,7 @@ import CategoriesCard from "./src/components/CategoriesCard";
 import CategoryResults from "./src/components/CategoryResults";
 import PlantAid from "./src/screens/PlantAid";
 import PlantAidOnboarding from "./src/screens/PlantAidOnboarding";
+import TakePic from "./src/components/TakePic"
 
 const Stack = createStackNavigator();
 
@@ -106,6 +107,13 @@ function App() {
         <Stack.Screen
           name="PlantAidOnboarding"
           component={PlantAidOnboarding}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="TakePic"
+          component={TakePic}
           options={{
             headerShown: false,
           }}

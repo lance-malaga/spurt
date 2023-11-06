@@ -53,7 +53,7 @@ export default function Search() {
 			</View>
 			<View style={styles.buttonContainer}>
 				<View style={styles.buttonGroup}>
-					<Pressable style={styles.button} onPress={handleCameraPress}>
+					<Pressable style={styles.button} onPress={() => navigation.navigate("TakePic")}>
 						<Image source={require("../../assets/icons/camera-icon.png")} />
 						<Text style={styles.buttonText}>Camera</Text>
 					</Pressable>
