@@ -30,7 +30,10 @@
     "react-native-reanimated": "^3.5.4",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
-    "react-navigation-stack": "^2.10.4"
+    "react-navigation-stack": "^2.10.4",
+    "expo-camera": "~13.4.4",
+    "expo-sharing": "~11.5.0",
+    "expo-media-library": "~15.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
