@@ -14,18 +14,13 @@ import Card from "../components/Card";
 import CategoriesCard from "../components/CategoriesCard";
 import topPicks from "../../data/TopPicks.json"
 import SearchCard from "../components/SearchCard";
+import AccessGallery from "../components/AccessGallery";
 
 export default function Search() {
 	const [searchInput, setSearchInput] = useState('');
 	const [filteredResults, setFilteredResults] = useState(topPicks);
 
 	const navigation = useNavigation();
-
-	const handleCameraPress = () => {
-	};
-
-	const handleGalleryPress = () => {
-	};
 
 	// const handleSearch = (query) => {
 	//   if (query.toLowerCase() === "vegetables") {
@@ -59,13 +54,9 @@ export default function Search() {
 					</Pressable>
 				</View>
 				<View style={styles.buttonGroup}>
-					<Pressable style={styles.button2} onPress={handleGalleryPress}>
-						<Image source={require("../../assets/icons/gallery.png")} />
-						<Text style={styles.buttonText2}>Gallery</Text>
-					</Pressable>
+          <AccessGallery />
 				</View>
 			</View>
-
 			{searchInput.length ? (
 				<>
 					<Text style={styles.resultsLength}>Results: {filteredResults.length}</Text>
@@ -153,29 +144,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 	},
-	button2: {
-		backgroundColor: "#fff",
-		paddingHorizontal: 50,
-		paddingVertical: 15,
-		borderRadius: 24,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 3.84,
-		elevation: 5,
-		flexDirection: "row",
-		alignItems: "center",
-	},
 	buttonText: {
 		color: "#fff",
-		textAlign: "center",
-		marginLeft: 10,
-	},
-	buttonText2: {
-		color: "#000",
 		textAlign: "center",
 		marginLeft: 10,
 	},

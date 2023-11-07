@@ -17,6 +17,7 @@ Spurt is a go-to app for managing community gardens that aims to tackle the chal
 ### Node Modules
 ```
 - npm i
+- npx expo install expo-image-picker
 ```
 
 ### Expo Installation
