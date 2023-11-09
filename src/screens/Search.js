@@ -3,7 +3,6 @@ import {
 	View,
 	StyleSheet,
 	Pressable,
-	Text,
 	Image,
 	ScrollView,
 } from "react-native";
@@ -15,19 +14,13 @@ import CategoriesCard from "../components/CategoriesCard";
 import topPicks from "../../data/TopPicks.json"
 import SearchCard from "../components/SearchCard";
 import AccessGallery from "../components/AccessGallery";
+import FontText from "../components/FontText";
 
 export default function Search() {
 	const [searchInput, setSearchInput] = useState('');
 	const [filteredResults, setFilteredResults] = useState(topPicks);
 
 	const navigation = useNavigation();
-
-	// const handleSearch = (query) => {
-	//   if (query.toLowerCase() === "vegetables") {
-	//     navigation.navigate("CategoryResults", { category: "Vegetables" });
-	//   } else {
-	//   }
-	// };
 
 	useEffect(() => {
 		if (searchInput !== "") {
@@ -43,6 +36,12 @@ export default function Search() {
 
 	return (
 		<ScrollView style={styles.container}>
+			<FontText 
+				content={'Look For A Plant'}
+				fontSize={24}
+				textAlign={'center'}
+				paddingTop={30}
+			/>
 			<View style={styles.searchContainer}>
 				<SearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
 			</View>
@@ -50,16 +49,27 @@ export default function Search() {
 				<View style={styles.buttonGroup}>
 					<Pressable style={styles.button} onPress={() => navigation.navigate("TakePic")}>
 						<Image source={require("../../assets/icons/camera-icon.png")} />
-						<Text style={styles.buttonText}>Camera</Text>
+						<FontText
+							content={'Camera'}
+							color={'#fff'}
+							textAlign= {'center'}
+							paddingLeft={10}
+						/>
 					</Pressable>
 				</View>
 				<View style={styles.buttonGroup}>
-          <AccessGallery />
+					<AccessGallery />
 				</View>
 			</View>
 			{searchInput.length ? (
 				<>
-					<Text style={styles.resultsLength}>Results: {filteredResults.length}</Text>
+					<FontText
+						content={`Results: ${filteredResults.length}`}
+						fontSize={16}
+						fontWeight={500}
+						paddingTop={20}
+						paddingLeft={25}
+					/>
 					{filteredResults.map((item, index) => {
 						return (
 							<View key={index}>
@@ -76,19 +86,31 @@ export default function Search() {
 			) : (
 				<>
 					<View style={styles.picksContainer}>
-						<Text style={styles.picksHeader}>TOP PICKS FOR SUMMER</Text>
-						<Text style={styles.picksDesc}>
-							Check out the plants ready this summer
-						</Text>
+						<FontText 
+							content={'TOP PICKS FOR SUMMER'}
+							fontSize={18}
+							fontWeight={700}
+						/>
+						<FontText
+							content={'Check out the plants ready this summer'}
+							fontSize={12}
+							marginTop={-5}
+						/>
 					</View>
 					<View style={styles.cardContainer}>
 						<Card />
 					</View>
 					<View style={styles.categoriesContainer}>
-						<Text style={styles.categoriesHeader}>CATEGORIES</Text>
-						<Text style={styles.categoriesDesc}>
-							Care guides and tips for every plant
-						</Text>
+						<FontText 
+							content={'CATEGORIES'}
+							fontSize={18}
+							fontWeight={700}
+						/>
+						<FontText 
+							content={'Care guides and tips for every plant'}
+							fontSize={12}
+							marginTop={-5}
+						/>
 					</View>
 					<View style={styles.categoriesCardContainer}>
 						<CategoriesCard />
@@ -103,7 +125,8 @@ export default function Search() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#FAFAFA",
+		backgroundColor: "#FFFF",
+		paddingTop: 30,
 	},
 	cardContainer: {
 		paddingLeft: 20,
@@ -144,44 +167,11 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 	},
-	buttonText: {
-		color: "#fff",
-		textAlign: "center",
-		marginLeft: 10,
-	},
-	resultsLength: {
-		fontSize: 16,
-		fontWeight: "500",
-		marginTop: 20,
-		marginLeft: 25,
-	},
 	picksContainer: {
 		alignItems: "flex-start",
 		paddingTop: 30,
 		paddingBottom: 10,
 		paddingLeft: 30,
-	},
-	picksHeader: {
-		fontSize: 14,
-		color: "#000",
-		fontWeight: "bold",
-		paddingBottom: 5,
-	},
-	picksDesc: {
-		fontSize: 12,
-		color: "#000",
-		marginTop: -5,
-	},
-	categoriesHeader: {
-		fontSize: 14,
-		color: "#000",
-		fontWeight: "bold",
-		paddingBottom: 5,
-	},
-	categoriesDesc: {
-		fontSize: 12,
-		color: "#000",
-		marginTop: -5,
 	},
 	categoriesContainer: {
 		paddingLeft: 30,

@@ -8,7 +8,7 @@ export default function Onboard(props) {
   const navigation = useNavigation();
 
   const handleYesClick = () => {
-    navigation.navigate("Look for a plant");
+    navigation.navigate("Search");
   };
 
   const handleSTDClick = () => {

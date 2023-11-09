@@ -6,6 +6,7 @@
     "scientificName": "Lactuca Sativa",
     "difficulty": "Beginner",
     "petFriendly": true,
+    "topPick": false,
     "description": "Lettuce is a popular and easy-to-grow leafy vegetable in gardening. It thrives in cool climates and can be sown directly in the garden or grown in containers, making it a versatile choice for both beginner and experienced gardeners. Its rapid growth and versatility make it a staple in many home gardens, providing fresh, crisp leaves for salads and sandwiches throughout the growing season",
     "image": {
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img01.jpeg",
@@ -59,8 +60,10 @@
     "scientificName": "Solanum Lycopersicum",
     "difficulty": "Intermediate",
     "petFriendly": false,
+    "topPick": true,
     "description": "The tomato is a widely cultivated plant that can thrive in both garden beds and small containers with minimal maintenance",
     "image": {
+      "topPickImg": "../../assets/images/1.1_top_tomato",
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img01.jpg",
       "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img02.jpg"
     },
@@ -132,8 +135,10 @@
     "scientificName": "Cucumis sativus",
     "difficulty": "Intermediate",
     "petFriendly": true,
+    "topPick": true,
     "description": "Cucumber plants are prolific producers, gracing the garden with an abundance of crisp, refreshing fruits. With its vibrant green vines, sprawling leaves, and tendrils that reach out to intertwine with neighboring plants, it embodies the spirit of communal cooperation and the sharing of abundance",
     "image": {
+      "topPickImg": "../../assets/images/1.1_top_tomato",
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img01.jpeg",
       "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img02.jpeg"
     },
@@ -205,6 +210,7 @@
     "scientificName": "Phaseolus vulgaris",
     "difficulty": "Intermediate",
     "petFriendly": true,
+    "topPick": false,
     "description": "They are vibrant and slender edible pods harvested from the common bean plant. They are typically green in color, with a crisp texture and a slightly sweet, earthy flavor. Green beans are a popular vegetable in many cuisines and can be steamed, sautéed, stir-fried, or enjoyed in various dishes ranging from salads to casseroles",
     "image": {
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img01.jpeg",
@@ -261,11 +267,12 @@
   },
   {
     "id": 5,
-    "type": "Vegetables",
+    "type": "Vegetable",
     "name": "Raddish",
     "scientificName": "Raphanus Sativus",
     "difficulty": "Beginner",
     "petFriendly": true,
+    "topPick": false,
     "description": "Radishes are crisp and peppery root vegetables that belong to the Brassicaceae family. They are an excellent choice for beginners, as they are easy to cultivate, fast-growing, and can be sown directly in the garden. They add a refreshing crunch and a slightly spicy kick to salads and other dishes, making them a popular choice in the culinary world",
     "image": {
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img01.jpeg",
@@ -314,11 +321,12 @@
   },
   {
     "id": 6,
-    "type": "Herbs",
+    "type": "Herb",
     "name": "Parsley",
     "scientificName": "Petroselinum Crispum",
     "difficulty": "Beginner",
     "petFriendly": true,
+    "topPick": false,
     "description": "Parsley is a biennial herb with bright green, curly or flat leaves, and a fresh, slightly peppery taste. It is widely used in culinary dishes, adding a burst of flavour and a vibrant touch as a garnish. Parsley is rich in vitamins A, C, and K, as well as antioxidants and essential nutrients",
     "image": {
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img01.jpeg",
@@ -363,11 +371,12 @@
   },
   {
     "id": 7,
-    "type": "Flowers",
+    "type": "Floral",
     "name": "Sunflower",
     "scientificName": "Helianthus Annuus",
     "difficulty": "Beginner",
     "petFriendly": true,
+    "topPick": false,
     "description": "They are iconic summer blooms known for their striking yellow petals and tall, sturdy stems. These cheerful flowers are easy to grow and attract pollinators",
     "image": {
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img01.jpeg",
@@ -412,11 +421,12 @@
   },
   {
     "id": 8,
-    "type": "Flowers",
+    "type": "Floral",
     "name": "Rose",
     "scientificName": "Rosa",
     "difficulty": "Beginner-Intermediate",
     "petFriendly": true,
+    "topPick": false,
     "description": "They are classic, elegant flowers known for their vibrant colors and sweet fragrance. They come in various types, from shrub and landscape roses to hybrid tea and old garden roses, making them a versatile addition to any garden",
     "image": {
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img01.jpeg",
@@ -465,13 +475,15 @@
   },
   {
     "id": 9,
-    "type": "Flowers",
+    "type": "Floral",
     "name": "Zucchini",
     "scientificName": "Cucurbita Pepo",
     "difficulty": "Beginner",
     "petFriendly": true,
+    "topPick": true,
     "description": "It is a popular warm-season vegetable that belongs to the gourd family. It is known for its tender, edible skin and mild flavor. Zucchini comes in various shapes and colors, including zucchini, yellow squash, and pattypan squash, making it a versatile and easy-to-grow choice for gardeners",
     "image": {
+      "topPickImg": "../../assets/images/1.1_top_tomato",
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img01.jpeg",
       "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img02.jpeg"
     },
@@ -514,13 +526,15 @@
   },
   {
     "id": 10,
-    "type": "Fruits",
+    "type": "Fruit",
     "name": "Strawberry",
     "scientificName": "Fragaria X Ananassa",
     "difficulty": "Beginner",
     "petFriendly": true,
+    "topPick": true,
     "description": "Strawberries (Fragaria x ananassa) are delightful, sweet, and juicy fruits that are easy to grow in a garden. They're known for their vibrant red color, and they're perfect for snacking, baking, and making jams",
     "image": {
+      "topPickImg": "../../assets/images/1.1_top_tomato",
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img01.jpeg",
       "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img02.jpeg"
     },

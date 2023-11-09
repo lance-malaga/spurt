@@ -69,7 +69,7 @@ export default function App() {
           <Button title="Take Pic" onPress={takePic} />
         </View>
         <View style={styles.button}>
-          <Button title="Cancel" onPress={() => navigation.navigate("Look for a plant")} />
+          <Button title="Cancel" onPress={() => navigation.navigate("Search")} />
         </View>
       </View>
       <StatusBar style="auto" />
