@@ -30,16 +30,10 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="Look for a plant"
+          name="Search"
           component={Search}
           options={{
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#fff",
-            },
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
+            headerShown: false
           }}
         />
         <Stack.Screen
