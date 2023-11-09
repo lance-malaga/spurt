@@ -2,13 +2,16 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView } from "react-native";
 
+// Components
+import CurrentWeather from "./CurrentWeather";
+import CurrentDate from "./CurrentDate";
+
 export default function Weather() {
     return (
         <>
             <View style={styles.container}>
                 <View style={styles.dayInfo}>
-                    <Text style={[styles.dayInfo_day, styles.text]}>Tuesday</Text>
-                    <Text style={styles.text}>9:00 AM</Text>
+                    <CurrentDate />
                 </View>
                 <Image
                     source={require("../../assets/images/2.0_sun.png")}
@@ -17,12 +20,7 @@ export default function Weather() {
                     alt="sun"
                 />
                 <View style={styles.weatherInfo}>
-                    <Text style={styles.text}>
-                        Sunny
-                    </Text>
-                    <Text style={styles.text}>
-                        14°C
-                    </Text>
+                    <CurrentWeather />
                 </View>
             </View>
             <View style={styles.greeting}>
@@ -54,9 +52,6 @@ const styles = StyleSheet.create({
         marginBottom: 25,
         flexDirection: "row",
         gap: 15,
-    },
-    dayInfo_day: {
-        textTransform: "uppercase",
     },
     weatherInfo: {
         marginTop: 25,
