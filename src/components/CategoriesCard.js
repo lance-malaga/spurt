@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "flex-start",
-    backgroundColor: "#FAFAFAFA",
     width: 375,
   },
   row: {
