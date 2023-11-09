@@ -1,23 +1,15 @@
-	import React, { useState } from "react";
-	import {
-	View,
-	Text,
-	StyleSheet,
-	Image,
-	TouchableOpacity,
-	ScrollView,
-	} from "react-native";
-	import { useNavigation } from "@react-navigation/native";
-	import blackSaveIcon from "../../assets/icons/blackSaveIcon.png";
-	import whiteSaveIcon from "../../assets/icons/whiteSaveIcon.png";
-
-	const careSectionColors = {
-	Temperature: "#FFBBB9",
-	Water: "#C2E6FF",
-	Fertilize: "#CDFBF6",
-	Soil: "#FFE3C1",
-	"Light Levels": "#C7F3C2",
-	};
+import React, { useState } from "react";
+import {
+View,
+Text,
+StyleSheet,
+Image,
+TouchableOpacity,
+ScrollView,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import blackSaveIcon from "../../assets/icons/blackSaveIcon.png";
+import whiteSaveIcon from "../../assets/icons/whiteSaveIcon.png";
 
 export default function DetailScreen({ route }) {
 	const [showTemperature, setShowTemperature] = useState(false);
@@ -37,54 +29,44 @@ export default function DetailScreen({ route }) {
 		navigation.navigate("Dashboard");
 	};
 
-	function renderCareSection(
-		name,
-		content,
-		isShown,
-		toggleFunction,
-		iconSource
-	) {
-		const sectionColor = careSectionColors[name];
-
+	function renderCareSection(name, content, isShown, toggleFunction, iconSource) {
 		const closeOtherSections = () => {
-		setShowTemperature(false);
-		setShowWater(false);
-		setShowFertilize(false);
-		setShowSoil(false);
-		setShowLightLevels(false);
+			setShowTemperature(false);
+			setShowWater(false);
+			setShowFertilize(false);
+			setShowSoil(false);
+			setShowLightLevels(false);
 		};
 
 		return (
-		<View
-			style={[
-			styles.careSection,
-			isShown && styles.careSectionExpanded,
-			{ backgroundColor: isShown ? sectionColor : "transparent" },
-			]}
-		>
-			<View style={styles.careHeader}>
-			<Image source={iconSource} style={styles.careIcon} />
-			<Text style={styles.headerTabs2}>{name}</Text>
-			<View style={styles.careChevronContainer}>
-				<TouchableOpacity
+			<TouchableOpacity
 				onPress={() => {
 					closeOtherSections();
 					toggleFunction(!isShown);
 				}}
-				>
-				<Image
-					source={require("../../assets/icons/ChevDownIcon.png")}
-					style={[
-					styles.chevIcon,
-					isShown && styles.chevIconRotated,
-					{ marginLeft: 10 },
-					]}
-				/>
-				</TouchableOpacity>
-			</View>
-			</View>
-			{isShown && <Text style={styles.care}>{content}</Text>}
-		</View>
+				style={[
+					styles.careSection,
+					isShown && styles.careSectionExpanded,
+				]}
+			>
+				<View style={styles.careHeader}>
+				<Image source={iconSource} style={styles.careIcon} />
+				<Text style={styles.headerTabs2}>{name}</Text>
+					<View style={styles.careChevronContainer}>
+						<TouchableOpacity>
+						<Image
+							source={require("../../assets/icons/ChevDownIcon.png")}
+							style={[
+								styles.chevIcon,
+								isShown && styles.chevIconRotated,
+								{ marginLeft: 10 },
+							]}
+						/>
+						</TouchableOpacity>
+					</View>
+				</View>
+				{isShown && <Text style={styles.care}>{content}</Text>}
+			</TouchableOpacity>
 		);
 	}
 
@@ -124,11 +106,11 @@ export default function DetailScreen({ route }) {
 						{/* ... your filter tags code ... */}
 						<View style={styles.filter_level}>
 							<Text>LEVEL</Text>
-							<Text>Intermediate</Text>
+							<Text>{item.difficulty}</Text>
 						</View>
 						<View style={styles.filer_type}>
 							<Text>PLANT TYPE</Text>
-							<Text>Fruit</Text>
+							<Text>{item.type}</Text>
 						</View>
 						<View style={styles.filter_space}>
 							<Text>SPACE REQUIREMENT</Text>
@@ -136,19 +118,56 @@ export default function DetailScreen({ route }) {
 						</View>
 						<View style={styles.filter_petFriendly}>
 							<Text>LIFESPAN</Text>
-							<Text>Annual</Text>
+							<Text>lore ipsum</Text>
 						</View>
 						<View style={styles.filter_lifeSpan}>
 							<Text>OTHER</Text>
-							<Text>Pet-friendly</Text>
+							<Text>{item.petFriendly ? 'Pet-friendly' : 'Not Pet-Friendly'}</Text>
 						</View>
 					</View>
 
-					
+					{/* CARE */}
 					<Text style={styles.headerTabs}>Care</Text>
 					<View style={styles.careContainer}>
-						
+					{renderCareSection(
+						"Temperature",
+						item.care.temperature,
+						showTemperature,
+						setShowTemperature,
+						require("../../assets/icons/temperatureIcon.png")
+					)}
+					{renderCareSection(
+						"Water",
+						item.care.water,
+						showWater,
+						setShowWater,
+						require("../../assets/icons/waterIcon.png")
+					)}
+					{renderCareSection(
+						"Fertilize",
+						item.care.fertilize,
+						showFertilize,
+						setShowFertilize,
+						require("../../assets/icons/fertilizerIcon.png")
+					)}
+					{renderCareSection(
+						"Soil",
+						item.care.soil,
+						showSoil,
+						setShowSoil,
+						require("../../assets/icons/soilIcon.png")
+					)}
+					{renderCareSection(
+						"Light Levels",
+						item.care.sunlight,
+						showLightLevels,
+						setShowLightLevels,
+						require("../../assets/icons/temperatureIcon.png")
+					)}
+	
 					</View>
+
+					{/* SAVE */}
 					<View style={styles.collectionButtonContainer}>
 						<TouchableOpacity
 						style={[
@@ -279,7 +298,8 @@ const styles = StyleSheet.create({
 		marginTop: 19,
 		alignItems: "center",
 		flex: 1,
-		justifyContent: "center",
+		justifyContent: "flex-start",
+		gap: 40,
 	},
 	filterTag: {
 		backgroundColor: "#AFD1F3",

@@ -267,7 +267,7 @@
   },
   {
     "id": 5,
-    "type": "Vegetables",
+    "type": "Vegetable",
     "name": "Raddish",
     "scientificName": "Raphanus Sativus",
     "difficulty": "Beginner",
@@ -321,7 +321,7 @@
   },
   {
     "id": 6,
-    "type": "Herbs",
+    "type": "Herb",
     "name": "Parsley",
     "scientificName": "Petroselinum Crispum",
     "difficulty": "Beginner",
@@ -371,7 +371,7 @@
   },
   {
     "id": 7,
-    "type": "Flowers",
+    "type": "Floral",
     "name": "Sunflower",
     "scientificName": "Helianthus Annuus",
     "difficulty": "Beginner",
@@ -421,7 +421,7 @@
   },
   {
     "id": 8,
-    "type": "Flowers",
+    "type": "Floral",
     "name": "Rose",
     "scientificName": "Rosa",
     "difficulty": "Beginner-Intermediate",
@@ -475,7 +475,7 @@
   },
   {
     "id": 9,
-    "type": "Flowers",
+    "type": "Floral",
     "name": "Zucchini",
     "scientificName": "Cucurbita Pepo",
     "difficulty": "Beginner",
@@ -526,7 +526,7 @@
   },
   {
     "id": 10,
-    "type": "Fruits",
+    "type": "Fruit",
     "name": "Strawberry",
     "scientificName": "Fragaria X Ananassa",
     "difficulty": "Beginner",
