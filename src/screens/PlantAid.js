@@ -1,50 +1,90 @@
-import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity, Image, Modal, } from "react-native";
 import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Modal,
+  KeyboardAvoidingView,
+} from "react-native";
 import axios from "axios";
 
 const PlantAid = () => {
-  const [data, setData] = useState([]);
-  const apiKey = "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";
-  const apiUrl = "https://api.openai.com/v1/engines/text-davinci-002/completions";
-  const [textInput, setTextInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState("");
   const [isChatbotInfoVisible, setChatbotInfoVisible] = useState(false);
-
-  const handleSend = async () => {
-    try {
-      const prompt = textInput;
-      const response = await axios.post(
-        apiUrl,
-        {
-          prompt: prompt,
-          max_tokens: 1024,
-          temperature: 0.5,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
-        }
-      );
-  
-      const text = response.data.choices[0].text;
-      setData([...data, { type: "user", text: textInput }, { type: "bot", text: text }]);
-      setTextInput("");
-    } catch (error) {
-      if (error.response.status === 429) {
-        console.error("Rate limit exceeded. Retry after a while.");
-      } else {
-        console.error("Error in handleSend:", error);
-      }
-    }
-  };
-  
 
   const toggleChatbotInfo = () => {
     setChatbotInfoVisible(!isChatbotInfoVisible);
   };
 
+  const getCurrentTime = () => {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
+  const sendMessage = async () => {
+    const apiKey = "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";
+    // const apiKey = process.env.OpenAIKey;
+
+    const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+
+    try {
+      const userMessage = {
+        role: "user",
+        content: inputMessage,
+        time: getCurrentTime,
+      };
+
+      const response = await axios.post(
+        apiEndpoint,
+        {
+          model: "gpt-3.5-turbo",
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are a gardening assistant. You will answer questions in 1-2 sentences and only gardening related questions.If the user’s question is not directly related to the given book, politely reject it.",
+            },
+            userMessage,
+            {
+              role: "assistant",
+              content:
+                "You are a gardening assistant that only answers questions related to gardening.",
+            },
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const botResponse = response.data.choices[0].message.content;
+      // Update the state with both user and bot messages
+      setMessages([
+        ...messages,
+        userMessage,
+        { role: "bot", content: botResponse, time: getCurrentTime() },
+      ]);
+      setInputMessage("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
+
   return (
+    <KeyboardAvoidingView
+    style={{ flex: 1 }}
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+  >
     <View style={styles.container}>
       <View style={styles.header_container}>
         <Image
@@ -65,82 +105,134 @@ const PlantAid = () => {
           style={styles.chat_icon}
         />
       </View>
-      <FlatList
-        data={data}
-        keyExtractor={(item, index) => index.toString()}
-        style={styles.body}
-        renderItem={({ item }) => (
-          <View style={{ flexDirection: "row", padding: 10 }}>
+      <ScrollView
+        style={{ ...styles.messageContainer, flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        {messages.map((message, index) => (
+          <View
+            key={index}
+            style={{
+              alignSelf: message.role === "bot" ? "flex-start" : "flex-end",
+              margin: 5,
+              width: "80%",
+              borderTopLeftRadius: 25,
+              borderBottomLeftRadius: 25,
+              borderTopRightRadius: 20,
+              backgroundColor: message.role === "bot" ? "#f0f0f0" : "#05645A",
+              padding: 15,
+            }}
+          >
             <Text
               style={{
-                fontWeight: "bold",
-                color: item.type === "user" ? "green" : "red",
+                color: message.role === "bot" ? "#333" : "#fff",
               }}
             >
-              {item.type === "user" ? "Jimmy" : "Bot: "}
+              {message.content}
             </Text>
-            <Text style={styles.bot}>{item.text}</Text>
+            <Text style={{ color: "#aaa", fontSize: 12, marginTop: 5 }}>
+              {message.role === "user" ? "You" : "Chuey"} at {message.time}
+            </Text>
           </View>
-        )}
-      />
+        ))}
+      </ScrollView>
+
+      {/* Message Bar */}
       <View style={styles.inputContainer}>
-        <View style={styles.searchBarContainer}>
-          <TouchableOpacity style={styles.sendButton} onPress={handleSend}>
-            <Image source={require("../../assets/icons/camera-icon.png")} />
-          </TouchableOpacity>
-          <TextInput
-            style={styles.input}
-            value={textInput}
-            onChangeText={(text) => setTextInput(text)}
-            placeholder="Ask me about your plants"
+        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+          <Image source={require("../../assets/icons/camera-icon.png")} />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder="Ask me about your plants"
+          value={inputMessage}
+          onChangeText={(text) => setInputMessage(text)}
+        />
+        <TouchableOpacity
+          onPress={sendMessage}
+          style={styles.sendIconContainer}
+        >
+          <Image
+            source={require("../../assets/icons/sendIcon.png")}
+            style={styles.send_icon}
           />
-          <TouchableOpacity
-            onPress={handleSend}
-            style={styles.sendIconContainer}
-          >
-            <Image
-              source={require("../../assets/icons/sendIcon.png")}
-              style={styles.send_icon}
-            />
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
       </View>
+
+      {/* Background Blur and Overlay */}
       <Image
         source={require("../../assets/images/background/background-blur-cool-3.png")}
         style={styles.bg_img}
       />
-        <Modal
+      <Modal
         visible={isChatbotInfoVisible}
         animationType="slide"
         transparent={true}
-        >
+      >
         <View style={styles.chatbotInfoOverlay}>
-            <Image
+          <Image
             source={require("../../assets/images/chuey.png")}
             style={styles.overlayImage}
-            />
-            <Text style={{fontSize: 20, fontWeight: "bold", color: "white", marginTop: -180,}}>Chuey</Text>
-            <Text style={{textAlign: "center", width: "80%", color: "white", marginTop: 10,}}>
+          />
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "bold",
+              color: "white",
+              marginTop: -180,
+            }}
+          >
+            Chuey
+          </Text>
+          <Text
+            style={{
+              textAlign: "center",
+              width: "80%",
+              color: "white",
+              marginTop: 10,
+            }}
+          >
             Hi I'm Chuey! I was designed to help you with questions and
             information about your plants.
-            </Text>
-            <Text style={{textAlign: "center", width: "80%", color: "white", marginTop: 10,}}>
+          </Text>
+          <Text
+            style={{
+              textAlign: "center",
+              width: "80%",
+              color: "white",
+              marginTop: 10,
+            }}
+          >
             You can ask questions about plant care, watering schedules, pest
             control, and more.
-            </Text>
-            <Text style={{textAlign: "center", width: "80%", color: "white", marginTop: 10,}}>
+          </Text>
+          <Text
+            style={{
+              textAlign: "center",
+              width: "80%",
+              color: "white",
+              marginTop: 10,
+            }}
+          >
             Feel free to ask any plant-related questions, and I will provide you
             with the most helpful answers.
+          </Text>
+          <TouchableOpacity onPress={toggleChatbotInfo}>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "blue",
+                marginTop: 20,
+                color: "white",
+              }}
+            >
+              Close
             </Text>
-            <TouchableOpacity onPress={toggleChatbotInfo}>
-                <Text style={{fontSize: 16, color: "blue", marginTop: 20, color: "white",}}
-                >
-                Close
-                </Text>
-            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
-        </Modal>
+      </Modal>
     </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -152,6 +244,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     zIndex: 1,
+    justifyContent: "center",
   },
   title: {
     fontSize: 12,
@@ -166,11 +259,15 @@ const styles = StyleSheet.create({
   inputContainer: {
     alignItems: "center",
     width: "100%",
-    backgroundColor: "#fff",
     paddingTop: 40,
+    backgroundColor: "transparent",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    elevation: 8,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingBottom: 30,
+    gap: 10,
   },
   searchBarContainer: {
     flexDirection: "row",
@@ -206,6 +303,9 @@ const styles = StyleSheet.create({
   send_icon: {
     width: 20,
     height: 20,
+    position: "absolute",
+    right: 35,
+    top: -5,
   },
   bg_img: {
     zIndex: -1,
@@ -240,5 +340,6 @@ const styles = StyleSheet.create({
   overlayImage: {
     marginTop: -50,
     marginBottom: 35,
-  }
+  },
 });
+
