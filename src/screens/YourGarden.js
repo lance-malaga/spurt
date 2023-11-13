@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView, FlatList, Dimensions } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView, FlatList, Dimensions, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // COMPONENTS
 import NavBar from "../components/NavBar";
@@ -31,6 +32,11 @@ export default function YourGarden() {
             image: require('../../assets/images/3.0_squash.png'),
         },
     ];
+
+    const navigation = useNavigation();
+    const handleSelectPlant = (item) => {
+		navigation.navigate('PlantDetail', {item});
+	};
 
     return (
         <>
@@ -65,29 +71,35 @@ export default function YourGarden() {
                             </View>
                             <ScrollView horizontal>
                                 <View style={styles.filter_content}>
-                                    {filterList.map((a, index) => {
-                                        return (
-                                                <Pressable key={index}>
+                                        {filterList.map((data, index) => {
+                                            return (
+                                                <TouchableOpacity
+                                                    key={index}
+                                                >
                                                     <CustomText 
-                                                        text={a}
+                                                        text={data}
                                                         fontSize={16}
                                                         fontWeight={500}
-                                                        color={a === 'All' ? 'white' : '#50B7AD'}
+                                                        color={data === 'All' ? 'white' : '#50B7AD'}
                                                     />
-                                                </Pressable>
-                                        )
-                                    })}
+                                                </TouchableOpacity>
+                                            )
+                                        })}
                                 </View>
                             </ScrollView>
                             <View style={styles.collection_container}>
-                                {taskList.map((a, index) => {
+                                {taskList.map((data, index) => {
                                     return (
-                                        <CollectionCard 
+                                        <TouchableOpacity
                                             key={index}
-                                            name={a.name}
-                                            status={a.status}
-                                            image={a.image}
-                                        />
+                                            onPress={() => handleSelectPlant(data)}
+                                        >
+                                            <CollectionCard 
+                                                name={data.name}
+                                                status={data.status}
+                                                image={data.image}
+                                            />
+                                        </TouchableOpacity>
                                     );
                                 })}
                             </View>

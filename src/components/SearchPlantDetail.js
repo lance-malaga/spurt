@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import blackSaveIcon from "../../assets/icons/blackSaveIcon.png";
 import whiteSaveIcon from "../../assets/icons/whiteSaveIcon.png";
 
-export default function DetailScreen({ route }) {
+export default function SearchPlantDetail({ route }) {
 	const [showTemperature, setShowTemperature] = useState(false);
 	const [showWater, setShowWater] = useState(false);
 	const [showFertilize, setShowFertilize] = useState(false);

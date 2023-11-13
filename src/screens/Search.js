@@ -72,14 +72,14 @@ export default function Search() {
 					/>
 					{filteredResults.map((item, index) => {
 						return (
-							<View key={index}>
-								<SearchCard 
-									name={item.name}
-									scientificName={item.scientificName}
-									difficulty={item.difficulty}
-									// image={}
-								/>
-							</View>
+							<SearchCard
+								key={index}
+								data={item}
+								name={item.name}
+								scientificName={item.scientificName}
+								difficulty={item.difficulty}
+								// image={}
+							/>
 						);
 					})}
 				</>
