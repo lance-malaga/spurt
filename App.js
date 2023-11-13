@@ -9,12 +9,13 @@ import FindCommunity from "./src/screens/FindCommunity";
 import JoinedCommunity from "./src/screens/JoinedCommunity";
 import YourGarden from "./src/screens/YourGarden";
 import Card from "./src/components/Card";
-import DetailScreen from "./src/components/DetailScreen";
 import CategoriesCard from "./src/components/CategoriesCard";
 import CategoryResults from "./src/components/CategoryResults";
 import PlantAid from "./src/screens/PlantAid";
 import PlantAidOnboarding from "./src/screens/PlantAidOnboarding";
 import TakePic from "./src/components/TakePic"
+import SearchPlantDetail from "./src/components/SearchPlantDetail";
+import PlantDetail from "./src/screens/PlantDetail";
 
 const Stack = createStackNavigator();
 
@@ -44,8 +45,8 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="Detail"
-          component={DetailScreen}
+          name="SearchPlantDetail"
+          component={SearchPlantDetail}
           options={{
             headerShown: false,
           }}
@@ -94,6 +95,13 @@ function App() {
         <Stack.Screen
           name="YourGarden"
           component={YourGarden}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="PlantDetail"
+          component={PlantDetail}
           options={{
             headerShown: false,
           }}

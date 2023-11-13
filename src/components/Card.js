@@ -8,7 +8,7 @@ export default function Card() {
 	const navigation = useNavigation();
 
 	const handleCardPress = (item) => {
-		navigation.navigate('Detail', { item });
+		navigation.navigate('SearchPlantDetail', { item });
 	};
 
 	return (
