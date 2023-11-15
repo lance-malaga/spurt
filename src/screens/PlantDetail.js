@@ -1,7 +1,9 @@
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import topPicks from "../../data/TopPicks.json"
 
+// COMPONENTS
 import FontText from "../components/FontText";
 import PlantDetailCare from "../components/PlantDetailCare";
 import PlantDetailJournal from "../components/PlantDetailJournal";
@@ -9,9 +11,18 @@ import PlantDetailInfo from "../components/PlantDetailInfo";
 import PlantDetailNavItem from "../components/PlantDetailNavItem";
 
 export default function PlantDetail({route}) {
-    const { item } = route.params;
+    const { chosenPlant } = route.params;
     const navigation = useNavigation();
     const [selectedNavItem, setSelectedNavItem] = useState('Care');
+    const [plant, setPlant] = useState();
+
+	useEffect(() => {
+        const filteredData = topPicks.filter(
+            (item) =>
+                item.name.toLowerCase().includes(chosenPlant.name.toLowerCase())
+        );
+        setPlant(filteredData[0]);
+	}, []);
 
     const navList = ["Details", "Care", "Journal"];
 
@@ -31,7 +42,7 @@ export default function PlantDetail({route}) {
                 </TouchableOpacity>
             </View>
             <FontText
-                content={item.name}
+                content={chosenPlant.name}
                 fontSize={18}
                 fontWeight={500}
                 textAlign={"center"}
@@ -50,15 +61,17 @@ export default function PlantDetail({route}) {
                     )
                 })}
             </View>
-            <View style={styles.content_container}>
-                {selectedNavItem === "Care" ? 
-                    <PlantDetailCare/>
-                : selectedNavItem === "Details" ?
-                    <PlantDetailInfo/>
-                :
-                    <PlantDetailJournal/>
-                }
-            </View>
+            { plant &&
+                <View style={styles.content_container}>
+                    {selectedNavItem === "Care" ? 
+                        <PlantDetailCare plantData={plant}/>
+                    : selectedNavItem === "Details" ?
+                        <PlantDetailInfo/>
+                    :
+                        <PlantDetailJournal/>
+                    }
+                </View>
+            }
         </View>
     )
 }

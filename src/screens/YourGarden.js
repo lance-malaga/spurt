@@ -7,9 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 import Header from "../components/Header";
 import GlobalStyles from "../components/GlobalStyles";
-import CustomText from "../components/CustomText";
 import SearchBar from "../components/SearchBar";
 import CollectionCard from "../components/CollectionCard";
+import FontText from "../components/FontText";
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -17,25 +17,25 @@ export default function YourGarden() {
     const filterList = [ 'All', 'Vegetable', 'Fruites', 'Herbs', 'Legumes', 'Flowers' ];
     const taskList = [
         {
-            name: 'Tomato Plant',
-            status: 'Your plant is doing great!',
-            image: require('../../assets/images/3.0_tomato.png'),
+            name: 'Tomato',
+            waterStatus: '2 days',
+            image: require('../../assets/images/plant-card/tomato.png'),
         },
         {
-            name: 'Cucumber Plant',
-            status: 'Your plant is doing okay',
-            image: require('../../assets/images/3.0_cucumber.png'),
+            name: 'Cucumber',
+            waterStatus: '3 days',
+            image: require('../../assets/images/plant-card/cucumber.png'),
         },
         {
-            name: 'Squash',
-            status: 'Your plant is doing okay',
-            image: require('../../assets/images/3.0_squash.png'),
+            name: 'Sunflower',
+            waterStatus: '3 days',
+            image: require('../../assets/images/plant-card/sunflower.png'),
         },
     ];
 
     const navigation = useNavigation();
-    const handleSelectPlant = (item) => {
-		navigation.navigate('PlantDetail', {item});
+    const handleSelectPlant = (chosenPlant) => {
+		navigation.navigate('PlantDetail', {chosenPlant});
 	};
 
     return (
@@ -44,26 +44,29 @@ export default function YourGarden() {
                 <View style={styles.container}>
                     <Header />
                     <Image 
-                        source={require('../../assets/images/3.0_bg_img.png')}
+                        source={require('../../assets/images/background/your-garden-bg.png')}
                         alt="bg-img"
                         style={styles.bg_img}
                     />
                     <ScrollView>
                         <View style={styles.greeting}>
-                            <View style={styles.heading_container}>
-                                <Text style={[styles.heading_text]}>Hi </Text>
-                                <Text style={[styles.heading_text, styles.heading_name]}>Jimmy!</Text>
-                            </View>
-                            <Text style={styles.text}>How are your plants today?</Text>
+                            <FontText
+                                content={"Welcome to your garden"}
+                                fontSize={24}
+                                fontWeight={700}
+                            />
+                            <FontText
+                                content={"The place to manage all of your plants "}
+                                fontSize={12}
+                            />
                         </View>
                         <View style={styles.your_garden_content}>
                             <SearchBar />
                             <View style={styles.filter_header}>
-                                    <CustomText
-                                        text={`My Garden`}
-                                        color={'white'}
+                                    <FontText
+                                        content={'My Garden'}
                                         fontSize={18}
-                                        fontWeight={700}
+                                        fontWeight={500}
                                     />
                                     <Pressable>
                                         <Text style={styles.button}>ADD PLANT</Text>
@@ -76,12 +79,11 @@ export default function YourGarden() {
                                                 <TouchableOpacity
                                                     key={index}
                                                 >
-                                                    <CustomText 
-                                                        text={data}
+                                                   <FontText 
+                                                        content={data}
                                                         fontSize={16}
-                                                        fontWeight={500}
-                                                        color={data === 'All' ? 'white' : '#50B7AD'}
-                                                    />
+                                                        color={'#ADADAD'}
+                                                    /> 
                                                 </TouchableOpacity>
                                             )
                                         })}
@@ -96,7 +98,7 @@ export default function YourGarden() {
                                         >
                                             <CollectionCard 
                                                 name={data.name}
-                                                status={data.status}
+                                                status={data.waterStatus}
                                                 image={data.image}
                                             />
                                         </TouchableOpacity>
@@ -114,48 +116,30 @@ export default function YourGarden() {
 
 const styles = StyleSheet.create({
     container: {
-        height: windowHeight,
-        // backgroundColor: "#FAFAFA",
-        // backgroundColor: "blue",
+        height: "100%",
     },
     greeting: {
-        marginTop: 10,
         paddingHorizontal: 24,
-        gap: 5,
-        // backgroundColor: "red",
     },
-    heading_container: {
-        flexDirection: "row",
-        gap: 3,
-    },
-    heading_text: {
-        fontSize: 24,
-        color: "white",
-    },
-    heading_name: {
-        fontWeight: 700
-    },
-    text: {
-        fontSize: 16,
-        color: "white",
-    },
-
+    
     your_garden_content: {
+        paddingTop: 10,
         paddingBottom: 150,
         paddingHorizontal: 24,
     },
     bg_img: {
         position: "absolute",
-        top: 0,
+        objectFit: "cover",
         zIndex: -1,
         width: "100%",
+        height: "100%",
     },
     filter_header: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         marginBottom: 10,
-        marginTop: 55,
+        marginTop: 40,
     },
     button: {
         borderBottomColor: "white",
