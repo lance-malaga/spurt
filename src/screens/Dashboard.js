@@ -10,13 +10,14 @@ import NavBar from "../components/NavBar";
 import DashboardTasks from "../components/DashboardTasks";
 import PlantAlert from "../components/PlantAlert";
 import UpcomingEvents from "../components/UpcomingEvents";
+import AiPrompt from "../components/AiPrompt";
 
 const windowHeight = Dimensions.get('window').height;
 // console.log(windowHeight);
 
 export default function Dashboard () {
     return(
-        <SafeAreaView contentContainerStyle={GlobalStyles.androidSafeArea}>
+        // <SafeAreaView contentContainerStyle={GlobalStyles.androidSafeArea}>
             <View style={styles.container}>
                 <Header />
                 <ScrollView>
@@ -27,6 +28,7 @@ export default function Dashboard () {
                         <UpcomingEvents />
                     </View>
                 </ScrollView>
+                <AiPrompt/>
                 <NavBar />
                 <Image 
                     source={require('../../assets/images/2.0_background.png')}
@@ -34,7 +36,7 @@ export default function Dashboard () {
                     style={styles.bg_img}
                 />
             </View>
-        </SafeAreaView>
+        // </SafeAreaView>
     )
 }
 
