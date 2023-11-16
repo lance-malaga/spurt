@@ -10,12 +10,19 @@ import {
   Modal,
   KeyboardAvoidingView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+
 
 const PlantAid = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isChatbotInfoVisible, setChatbotInfoVisible] = useState(false);
+
+  const navigation = useNavigation();
+  const handleBack = () => {
+  navigation.goBack();
+};
 
   const toggleChatbotInfo = () => {
     setChatbotInfoVisible(!isChatbotInfoVisible);
@@ -29,11 +36,9 @@ const PlantAid = () => {
   };
 
   const sendMessage = async () => {
-    const apiKey = "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";
-    // const apiKey = process.env.OpenAIKey;
+    const apiKey = process.env.EXPO_PUBLIC_API_KEY;
 
     const apiEndpoint = "https://api.openai.com/v1/chat/completions";
-
     try {
       const userMessage = {
         role: "user",
@@ -87,10 +92,12 @@ const PlantAid = () => {
   >
     <View style={styles.container}>
       <View style={styles.header_container}>
-        <Image
-          source={require("../../assets/icons/backButton.png")}
-          style={styles.back_icon}
-        />
+        <TouchableOpacity onPress={handleBack}>
+            <Image
+              source={require("../../assets/icons/backButton.png")}
+              style={styles.back_icon}
+            />
+          </TouchableOpacity>
         <View style={styles.profile_container}>
           <TouchableOpacity onPress={toggleChatbotInfo}>
             <Image
@@ -147,7 +154,11 @@ const PlantAid = () => {
           placeholder="Ask me about your plants"
           value={inputMessage}
           onChangeText={(text) => setInputMessage(text)}
-        />
+          multiline={true}
+          returnKeyType="none" // Set returnKeyType to 'none' to prevent new lines
+          blurOnSubmit={true} // Dismiss the keyboard when return key is pressed
+          onSubmitEditing={sendMessage} // Call sendMessage when return key is pressed
+          />
         <TouchableOpacity
           onPress={sendMessage}
           style={styles.sendIconContainer}
@@ -333,7 +344,7 @@ const styles = StyleSheet.create({
   chatbotInfoOverlay: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
