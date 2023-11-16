@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableWithoutFeedback} from "react-native";
 
 // COMPONENTS
 import NavBar from "../components/NavBar";
@@ -11,6 +10,7 @@ const PlantAidOnboarding = ({ navigation }) => {
   };
 
   return (
+    <TouchableWithoutFeedback onPress={handleStart}>
     <View style={styles.container}>
       <Image
         source={require("../../assets/images/background/background-blur-cool-3.png")}
@@ -26,6 +26,7 @@ const PlantAidOnboarding = ({ navigation }) => {
       </TouchableOpacity>
       <NavBar />
     </View>
+  </TouchableWithoutFeedback>  
   );
 };
 
