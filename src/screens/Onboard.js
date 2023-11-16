@@ -17,6 +17,14 @@ export default function Onboard(props) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('../../assets/images/background/vectorAssetBg.png')}
+        style={styles.bgAssets}
+      />
+        <Image
+        source={require('../../assets/images/background/onboardingBlur.png')}
+        style={styles.bgBlur}
+      />
       <View style={styles.image_container}>
         <Image
           source={require("../../assets/images/onboardingImg.png")}
@@ -47,9 +55,11 @@ export default function Onboard(props) {
           )}
         </Pressable>
       </View>
+      
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   parentContainer: {
@@ -57,6 +67,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  bgAssets: {
+    zIndex:-1,
+    position:"absolute",
+  },
+  bgBlur:{
+    flex:1,
+    zIndex: -1,
+    position: "absolute",
+    top: 100,
   },
   container: {
     flexGrow: 1,

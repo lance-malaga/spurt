@@ -10,12 +10,19 @@ import {
   Modal,
   KeyboardAvoidingView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+
 
 const PlantAid = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isChatbotInfoVisible, setChatbotInfoVisible] = useState(false);
+
+  const navigation = useNavigation();
+  const handleBack = () => {
+  navigation.goBack();
+};
 
   const toggleChatbotInfo = () => {
     setChatbotInfoVisible(!isChatbotInfoVisible);
@@ -29,11 +36,10 @@ const PlantAid = () => {
   };
 
   const sendMessage = async () => {
-    const apiKey = "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";
+    const apiKey = "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";
     // const apiKey = process.env.OpenAIKey;
 
     const apiEndpoint = "https://api.openai.com/v1/chat/completions";
-
     try {
       const userMessage = {
         role: "user",
@@ -87,10 +93,12 @@ const PlantAid = () => {
   >
     <View style={styles.container}>
       <View style={styles.header_container}>
-        <Image
-          source={require("../../assets/icons/backButton.png")}
-          style={styles.back_icon}
-        />
+        <TouchableOpacity onPress={handleBack}>
+            <Image
+              source={require("../../assets/icons/backButton.png")}
+              style={styles.back_icon}
+            />
+          </TouchableOpacity>
         <View style={styles.profile_container}>
           <TouchableOpacity onPress={toggleChatbotInfo}>
             <Image
@@ -333,7 +341,7 @@ const styles = StyleSheet.create({
   chatbotInfoOverlay: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
