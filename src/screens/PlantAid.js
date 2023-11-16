@@ -36,8 +36,7 @@ const PlantAid = () => {
   };
 
   const sendMessage = async () => {
-    const apiKey = "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";
-    // const apiKey = process.env.OpenAIKey;
+    const apiKey = process.env.EXPO_PUBLIC_API_KEY;
 
     const apiEndpoint = "https://api.openai.com/v1/chat/completions";
     try {
@@ -155,7 +154,11 @@ const PlantAid = () => {
           placeholder="Ask me about your plants"
           value={inputMessage}
           onChangeText={(text) => setInputMessage(text)}
-        />
+          multiline={true}
+          returnKeyType="none" // Set returnKeyType to 'none' to prevent new lines
+          blurOnSubmit={true} // Dismiss the keyboard when return key is pressed
+          onSubmitEditing={sendMessage} // Call sendMessage when return key is pressed
+          />
         <TouchableOpacity
           onPress={sendMessage}
           style={styles.sendIconContainer}

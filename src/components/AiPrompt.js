@@ -14,7 +14,7 @@ export default function AiPrompt() {
 
   const WEATHER_API_URL ="http://api.weatherapi.com/v1/current.json?key=f3bffa43821a439db9b15409230911&q=vancouver&aqi=yes";
   const apiEndpoint = "https://api.openai.com/v1/chat/completions";
-  const apiKey = "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";
+  const apiKey = process.env.EXPO_PUBLIC_API_KEY;
   const [currentWeather, setCurrentWeather] = useState("");
   const [currentCondition, setCurrentCondition] = useState("");
   const [plantCareTips, setPlantCareTips] = useState("");
