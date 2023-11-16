@@ -58,8 +58,8 @@ export default function AiPrompt() {
   const userMessage = {
     role: "assistant",
     content: currentCondition
-      ? `It is currently ${currentTime}, ${currentWeatherDescription}, and ${currentTemperature}. Give me a short weather care warning for gardening under these conditions.`
-      : "Plant care tips? add some emojis",
+      ? `It is currently ${currentTime}, ${currentWeatherDescription}, and ${currentTemperature}. Give me a 2 sentence weather care warning for gardening under these conditions. Include emojis`
+      : "keep the responses short and add some emojis",
   };
 
   const prompt = async () => {
@@ -103,20 +103,43 @@ export default function AiPrompt() {
         animationType="slide"
         transparent={true}
       >
-      <View style={styles.modalContainer}>
-        {plantCareTips !== "" && (
-          <FontText
-            content={plantCareTips}
-            color={"#fff"}
-            fontSize={12}
-            fontWeight={500}
-          />
-        )}
-        <TouchableOpacity onPress={() => closeChatbotInfo()}>
-          <Text style={styles.closeButton}>Close</Text>
-        </TouchableOpacity>
-      </View>
-    </Modal>
+        <View style={styles.modalContainer}>
+          <View style={styles.weather_alert}>
+            <FontText
+            content={"Weather Alert: Frosty Weather"}
+            fontSize={16}
+            fontWeight={700}
+            />
+          </View>
+          <View style={styles.whiteBox}>
+            <Image
+              source={require("../../assets/icons/chuey-Icon.png")}
+              style={styles.chueyIcon}
+            />
+            <View style={styles.careTip}>
+              {plantCareTips !== "" && (
+                <FontText
+                  content={plantCareTips}
+                  color={"#000"}
+                  fontSize={14}
+                  fontWeight={400}
+                  style={styles.promptContainer}
+                />
+              )}
+            </View>
+            <View style={styles.blackLine}></View>
+            <TouchableOpacity onPress={() => closeChatbotInfo()}>
+              <View style={styles.closeButton}>
+                <FontText
+                content={"Close"}
+                fontSize={18}
+                fontWeight={400}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -126,19 +149,63 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, .9)",
+    backgroundColor: "rgba(0, 0, 0, 0.6 )",
     color: "#fff",
   },
   closeButton: {
-    color: "white",
+    color: "black",
     marginTop: 10,
+    position: "absolute",
+    top:110,
+    right: 135
   },
   chueyPrompt: {
     position: "absolute",
     bottom: 90,
     left: 70,
   },
-  plantCareTips: {
-    color: "#fff",
+  chueyOverlay: {
+    position: "absolute",
+    top: 330,
+    zIndex: 1,
+  },
+  chueyIcon: {
+    width: 120, 
+    height: 120,
+  },
+  whiteBox: {
+    flexDirection: "row", 
+    alignItems: "center", 
+    backgroundColor: "#fff", 
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    width: 342,
+    height: 350,
+  },
+  weather_alert: {
+    position: "absolute",
+    zIndex: 1,
+    top: 280,
+  },
+  promptContainer: {
+    flexShrink: 1,
+    padding: 10,
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    maxWidth: 50,
+  },
+  careTip: {
+    width: 205,
+  },
+  blackLine: {
+    height: 1,
+    backgroundColor: "#AFAFAF",
+    width: "95%",
+    top: 285,
+    left: 10,
+    position: "absolute"
   },
 });

@@ -1,74 +1,49 @@
-import React from "react";
-import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView, FlatList } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { StyleSheet, Text, View, Button, Image, Pressable, Dimensions } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 export default function NavBar() {
-    const [icons, setIcons] = useState();
-    const [active, setIsActive] = useState();
+    const route = useRoute();
     const navigation = useNavigation();
 
     const navList = [
         {
-            name: 'Dashboard',
-            image_active: require('../../assets/icons/nav_home.png'),
-            image_inactive: require('../../assets/icons/nav_wh_home.png'),
-            styles: styles.homeIcon
+            path: 'Dashboard',
+            image: require("../../assets/icons/nav_home_black.png"),
+            image2: require("../../assets/icons/nav_home_blue.png"),
         },
         {
-            name: 'YourGarden',
-            image_active: require('../../assets/icons/nav_your_garden.png'),
-            image_inactive: require('../../assets/icons/nav_wh_your_garden.png'),
-            styles: styles.gardenIcon
+            path: 'YourGarden',
+            image: require("../../assets/icons/nav_garden_black.png"),
+            image2: require("../../assets/icons/nav_garden_blue.png"),
         },
         {
-            name: 'Camera',
-            image_active: require('../../assets/icons/nav_camera.png'),
-            styles: styles.cameraIcon
+            path: 'PlantAidOnboarding',
+            image: require("../../assets/icons/nav_plantaid_black.png"),
+            image2: require("../../assets/icons/nav_plantaid_blue.png"),
         },
         {
-            name: 'PlantAid',
-            image_active: require('../../assets/icons/nav_plant_aid.png'),
-            image_inactive: require('../../assets/icons/nav_wh_plant_aid.png'),
-            styles: styles.plantAidIcon
-        },
-        {
-            name: 'FindCommunity',
-            image_active: require('../../assets/icons/nav_comm.png'),
-            image_inactive: require('../../assets/icons/nav_wh_comm.png'),
-            styles: styles.commIcon
+            path: 'FindCommunity',
+            image: require("../../assets/icons/nav_community_black.png"),
+            image2: require("../../assets/icons/nav_community_blue.png"),
         },
     ];
 
-    const handleNavigate = (screen) => {
-        if (screen === "Dashboard") {
-            navigation.navigate("Dashboard");
-        } 
-        else if (screen === "YourGarden") {
-            navigation.navigate("YourGarden");
-        } 
-        else if (screen === "PlantAid") {
-            navigation.navigate("PlantAidOnboarding");
-        } 
-        else if (screen === "FindCommunity") {
-            navigation.navigate("FindCommunity");
-        }
-    }
-
     return (
         <View style={styles.container}>
-            {navList.map((a, index) => {
+            {navList.map((data, index) => {
                 return (
-                    <Pressable onPress={() => handleNavigate(a.name)}  key={index} style={a.styles}>
-                        <Image source={a.image_active} alt={a.name}/>
+                    <Pressable 
+                        style={[styles.image, {backgroundColor: route.name == data.path ? "rgba(255,255,255,0)" : "transparent"}]}
+                        key={index} 
+                        onPress={() => navigation.navigate(data.path)}
+                    >
+                        <Image 
+                            source={route.name == data.path ? data.image2 : data.image} 
+                        />
                     </Pressable>
-                )
+                );
             })}
-            <Image 
-                source={require('../../assets/images/navbar_bg.png')}
-                alt="bg-img"
-                style={styles.bg_img}
-            />
         </View>
     )
 }
@@ -77,21 +52,13 @@ const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        // flex: 1,
-        // justifyContent: "flex-end",
         width: "100%",
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: "center",
-        gap: 25,
+        height: 88,
+        gap: 35,
         zIndex: 1,
-    },
-    cameraIcon: {
-        top: -40,
-    },
-    bg_img: {
-        position: "absolute",
-        width: "100%",
-        zIndex: -1,
+        backgroundColor: "#fff"
     },
 });
