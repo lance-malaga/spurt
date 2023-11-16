@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import FontText from "../components/FontText";
 
 export default function Onboard(props) {
-  const { title = "Yes" } = props;
+  const { title = "Get Started" } = props;
   const { title2 = "Skip to Dashboard" } = props;
   const navigation = useNavigation();
 
@@ -19,22 +20,39 @@ export default function Onboard(props) {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.image_container}>
         <Image
-          source={require("../../assets/images/onboardingImg.png")}
-          style={{ height: 196, width: 263 }}
+          source={require("../../assets/images/onboarding-vector.png")}
           alt={"welcome_img"}
+          style={styles.onboardingImage}
         />
       </View>
       <View style={styles.text_container}>
-        <Text style={styles.welcome_text}>
-          Welcome, fellow <Text style={{ fontWeight: "bold" }}>Spurt!</Text>
-        </Text>
-        <Text style={styles.welcome_question}>
-          Do you need help with growing your first plant?
-        </Text>
+        <FontText
+        content={"SPURT"}
+        fontSize={16}
+        fontWeight={400}
+        />
+        <View style={styles.slogan_text}>
+          <FontText
+          content={"Where We Make Gardening Easy."}
+          fontSize={28}
+          fontWeight={700}
+          />
+        </View>
+        {/* <View style={styles.slogan_text2}>
+          <FontText
+            content={"Gardening Easy."}
+            fontSize={28}
+            fontWeight={700}
+            />
+        </View> */}
         <Pressable style={({ pressed }) => [styles.button1,{backgroundColor: pressed ? "darkgrey" : "black",},]}onPress={handleYesClick}>
           {({ pressed }) => (
             <Text style={[styles.button1Text,{color: pressed ? "white" : "white",textDecorationLine: "none",},]}>
-              {title}
+              <FontText
+                content={title}
+                fontSize={18}
+                fontWeight={500}
+              />
             </Text>
           )}
         </Pressable>
@@ -42,7 +60,11 @@ export default function Onboard(props) {
           {({ pressed }) => (
             <Text
               style={[styles.button2Text,{color: pressed ? "blue" : "black",},]}>
-              {title2}
+              <FontText
+                content={title2}
+                fontSize={14}
+                fontWeight={400}
+              />
             </Text>
           )}
         </Pressable>
@@ -52,45 +74,40 @@ export default function Onboard(props) {
 }
 
 const styles = StyleSheet.create({
-  parentContainer: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   container: {
     flexGrow: 1,
     alignItems: "center",
-    backgroundColor: "#fff",
     paddingTop: 100,
+    backgroundColor: "#fff"
+  },
+  slogan_text: {
+    width: 250,
+    paddingTop: 25,
+    paddingBottom: 30,
+    alignContent: "center"
+  },
+  onboardingImage: {
+    paddingHorizontal: 205,
+  },
+  slogan_text2: {
+    marginTop: -40,
+    paddingRight: 0,
+    paddingBottom: 35,
   },
   image_container: {
     alignItems: "center",
     justifyContent: "start",
-    marginTop: 80,
+    marginTop: -100,
   },
   text_container: {
     alignItems: "center",
-    marginTop: 50,
-  },
-  welcome_text: {
-    fontSize: 24,
-    fontWeight: "400",
-    color: "black",
-  },
-  welcome_question: {
-    fontSize: 14,
-    width: 200,
-    textAlign: "center",
-    paddingTop: 5,
-    paddingBottom: 50,
-    color: "black",
+    marginTop: 45,
   },
   button1: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 80,
+    paddingVertical: 13,
+    paddingHorizontal: 65,
     borderRadius: 30,
     elevation: 3,
     borderWidth: 1,
