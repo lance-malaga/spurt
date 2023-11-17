@@ -48,6 +48,7 @@ export default function PlantDetail({route}) {
                         <Image source={require("../../assets/icons/backIcon.png")} alt="back-icon" />
                     </TouchableOpacity>
                 </View>
+
                 <FontText
                     content={chosenPlant.name}
                     fontSize={18}
