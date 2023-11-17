@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableWithoutFeedba
 
 // COMPONENTS
 import NavBar from "../components/NavBar";
+import FontText from "../components/FontText";
 
 const PlantAidOnboarding = ({ navigation }) => {
   const handleStart = () => {
@@ -16,13 +17,28 @@ const PlantAidOnboarding = ({ navigation }) => {
         source={require("../../assets/images/background/background-blur-cool-3.png")}
         style={styles.bg_img}
       />
-      <Text style={styles.title}>Welcome to</Text>
-      <Text style={styles.title2}>
-        Plant<Text style={{ color: "#9FD32F" }}>Ai</Text>d
-      </Text>
+      <View style={styles.welcome_text}>
+        <FontText
+          content={"Welcome to"}
+          fontSize={24}
+          fontWeight={600}
+        /> 
+      </View>
+      <View style={styles.plantaid_text}>
+        <FontText
+          content={"PlantAid"}
+          fontSize={40}
+          fontWeight={700}
+        />
+      </View>
       <Image source={require("../../assets/images/mascot.png")} style={styles.mascot_img} />
       <TouchableOpacity style={styles.button} onPress={handleStart}>
-        <Text style={styles.buttonText}>Tap to begin</Text>
+        <FontText
+          content={"Tap to begin"}
+          fontSize={18}
+          fontWeight={600}
+          style={styles.buttonText}
+        />
       </TouchableOpacity>
       <NavBar />
     </View>
@@ -35,30 +51,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: 100,
-    zIndex: 1,
     backgroundColor: "#fff",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  title2: {
-    fontSize: 40,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: "400",
-    color: "black",
   },
   button: {
     borderBottomWidth: 3,
     borderBottomColor: "#64A39C",
     paddingBottom: 5,
     borderRadius: 1,
-    marginTop: 100,
+    marginTop: 150,
   },
   bg_img: {
     zIndex: -1,
@@ -67,8 +67,14 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   mascot_img: {
-    marginTop: 25
-  }
+    marginTop: 50,
+  },
+  welcome_text: {
+    paddingTop: 90,
+  },
+  plantaid_text: {
+    marginTop: -17,
+  },
 });
 
 export default PlantAidOnboarding;

@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import FontText from "../components/FontText";
 import axios from "axios";
 
 
@@ -105,7 +106,11 @@ const PlantAid = () => {
               style={styles.profile_icon}
             />
           </TouchableOpacity>
-          <Text style={styles.title}>Chuey</Text>
+          <FontText
+            content={"Chuey"}
+            fontSize={12}
+            fontWeight={400}
+          />
         </View>
         <Image
           source={require("../../assets/icons/chatIcon.png")}
@@ -155,9 +160,9 @@ const PlantAid = () => {
           value={inputMessage}
           onChangeText={(text) => setInputMessage(text)}
           multiline={true}
-          returnKeyType="none" // Set returnKeyType to 'none' to prevent new lines
-          blurOnSubmit={true} // Dismiss the keyboard when return key is pressed
-          onSubmitEditing={sendMessage} // Call sendMessage when return key is pressed
+          returnKeyType="none"
+          blurOnSubmit={true}
+          onSubmitEditing={sendMessage}
           />
         <TouchableOpacity
           onPress={sendMessage}
