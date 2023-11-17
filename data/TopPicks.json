@@ -67,6 +67,37 @@
       "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img01.jpg",
       "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img02.jpg"
     },
+    "getToKnow": "Protect garden-grown tomatoes from winter by moving them indoors. Provide ample sunlight and ventilation, and prevent excessive humidity to avoid disease. Keep soil moist but avoid water-logging. Use wooden poles to support tomato stems, placed 8-10 cm away, and tie them at 61 cm height with plastic rope",
+    "howToPlant": [
+      {
+        "description": "Dig generous holes. Plants should be spaced 50 to 60 cm apart"
+      },
+      {
+        "description": "Put two big scoops of compost at the bottom of each hole"
+      },
+      {
+        "description": "Water thoroughly"
+      },
+      {
+        "description": "Place the plant in the hole and fill with earth halfway up the plant. Tomato plants have the peculiarity of developing roots all along the stem when buried in earth"
+      },
+      {
+        "description": "Water again thoroughly, taking care not to moisten the leaves"
+      },
+      {
+        "description": "If there are flowers or small fruit on your plant, remove them in order to encourage root development first"
+      },
+      {
+        "description": "Put a 5 to 10 cm layer of straw around each plant to conserve soil moisture"
+      },
+      {
+        "description": "Insert a clean and disinfected 1.5 m stake to support the plant"
+      },
+      {
+        "description": "If you are planting rows of tomatoes, leave 80 cm between rows"
+      }
+    ],
+    "haversting": "Harvest tomatoes when they turn red. Determinate types yield one harvest, while indeterminate types bear continuously. To prevent cracking, harvest before heavy rains.",
     "care": {
       "water": "Watering requirements for tomatoes vary during different growth stages. It's best to water once a day, preferably in the morning or late afternoon when the soil is nearly dry. Maintaining high soil humidity (about 75%) during germination and harvest is crucial for fruit quality. Avoid overwatering to prevent fruit cracking",
       "temperature": "Tomatoes commonly thrive in warm climates, favoring daytime temperatures of 20-25°C and nighttime temperatures of 15-18°C. Extreme heat above 45°C can lead to damage, while freezing temperatures at or below -1°C can be fatal",

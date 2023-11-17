@@ -66,7 +66,7 @@ export default function PlantDetail({route}) {
                     {selectedNavItem === "Care" ? 
                         <PlantDetailCare plantData={plant}/>
                     : selectedNavItem === "Details" ?
-                        <PlantDetailInfo/>
+                        <PlantDetailInfo plantData={plant}/>
                     :
                         <PlantDetailJournal/>
                     }
