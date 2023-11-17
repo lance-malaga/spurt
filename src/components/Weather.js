@@ -1,78 +1,60 @@
 
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView } from "react-native";
+import { StyleSheet, View, Image, Text } from "react-native";
 
 // Components
 import CurrentWeather from "./CurrentWeather";
 import CurrentDate from "./CurrentDate";
 
 export default function Weather() {
+
+    const { condition, temperature } = CurrentWeather();
+
     return (
         <>
             <View style={styles.container}>
                 <View style={styles.dayInfo}>
+                    <View style={styles.weatherContainer}>
+                        <Text style={styles.condition}>{condition}</Text>
+                        <Text style={styles.temperature}>{temperature}°C</Text>
+                    </View>
                     <CurrentDate />
                 </View>
-                <Image
-                    source={require("../../assets/images/2.0_sun.png")}
-                    width={105}
-                    height={105}
-                    alt="sun"
-                />
-                <View style={styles.weatherInfo}>
-                    <CurrentWeather />
-                </View>
             </View>
-            <View style={styles.greeting}>
-                <View style={styles.heading_container}>
-                    <Text style={[styles.heading_text]}>Hey, </Text>
-                    <Text style={[styles.heading_text, styles.heading_name]}>Jimmy!</Text>
-                </View>
-                <Text style={styles.text}>What's on your gardening agenda today?</Text>
-            </View>
-            <Image source={require("../../assets/images/2.0_sky.png")} alt="sky" style={styles.sky} />
+            {
+                condition === 'clear' ? 
+                <Image source={require("../../assets/images/weather-sunny.png")} alt="sunny" style={styles.sky} /> :
+                <Image source={require("../../assets/images/weather-night.png")} alt="sunny" style={styles.sky} />
+            }
         </>
     )
 }
 
 const styles = StyleSheet.create({
-    // WEATHER
     container: {
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "flex-end",
         alignItems: "center",
         paddingHorizontal: 24,
-        gap: 30,
         width: "100%",
-    },
-    text: {
-        fontSize: 16,
+        height: "25%"
     },
     dayInfo: {
-        marginBottom: 25,
-        flexDirection: "row",
-        gap: 15,
+        backgroundColor: '#0000007c',
+        padding: 10,
+        borderRadius: 5,
+        gap: -8,
     },
-    weatherInfo: {
-        marginTop: 25,
+    weatherContainer: {
+        gap: -8
     },
-
-    // GREETING
-    greeting: {
-        marginTop: 15,
-        paddingHorizontal: 24,
-        gap: 5,
-        width: "100%",
+    condition: {
+        color: "white",
+        fontSize: 12
     },
-    heading_container: {
-        flexDirection: "row",
-        gap: 3,
-    },
-    heading_text: {
-        fontSize: 24
-    },
-    heading_name: {
-        fontWeight: 700
+    temperature: {
+        color: "white",
+        fontSize: 40
     },
     sky: {
         position: "absolute",

@@ -32,3 +32,8 @@ Spurt is a go-to app for managing community gardens that aims to tackle the chal
 - npx create-expo-app
 - npx expo start
 ```
+
+### Google Fonts
+```
+- npx expo install expo-font @expo-google-fonts/inter 
+```

@@ -43,7 +43,6 @@ export default function Dashboard () {
 const styles = StyleSheet.create({
     container: {
         height: windowHeight,
-        alignItems: "center",
         backgroundColor: "#FAFAFA",
     },
     dashboard_content: {

@@ -4,12 +4,6 @@ export default function CurrentDate() {
 
   var dt = new Date();
   let day = dt.getDay();
-  var hours = dt.getHours() ;
-  var AmOrPm = hours >= 12 ? 'pm' : 'am';
-  hours = (hours % 12) || 12;
-  var minutes = dt.getMinutes() ;
-  minutes <= 9 ?  minutes = "0" + minutes : minutes;
-  var currentTime = hours + ":" + minutes + " " + AmOrPm; 
 
   return (
     <View>
@@ -22,7 +16,6 @@ export default function CurrentDate() {
         day === 5 ? <Text style={[styles.dayInfo_day, styles.text]}>Fridays</Text> :
         <Text style={[styles.dayInfo_day, styles.text]}>Saturday</Text>
       }
-      <Text style={styles.text}>{currentTime}</Text>
     </View>
   )
 };
@@ -32,6 +25,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   text: {
-    fontSize: 16,
+    color: "white",
+    fontSize: 12,
   },
 })
