@@ -40,14 +40,14 @@ export default function SearchPlantDetail({ route }) {
 
 		return (
 			<TouchableOpacity
-				onPress={() => {
-					closeOtherSections();
-					toggleFunction(!isShown);
-				}}
-				style={[
-					styles.careSection,
-					isShown && styles.careSectionExpanded,
-				]}
+			onPress={() => {
+				closeOtherSections();
+				toggleFunction(!isShown);
+			}}
+			style={[
+				styles.careSection,
+				isShown && styles.careSectionExpanded,
+			]}
 			>
 				<View style={styles.careHeader}>
 				<Image source={iconSource} style={styles.careIcon} />

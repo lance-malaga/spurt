@@ -78,7 +78,7 @@ export default function PlantDetail({route}) {
                                 pruneStatus={chosenPlant.pruneStatus}
                             />
                         : selectedNavItem === "Details" ?
-                            <PlantDetailInfo/>
+                            <PlantDetailInfo plantData={plant}/>
                         :
                             <PlantDetailJournal/>
                         }
