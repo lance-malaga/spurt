@@ -39,7 +39,7 @@ export default function FontText({content, fontWeight, fontSize, textAlign, line
                 , 
                 fontSize: fontSize ? fontSize : 14,
                 textAlign: textAlign,
-                lineHeight: 30,
+                lineHeight: lineHeight,
                 letterSpacing: letterSpacing,
                 color: color,
                 paddingTop: paddingTop,

@@ -18,17 +18,23 @@ export default function YourGarden() {
     const taskList = [
         {
             name: 'Tomato',
-            waterStatus: '2 days',
+            waterStatus: 2,
+            fertilizeStatus: 14,
+            pruneStatus: 10,
             image: require('../../assets/images/plant-card/tomato.png'),
         },
         {
             name: 'Cucumber',
-            waterStatus: '3 days',
+            waterStatus: 3,
+            fertilizeStatus: 14,
+            pruneStatus: 10,
             image: require('../../assets/images/plant-card/cucumber.png'),
         },
         {
             name: 'Sunflower',
-            waterStatus: '3 days',
+            waterStatus: 3,
+            fertilizeStatus: 14,
+            pruneStatus: 10,
             image: require('../../assets/images/plant-card/sunflower.png'),
         },
     ];

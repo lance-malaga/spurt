@@ -1,7 +1,6 @@
-import React from "react";
-import { useEffect, useState } from 'react';
 import { StyleSheet, View, Image } from "react-native";
-import CustomText from "./CustomText";
+
+import FontText from './FontText';
 
 export default function CollectionCard({name, status, image}) {
     return (
@@ -10,13 +9,13 @@ export default function CollectionCard({name, status, image}) {
                 <Image source={image} alt={name} style={styles.plant_img} />
             </View>
             <View style={styles.plant_text}>
-                <CustomText
-                    text={name}
+                <FontText
+                    content={name}
                     fontSize={18}
                     fontWeight={500}
                 />
-                <CustomText
-                    text={status}
+                <FontText
+                    content={`Water every ${status} days`}
                 />
             </View>
             <Image source={require('../../assets/icons/3.0_arrow.png')} alt={name} style={styles.arrow} />
