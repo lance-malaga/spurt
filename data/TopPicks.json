@@ -9,8 +9,8 @@
     "topPick": false,
     "description": "Lettuce is a popular and easy-to-grow leafy vegetable in gardening. It thrives in cool climates and can be sown directly in the garden or grown in containers, making it a versatile choice for both beginner and experienced gardeners. Its rapid growth and versatility make it a staple in many home gardens, providing fresh, crisp leaves for salads and sandwiches throughout the growing season",
     "image": {
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Lettuce/img02.png"
     },
     "care": {
       "water": "Lettuce requires consistent moisture to prevent it from becoming bitter and to promote tender, crisp leaves. Water deeply and regularly, ensuring the soil remains consistently moist but not waterlogged",
@@ -139,8 +139,8 @@
     "description": "Cucumber plants are prolific producers, gracing the garden with an abundance of crisp, refreshing fruits. With its vibrant green vines, sprawling leaves, and tendrils that reach out to intertwine with neighboring plants, it embodies the spirit of communal cooperation and the sharing of abundance",
     "image": {
       "topPickImg": "../../assets/images/1.1_top_tomato",
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Cucumber/img02.png"
     },
     "care": {
       "water": "Keep the soil consistently moist, especially during flowering and fruiting. Avoid overhead watering, as wet foliage can lead to disease",
@@ -213,8 +213,8 @@
     "topPick": false,
     "description": "They are vibrant and slender edible pods harvested from the common bean plant. They are typically green in color, with a crisp texture and a slightly sweet, earthy flavor. Green beans are a popular vegetable in many cuisines and can be steamed, sautéed, stir-fried, or enjoyed in various dishes ranging from salads to casseroles",
     "image": {
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Green+Beans/img02.png"
     },
     "care": {
       "water": "Water green beans every 2 to 3 days, with about 1 inch of water per week, divided into two to three waterings",
@@ -275,8 +275,8 @@
     "topPick": false,
     "description": "Radishes are crisp and peppery root vegetables that belong to the Brassicaceae family. They are an excellent choice for beginners, as they are easy to cultivate, fast-growing, and can be sown directly in the garden. They add a refreshing crunch and a slightly spicy kick to salads and other dishes, making them a popular choice in the culinary world",
     "image": {
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Radish/img02.png"
     },
     "care": {
       "water": "Radishes need consistent moisture, so water them regularly, ensuring the soil stays evenly moist but not waterlogged",
@@ -329,8 +329,8 @@
     "topPick": false,
     "description": "Parsley is a biennial herb with bright green, curly or flat leaves, and a fresh, slightly peppery taste. It is widely used in culinary dishes, adding a burst of flavour and a vibrant touch as a garnish. Parsley is rich in vitamins A, C, and K, as well as antioxidants and essential nutrients",
     "image": {
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Parsley/img02.png"
     },
     "care": {
       "water": "Water parsley regularly, keeping the soil consistently moist but not waterlogged",
@@ -379,8 +379,8 @@
     "topPick": false,
     "description": "They are iconic summer blooms known for their striking yellow petals and tall, sturdy stems. These cheerful flowers are easy to grow and attract pollinators",
     "image": {
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Sunflower/img02.png"
     },
     "care": {
       "water": "Sunflowers typically require about 1 inch (2.5 cm) of water per week. Use a rain gauge or monitor the soil to ensure consistent moisture, especially during dry periods",
@@ -429,8 +429,8 @@
     "topPick": false,
     "description": "They are classic, elegant flowers known for their vibrant colors and sweet fragrance. They come in various types, from shrub and landscape roses to hybrid tea and old garden roses, making them a versatile addition to any garden",
     "image": {
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Rose/img02.png"
     },
     "care": {
       "water": "Roses require consistent moisture to thrive. Water deeply, and ensure the soil remains evenly moist but not waterlogged. Watering early in the day allows the foliage to dry before evening, reducing the risk of fungal diseases",
@@ -484,8 +484,8 @@
     "description": "It is a popular warm-season vegetable that belongs to the gourd family. It is known for its tender, edible skin and mild flavor. Zucchini comes in various shapes and colors, including zucchini, yellow squash, and pattypan squash, making it a versatile and easy-to-grow choice for gardeners",
     "image": {
       "topPickImg": "../../assets/images/1.1_top_tomato",
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Zucchini/img02.png"
     },
     "care": {
       "water": "It requires consistent and even moisture. Water them deeply when the top inch of soil feels dry. Avoid overhead watering, as it can promote fungal diseases. Water at the base of the plant to keep the foliage dry",
@@ -535,8 +535,8 @@
     "description": "Strawberries (Fragaria x ananassa) are delightful, sweet, and juicy fruits that are easy to grow in a garden. They're known for their vibrant red color, and they're perfect for snacking, baking, and making jams",
     "image": {
       "topPickImg": "../../assets/images/1.1_top_tomato",
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img01.jpeg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img02.jpeg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Strawberry/img02.png"
     },
     "care": {
       "water": "Keep soil consistently moist, providing about 1-1.5 inches of water per week",

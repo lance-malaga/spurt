@@ -1,4 +1,3 @@
-import { Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
 
 export default function CurrentWeather() {
@@ -19,10 +18,11 @@ export default function CurrentWeather() {
     .then(data => setCurrentCondition(data.current.condition))
   },[])
 
-  return (
-    <View>
-      <Text>{currentCondition.text}</Text>
-      <Text>{currentWeather.temp_c}°C</Text>
-    </View>
-  )
-}
+  let condition = currentCondition.text;
+  let temperature = currentWeather.temp_c;
+
+  return {
+    condition, 
+    temperature
+  }
+};
