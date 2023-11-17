@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   chueyPrompt: {
     position: "absolute",
     bottom: 90,
-    left: 70,
+    left: 270,
   },
   chueyOverlay: {
     position: "absolute",

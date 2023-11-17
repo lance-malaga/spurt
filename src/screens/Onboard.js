@@ -18,14 +18,6 @@ export default function Onboard(props) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require('../../assets/images/background/vectorAssetBg.png')}
-        style={styles.bgAssets}
-      />
-        <Image
-        source={require('../../assets/images/background/onboardingBlur.png')}
-        style={styles.bgBlur}
-      />
       <View style={styles.image_container}>
         <Image
           source={require("../../assets/images/onboarding-vector.png")}
@@ -46,13 +38,6 @@ export default function Onboard(props) {
           fontWeight={700}
           />
         </View>
-        {/* <View style={styles.slogan_text2}>
-          <FontText
-            content={"Gardening Easy."}
-            fontSize={28}
-            fontWeight={700}
-            />
-        </View> */}
         <Pressable style={({ pressed }) => [styles.button1,{backgroundColor: pressed ? "darkgrey" : "black",},]}onPress={handleYesClick}>
           {({ pressed }) => (
             <Text style={[styles.button1Text,{color: pressed ? "white" : "white",textDecorationLine: "none",},]}>
