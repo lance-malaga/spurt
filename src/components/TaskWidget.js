@@ -5,13 +5,7 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 // COMPONENTS
 import FontText from "./FontText";
 
-export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneStatus, waterTimer, setWaterTimer, fertilizerTimer, setFertilizerTimer, pruneTimer, setPruneTimer}) {
-    const ShadowPresets = {
-        button: {
-            distance: 6,
-            startColor: 'rgba(20, 20, 20, 0.05)',
-        },
-    };
+export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneStatus, waterTimer, setWaterTimer, fertilizerTimer, setFertilizerTimer, pruneTimer, setPruneTimer, shadowStyle}) {
 
     const formatTime = (seconds) => {
         const days = Math.floor(seconds / (24 * 3600));
@@ -26,7 +20,7 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
         }
     };
 
-    const renderTimer = (timerType, timerValue) => (
+    const renderTimer = (timerValue) => (
         <View>
             <FontText
                 content={ timerValue > 0
@@ -48,7 +42,7 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
     return (
         <Shadow 
             style={{width: '100%'}}
-            {...ShadowPresets.button}
+            {...shadowStyle}
         >
             <View style={styles.task_card}>
                 <View style={styles.task_left_section}>
@@ -56,7 +50,7 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
                         isPlaying={
                             task === 'Water' ? 
                                 waterTimer > 0
-                            : task === 'Fertilizer' ? 
+                            : task === 'Fertilize' ? 
                                 fertilizerTimer > 0
                             :
                                 pruneTimer > 0
@@ -64,7 +58,7 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
                         duration={
                             task === 'Water' ? 
                                 waterTimer
-                            : task === 'Fertilizer' ? 
+                            : task === 'Fertilize' ? 
                                 fertilizerTimer
                             :
                                 pruneTimer
@@ -79,7 +73,7 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
                         onComplete={
                             task === 'Water' ? 
                                 () => setWaterTimer(0)
-                            : task === 'Fertilizer' ? 
+                            : task === 'Fertilize' ? 
                                 () => setFertilizerTimer(0)
                             :
                                 () => setPruneTimer(0)
@@ -127,11 +121,11 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
                     </View>
                 </View>
                 { task === 'Water' ? 
-                        renderTimer('Watering', waterTimer) 
+                        renderTimer(waterTimer) 
                     : task === 'Fertilize' ? 
-                        renderTimer('Fertilizing', fertilizerTimer) 
+                        renderTimer(fertilizerTimer) 
                     :
-                        renderTimer('Pruning', pruneTimer)
+                        renderTimer(pruneTimer)
                 }   
             </View>
         </Shadow>

@@ -1,21 +1,33 @@
 import { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import FontText from "./FontText";
 import TaskWidget from './TaskWidget';
+import OptimalConditions from './OptimalConditions';
+import WeeklyTask from './WeeklyTask';
 import { ScrollView } from 'react-native';
 
-export default function PlantDetailCare({plantData, waterStatus, fertilizeStatus, pruneStatus}) {
+export default function PlantDetailCare({plantData, optimalConditions, waterStatus, fertilizeStatus, pruneStatus}) {
     const [waterTimer, setWaterTimer] = useState(0);
     const [fertilizerTimer, setFertilizerTimer] = useState(0);
     const [pruneTimer, setPruneTimer] = useState(0);
 
+    const ShadowPresets = {
+        taskWidget: {
+            distance: 6,
+            startColor: 'rgba(20, 20, 20, 0.03)',
+        },
+        optimalConditions: {
+            distance: 10,
+            startColor: 'rgba(20, 20, 20, 0.05)',
+        },
+    };
+    
     const startTimer = (timerType, hours) => {
-        if (timerType === 'Watering') {
+        if (timerType === 'Water') {
             setWaterTimer(hours * 24 * 60 * 60); // 24 hours in seconds
-        } else if (timerType === 'Fertilizing') {
+        } else if (timerType === 'Fertilize') {
             setFertilizerTimer(hours * 24 * 60 * 60);
-        } else if (timerType === 'Pruning') {
+        } else if (timerType === 'Prune') {
             setPruneTimer(hours * 24 * 60 * 60);
         }
     };
@@ -51,61 +63,52 @@ export default function PlantDetailCare({plantData, waterStatus, fertilizeStatus
     const taskList = ['Water', 'Fertilize', 'Prune'];
       
     return (
-        <View>
-            <View style={styles.task_container}>
-                {taskList.map((task, index) => {
-                    return (
-                        <TaskWidget
-                            key={index}
-                            task={task}
-                            waterStatus={waterStatus}
-                            fertilizeStatus={fertilizeStatus}
-                            pruneStatus={pruneStatus}
-                            waterTimer={waterTimer}
-                            setWaterTimer={setWaterTimer}
-                            fertilizerTimer={fertilizerTimer}
-                            setFertilizerTimer={setFertilizerTimer}
-                            pruneTimer={pruneTimer}
-                            setPruneTimer={setPruneTimer}
-                        />
-                    )
-                })}
-
+        <ScrollView>
+            <View style={styles.container}>
+                <View style={styles.task_container}>
+                    {taskList.map((task, index) => {
+                        return (
+                            <TaskWidget
+                                key={index}
+                                task={task}
+                                waterStatus={waterStatus}
+                                fertilizeStatus={fertilizeStatus}
+                                pruneStatus={pruneStatus}
+                                waterTimer={waterTimer}
+                                setWaterTimer={setWaterTimer}
+                                fertilizerTimer={fertilizerTimer}
+                                setFertilizerTimer={setFertilizerTimer}
+                                pruneTimer={pruneTimer}
+                                setPruneTimer={setPruneTimer}
+                                shadowStyle={ShadowPresets.taskWidget}
+                            />
+                        )
+                    })}
+                </View>
+                <WeeklyTask
+                    shadowStyle={ShadowPresets.optimalConditions}
+                    startTimer={startTimer}
+                    waterStatus={waterStatus}
+                    fertilizeStatus={fertilizeStatus}
+                    pruneStatus={pruneStatus}
+                    taskList={taskList}
+                />
+                <OptimalConditions 
+                    optimalConditions={optimalConditions}
+                    shadowStyle={ShadowPresets.optimalConditions}
+                />
             </View>
-
-
-            {/* WATER */}     
-            <TouchableOpacity onPress={() => startTimer('Watering', waterStatus)}>
-                <FontText
-                    content={"Water"}
-                    textAlign={"center"}
-                />
-            </TouchableOpacity>
-
-            {/* FERTILIZE */}
-            <TouchableOpacity onPress={() => startTimer('Fertilizing', fertilizeStatus)}>
-                <FontText
-                    content={"Fertilize"}
-                    textAlign={"center"}
-                />
-            </TouchableOpacity>
-
-            {/* PRUNE */}
-            <TouchableOpacity onPress={() => startTimer('Pruning', pruneStatus)}>
-                <FontText
-                    content={"Prune"}
-                    textAlign={"center"}
-                />
-            </TouchableOpacity>
-
-            
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
+    container: {
+        paddingTop: 10,
+        paddingBottom: 100,
+        paddingHorizontal: 24,
+    },
     task_container: {
-        gap: 25,
-        // backgroundColor: 'blue'
-    }
+        gap: 10,
+    },
 });
