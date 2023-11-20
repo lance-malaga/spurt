@@ -67,7 +67,7 @@ export default function WeeklyTask({shadowStyle, startTimer, waterStatus, fertil
                         </View>
                         <View style={styles.next_days_container}>
                             {nextSixDays.map((day, index) =>
-                                <View style={styles.next_days}>
+                                <View key={index} style={styles.next_days}>
                                     <FontText
                                         key={index}
                                         content={day.toLocaleDateString(undefined, { day: '2-digit' })}
