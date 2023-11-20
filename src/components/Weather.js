@@ -26,10 +26,10 @@ export default function Weather() {
                 condition == "Sunny" || condition == "Clear" && hours <= 16 ? 
                     <Image source={require("../../assets/images/weather-sunny.png")} alt="sunny" style={styles.sky} /> :
                 condition == "Blowing snow" || condition == "Light snow" || condition == "Moderate snow" || condition == "Heavy snow" ?
-                    <Image source={require("../../assets/images/weather-snowy.png")} alt="sunny" style={styles.sky} /> : 
+                    <Image source={require("../../assets/images/weather-snowy.png")} alt="snow" style={styles.sky} /> : 
                 condition == "Light rain" || condition == "Moderate rain" || condition == "Heavy rain" ?
-                    <Image source={require("../../assets/images/weather-rainy.png")} alt="sunny" style={styles.sky} /> : 
-                <Image source={require("../../assets/images/weather-cloudy.png")} alt="sunny" style={styles.sky} /> 
+                    <Image source={require("../../assets/images/weather-rainy.png")} alt="rain" style={styles.sky} /> : 
+                <Image source={require("../../assets/images/weather-cloudy.png")} alt="cloudy" style={styles.sky} /> 
             }
         </>
     )
