@@ -8,7 +8,9 @@ export default function PlantDetailInfo({plantData}) {
 	const [showPrune, setShowPrune] = useState(false);
 	const [showHaversting, setShowHaversting] = useState(false);
 	const [showProblems, setShowProblems] = useState(false);
-    // console.log("pests", plantData.care.pests[0].name);
+
+    let howToPlantList = plantData.howToPlant;
+    let plantIssueList = plantData.care.pests;
 
     function renderCareSection(name, content, isShown, toggleFunction) {
 		const closeOtherSections = () => {
@@ -36,7 +38,12 @@ export default function PlantDetailInfo({plantData}) {
                         ]}
                     />
 				</View>
-				{isShown && <Text style={styles.care}>{content}</Text>}
+				{isShown && 
+                    <View>
+                        <Image source={require("../../assets/images/get-to-know.png")} />
+                        <Text>{content}</Text>
+                    </View>
+                }
 			</TouchableOpacity>
 		);
 	}
@@ -55,10 +62,11 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "How To Plant",
-                        plantData.howToPlant.map((data, index) => (
-                            <View style={{flexDirection: "row"}}>
+                        howToPlantList.map((data, index) => (
+                            <View key={index} style={{flexDirection: "row"}}>
                                 <Text style={{paddingLeft: 10}}>{index + 1}. </Text>
                                 <Text style={{width:300, paddingLeft: 10}}>{data.description}: </Text>
+                                {/* <Image source={require("../../assets/images/how-to-plant.png")} />, */}
                             </View>
                         )),
                         showHowToPlant,
@@ -84,8 +92,8 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Common Problems",
-                        plantData.care.pests.map((data, index) => (
-                            <View>
+                        plantIssueList.map((data, index) => (
+                            <View key={index}>
                                 <Text>{index + 1}. {data.name}: </Text>
                                 <Text style={{width:315, paddingLeft: 10}}>{data.description}</Text>
                             </View>
@@ -103,7 +111,7 @@ export default function PlantDetailInfo({plantData}) {
 const styles = StyleSheet.create({
     container: {
         marginBottom: 10,
-        height: 1000
+        height: 1100
     },
     header: {
         flexDirection: "row",
