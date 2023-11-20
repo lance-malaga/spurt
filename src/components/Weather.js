@@ -9,6 +9,7 @@ import CurrentDate from "./CurrentDate";
 export default function Weather() {
 
     const { condition, temperature } = CurrentWeather();
+    const { currentDay, hours } =  CurrentDate();
 
     return (
         <>
@@ -18,13 +19,17 @@ export default function Weather() {
                         <Text style={styles.condition}>{condition}</Text>
                         <Text style={styles.temperature}>{temperature}°C</Text>
                     </View>
-                    <CurrentDate />
+                    <Text style={styles.day}>{currentDay}</Text>
                 </View>
             </View>
             {
-                condition === 'clear' ? 
-                <Image source={require("../../assets/images/weather-sunny.png")} alt="sunny" style={styles.sky} /> :
-                <Image source={require("../../assets/images/weather-night.png")} alt="sunny" style={styles.sky} />
+                condition == "Sunny" || condition == "Clear" && hours <= 16 ? 
+                    <Image source={require("../../assets/images/weather-sunny.png")} alt="sunny" style={styles.sky} /> :
+                condition == "Blowing snow" || condition == "Light snow" || condition == "Moderate snow" || condition == "Heavy snow" ?
+                    <Image source={require("../../assets/images/weather-snowy.png")} alt="sunny" style={styles.sky} /> : 
+                condition == "Light rain" || condition == "Moderate rain" || condition == "Heavy rain" ?
+                    <Image source={require("../../assets/images/weather-rainy.png")} alt="sunny" style={styles.sky} /> : 
+                <Image source={require("../../assets/images/weather-cloudy.png")} alt="sunny" style={styles.sky} /> 
             }
         </>
     )
@@ -40,7 +45,6 @@ const styles = StyleSheet.create({
         height: "25%"
     },
     dayInfo: {
-        backgroundColor: '#0000007c',
         padding: 10,
         borderRadius: 5,
         gap: -8,
@@ -49,12 +53,15 @@ const styles = StyleSheet.create({
         gap: -8
     },
     condition: {
-        color: "white",
         fontSize: 12
     },
     temperature: {
-        color: "white",
         fontSize: 40
+    },
+    day: {
+        textTransform: "uppercase",
+        fontSize: 12,
+        marginTop: 1
     },
     sky: {
         position: "absolute",

@@ -2,30 +2,21 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function CurrentDate() {
 
-  var dt = new Date();
+  let dt = new Date();
   let day = dt.getDay();
+  let hours = dt.getHours() ;
+  let currentDay = '';
 
-  return (
-    <View>
-      {
-        day === 0 ? <Text style={[styles.dayInfo_day, styles.text]}>Sunday</Text> :
-        day === 1 ? <Text style={[styles.dayInfo_day, styles.text]}>Monday</Text> :
-        day === 2 ? <Text style={[styles.dayInfo_day, styles.text]}>Tuesday</Text> :
-        day === 3 ? <Text style={[styles.dayInfo_day, styles.text]}>Wednesday</Text> :
-        day === 4 ? <Text style={[styles.dayInfo_day, styles.text]}>Thursday</Text> :
-        day === 5 ? <Text style={[styles.dayInfo_day, styles.text]}>Fridays</Text> :
-        <Text style={[styles.dayInfo_day, styles.text]}>Saturday</Text>
-      }
-    </View>
-  )
+  day === 0 ? currentDay = "Sunday" :
+  day === 1 ? currentDay = "Monday" :
+  day === 2 ? currentDay = "Tuesday" :
+  day === 3 ? currentDay = "Wednesday" :
+  day === 4 ? currentDay = "Thursday" :
+  day === 6 ? currentDay = "Fridays" :
+  currentDay = "Saturday";
+
+  return {
+    currentDay,
+    hours
+  }
 };
-
-const styles = StyleSheet.create({
-  dayInfo_day: {
-    textTransform: "uppercase",
-  },
-  text: {
-    color: "white",
-    fontSize: 12,
-  },
-})
