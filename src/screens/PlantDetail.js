@@ -74,6 +74,7 @@ export default function PlantDetail({route}) {
                         {selectedNavItem === "Care" ? 
                             <PlantDetailCare 
                                 plantData={plant}
+                                optimalConditions={chosenPlant.optimalConditions}
                                 waterStatus={chosenPlant.waterStatus}
                                 fertilizeStatus={chosenPlant.fertilizeStatus}
                                 pruneStatus={chosenPlant.pruneStatus}
@@ -112,7 +113,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 48,
     },
     content_container: {
-        paddingTop: 45,
-        paddingHorizontal: 24,
+        paddingTop: 35,
     }
 });
