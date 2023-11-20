@@ -10,34 +10,12 @@ import GlobalStyles from "../components/GlobalStyles";
 import SearchBar from "../components/SearchBar";
 import CollectionCard from "../components/CollectionCard";
 import FontText from "../components/FontText";
+import { taskList } from "../../data/YourGarden";
 
 const windowHeight = Dimensions.get('window').height;
 
 export default function YourGarden() {
     const filterList = [ 'All', 'Vegetable', 'Fruites', 'Herbs', 'Legumes', 'Flowers' ];
-    const taskList = [
-        {
-            name: 'Tomato',
-            waterStatus: 2,
-            fertilizeStatus: 14,
-            pruneStatus: 10,
-            image: require('../../assets/images/plant-card/tomato.png'),
-        },
-        {
-            name: 'Cucumber',
-            waterStatus: 3,
-            fertilizeStatus: 14,
-            pruneStatus: 10,
-            image: require('../../assets/images/plant-card/cucumber.png'),
-        },
-        {
-            name: 'Sunflower',
-            waterStatus: 3,
-            fertilizeStatus: 14,
-            pruneStatus: 10,
-            image: require('../../assets/images/plant-card/sunflower.png'),
-        },
-    ];
 
     const navigation = useNavigation();
     const handleSelectPlant = (chosenPlant) => {
