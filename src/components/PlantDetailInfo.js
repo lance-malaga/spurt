@@ -49,9 +49,9 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Get To Know",
-                        <View style={{display: "flex", justifyContent: "center"}}>
-                            <Image style={styles.cardImage} source={require("../../assets/images/get-to-know.png")} />
-                            <Text style={styles.cardText}>{plantData.getToKnow}</Text>
+                        <View style={styles.cardInfo}>
+                            <Image style={styles.cardImage} source={require("../../assets/images/get-to-know.png")} />                          
+                            <Text style={[styles.cardText, styles.cardTextContainer]}>{plantData.getToKnow}</Text>
                         </View>,
                         showGetToKnow,
                         setShowGetToKnow,
@@ -60,16 +60,16 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "How To Plant",
-                        <View>
-                            <Image source={require("../../assets/images/how-to-plant.png")} />
-                            <Text>
+                        <View style={styles.cardInfo}>
+                            <Image style={styles.cardImage} source={require("../../assets/images/how-to-plant.png")} />
+                            <View style={styles.cardTextContainer}>
                                 {howToPlantList.map((data, index) => (
-                                    <View key={index} style={styles.cardList}>
-                                        <Text style={{paddingLeft: 10}}>{index + 1}. </Text>
-                                        <Text style={styles.cardText}>{data.description}: </Text>
+                                    <View key={index} style={styles.cardListItem}>
+                                        <Text style={{paddingLeft: 10, fontWeight: '500'}}>{index + 1}.</Text>
+                                        <Text style={styles.cardListText}> {data.description}</Text>                                      
                                     </View>
                                 ))}
-                            </Text>
+                            </View>
                         </View>,
                         showHowToPlant,
                         setShowHowToPlant,
@@ -78,9 +78,9 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "When To Prune",
-                        <View>
-                            <Image source={require("../../assets/images/when-to-prune.png")} />
-                            <Text style={styles.cardText}>{plantData.care.prune}</Text>
+                        <View style={styles.cardInfo}>
+                            <Image style={styles.cardImage} source={require("../../assets/images/when-to-prune.png")} />
+                            <Text style={[styles.cardText, styles.cardTextContainer]}>{plantData.care.prune}</Text>
                         </View>,
                         showPrune,
                         setShowPrune,
@@ -89,9 +89,9 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Harvesting",
-                        <View>
-                            <Image source={require("../../assets/images/haversting.png")} />
-                            <Text style={styles.cardText}>{plantData.haversting}</Text>
+                        <View style={styles.cardInfo}>
+                            <Image style={styles.cardImage} source={require("../../assets/images/haversting.png")} />
+                            <Text style={[styles.cardText, styles.cardTextContainer]}>{plantData.haversting}</Text>
                         </View>,
                         showHaversting,
                         setShowHaversting,
@@ -100,16 +100,16 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Common Problems",
-                        <View>
-                            <Image source={require("../../assets/images/common-problems.png")} />
-                            <Text>
+                        <View style={styles.cardInfo}>
+                            <Image style={styles.cardImage} source={require("../../assets/images/common-problems.png")} />
+                            <View style={styles.cardTextContainer}>
                                 {plantIssueList.map((data, index) => (
-                                    <View key={index}>
-                                        <Text>{index + 1}. {data.name}: </Text>
-                                        <Text style={styles.cardText}>{data.description}</Text>
+                                    <View key={index} style={styles.cardListItem}>
+                                        <Text style={{paddingLeft: 10, fontWeight: '500'}}>{index + 1}. </Text>
+                                        <Text style={styles.cardListText}>{data.name}: {data.description}</Text>
                                     </View>
                                 ))}
-                            </Text>
+                            </View>
                         </View>,
                         showProblems,
                         setShowProblems,
@@ -124,7 +124,9 @@ export default function PlantDetailInfo({plantData}) {
 const styles = StyleSheet.create({
     container: {
         marginBottom: 10,
-        height: 1100
+        height: 1100,
+        marginLeft: 25,
+        marginRight: 25
     },
     header: {
         flexDirection: "row",
@@ -150,19 +152,29 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		elevation: 5,
 	},
-    cardList: {
-        display: "flex",
-        flexDirection: "row"
+    cardInfo: {
+        paddingTop: 20,
+    },  
+    cardTextContainer: {
+        paddingTop: 20,
+        fontSize: 14
+    },
+    cardListItem: {
+        backgroundColor: "white",
+        flexDirection: 'row',
+        width: 310
     },
     cardImage: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
+        marginLeft: 10
     },
     cardText: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: "center",
-        width: 350
-    }
+        width: 310
+    },
+    cardListText: {
+        width: 300,
+        fontSize: 14
+    },
 })
