@@ -38,12 +38,7 @@ export default function PlantDetailInfo({plantData}) {
                         ]}
                     />
 				</View>
-				{isShown && 
-                    <View>
-                        <Image source={require("../../assets/images/get-to-know.png")} />
-                        <Text>{content}</Text>
-                    </View>
-                }
+				{isShown && <Text>{content}</Text>}
 			</TouchableOpacity>
 		);
 	}
@@ -54,7 +49,10 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Get To Know",
-                        plantData.getToKnow,
+                        <View style={{display: "flex", justifyContent: "center"}}>
+                            <Image style={styles.cardImage} source={require("../../assets/images/get-to-know.png")} />
+                            <Text style={styles.cardText}>{plantData.getToKnow}</Text>
+                        </View>,
                         showGetToKnow,
                         setShowGetToKnow,
                     )}
@@ -62,13 +60,17 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "How To Plant",
-                        howToPlantList.map((data, index) => (
-                            <View key={index} style={{flexDirection: "row"}}>
-                                <Text style={{paddingLeft: 10}}>{index + 1}. </Text>
-                                <Text style={{width:300, paddingLeft: 10}}>{data.description}: </Text>
-                                {/* <Image source={require("../../assets/images/how-to-plant.png")} />, */}
-                            </View>
-                        )),
+                        <View>
+                            <Image source={require("../../assets/images/how-to-plant.png")} />
+                            <Text>
+                                {howToPlantList.map((data, index) => (
+                                    <View key={index} style={styles.cardList}>
+                                        <Text style={{paddingLeft: 10}}>{index + 1}. </Text>
+                                        <Text style={styles.cardText}>{data.description}: </Text>
+                                    </View>
+                                ))}
+                            </Text>
+                        </View>,
                         showHowToPlant,
                         setShowHowToPlant,
                     )}
@@ -76,7 +78,10 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "When To Prune",
-                        plantData.care.prune,
+                        <View>
+                            <Image source={require("../../assets/images/when-to-prune.png")} />
+                            <Text style={styles.cardText}>{plantData.care.prune}</Text>
+                        </View>,
                         showPrune,
                         setShowPrune,
                     )}
@@ -84,7 +89,10 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Harvesting",
-                        plantData.haversting,
+                        <View>
+                            <Image source={require("../../assets/images/haversting.png")} />
+                            <Text style={styles.cardText}>{plantData.haversting}</Text>
+                        </View>,
                         showHaversting,
                         setShowHaversting,
                     )}
@@ -92,12 +100,17 @@ export default function PlantDetailInfo({plantData}) {
                 <View style={styles.careContainer}>
                     {renderCareSection(
                         "Common Problems",
-                        plantIssueList.map((data, index) => (
-                            <View key={index}>
-                                <Text>{index + 1}. {data.name}: </Text>
-                                <Text style={{width:315, paddingLeft: 10}}>{data.description}</Text>
-                            </View>
-                        )),
+                        <View>
+                            <Image source={require("../../assets/images/common-problems.png")} />
+                            <Text>
+                                {plantIssueList.map((data, index) => (
+                                    <View key={index}>
+                                        <Text>{index + 1}. {data.name}: </Text>
+                                        <Text style={styles.cardText}>{data.description}</Text>
+                                    </View>
+                                ))}
+                            </Text>
+                        </View>,
                         showProblems,
                         setShowProblems,
                     )}
@@ -124,9 +137,10 @@ const styles = StyleSheet.create({
     headerTabs: {
 		fontSize: 18,
 		fontWeight: "bold",
-		marginLeft: 50,
-		marginTop: 36,
 		color: "#000",
+	},
+    chevIconRotated: {
+		transform: [{ rotate: "180deg" }],
 	},
     careContainer: {
         gap: 10,
@@ -136,4 +150,19 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		elevation: 5,
 	},
+    cardList: {
+        display: "flex",
+        flexDirection: "row"
+    },
+    cardImage: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    cardText: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: "center",
+        width: 350
+    }
 })
