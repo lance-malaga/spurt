@@ -276,20 +276,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingTop: 40,
-    backgroundColor: "transparent",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     paddingBottom: 30,
     gap: 10,
-  },
-  searchBarContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 15,
-    gap: 5,
   },
   input: {
     borderWidth: 1,
@@ -314,7 +305,7 @@ const styles = StyleSheet.create({
   },
   sendIconContainer: {
     position: "absolute",
-    right: 30,
+    right: -25,
   },
   send_icon: {
     width: 20,

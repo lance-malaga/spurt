@@ -31,7 +31,7 @@ const PlantAidOnboarding = ({ navigation }) => {
           fontWeight={700}
         />
       </View>
-      <Image source={require("../../assets/images/mascot.png")} style={styles.mascot_img} />
+      <Image source={require("../../assets/icons/chuey_animated.gif")} style={styles.mascot_img} />
       <TouchableOpacity style={styles.button} onPress={handleStart}>
         <FontText
           content={"Tap to begin"}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#64A39C",
     paddingBottom: 5,
     borderRadius: 1,
-    marginTop: 150,
+    marginTop: 60,
   },
   bg_img: {
     zIndex: -1,
@@ -67,14 +67,16 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   mascot_img: {
-    marginTop: 50,
-  },
-  welcome_text: {
-    paddingTop: 90,
+    marginTop: -25,
+    width:"50%",
+    height:"50%",
   },
   plantaid_text: {
     marginTop: -17,
   },
+  welcome_text: {
+    paddingTop: 100,
+  }
 });
 
 export default PlantAidOnboarding;

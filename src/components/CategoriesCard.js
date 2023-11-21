@@ -1,9 +1,16 @@
 import React from "react";
-import { View, StyleSheet, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native"; 
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function CategoriesCard() {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
   const navigateToCategory = (categoryName) => {
     navigation.navigate("CategoryResults", { category: categoryName });
   };
@@ -11,63 +18,28 @@ export default function CategoriesCard() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.vegetableCard}
-          onPress={() => navigateToCategory("Vegetable")}
-        >
-          <Text style={styles.header}>Veggies</Text>
-          <Image
-              source={require("../../assets/images/veggieCategoryIcon.png")}
-              style={styles.vegetableCardImg}
-            />
+        <TouchableOpacity onPress={() => navigateToCategory("Vegetable")}>
+          <Image source={require("../../assets/images/vegetable-card.png")} />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.fruitCard}
-          onPress={() => navigateToCategory("Fruit")}
-        >
-          <Text style={styles.header}>Fruit</Text>
-          <Image
-              source={require("../../assets/images/fruitCategoryIcon.png")}
-              style={styles.categoryCardImg}
-            />
+        <TouchableOpacity onPress={() => navigateToCategory("Fruit")}>
+          <Image source={require("../../assets/images/fruit-card.png")} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.herbsCard}
-          onPress={() => navigateToCategory("Herbs")}
-        >
-          <Text style={styles.header}>Herbs</Text>
-          <Image
-              source={require("../../assets/images/herbsCategoryIcon.png")}
-              style={styles.herbsCardImg}
-            />
+        <TouchableOpacity onPress={() => navigateToCategory("Herbs")}>
+          <Image source={require("../../assets/images/herbs-card.png")} />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.legumesCard}
-          onPress={() => navigateToCategory("Legumes")}
-        >
-          <Text style={styles.header}>Legumes</Text>
-          <Image
-              source={require("../../assets/images/legumeCategoryIcon.png")}
-              style={styles.legumesCardImg}
-            />
+        <TouchableOpacity onPress={() => navigateToCategory("Legumes")}>
+          <Image source={require("../../assets/images/legumes-card.png")} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.flowersCard}
-          onPress={() => navigateToCategory("Flowers")}
-        >
-          <Text style={styles.header}>Flowers</Text>
-          <Image
-              source={require("../../assets/images/flowerCardImg.png")}
-              style={styles.flowersCardImg}
-            />
+        <TouchableOpacity onPress={() => navigateToCategory("Flowers")}>
+          <Image source={require("../../assets/images/flowers-card.png")} />
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -78,29 +50,28 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "flex-start",
-    backgroundColor: "#FAFAFAFA",
     width: 375,
   },
   row: {
     flexDirection: "row",
   },
-  categoryCardImg:{
+  categoryCardImg: {
     marginLeft: 35,
-    marginTop:-30,
+    marginTop: -30,
   },
-  legumesCardImg:{
+  legumesCardImg: {
     marginLeft: 15,
-    marginTop:-30,
+    marginTop: -30,
   },
-  herbsCardImg:{
+  herbsCardImg: {
     marginLeft: 15,
-    marginTop:-18,
+    marginTop: -18,
   },
   vegetableCardImg: {
     marginLeft: 24,
     marginTop: -14,
   },
-  flowersCardImg:{
+  flowersCardImg: {
     marginTop: -35,
     marginLeft: -20,
   },
