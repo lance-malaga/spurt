@@ -5,11 +5,12 @@ import {
 	Pressable,
 	Image,
 	ScrollView,
+	TouchableOpacity,
+	Text,
 } from "react-native";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../components/SearchBar";
-import Card from "../components/Card";
 import CategoriesCard from "../components/CategoriesCard";
 import topPicks from "../../data/TopPicks.json"
 import SearchCard from "../components/SearchCard";
@@ -21,6 +22,13 @@ export default function Search() {
 	const [filteredResults, setFilteredResults] = useState(topPicks);
 
 	const navigation = useNavigation();
+
+	const handleGoBack = () => {
+		navigation.goBack();
+	};
+	const handleGoToDashboard = () => {
+		navigation.navigate("Dashboard");
+	};
 
 	useEffect(() => {
 		if (searchInput !== "") {
@@ -35,12 +43,24 @@ export default function Search() {
 	}, [searchInput]);
 
 	return (
-		<ScrollView style={styles.container}>
+			<View style={styles.container}>
+				<View style={styles.header}>
+					<TouchableOpacity onPress={handleGoBack}>
+						<Image source={require("../../assets/icons/backIcon.png")} />
+					</TouchableOpacity>
+					<TouchableOpacity onPress={handleGoToDashboard}>
+						<Text style={styles.dashboardBtn}>Go to Dashboard</Text>
+					</TouchableOpacity>
+				</View>
+			<Image
+				source={require("../../assets/images/background/background-blur.png")}
+				style={styles.bg_img}
+			/>
 			<FontText 
 				content={'Look For A Plant'}
 				fontSize={24}
 				textAlign={'center'}
-				paddingTop={30}
+				paddingTop={60}
 			/>
 			<View style={styles.searchContainer}>
 				<SearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
@@ -85,21 +105,6 @@ export default function Search() {
 				</>
 			) : (
 				<>
-					<View style={styles.picksContainer}>
-						<FontText 
-							content={'TOP PICKS FOR SUMMER'}
-							fontSize={18}
-							fontWeight={700}
-						/>
-						<FontText
-							content={'Check out the plants ready this summer'}
-							fontSize={12}
-							marginTop={-5}
-						/>
-					</View>
-					<View style={styles.cardContainer}>
-						<Card />
-					</View>
 					<View style={styles.categoriesContainer}>
 						<FontText 
 							content={'CATEGORIES'}
@@ -110,6 +115,7 @@ export default function Search() {
 							content={'Care guides and tips for every plant'}
 							fontSize={12}
 							marginTop={-5}
+							paddingBottom={20}
 						/>
 					</View>
 					<View style={styles.categoriesCardContainer}>
@@ -117,30 +123,39 @@ export default function Search() {
 					</View>
 				</>
 			)}
-		</ScrollView>
-	);
+		  </View>
+	);			
 }
-
-
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: "#FFFF",
-		paddingTop: 30,
+		height: '100%',
 	},
-	cardContainer: {
-		paddingLeft: 20,
+	header: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		paddingHorizontal: 24,
+		marginTop: 50,
+	},
+	bg_img: {
+		position: "absolute",
+		zIndex: -1,
+		width: "100%",
+		height: 880,
+	},
+	dashboardBtn: {
+		textDecorationLine: "underline",
+		fontSize: 16,
 	},
 	searchContainer: {
 		width: "100%",
 		alignItems: "center",
 		justifyContent: "center",
+		paddingHorizontal: 24,
 	},
 	categoriesCardContainer: {
 		width: "100%",
 		alignItems: "center",
-		marginTop: 16,
-		paddingBottom: 25,
 	},
 	buttonContainer: {
 		flexDirection: "row",
@@ -170,11 +185,10 @@ const styles = StyleSheet.create({
 	picksContainer: {
 		alignItems: "flex-start",
 		paddingTop: 30,
-		paddingBottom: 10,
 		paddingLeft: 30,
 	},
 	categoriesContainer: {
 		paddingLeft: 30,
-		marginTop: 10,
+		marginTop: 40,
 	},
 });

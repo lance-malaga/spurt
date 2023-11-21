@@ -49,6 +49,22 @@ export default function AiPrompt() {
     }
   };
 
+  const determineWeatherGif = (conditionCode) => {
+    switch (conditionCode) {
+      case "1000": // clear
+        return require("../../assets/icons/weather/snowy_1.gif");
+      case "1003": // partly cloudy
+        return require("../../assets/icons/weather/high_temp.gif");
+      case "1006": // cloudy
+        return require("../../assets/icons/weather/windy_1.gif");
+      case "1030": // mist
+        return require("../../assets/icons/weather/rainy_1.gif");
+      // Add more cases based on your weather condition codes
+      default:
+        return require("../../assets/icons/weather/high_temp.gif");
+    }
+  };
+
   const currentTime = getCurrentTime();
   const currentWeatherDescription = `${
     currentCondition.text ? currentCondition.text.toLowerCase() : "unknown"
@@ -58,7 +74,7 @@ export default function AiPrompt() {
   const userMessage = {
     role: "assistant",
     content: currentCondition
-      ? `It is currently ${currentTime}, ${currentWeatherDescription}, and ${currentTemperature}. Give me a 2 sentence weather care warning for gardening under these conditions. Include emojis`
+      ? `It is currently ${currentTime}, ${currentWeatherDescription}, and ${currentTemperature}. Give me a short sentence weather care warning for gardening under these conditions. Include emojis`
       : "keep the responses short and add some emojis",
   };
 
@@ -104,9 +120,12 @@ export default function AiPrompt() {
         transparent={true}
       >
         <View style={styles.modalContainer}>
+          <View style={styles.weather_gif}>
+            <Image source={determineWeatherGif(currentCondition.code)} />
+          </View>
           <View style={styles.weather_alert}>
             <FontText
-            content={"Weather Alert: Frosty Weather"}
+            content={"Weather Care Alert"}
             fontSize={16}
             fontWeight={700}
             />
@@ -186,7 +205,7 @@ const styles = StyleSheet.create({
   weather_alert: {
     position: "absolute",
     zIndex: 1,
-    top: 280,
+    top: 310,
   },
   promptContainer: {
     flexShrink: 1,
@@ -208,4 +227,9 @@ const styles = StyleSheet.create({
     left: 10,
     position: "absolute"
   },
+  weather_gif: {
+    position: "absolute",
+    zIndex: 1,
+    top: 140,
+  }
 });

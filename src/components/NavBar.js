@@ -56,9 +56,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: "center",
-        height: 88,
+        height: 100,
         gap: 35,
         zIndex: 1,
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        elevation: 10,
     },
 });
