@@ -1,23 +1,40 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, Image } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';
 
 const SearchBar = ({ searchInput, setSearchInput }) => {
   const handleSearch = (searchValue) => {
 		setSearchInput(searchValue);
 	};
 
+  const ShadowPresets = {
+    searchShadow: {
+        distance: 6,
+        startColor: 'rgba(20, 20, 20, 0.05)',
+        offset: [0, 3],
+    },
+  };
+
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../assets/icons/search-icon.png')}
-        style={styles.searchIcon}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Search"
-        value={searchInput}
-        onChangeText={handleSearch}
-      />
+    <View style={{marginTop: 20}}>
+      <Shadow
+          style={{width: '100%',}}
+          {...ShadowPresets.searchShadow}
+      >
+        <View style={styles.container}>
+              <Image
+                source={require('../../assets/icons/search-icon.png')}
+                style={styles.searchIcon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Search"
+                value={searchInput}
+                onChangeText={handleSearch}
+              />
+        </View>
+      </Shadow>
+
     </View>
   );
 };
@@ -30,16 +47,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingVertical: 10,
     paddingHorizontal: 25,
-    marginTop: 20,
-    width: "100%",
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   searchIcon: {
     width: 22,

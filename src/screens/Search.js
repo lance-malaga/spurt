@@ -148,10 +148,8 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 	},
 	searchContainer: {
-		width: "100%",
-		alignItems: "center",
-		justifyContent: "center",
 		paddingHorizontal: 24,
+		marginBottom: 15,
 	},
 	categoriesCardContainer: {
 		width: "100%",
@@ -160,7 +158,6 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
-		marginTop: 10,
 	},
 	buttonGroup: {
 		alignItems: "center",
