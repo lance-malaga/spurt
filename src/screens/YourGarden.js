@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView, FlatList, Dimensions, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { taskList } from "../../data/YourGarden";
 
 // COMPONENTS
 import NavBar from "../components/NavBar";
@@ -10,17 +11,20 @@ import GlobalStyles from "../components/GlobalStyles";
 import SearchBar from "../components/SearchBar";
 import CollectionCard from "../components/CollectionCard";
 import FontText from "../components/FontText";
-import { taskList } from "../../data/YourGarden";
-
-const windowHeight = Dimensions.get('window').height;
+import useSearch from "../../utils/search";
 
 export default function YourGarden() {
-    const filterList = [ 'All', 'Vegetable', 'Fruites', 'Herbs', 'Legumes', 'Flowers' ];
-
+    const filterList = [ 'All', 'Vegetables', 'Fruits', 'Herbs', 'Legumes', 'Flowers' ];
+    const {searchInput, setSearchInput, filteredResults, searchYourGarden} = useSearch();
     const navigation = useNavigation();
+
     const handleSelectPlant = (chosenPlant) => {
 		navigation.navigate('PlantDetail', {chosenPlant});
 	};
+    
+	useEffect(() => {
+		searchYourGarden();
+	}, [searchInput]);
 
     return (
         <>
@@ -45,7 +49,10 @@ export default function YourGarden() {
                             />
                         </View>
                         <View style={styles.your_garden_content}>
-                            <SearchBar />
+                            <SearchBar 
+                                searchInput={searchInput} 
+                                setSearchInput={setSearchInput}
+                            />
                             <View style={styles.filter_header}>
                                     <FontText
                                         content={'My Garden'}
@@ -74,20 +81,41 @@ export default function YourGarden() {
                                 </View>
                             </ScrollView>
                             <View style={styles.collection_container}>
-                                {taskList.map((data, index) => {
-                                    return (
-                                        <TouchableOpacity
-                                            key={index}
-                                            onPress={() => handleSelectPlant(data)}
-                                        >
-                                            <CollectionCard 
-                                                name={data.name}
-                                                status={data.waterStatus}
-                                                image={data.image}
-                                            />
-                                        </TouchableOpacity>
-                                    );
-                                })}
+                                {searchInput.length ? (
+                                    <>
+                                        {filteredResults.map((data, index) => {
+                                            return (
+                                                <TouchableOpacity
+                                                    key={index}
+                                                    onPress={() => handleSelectPlant(data)}
+                                                >
+                                                    <CollectionCard 
+                                                        name={data.name}
+                                                        status={data.waterStatus}
+                                                        image={data.image}
+                                                    />
+                                                </TouchableOpacity>
+                                            );
+                                        })}
+                                    </>
+                                ) : (
+                                    <>
+                                        {taskList.map((data, index) => {
+                                            return (
+                                                <TouchableOpacity
+                                                    key={index}
+                                                    onPress={() => handleSelectPlant(data)}
+                                                >
+                                                    <CollectionCard 
+                                                        name={data.name}
+                                                        status={data.waterStatus}
+                                                        image={data.image}
+                                                    />
+                                                </TouchableOpacity>
+                                            );
+                                        })}
+                                    </>
+                                )}
                             </View>
                         </View>
                     </ScrollView>
