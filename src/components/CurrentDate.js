@@ -12,7 +12,7 @@ export default function CurrentDate() {
   day === 2 ? currentDay = "Tuesday" :
   day === 3 ? currentDay = "Wednesday" :
   day === 4 ? currentDay = "Thursday" :
-  day === 6 ? currentDay = "Fridays" :
+  day === 5 ? currentDay = "Friday" :
   currentDay = "Saturday";
 
   return {

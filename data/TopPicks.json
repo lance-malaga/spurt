@@ -64,8 +64,8 @@
     "description": "The tomato is a widely cultivated plant that can thrive in both garden beds and small containers with minimal maintenance",
     "image": {
       "topPickImg": "../../assets/images/1.1_top_tomato",
-      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img01.jpg",
-      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img02.jpg"
+      "img1": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img01.png",
+      "img2": "https://spurtgardeninghub.s3.us-west-2.amazonaws.com/plantImages/Tomato/img02.png"
     },
     "getToKnow": "Protect garden-grown tomatoes from winter by moving them indoors. Provide ample sunlight and ventilation, and prevent excessive humidity to avoid disease. Keep soil moist but avoid water-logging. Use wooden poles to support tomato stems, placed 8-10 cm away, and tie them at 61 cm height with plastic rope",
     "howToPlant": [

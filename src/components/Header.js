@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView } from "react-native";
+import { StyleSheet, View, Image} from "react-native";
 
 export default function Header () {
     return(
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "row",
+        backgroundColor: "#ffffff00",
         width: "100%",
         paddingHorizontal: 24,
         paddingVertical: 30,

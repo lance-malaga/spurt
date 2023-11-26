@@ -1,21 +1,24 @@
 import React from "react";
-import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView, Dimensions } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View,  Image,} from "react-native";
 import CustomText from "./CustomText";
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
+// Component
+import Timer from './Timer';
+ 
 export default function DashboardTasks() {
-    const [taskStatus, setTaskStatus]= useState(false);
     const taskList = [
         {
             name: 'Water',
-            image: require('../../assets/icons/task_water_icon.png'),
-            // status: taskStatus,
+            image: require('../../assets/icons/plant-detail/water.png'),
         },
         {
             name: 'Fertilizer',
-            image: require('../../assets/icons/task_fert_icon.png'),
-            // status: taskStatus,
+            image: require('../../assets/icons/plant-detail/fertilize.png'),
+        },
+        {
+            name: 'Prune',
+            image: require('../../assets/icons/plant-detail/prune.png'),
         },
     ];
 
@@ -23,47 +26,67 @@ export default function DashboardTasks() {
         <View style={styles.container}>
             <View style={styles.title_header}>
                 <CustomText
-                    text={`Today's Tasks`}
+                    text={`Plant Progress`}
                     fontSize={18}
                     fontWeight={700}
                 />
-                <Pressable>
-                    <Text style={styles.button}>view all</Text>
-                </Pressable>
             </View>
             <View style={styles.plant_card}>
                 <View style={styles.plant_item}>
-                    <Image source={require('../../assets/images/2.0_tomato.png')} alt="lettuce" style={styles.plant_img} />
                     <View style={styles.plant_item__text}>
                         <CustomText
-                            text={'My Tomato Plants'}
+                            text={'Tomato Plant'}
                             fontSize={18}
                             fontWeight={500}
                         />
-                        <CustomText
-                            text={'Tomato'}
-                            fontSize={12}
-                            color={'#727272'}
-                        />
+                    <Image 
+                        source={require('../../assets/images/plant-card/tomato.png')}
+                        alt="tomato" 
+                        style={styles.plant_img} 
+                    />
                     </View>
                 </View>
                 <View style={styles.task}>
-                    {taskList.map((a, index) => {
+                    {taskList.map((task, index) => {
                         return (
-                            <View key={index} style={styles.task__item}>
-                                {/* <Pressable onPress={setTaskStatus(!taskStatus)}> */}
-                                    <View style={styles.task__item_text}>
-                                        <Image source={a.image} alt={a.name} style={styles.task_icon} />
-                                        <Text>{a.name}</Text>
-                                    </View>
-                                    {taskStatus ? (
-                                        <Image source={require('../../assets/icons/task_check.png')} alt="task-check" style={styles.task_status} />
-                                    ) : (
-                                        <Image source={require('../../assets/icons/task_uncheck.png')} alt="task-uncheck" style={styles.task_status} />
-                                    )}
-                                {/* </Pressable> */}
+                            <View key={index} style={{flexDirection: 'row', alignItems: "center"}}>
+                                <CountdownCircleTimer
+                                    isPlaying
+                                    duration={
+                                        task.name == 'Water' ? 300 : 
+                                        task.name =='Fertilizer' ? 500: 
+                                        250
+                                    }
+                                    colors={
+                                        task.name == 'Water' ? '#78B1EC' : 
+                                        task.name =='Fertilizer' ? '#FFBCBC': 
+                                        '#169F91'
+                                    }
+                                    size={50}
+                                    strokeWidth={5}                                    
+                                >
+                                    {() => 
+                                        <>
+                                            <Image style={{width: 18, height: 18}} source={task.image} alt={task.name}/>
+                                        </>
+                                    }
+                                </CountdownCircleTimer>
+                                <View style={{paddingLeft: 10}}>
+                                    <Timer 
+                                        duration={
+                                            task.name == 'Water' ? 28 * 50 * 60 * 1000 :
+                                            task.name == 'Fertilizer' ? 48 * 55 * 60 * 1000 :
+                                            19 * 30 * 60 * 1000
+                                        }
+                                        color={
+                                            task.name == 'Water' ? '#78B1EC' : 
+                                            task.name =='Fertilizer' ? '#FFBCBC': 
+                                            '#169F91'
+                                        }
+                                    />
+                                </View>                                
                             </View>
-                        );
+                        )
                     })}
                 </View>
             </View>
@@ -73,40 +96,36 @@ export default function DashboardTasks() {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 60,
-        marginBottom: 30,
+        marginTop: 30,
     },
     title_header: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         marginBottom: 25,
-    },
-    button: {
-        borderBottomColor: "black",
-        borderBottomWidth: 1,
+        paddingLeft: 24
     },
     plant_card: {
+        flexDirection: "row",
         backgroundColor: "white",
-        paddingHorizontal: 30,
+        paddingHorizontal: 20,
         paddingVertical: 20,
-        borderRadius: 16,
+        marginRight: 40,
+        borderTopEndRadius: 33,
+        borderBottomRightRadius: 33,
     },
     plant_item: {
-        flexDirection: "row",
+        flexDirection: "column",
         gap: 25,
-        alignItems: "center",
-        borderBottomColor: "#AAA",
-        borderBottomWidth: 1,
-        marginBottom: 15,
     },
     plant_item__text: {
-        bottom: 10,
+        alignItems: "center",
     },
     plant_img: {
-        marginTop: -10
+        width: 150
     },
     task: {
+        marginLeft: 15,
         gap: 8,
     },
     task__item: {
