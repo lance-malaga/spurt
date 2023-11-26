@@ -3,8 +3,10 @@ import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 
 // Components
+import Header from "./Header";
 import CurrentWeather from "./CurrentWeather";
 import CurrentDate from "./CurrentDate";
+import zIndex from "@mui/material/styles/zIndex";
 
 export default function Weather() {
 
@@ -14,11 +16,10 @@ export default function Weather() {
     return (
         <>
             <View style={styles.container}>
+                <Header />
                 <View style={styles.dayInfo}>
-                    <View style={styles.weatherContainer}>
-                        <Text style={styles.condition}>{condition}</Text>
-                        <Text style={styles.temperature}>{temperature}°C</Text>
-                    </View>
+                    <Text style={styles.condition}>{condition}</Text>
+                    <Text style={styles.temperature}>{temperature}°C</Text>
                     <Text style={styles.day}>{currentDay}</Text>
                 </View>
             </View>
@@ -37,35 +38,33 @@ export default function Weather() {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "row",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        paddingHorizontal: 24,
         width: "100%",
-        height: "25%"
+        height: "25%",
     },
     dayInfo: {
-        padding: 10,
-        borderRadius: 5,
-        gap: -8,
+        paddingTop: 40,
+        paddingRight: 24,
+        gap: -5,
+        alignItems: 'flex-end'
     },
     weatherContainer: {
         gap: -8
     },
     condition: {
-        fontSize: 12
+        fontSize: 12,
+        fontWeight: "500"
     },
     temperature: {
-        fontSize: 40
+        fontSize: 40,
     },
     day: {
         textTransform: "uppercase",
         fontSize: 12,
-        marginTop: 1
+        marginTop: 1,
+        fontWeight: "500"
     },
     sky: {
         position: "absolute",
-        top: 0,
         width: "100%",
         zIndex: -1,
     },
