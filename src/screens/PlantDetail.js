@@ -58,7 +58,6 @@ export default function PlantDetail({route}) {
                 </View>
                 <View  style={styles.plant_img}>
                     <Image source={chosenPlant.image[1]} alt={chosenPlant.name} />
-
                 </View>
 
                 {/* CONTENT */}

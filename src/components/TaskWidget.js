@@ -40,7 +40,7 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
     );
 
     return (
-        <View style={{paddingHorizontal: 24}}>
+        <View style={{paddingTop: 5, paddingHorizontal: 24}}>
             <Shadow 
                 style={{width: '100%'}}
                 {...shadowStyle}
