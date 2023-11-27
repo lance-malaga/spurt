@@ -20,7 +20,6 @@ export default function YourGarden() {
         selectedCategory, 
         setSelectedCategory, 
         filteredResults, 
-        setFilteredResults, 
         filterCollection,
         taskList
     } = useSearchYourGarden();
@@ -71,8 +70,12 @@ export default function YourGarden() {
                                         fontSize={18}
                                         fontWeight={500}
                                     />
-                                    <Pressable>
-                                        <Text style={styles.button}>ADD PLANT</Text>
+                                    <Pressable style={styles.add_plant__btn}>
+                                        <FontText
+                                            content={'ADD PLANT'}
+                                            fontSize={12}
+                                            fontWeight={500}
+                                        />
                                     </Pressable>
                             </View>
                             <ScrollView horizontal>
@@ -106,7 +109,7 @@ export default function YourGarden() {
                                                     <CollectionCard 
                                                         name={data.name}
                                                         status={data.waterStatus}
-                                                        image={data.image}
+                                                        image={data.image[0]}
                                                     />
                                                 </TouchableOpacity>
                                             );
@@ -156,10 +159,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 40,
     },
-    button: {
-        borderBottomColor: "white",
+    add_plant__btn: {
         borderBottomWidth: 1,
-        color: "white",
     },
     filter_content: {
         flexDirection: "row",
