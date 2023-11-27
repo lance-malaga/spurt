@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, Pressable, SafeAreaView, FlatList, Dimensions, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { taskList } from "../../data/YourGarden";
+import useSearchYourGarden from "../../utils/searchYourGarden";
 
 // COMPONENTS
 import NavBar from "../components/NavBar";
@@ -11,20 +11,32 @@ import GlobalStyles from "../components/GlobalStyles";
 import SearchBar from "../components/SearchBar";
 import CollectionCard from "../components/CollectionCard";
 import FontText from "../components/FontText";
-import useSearch from "../../utils/search";
 
 export default function YourGarden() {
     const filterList = [ 'All', 'Vegetables', 'Fruits', 'Herbs', 'Legumes', 'Flowers' ];
-    const {searchInput, setSearchInput, filteredResults, searchYourGarden} = useSearch();
+    const {
+        searchInput, 
+        setSearchInput, 
+        selectedCategory, 
+        setSelectedCategory, 
+        filteredResults, 
+        setFilteredResults, 
+        filterCollection,
+        taskList
+    } = useSearchYourGarden();
     const navigation = useNavigation();
 
     const handleSelectPlant = (chosenPlant) => {
-		navigation.navigate('PlantDetail', {chosenPlant});
+        navigation.navigate('PlantDetail', {chosenPlant});
 	};
     
-	useEffect(() => {
-		searchYourGarden();
-	}, [searchInput]);
+    const handleCategoryPress = (category) => {
+        setSelectedCategory(category);
+    }
+    
+    useEffect(() => {
+        filterCollection();
+    }, [searchInput, selectedCategory, taskList]);
 
     return (
         <>
@@ -69,11 +81,13 @@ export default function YourGarden() {
                                             return (
                                                 <TouchableOpacity
                                                     key={index}
+                                                    onPress={() => handleCategoryPress(data)}
                                                 >
                                                    <FontText 
                                                         content={data}
                                                         fontSize={16}
-                                                        color={'#ADADAD'}
+                                                        color={selectedCategory === data ? '#14171F' : '#ADADAD'}
+                                                        fontWeight={selectedCategory === data ? 500 : 400}
                                                     /> 
                                                 </TouchableOpacity>
                                             )
@@ -81,7 +95,7 @@ export default function YourGarden() {
                                 </View>
                             </ScrollView>
                             <View style={styles.collection_container}>
-                                {searchInput.length ? (
+                                {filteredResults != '' ? (
                                     <>
                                         {filteredResults.map((data, index) => {
                                             return (
@@ -99,22 +113,11 @@ export default function YourGarden() {
                                         })}
                                     </>
                                 ) : (
-                                    <>
-                                        {taskList.map((data, index) => {
-                                            return (
-                                                <TouchableOpacity
-                                                    key={index}
-                                                    onPress={() => handleSelectPlant(data)}
-                                                >
-                                                    <CollectionCard 
-                                                        name={data.name}
-                                                        status={data.waterStatus}
-                                                        image={data.image}
-                                                    />
-                                                </TouchableOpacity>
-                                            );
-                                        })}
-                                    </>
+                                    <FontText 
+                                        content={'No Results Found'}
+                                        textAlign={'center'}
+                                        color={'#ADADAD'}
+                                    />
                                 )}
                             </View>
                         </View>
@@ -160,6 +163,7 @@ const styles = StyleSheet.create({
     },
     filter_content: {
         flexDirection: "row",
+        paddingRight: 24,
         gap: 25,
     },
     collection_container: {

@@ -1,7 +1,7 @@
 export const taskList = [
     {
         name: 'Tomato',
-        category: 'Fruit',
+        category: 'Fruits',
         waterStatus: 2,
         fertilizeStatus: 14,
         pruneStatus: 10,
@@ -27,7 +27,7 @@ export const taskList = [
     },
     {
         name: 'Cucumber',
-        category: 'Fruit',
+        category: 'Fruits',
         waterStatus: 3,
         fertilizeStatus: 14,
         pruneStatus: 10,
@@ -53,7 +53,7 @@ export const taskList = [
     },
     {
         name: 'Sunflower',
-        category: 'Flower',
+        category: 'Flowers',
         waterStatus: 3,
         fertilizeStatus: 14,
         pruneStatus: 10,
