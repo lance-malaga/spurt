@@ -47,14 +47,19 @@ export default function PlantDetail({route}) {
                     <TouchableOpacity onPress={handleGoBack}>
                         <Image source={require("../../assets/icons/backIcon.png")} alt="back-icon" />
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.plant_progress__btn}>
+                        <FontText
+                            content={'Plant Progress'}
+                            fontSize={13}
+                            color={'#14171F'}
+                            paddingBottom={-15}
+                        />
+                    </TouchableOpacity>
                 </View>
+                <View  style={styles.plant_img}>
+                    <Image source={chosenPlant.image[1]} alt={chosenPlant.name} />
 
-                <FontText
-                    content={chosenPlant.name}
-                    fontSize={18}
-                    fontWeight={500}
-                    textAlign={"center"}
-                />
+                </View>
 
                 {/* CONTENT */}
                 <View style={styles.nav}>
@@ -105,6 +110,17 @@ const styles = StyleSheet.create({
     },
     header: {
         paddingHorizontal: 24,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    plant_progress__btn: {
+        borderBottomWidth: 1,
+    },
+    plant_img:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 20,
+        marginBottom: 50,
     },
 
     nav: {
