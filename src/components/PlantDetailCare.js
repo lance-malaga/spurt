@@ -14,7 +14,7 @@ export default function PlantDetailCare({plantData, optimalConditions, waterStat
     const ShadowPresets = {
         taskWidget: {
             distance: 6,
-            startColor: 'rgba(20, 20, 20, 0.03)',
+            startColor: 'rgba(20, 20, 20, 0.05)',
         },
         optimalConditions: {
             distance: 10,
@@ -115,8 +115,7 @@ export default function PlantDetailCare({plantData, optimalConditions, waterStat
 const styles = StyleSheet.create({
     container: {
         paddingTop: 10,
-        paddingBottom: 100,
-        // paddingHorizontal: 24,
+        paddingBottom: 50,
     },
     swipe__dot: {
         backgroundColor: 'rgba(0,0,0,.2)',

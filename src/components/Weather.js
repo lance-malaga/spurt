@@ -6,7 +6,7 @@ import { StyleSheet, View, Image, Text } from "react-native";
 import Header from "./Header";
 import CurrentWeather from "./CurrentWeather";
 import CurrentDate from "./CurrentDate";
-import zIndex from "@mui/material/styles/zIndex";
+import FontText from "./FontText";
 
 export default function Weather() {
 
@@ -18,9 +18,23 @@ export default function Weather() {
             <View style={styles.container}>
                 <Header />
                 <View style={styles.dayInfo}>
-                    <Text style={styles.condition}>{condition}</Text>
-                    <Text style={styles.temperature}>{temperature}°C</Text>
-                    <Text style={styles.day}>{currentDay}</Text>
+                    <View>
+                        <FontText 
+                            content={condition}
+                            fontSize={11}
+                        />
+                        <FontText 
+                            content={`${temperature} °C`}
+                            fontSize={32}
+                            marginTop={-10}
+                        />
+                        <FontText 
+                            content={currentDay}
+                            fontSize={11}
+                            textTransform={'uppercase'}
+                            marginTop={-10}
+                        />
+                    </View>
                 </View>
             </View>
             {
@@ -39,12 +53,11 @@ export default function Weather() {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        height: "25%",
+        height: 300,
     },
     dayInfo: {
         paddingTop: 40,
         paddingRight: 24,
-        gap: -5,
         alignItems: 'flex-end'
     },
     weatherContainer: {
