@@ -2,6 +2,7 @@ import { Image, StyleSheet, TouchableOpacity, View, SafeAreaView, ScrollView } f
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import topPicks from "../../data/TopPicks.json"
+import { SwipeablePanel } from 'rn-swipeable-panel';
 
 // COMPONENTS
 import FontText from "../components/FontText";
@@ -10,14 +11,15 @@ import PlantDetailJournal from "../components/PlantDetailJournal";
 import PlantDetailInfo from "../components/PlantDetailInfo";
 import PlantDetailNavItem from "../components/PlantDetailNavItem";
 import GlobalStyles from "../components/GlobalStyles";
-import PlantProgressDefault from "../components/PlantProgressDefault";
 import PlantProgress from "../components/PlantProgress";
+import PlantProgressDefault from "../components/PlantProgressDefault";
 
 export default function PlantDetail({route}) {
     const { chosenPlant } = route.params;
     const navigation = useNavigation();
     const [selectedNavItem, setSelectedNavItem] = useState('Care');
     const [plant, setPlant] = useState();
+    const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
         const filteredData = topPicks.filter(
@@ -34,6 +36,9 @@ export default function PlantDetail({route}) {
 	};
     const handleNavItemPress = (item) => {
         setSelectedNavItem(item)
+    }
+    const toggleModal = () => {
+        setShowModal(!showModal);
     }
 
     return (

@@ -10,7 +10,7 @@ import {
     Poppins_900Black,
 } from "@expo-google-fonts/poppins";
 
-export default function FontText({content, fontWeight, fontSize, textAlign, lineHeight, letterSpacing, color, paddingTop, paddingBottom, paddingLeft, paddingRight, marginTop}) {
+export default function FontText({content, fontWeight, fontSize, textAlign, lineHeight, letterSpacing, color, paddingTop, paddingBottom, paddingLeft, paddingRight, marginTop, width, textTransform}) {
     let [fontsLoaded, fontError] = useFonts({
         Poppins_100Thin,
         Poppins_300Light,
@@ -47,6 +47,8 @@ export default function FontText({content, fontWeight, fontSize, textAlign, line
                 paddingLeft: paddingLeft,
                 paddingRight: paddingRight,
                 marginTop: marginTop,
+                width: width,
+                textTransform: textTransform,
             }}
         >
             {content}
