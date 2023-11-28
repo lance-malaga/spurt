@@ -4,12 +4,13 @@ export default function ScheduleCard({
   week='',
   day='',
   backgroundColor='',
+  color='',
 
 }) {
   return (
     <View style={[styles.dates, {backgroundColor}]}>
-        <Text style={{padding:0, textAlign:'center', fontWeight:'500'}}>{week}</Text>
-        <Text style={{padding:0, fontWeight:'500'}}>{day}</Text>
+        <Text style={[styles.week, {color}]}>{week}</Text>
+        <Text style={[styles.day, {color}]}>{day}</Text>
     </View>
   )
 }
@@ -26,5 +27,14 @@ const styles = StyleSheet.create({
     borderRadius: 10, 
     borderWidth: 2,
     borderColor: '#ECECEC',
+  },
+  week: {
+    padding:0, 
+    textAlign:'center', 
+    fontWeight:'500'
+  },
+  day: {
+    padding:0, 
+    fontWeight:'500'
   }
 })
