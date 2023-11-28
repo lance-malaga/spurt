@@ -63,61 +63,59 @@ export default function PlantDetailCare({plantData, optimalConditions, waterStat
     const taskList = ['Water', 'Fertilize', 'Prune'];
       
     return (
-        <View style={{height: 500}}>
-            <ScrollView>
-                <View style={styles.container}>
-                    <View style={styles.task_container}>
-                        <Swiper
-                            loop={false}
-                            showsPagination
-                            height={140}
-                            dotStyle={styles.swipe__dot}
-                            activeDotStyle={styles.swipe__dot_active}
-                        >
-                            {taskList.map((task, index) => {
-                                return (
-                                    <TaskWidget
-                                        key={index}
-                                        task={task}
-                                        waterStatus={waterStatus}
-                                        fertilizeStatus={fertilizeStatus}
-                                        pruneStatus={pruneStatus}
-                                        waterTimer={waterTimer}
-                                        setWaterTimer={setWaterTimer}
-                                        fertilizerTimer={fertilizerTimer}
-                                        setFertilizerTimer={setFertilizerTimer}
-                                        pruneTimer={pruneTimer}
-                                        setPruneTimer={setPruneTimer}
-                                        shadowStyle={ShadowPresets.taskWidget}
-                                    />
-                                )
-                            })}
-                        </Swiper>
-                    </View>
-                    <View style={{paddingHorizontal: 24}}>
-                        <WeeklyTask
-                            shadowStyle={ShadowPresets.optimalConditions}
-                            startTimer={startTimer}
-                            waterStatus={waterStatus}
-                            fertilizeStatus={fertilizeStatus}
-                            pruneStatus={pruneStatus}
-                            taskList={taskList}
-                        />
-                        <OptimalConditions 
-                            optimalConditions={optimalConditions}
-                            shadowStyle={ShadowPresets.optimalConditions}
-                        />
-                    </View>
+        <ScrollView>
+            <View style={styles.container}>
+                <View style={styles.task_container}>
+                    <Swiper
+                        loop={false}
+                        showsPagination
+                        height={140}
+                        dotStyle={styles.swipe__dot}
+                        activeDotStyle={styles.swipe__dot_active}
+                    >
+                        {taskList.map((task, index) => {
+                            return (
+                                <TaskWidget
+                                    key={index}
+                                    task={task}
+                                    waterStatus={waterStatus}
+                                    fertilizeStatus={fertilizeStatus}
+                                    pruneStatus={pruneStatus}
+                                    waterTimer={waterTimer}
+                                    setWaterTimer={setWaterTimer}
+                                    fertilizerTimer={fertilizerTimer}
+                                    setFertilizerTimer={setFertilizerTimer}
+                                    pruneTimer={pruneTimer}
+                                    setPruneTimer={setPruneTimer}
+                                    shadowStyle={ShadowPresets.taskWidget}
+                                />
+                            )
+                        })}
+                    </Swiper>
                 </View>
-            </ScrollView>
-        </View>
+                <View style={{paddingHorizontal: 24}}>
+                    <WeeklyTask
+                        shadowStyle={ShadowPresets.optimalConditions}
+                        startTimer={startTimer}
+                        waterStatus={waterStatus}
+                        fertilizeStatus={fertilizeStatus}
+                        pruneStatus={pruneStatus}
+                        taskList={taskList}
+                    />
+                    <OptimalConditions 
+                        optimalConditions={optimalConditions}
+                        shadowStyle={ShadowPresets.optimalConditions}
+                    />
+                </View>
+            </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         paddingTop: 10,
-        paddingBottom: 100,
+        paddingBottom: 50,
     },
     swipe__dot: {
         backgroundColor: 'rgba(0,0,0,.2)',

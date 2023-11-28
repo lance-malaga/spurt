@@ -13,6 +13,7 @@ import PlantDetailNavItem from "../components/PlantDetailNavItem";
 import GlobalStyles from "../components/GlobalStyles";
 import PlantProgressDefault from "../components/PlantProgressDefault";
 import PlantProgress from "../components/PlantProgress";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function PlantDetail({route}) {
     const { chosenPlant } = route.params;
@@ -43,64 +44,69 @@ export default function PlantDetail({route}) {
 
     return (
         <SafeAreaView contentContainerStyle={GlobalStyles.androidSafeArea}>
-            <View style={styles.container}>
-                <Image 
-                    source={require('../../assets/images/background/yg-plant-detail-bg.png')}
-                    alt="bg-img"
-                    style={styles.bg_img}
-                />
-                {/* HEADER */}
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={handleGoBack}>
-                        <Image source={require("../../assets/icons/backIcon.png")} alt="back-icon" />
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.plant_progress__btn}
-                        onPress={toggleModal}
-                    >
-                        <FontText
-                            content={'Plant Progress'}
-                            fontSize={13}
-                            color={'#14171F'}
-                            paddingBottom={-15}
+            {/* <View style={{paddingTop: 40,}}> */}
+                <ScrollView>
+                    <View style={styles.container}>
+                        <Image 
+                            source={require('../../assets/images/background/yg-plant-detail-bg.png')}
+                            alt="bg-img"
+                            style={styles.bg_img}
                         />
-                    </TouchableOpacity>
-                </View>
-                <View  style={styles.plant_img}>
-                    <Image source={chosenPlant.image[1]} alt={chosenPlant.name} />
-                </View>
+                        {/* HEADER */}
+                        <View style={styles.header}>
+                            <TouchableOpacity onPress={handleGoBack}>
+                                <Image source={require("../../assets/icons/backIcon.png")} alt="back-icon" />
+                            </TouchableOpacity>
+                            <TouchableOpacity 
+                                style={styles.plant_progress__btn}
+                                onPress={toggleModal}
+                            >
+                                <FontText
+                                    content={'Plant Progress'}
+                                    fontSize={13}
+                                    color={'#14171F'}
+                                    paddingBottom={-15}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <View  style={styles.plant_img}>
+                            <Image source={chosenPlant.image[1]} alt={chosenPlant.name} />
+                        </View>
 
-                {/* CONTENT */}
-                <View style={styles.nav}>
-                    {navList.map((item, index) => {
-                        return (
-                            <PlantDetailNavItem 
-                                key={index}
-                                name={item}
-                                selected={selectedNavItem === item} //true or false
-                                onPress={() => handleNavItemPress(item)}
-                            />
-                        )
-                    })}
-                </View>
-                { plant &&
-                    <View style={styles.content_container}>
-                        {selectedNavItem === "Care" ? 
-                            <PlantDetailCare 
-                                plantData={plant}
-                                optimalConditions={chosenPlant.optimalConditions}
-                                waterStatus={chosenPlant.waterStatus}
-                                fertilizeStatus={chosenPlant.fertilizeStatus}
-                                pruneStatus={chosenPlant.pruneStatus}
-                            />
-                        : selectedNavItem === "Details" ?
-                            <PlantDetailInfo plantData={plant}/>
-                        :
-                            <PlantDetailJournal/>
+                        {/* CONTENT */}
+                        <View style={styles.nav}>
+                            {navList.map((item, index) => {
+                                return (
+                                    <PlantDetailNavItem 
+                                        key={index}
+                                        name={item}
+                                        selected={selectedNavItem === item} //true or false
+                                        onPress={() => handleNavItemPress(item)}
+                                    />
+                                )
+                            })}
+                        </View>
+                        { plant &&
+                            <View style={styles.content_container}>
+                                {selectedNavItem === "Care" ? 
+                                    <PlantDetailCare 
+                                        plantData={plant}
+                                        optimalConditions={chosenPlant.optimalConditions}
+                                        waterStatus={chosenPlant.waterStatus}
+                                        fertilizeStatus={chosenPlant.fertilizeStatus}
+                                        pruneStatus={chosenPlant.pruneStatus}
+                                    />
+                                : selectedNavItem === "Details" ?
+                                    <PlantDetailInfo plantData={plant}/>
+                                :
+                                    <PlantDetailJournal/>
+                                }
+                            </View>
                         }
                     </View>
-                }
-            </View>
+
+                </ScrollView>
+            {/* </View> */}
             <SwipeablePanel
                 isActive={showModal}
                 onClose={() => setShowModal(false)}
@@ -109,8 +115,6 @@ export default function PlantDetail({route}) {
                 closeSwiper={() => setShowModal(false)}
                 fullWidth
                 onlyLarge
-                // style={{height: '80%'}}
-                // showCloseButton
             >
                 {chosenPlant.name === 'Sunflower' ? (
                     <PlantProgress/>
@@ -124,7 +128,8 @@ export default function PlantDetail({route}) {
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: 40,
+        marginTop: 40,
+        paddingTop: 20,
         height: '100%',
         backgroundColor: 'white',
     },
@@ -133,6 +138,7 @@ const styles = StyleSheet.create({
         objectFit: "cover",
         zIndex: -1,
         width: "100%",
+        height: "100%",
     },
     header: {
         paddingHorizontal: 24,

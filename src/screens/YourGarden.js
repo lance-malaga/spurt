@@ -29,6 +29,10 @@ export default function YourGarden() {
         navigation.navigate('PlantDetail', {chosenPlant});
 	};
     
+    const handleAddPlant = () => {
+        navigation.navigate('Search');
+	};
+    
     const handleCategoryPress = (category) => {
         setSelectedCategory(category);
     }
@@ -70,7 +74,10 @@ export default function YourGarden() {
                                         fontSize={18}
                                         fontWeight={500}
                                     />
-                                    <Pressable style={styles.add_plant__btn}>
+                                    <Pressable 
+                                        style={styles.add_plant__btn}
+                                        onPress={handleAddPlant}
+                                    >
                                         <FontText
                                             content={'ADD PLANT'}
                                             fontSize={12}
@@ -135,6 +142,7 @@ export default function YourGarden() {
 const styles = StyleSheet.create({
     container: {
         height: "100%",
+        paddingTop: 20,
     },
     greeting: {
         paddingHorizontal: 24,
@@ -165,7 +173,7 @@ const styles = StyleSheet.create({
     filter_content: {
         flexDirection: "row",
         paddingRight: 24,
-        gap: 25,
+        gap: 30,
     },
     collection_container: {
         marginTop: 40,

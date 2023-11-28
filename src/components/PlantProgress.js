@@ -49,11 +49,11 @@ export default function PlantProgress() {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
-        width: '100%',
+        height: 745,
     },
     progress_content__container: {
         paddingHorizontal: 40,
+        marginTop: 50,
     },
     progress__container: {
         flexDirection: 'row',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         width: 155,
         padding: 20,
         borderRadius: 20,
-        backgroundColor: 'rgba(229, 242, 255, 0.70)',
+        backgroundColor: '#E5F2FF',
         shadowColor: 'rgba(20, 20, 20, 0.12)',
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.17,
