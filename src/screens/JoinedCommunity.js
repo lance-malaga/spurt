@@ -3,10 +3,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 // Components
 import ScheduleCard from '../components/ScheduleCard';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 
 export default function JoinedCommunity ({navigation}) {
   return(
       <View>
+        <Header />
         <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
         <ScrollView>
             <View style={styles.container}>
@@ -14,13 +17,6 @@ export default function JoinedCommunity ({navigation}) {
               <View style={styles.textContainer}>
                 <Text style={styles.welcomeText} >Welcome to Green Haven’s</Text>
                 <Text style={styles.title}>Community Garden Society</Text>
-              </View>
-              {/* Welcome Image */}
-              <View style={styles.imageContainer}>
-                <Image
-                  source={require("../../assets/images/community/gardener.png")}
-                  alt={"gardener_img"}
-                />
               </View>
               {/* Horizontal Containers */}
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -122,7 +118,7 @@ export default function JoinedCommunity ({navigation}) {
                     <ScheduleCard week='T' day='17' />
                     <Ionicons name="ellipse" size={20} color='#4267FA'/>
                   </View>
-                  <ScheduleCard week='W' day='18' backgroundColor='#FFC93D'/>
+                  <ScheduleCard week='W' day='18' backgroundColor='#000' color='white'/>
                   <View style={{alignItems:'center', gap:5}}>
                     <ScheduleCard week='T' day='19' />
                     <Ionicons name="ellipse" size={20} color='#F25292'/>
@@ -134,17 +130,10 @@ export default function JoinedCommunity ({navigation}) {
                   <ScheduleCard week='S' day='21' />
                 </View>
               </View>
-              {/* Reminders */}
-              <View>
-                <Text style={{margin: 20, fontSize:18, fontWeight:'700'}}>Group Reminders</Text>             
-                <Image 
-                  source={require("../../assets/images/community/group_reminders.png")}
-                  alt={"gardener_img"}
-                />
-              </View>
             </View>
             <Button title="Go Back" onPress={() => navigation.goBack()}/>
         </ScrollView>
+        <NavBar />
       </View>
       
   )
@@ -172,13 +161,13 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
   },
   welcomeText: {
-    color: "#4267FA",
-    fontWeight: "bold"
+    color: "#169F91",
+    fontWeight: "600"
   }, 
   title: {
-    width: 180,
+    width: 300,
     fontSize: 30,
-    fontWeight: '900'
+    fontWeight: '600'
   },
 
   // Welcome Image

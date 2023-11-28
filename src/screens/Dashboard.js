@@ -16,8 +16,6 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function Dashboard () {
 
-    const image = require('../../assets/images/2.0_background.png');
-
     return(
             <View style={styles.container}>
                 <ScrollView >
@@ -33,7 +31,6 @@ export default function Dashboard () {
                             <SearchBar />
                         </View>
                         <DashboardTasks />
-                        {/* <PlantAlert /> */}
                         <UpcomingEvents />
                         <Image 
                             source={require('../../assets/images/2.0_background.png')}

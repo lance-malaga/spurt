@@ -76,6 +76,7 @@ function App() {
           name="FindCommunity"
           component={FindCommunity}
           options={{
+            headerShown: false,
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "transparent",
@@ -86,6 +87,7 @@ function App() {
           name="JoinedCommunity"
           component={JoinedCommunity}
           options={{
+            headerShown: false,
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "transparent",
