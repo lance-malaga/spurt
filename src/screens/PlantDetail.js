@@ -10,6 +10,8 @@ import PlantDetailJournal from "../components/PlantDetailJournal";
 import PlantDetailInfo from "../components/PlantDetailInfo";
 import PlantDetailNavItem from "../components/PlantDetailNavItem";
 import GlobalStyles from "../components/GlobalStyles";
+import PlantProgressDefault from "../components/PlantProgressDefault";
+import PlantProgress from "../components/PlantProgress";
 
 export default function PlantDetail({route}) {
     const { chosenPlant } = route.params;
@@ -95,7 +97,6 @@ export default function PlantDetail({route}) {
                         </View>
                     }
                 </View>
-
             </ScrollView>
             <SwipeablePanel
                 isActive={showModal}
