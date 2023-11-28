@@ -2,6 +2,7 @@ import { Image, StyleSheet, TouchableOpacity, View, SafeAreaView } from "react-n
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import topPicks from "../../data/TopPicks.json"
+import { SwipeablePanel } from 'rn-swipeable-panel';
 
 // COMPONENTS
 import FontText from "../components/FontText";
@@ -10,12 +11,15 @@ import PlantDetailJournal from "../components/PlantDetailJournal";
 import PlantDetailInfo from "../components/PlantDetailInfo";
 import PlantDetailNavItem from "../components/PlantDetailNavItem";
 import GlobalStyles from "../components/GlobalStyles";
+import PlantProgressDefault from "../components/PlantProgressDefault";
+import PlantProgress from "../components/PlantProgress";
 
 export default function PlantDetail({route}) {
     const { chosenPlant } = route.params;
     const navigation = useNavigation();
     const [selectedNavItem, setSelectedNavItem] = useState('Care');
     const [plant, setPlant] = useState();
+    const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
         const filteredData = topPicks.filter(
@@ -33,6 +37,9 @@ export default function PlantDetail({route}) {
     const handleNavItemPress = (item) => {
         setSelectedNavItem(item)
     }
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    }
 
     return (
         <SafeAreaView contentContainerStyle={GlobalStyles.androidSafeArea}>
@@ -47,7 +54,10 @@ export default function PlantDetail({route}) {
                     <TouchableOpacity onPress={handleGoBack}>
                         <Image source={require("../../assets/icons/backIcon.png")} alt="back-icon" />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.plant_progress__btn}>
+                    <TouchableOpacity 
+                        style={styles.plant_progress__btn}
+                        onPress={toggleModal}
+                    >
                         <FontText
                             content={'Plant Progress'}
                             fontSize={13}
@@ -58,7 +68,6 @@ export default function PlantDetail({route}) {
                 </View>
                 <View  style={styles.plant_img}>
                     <Image source={chosenPlant.image[1]} alt={chosenPlant.name} />
-
                 </View>
 
                 {/* CONTENT */}
@@ -92,6 +101,23 @@ export default function PlantDetail({route}) {
                     </View>
                 }
             </View>
+            <SwipeablePanel
+                isActive={showModal}
+                onClose={() => setShowModal(false)}
+                onPressCloseButton={() => setShowModal(false)}
+                closeRootSwipeablePanel={() => setShowModal(false)}
+                closeSwiper={() => setShowModal(false)}
+                fullWidth
+                onlyLarge
+                // style={{height: '80%'}}
+                // showCloseButton
+            >
+                {chosenPlant.name === 'Sunflower' ? (
+                    <PlantProgress/>
+                ): (
+                    <PlantProgressDefault/>
+                )}
+            </SwipeablePanel>
         </SafeAreaView>
     )
 }

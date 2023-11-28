@@ -100,7 +100,6 @@ export default function UpcomingEvents() {
 const styles = StyleSheet.create({
     container: {
         marginTop: 40,
-        marginBottom: 50
     },
     upcoming_events: {
         backgroundColor: "white",
