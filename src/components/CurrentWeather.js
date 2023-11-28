@@ -19,7 +19,7 @@ export default function CurrentWeather() {
   },[])
 
   let condition = currentCondition.text;
-  let temperature = Math.round(currentWeather.temp_c);
+  let temperature = currentWeather.temp_c;
 
   return {
     condition, 
