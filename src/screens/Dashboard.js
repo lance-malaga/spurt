@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
         height: windowHeight,
     },
     dashboard_content: {
-        marginBottom: 150,
+        marginBottom: 100,
         width: "100%",
-        marginTop: -35,
+        marginTop: -30,
     },
     welcome_msg: {
         flexDirection: "row",
