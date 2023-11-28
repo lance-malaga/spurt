@@ -14,7 +14,7 @@ export default function PlantDetailCare({plantData, optimalConditions, waterStat
     const ShadowPresets = {
         taskWidget: {
             distance: 6,
-            startColor: 'rgba(20, 20, 20, 0.05)',
+            startColor: 'rgba(20, 20, 20, 0.03)',
         },
         optimalConditions: {
             distance: 10,
