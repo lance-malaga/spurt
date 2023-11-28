@@ -1,4 +1,4 @@
-import { Image, StyleSheet, TouchableOpacity, View, SafeAreaView } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View, SafeAreaView, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import topPicks from "../../data/TopPicks.json"
@@ -12,7 +12,6 @@ import PlantDetailNavItem from "../components/PlantDetailNavItem";
 import GlobalStyles from "../components/GlobalStyles";
 import PlantProgressDefault from "../components/PlantProgressDefault";
 import PlantProgress from "../components/PlantProgress";
-import { ScrollView } from "react-native-gesture-handler";
 
 export default function PlantDetail({route}) {
     const { chosenPlant } = route.params;
