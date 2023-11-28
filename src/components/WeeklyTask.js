@@ -103,7 +103,6 @@ export default function WeeklyTask({shadowStyle, startTimer, waterStatus, fertil
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 30,
         width: '100%'
     },
     weekly_tasks: {

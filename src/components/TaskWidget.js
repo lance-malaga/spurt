@@ -40,95 +40,97 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
     );
 
     return (
-        <Shadow 
-            style={{width: '100%'}}
-            {...shadowStyle}
-        >
-            <View style={styles.task_card}>
-                <View style={styles.task_left_section}>
-                    <CountdownCircleTimer
-                        isPlaying={
-                            task === 'Water' ? 
-                                waterTimer > 0
-                            : task === 'Fertilize' ? 
-                                fertilizerTimer > 0
-                            :
-                                pruneTimer > 0
-                        }
-                        duration={
-                            task === 'Water' ? 
-                                waterTimer
-                            : task === 'Fertilize' ? 
-                                fertilizerTimer
-                            :
-                                pruneTimer
-                        }
-                        colors={
-                            task === 'Water' ? 
-                                '#78B1EC' 
-                            : task === 'Fertilize' ?
-                                '#FFBCBC'
-                            : '#169F91'
-                        }
-                        onComplete={
-                            task === 'Water' ? 
-                                () => setWaterTimer(0)
-                            : task === 'Fertilize' ? 
-                                () => setFertilizerTimer(0)
-                            :
-                                () => setPruneTimer(0)
-                        }
-                        size={50}
-                        strokeWidth={5}
-                    >
-                        {({ remainingTime }) => (
-                            <>
-                                <Text style={{ color:'transparent', position:'absolute' }}>
-                                    {remainingTime}
-                                </Text>
-                                <Image
-                                    style={{marginRight: -2}}
-                                    source={ task === 'Water' ? 
-                                            require("../../assets/icons/plant-detail/water.png")
-                                        : task === 'Fertilize' ?
-                                            require("../../assets/icons/plant-detail/fertilize.png")
-                                        : 
-                                            require("../../assets/icons/plant-detail/prune.png")
-                                    } 
-                                    alt={`${task}-icon`.toLocaleLowerCase()}
-                                />
-                            </>
-                        )}
-                    </CountdownCircleTimer>
-                    <View style={styles.task_details}>
-                        <FontText 
-                            content={task}
-                            fontSize={16}
-                            fontWeight={700}
-                        />
-                        <FontText 
-                            content={
+        <View style={{paddingTop: 5, paddingHorizontal: 24}}>
+            <Shadow 
+                style={{width: '100%'}}
+                {...shadowStyle}
+            >
+                <View style={styles.task_card}>
+                    <View style={styles.task_left_section}>
+                        <CountdownCircleTimer
+                            isPlaying={
                                 task === 'Water' ? 
-                                    `Every ${waterStatus} days` 
+                                    waterTimer > 0
                                 : task === 'Fertilize' ? 
-                                    `Every ${fertilizeStatus} days` 
+                                    fertilizerTimer > 0
                                 :
-                                    `Every ${pruneStatus} days`
+                                    pruneTimer > 0
                             }
-                            fontSize={12}
-                            marginTop={-7}
-                        />
+                            duration={
+                                task === 'Water' ? 
+                                    waterTimer
+                                : task === 'Fertilize' ? 
+                                    fertilizerTimer
+                                :
+                                    pruneTimer
+                            }
+                            colors={
+                                task === 'Water' ? 
+                                    '#78B1EC' 
+                                : task === 'Fertilize' ?
+                                    '#FFBCBC'
+                                : '#169F91'
+                            }
+                            onComplete={
+                                task === 'Water' ? 
+                                    () => setWaterTimer(0)
+                                : task === 'Fertilize' ? 
+                                    () => setFertilizerTimer(0)
+                                :
+                                    () => setPruneTimer(0)
+                            }
+                            size={50}
+                            strokeWidth={5}
+                        >
+                            {({ remainingTime }) => (
+                                <>
+                                    <Text style={{ color:'transparent', position:'absolute' }}>
+                                        {remainingTime}
+                                    </Text>
+                                    <Image
+                                        style={{marginRight: -2}}
+                                        source={ task === 'Water' ? 
+                                                require("../../assets/icons/plant-detail/water.png")
+                                            : task === 'Fertilize' ?
+                                                require("../../assets/icons/plant-detail/fertilize.png")
+                                            : 
+                                                require("../../assets/icons/plant-detail/prune.png")
+                                        } 
+                                        alt={`${task}-icon`.toLocaleLowerCase()}
+                                    />
+                                </>
+                            )}
+                        </CountdownCircleTimer>
+                        <View style={styles.task_details}>
+                            <FontText 
+                                content={task}
+                                fontSize={16}
+                                fontWeight={700}
+                            />
+                            <FontText 
+                                content={
+                                    task === 'Water' ? 
+                                        `Every ${waterStatus} days` 
+                                    : task === 'Fertilize' ? 
+                                        `Every ${fertilizeStatus} days` 
+                                    :
+                                        `Every ${pruneStatus} days`
+                                }
+                                fontSize={12}
+                                marginTop={-7}
+                            />
+                        </View>
                     </View>
+                    { task === 'Water' ? 
+                            renderTimer(waterTimer) 
+                        : task === 'Fertilize' ? 
+                            renderTimer(fertilizerTimer) 
+                        :
+                            renderTimer(pruneTimer)
+                    }   
                 </View>
-                { task === 'Water' ? 
-                        renderTimer(waterTimer) 
-                    : task === 'Fertilize' ? 
-                        renderTimer(fertilizerTimer) 
-                    :
-                        renderTimer(pruneTimer)
-                }   
-            </View>
-        </Shadow>
+            </Shadow>
+        </View>
     )
 }
 

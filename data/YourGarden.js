@@ -1,11 +1,14 @@
 export const taskList = [
     {
         name: 'Tomato',
-        category: 'Fruit',
+        category: 'Fruits',
         waterStatus: 2,
         fertilizeStatus: 14,
         pruneStatus: 10,
-        image: require('../assets/images/plant-card/tomato.png'),
+        image: [
+            require('../assets/images/plant-card/tomato.png'),
+            require('../assets/images/plant-card/big-tomato.png'),
+        ],
         optimalConditions: [
             {
                 type: 'Temperature',
@@ -27,11 +30,14 @@ export const taskList = [
     },
     {
         name: 'Cucumber',
-        category: 'Fruit',
+        category: 'Fruits',
         waterStatus: 3,
         fertilizeStatus: 14,
         pruneStatus: 10,
-        image: require('../assets/images/plant-card/cucumber.png'),
+        image: [
+            require('../assets/images/plant-card/cucumber.png'),
+            require('../assets/images/plant-card/big-cucumber.png'),
+        ],
         optimalConditions: [
             {
                 type: 'Temperature',
@@ -53,11 +59,14 @@ export const taskList = [
     },
     {
         name: 'Sunflower',
-        category: 'Flower',
+        category: 'Flowers',
         waterStatus: 3,
         fertilizeStatus: 14,
         pruneStatus: 10,
-        image: require('../assets/images/plant-card/sunflower.png'),
+        image: [
+            require('../assets/images/plant-card/sunflower.png'),
+            require('../assets/images/plant-card/big-sunflower.png'),
+        ],
         optimalConditions: [
             {
                 type: 'Temperature',

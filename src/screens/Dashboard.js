@@ -11,6 +11,7 @@ import PlantAlert from "../components/PlantAlert";
 import UpcomingEvents from "../components/UpcomingEvents";
 import AiPrompt from "../components/AiPrompt";
 import SearchBar from "../components/SearchBar";
+import FontText from "../components/FontText";
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -21,11 +22,24 @@ export default function Dashboard () {
                 <ScrollView >
                     <Weather />
                     <View style={styles.dashboard_content}>
-                        <View style={{paddingTop: 30, paddingLeft: 44}}>
-                            <Text style={{fontSize: 24}}>Hey, 
-                                <Text style={{fontSize: 24, fontWeight: "600"}}>Jimmy!</Text>
-                            </Text>
-                            <Text style={{width: 200, fontSize: 14, fontWeight: "500", paddingTop: 5}}>What's on your gardening agenda today?</Text>
+                        <View style={{paddingTop: 30, paddingHorizontal: 24}}>
+                            <View style={styles.welcome_msg}>
+                                <FontText 
+                                    content={'Hey,'}
+                                    fontSize={24}
+                                />
+                                <FontText 
+                                    content={'Jimmy!'}
+                                    fontSize={24}
+                                    fontWeight={700}
+                                />
+                            </View>
+                            <FontText 
+                                content={`What's on your gardening agenda today?`}
+                                fontSize={14}
+                                fontWeight={500}
+                                width={200}
+                            /> 
                         </View>
                         <View style={{paddingHorizontal: 24}}>
                             <SearchBar />
@@ -50,17 +64,20 @@ const styles = StyleSheet.create({
         height: windowHeight,
     },
     dashboard_content: {
-        paddingBottom: 150,
+        marginBottom: 100,
         width: "100%",
-        marginTop: -90,
-
+        marginTop: -30,
+    },
+    welcome_msg: {
+        flexDirection: "row",
+        gap: 3,
     },
     bg_img: {
         borderRadius: 40,
         position: "absolute",
         top: 0,
         zIndex: -1,
-        width: 412,
+        width: '100%',
     },
 });
   
