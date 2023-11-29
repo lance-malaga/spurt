@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
 
+// COMPONENTS
 import TaskWidget from './TaskWidget';
 import OptimalConditions from './OptimalConditions';
 import WeeklyTask from './WeeklyTask';
