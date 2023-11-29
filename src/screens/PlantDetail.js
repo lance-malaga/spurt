@@ -1,4 +1,4 @@
-import { Image, StyleSheet, TouchableOpacity, View, SafeAreaView, ScrollView } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View, Dimensions, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import topPicks from "../../data/TopPicks.json"
@@ -13,8 +13,10 @@ import PlantDetailNavItem from "../components/PlantDetailNavItem";
 import GlobalStyles from "../components/GlobalStyles";
 import PlantProgress from "../components/PlantProgress";
 import PlantProgressDefault from "../components/PlantProgressDefault";
+import AiPromptSuggestions from "../components/AiPromptSuggestions";
 
 export default function PlantDetail({route}) {
+    const windowHeight = Dimensions.get('window').height;
     const { chosenPlant } = route.params;
     const navigation = useNavigation();
     const [selectedNavItem, setSelectedNavItem] = useState('Care');
@@ -41,10 +43,11 @@ export default function PlantDetail({route}) {
         setShowModal(!showModal);
     }
 
+
     return (
-        <SafeAreaView contentContainerStyle={GlobalStyles.androidSafeArea}>
+        <View style={{height: windowHeight}}>
             <ScrollView>
-                <View style={styles.container}>
+                <View style={styles.plant_detail__content}>
                     <Image 
                         source={require('../../assets/images/background/yg-plant-detail-bg.png')}
                         alt="bg-img"
@@ -118,15 +121,19 @@ export default function PlantDetail({route}) {
                     <PlantProgressDefault/>
                 )}
             </SwipeablePanel>
-        </SafeAreaView>
+            { selectedNavItem === "Care" && plant &&
+                <AiPromptSuggestions
+                    optimalConditions={chosenPlant.optimalConditions}
+                    name={plant.name}
+                />
+            }
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 40,
-        paddingTop: 20,
-        height: '100%',
+    plant_detail__content: {
+        paddingTop: 40,
         backgroundColor: 'white',
     },
     bg_img: {
@@ -134,7 +141,7 @@ const styles = StyleSheet.create({
         objectFit: "cover",
         zIndex: -1,
         width: "100%",
-        height: "100%",
+        height: "110%",
     },
     header: {
         paddingHorizontal: 24,
