@@ -112,10 +112,6 @@ const PlantAid = () => {
             fontWeight={400}
           />
         </View>
-        <Image
-          source={require("../../assets/icons/chatIcon.png")}
-          style={styles.chat_icon}
-        />
       </View>
       <ScrollView
         style={{ ...styles.messageContainer, flex: 1 }}
@@ -126,13 +122,12 @@ const PlantAid = () => {
             key={index}
             style={{
               alignSelf: message.role === "bot" ? "flex-start" : "flex-end",
-              margin: 5,
+              margin: 8,
               width: "80%",
-              borderTopLeftRadius: 25,
-              borderBottomLeftRadius: 25,
-              borderTopRightRadius: 20,
-              backgroundColor: message.role === "bot" ? "#f0f0f0" : "#05645A",
+              borderRadius: 25,
+              backgroundColor: message.role === "bot" ? "#fff" : "#05645A",
               padding: 15,
+              elevation: 6,
             }}
           >
             <Text
@@ -151,9 +146,6 @@ const PlantAid = () => {
 
       {/* Message Bar */}
       <View style={styles.inputContainer}>
-        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <Image source={require("../../assets/icons/camera-icon.png")} />
-        </TouchableOpacity>
         <TextInput
           style={styles.input}
           placeholder="Ask me about your plants"
@@ -168,10 +160,6 @@ const PlantAid = () => {
           onPress={sendMessage}
           style={styles.sendIconContainer}
         >
-          <Image
-            source={require("../../assets/icons/sendIcon.png")}
-            style={styles.send_icon}
-          />
         </TouchableOpacity>
       </View>
 
@@ -285,7 +273,7 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: "black",
-    width: "60%",
+    width: "80%",
     height: 50,
     borderRadius: 50,
     paddingLeft: 15,
@@ -324,6 +312,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 125,
     marginTop: 58,
+    marginRight: 150,
   },
   profile_icon: {
     display: "flex",
