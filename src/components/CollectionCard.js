@@ -20,16 +20,14 @@ export default function CollectionCard({name, status, image}) {
                     </View>
                     <View style={styles.plant_text}>
                         <FontText
-                            content={name}
-                            fontSize={18}
+                            content={name + ' Plant'}
+                            fontSize={20}
                             fontWeight={500}
                         />
                         <FontText
                             content={`Water every ${status} days`}
-                            fontSize={12}
                             fontWeight={500}
                             color={'#7C7C7C'}
-                            marginTop={-5}
                         />
                     </View>
                 </View>
