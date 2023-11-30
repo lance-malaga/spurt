@@ -1,6 +1,9 @@
 import FontText from "./FontText";
 import { View, StyleSheet, Image, TouchableOpacity} from "react-native";
 
+import ProgressBar from "../../assets/images/plant-progress/progress-bar.svg";
+import FloweringStage from "../../assets/images/plant-progress/flowering-stage.svg";
+
 export default function PlantProgress() {
     return (
         <View style={styles.container}>
@@ -17,10 +20,7 @@ export default function PlantProgress() {
                     marginTop={-10}
                 />
                 <View style={styles.progress__container}>
-                    <Image
-                        source={require('../../assets/images/plant-progress/progress-bar.png')}
-                        alt="progress-bar"
-                    />
+                    <ProgressBar/>
                     <View style={styles.progress__details}>
                             <FontText
                                 content={`Flowering`}
@@ -38,11 +38,7 @@ export default function PlantProgress() {
                     </View>
                 </View>
             </View>
-            <Image
-                source={require('../../assets/images/plant-progress/flowering-stage.png')}
-                alt="flowering-stage"
-                style={styles.bg_img}
-            />
+            <FloweringStage style={styles.bg_img} width={'100%'} />
         </View>
     )
 }
@@ -74,9 +70,9 @@ const styles = StyleSheet.create({
     },
     bg_img: {
         position: 'absolute',
-        width: '100%',
-        height: '100%',
-        top: 0,
+        // width: '100%',
+        // height: '100%',
+        bottom: 0,
         zIndex: -1,
     },
 })

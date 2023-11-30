@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import FontText from "./FontText";
+
+import CheckIcon from "../../assets/icons/plant-detail/check-icon.svg"
 
 export default function WeeklyTaskItem({task, startTimer, waterStatus, fertilizeStatus, pruneStatus}) {
     const [checkedTask, setCheckedTask] = useState(false);
@@ -30,21 +32,10 @@ export default function WeeklyTaskItem({task, startTimer, waterStatus, fertilize
                             : '#169F91'
                         : '#EBEBEB'
                 }]}>
-                    { checkedTask && 
-                        <Image
-                            source={require('../../assets/icons/plant-detail/check.png')}
-                            alt="check-icon"
-                        />
-                    }
+                    { checkedTask && <CheckIcon/> }
                 </View>
-                <FontText
-                    content={task}
-                />
+                <FontText content={task} />
             </TouchableOpacity>
-            <View>
-                <Image 
-                />
-            </View>
         </View>
     )
 }

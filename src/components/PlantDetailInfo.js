@@ -1,6 +1,11 @@
 import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useState } from "react";
+
+// COMPONENTS
 import FontText from "./FontText";
+
+// ASSETS
+import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg"
 
 export default function PlantDetailInfo({plantData}) {
     const [showGetToKnow, setShowGetToKnow] = useState(false);
@@ -29,9 +34,11 @@ export default function PlantDetailInfo({plantData}) {
                 }}
 			>
 				<View style={styles.header}>
-                    <Text style={styles.headerTitle}>{name}</Text>
-                    <Image
-                        source={require("../../assets/icons/ChevDownIcon.png")}
+                    <FontText 
+                        content={name}
+                        fontSize={18}
+                    />
+                    <ChevDownIcon
                         style={[
                             styles.chevIcon,
                             isShown && styles.chevIconRotated,
@@ -123,18 +130,14 @@ export default function PlantDetailInfo({plantData}) {
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 10,
-        height: 1100,
-        marginLeft: 25,
-        marginRight: 25
+        paddingTop: 10,
+        paddingBottom: 50,
+        paddingHorizontal: 24,
     },
     header: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between"
-    },
-    headerTitle: {
-        fontSize: 18
     },
     headerTabs: {
 		fontSize: 18,

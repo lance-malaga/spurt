@@ -42,100 +42,96 @@ export default function YourGarden() {
     }, [searchInput, selectedCategory, taskList]);
 
     return (
-        <>
-            <SafeAreaView contentContainerStyle={GlobalStyles.androidSafeArea}>
-                <View style={styles.container}>
-                    <Header />
-                    <Image 
-                        source={require('../../assets/images/background/your-garden-bg.png')}
-                        alt="bg-img"
-                        style={styles.bg_img}
+        <View style={styles.container}>
+            <Header />
+            <Image 
+                source={require('../../assets/images/background/your-garden-bg.png')}
+                alt="bg-img"
+                style={styles.bg_img}
+            />
+            <ScrollView>
+                <View style={styles.greeting}>
+                    <FontText
+                        content={"Welcome to your garden"}
+                        fontSize={24}
+                        fontWeight={700}
                     />
-                    <ScrollView>
-                        <View style={styles.greeting}>
+                    <FontText
+                        content={"The place to manage all of your plants "}
+                        fontSize={12}
+                    />
+                </View>
+                <View style={styles.your_garden_content}>
+                    <SearchBar 
+                        searchInput={searchInput} 
+                        setSearchInput={setSearchInput}
+                    />
+                    <View style={styles.filter_header}>
                             <FontText
-                                content={"Welcome to your garden"}
-                                fontSize={24}
-                                fontWeight={700}
+                                content={'My Garden'}
+                                fontSize={18}
+                                fontWeight={500}
                             />
-                            <FontText
-                                content={"The place to manage all of your plants "}
-                                fontSize={12}
-                            />
-                        </View>
-                        <View style={styles.your_garden_content}>
-                            <SearchBar 
-                                searchInput={searchInput} 
-                                setSearchInput={setSearchInput}
-                            />
-                            <View style={styles.filter_header}>
-                                    <FontText
-                                        content={'My Garden'}
-                                        fontSize={18}
-                                        fontWeight={500}
-                                    />
-                                    <Pressable 
-                                        style={styles.add_plant__btn}
-                                        onPress={handleAddPlant}
-                                    >
-                                        <FontText
-                                            content={'ADD PLANT'}
-                                            fontSize={12}
-                                            fontWeight={500}
-                                        />
-                                    </Pressable>
-                            </View>
-                            <ScrollView horizontal>
-                                <View style={styles.filter_content}>
-                                        {filterList.map((data, index) => {
-                                            return (
-                                                <TouchableOpacity
-                                                    key={index}
-                                                    onPress={() => handleCategoryPress(data)}
-                                                >
-                                                   <FontText 
-                                                        content={data}
-                                                        fontSize={16}
-                                                        color={selectedCategory === data ? '#14171F' : '#ADADAD'}
-                                                        fontWeight={selectedCategory === data ? 500 : 400}
-                                                    /> 
-                                                </TouchableOpacity>
-                                            )
-                                        })}
-                                </View>
-                            </ScrollView>
-                            <View style={styles.collection_container}>
-                                {filteredResults != '' ? (
-                                    <>
-                                        {filteredResults.map((data, index) => {
-                                            return (
-                                                <TouchableOpacity
-                                                    key={index}
-                                                    onPress={() => handleSelectPlant(data)}
-                                                >
-                                                    <CollectionCard 
-                                                        name={data.name}
-                                                        status={data.waterStatus}
-                                                        image={data.image[0]}
-                                                    />
-                                                </TouchableOpacity>
-                                            );
-                                        })}
-                                    </>
-                                ) : (
-                                    <FontText 
-                                        content={'No Results Found'}
-                                        textAlign={'center'}
-                                        color={'#ADADAD'}
-                                    />
-                                )}
-                            </View>
+                            <Pressable 
+                                style={styles.add_plant__btn}
+                                onPress={handleAddPlant}
+                            >
+                                <FontText
+                                    content={'ADD PLANT'}
+                                    fontSize={12}
+                                    fontWeight={500}
+                                />
+                            </Pressable>
+                    </View>
+                    <ScrollView horizontal>
+                        <View style={styles.filter_content}>
+                                {filterList.map((data, index) => {
+                                    return (
+                                        <TouchableOpacity
+                                            key={index}
+                                            onPress={() => handleCategoryPress(data)}
+                                        >
+                                            <FontText 
+                                                content={data}
+                                                fontSize={16}
+                                                color={selectedCategory === data ? '#14171F' : '#ADADAD'}
+                                                fontWeight={selectedCategory === data ? 500 : 400}
+                                            /> 
+                                        </TouchableOpacity>
+                                    )
+                                })}
                         </View>
                     </ScrollView>
-                    <NavBar />
+                    <View style={styles.collection_container}>
+                        {filteredResults != '' ? (
+                            <>
+                                {filteredResults.map((data, index) => {
+                                    return (
+                                        <TouchableOpacity
+                                            key={index}
+                                            onPress={() => handleSelectPlant(data)}
+                                        >
+                                            <CollectionCard 
+                                                name={data.name}
+                                                status={data.waterStatus}
+                                                image={data.image[0]}
+                                            />
+                                        </TouchableOpacity>
+                                    );
+                                })}
+                            </>
+                        ) : (
+                            <FontText 
+                                content={'No Results Found'}
+                                textAlign={'center'}
+                                color={'#ADADAD'}
+                            />
+                        )}
+                    </View>
                 </View>
-            </SafeAreaView>
-        </>
+            </ScrollView>
+            <NavBar />
+        </View>
     )
 }
 
