@@ -1,4 +1,4 @@
-import { Image, StyleSheet, TouchableOpacity, View, Dimensions, ScrollView } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import topPicks from "../../data/TopPicks.json"
@@ -16,12 +16,13 @@ import PlantProgressDefault from "../components/PlantProgressDefault";
 import AiPromptSuggestions from "../components/AiPromptSuggestions";
 
 export default function PlantDetail({route}) {
-    const windowHeight = Dimensions.get('window').height;
     const { chosenPlant } = route.params;
     const navigation = useNavigation();
     const [selectedNavItem, setSelectedNavItem] = useState('Care');
     const [plant, setPlant] = useState();
     const [showModal, setShowModal] = useState(false);
+
+    const navList = ["Details", "Care", "Journal"];
 
 	useEffect(() => {
         const filteredData = topPicks.filter(
@@ -30,8 +31,6 @@ export default function PlantDetail({route}) {
         );
         setPlant(filteredData[0]);
 	}, []);
-
-    const navList = ["Details", "Care", "Journal"];
 
 	const handleGoBack = () => {
 		navigation.goBack();
@@ -43,16 +42,15 @@ export default function PlantDetail({route}) {
         setShowModal(!showModal);
     }
 
-
     return (
-        <View style={{height: windowHeight}}>
+        <View>
+            <Image 
+                source={require('../../assets/images/background/yg-plant-detail-bg.png')}
+                alt="bg-img"
+                style={styles.bg_img}
+            />
             <ScrollView>
                 <View style={styles.plant_detail__content}>
-                    <Image 
-                        source={require('../../assets/images/background/yg-plant-detail-bg.png')}
-                        alt="bg-img"
-                        style={styles.bg_img}
-                    />
                     {/* HEADER */}
                     <View style={styles.header}>
                         <TouchableOpacity onPress={handleGoBack}>
@@ -97,10 +95,19 @@ export default function PlantDetail({route}) {
                                     fertilizeStatus={chosenPlant.fertilizeStatus}
                                     pruneStatus={chosenPlant.pruneStatus}
                                 />
+                            : selectedNavItem === "Details" && plant.name !== "Tomato" ?
+                                <View style={{flexDirection:'row', justifyContent: 'center'}}>
+                                    <FontText 
+                                        content={'Content is not available at the moment'}
+                                        color={'#8D8D8D'}
+                                        textAlign={'center'}
+                                        width={200}
+                                    />
+                                </View>
                             : selectedNavItem === "Details" ?
                                 <PlantDetailInfo plantData={plant}/>
-                            :
-                                <PlantDetailJournal/>
+                            :    
+                                <PlantDetailJournal />
                             }
                         </View>
                     }
@@ -134,14 +141,13 @@ export default function PlantDetail({route}) {
 const styles = StyleSheet.create({
     plant_detail__content: {
         paddingTop: 40,
-        backgroundColor: 'white',
     },
     bg_img: {
+        backgroundColor: 'white',   
         position: "absolute",
-        objectFit: "cover",
         zIndex: -1,
+        padding: 20,
         width: "100%",
-        height: "110%",
     },
     header: {
         paddingHorizontal: 24,
@@ -165,5 +171,5 @@ const styles = StyleSheet.create({
     },
     content_container: {
         paddingTop: 35,
-    }
+    },
 });

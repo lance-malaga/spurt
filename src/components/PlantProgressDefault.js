@@ -1,6 +1,8 @@
 import FontText from "./FontText";
 import { View, StyleSheet, Image, TouchableOpacity} from "react-native";
 
+import PlantProgressImg from "../../assets/images/plant-progress/plant-progress-img.svg"
+
 export default function PlantProgressDefault() {
     return (
         <View style={styles.container}>
@@ -10,10 +12,7 @@ export default function PlantProgressDefault() {
                 fontWeight={700}
                 textAlign={'center'}
             />
-            <Image
-                source={require('../../assets/images/plant-progress/plant-progress-img.png')}
-                alt="plant-progress-img"
-            />
+            <PlantProgressImg/>
             <FontText
                 content={`Embark on your plant's life journey from seed to bloom. Witness your tomato thrive and celebrate each growth spurt as you initiate the planting life-cycle!`}
                 fontSize={14}
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
         marginTop: 80,
     },
     button: {
-        backgroundColor: '#404040',
+        backgroundColor: '#14171F',
         marginTop: 25,
         paddingVertical: 20,
         paddingHorizontal: 50,

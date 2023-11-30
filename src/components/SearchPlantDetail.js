@@ -11,6 +11,9 @@ import { useNavigation } from "@react-navigation/native";
 import blackSaveIcon from "../../assets/icons/blackSaveIcon.png";
 import whiteSaveIcon from "../../assets/icons/whiteSaveIcon.png";
 
+// ASSETS
+import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg";
+
 export default function SearchPlantDetail({ route }) {
 	const [showTemperature, setShowTemperature] = useState(false);
 	const [showWater, setShowWater] = useState(false);
@@ -54,8 +57,7 @@ export default function SearchPlantDetail({ route }) {
 				<Text style={styles.headerTabs2}>{name}</Text>
 					<View style={styles.careChevronContainer}>
 						<TouchableOpacity>
-						<Image
-							source={require("../../assets/icons/ChevDownIcon.png")}
+						<ChevDownIcon
 							style={[
 								styles.chevIcon,
 								isShown && styles.chevIconRotated,
