@@ -21,32 +21,32 @@ export default function JoinedCommunity ({navigation}) {
               {/* Horizontal Containers */}
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 <View style={styles.horizontalScroll}>
-                  <View style={[styles.communityHighlights, styles.boxShadow]}>
+                  <View style={styles.boxShadow}>
                     <Text style={styles.highlightsText}>Community Highlights</Text>
                     <View style={styles.highlightsImages}>
                       <View>
                         <Image
-                          source={require("../../assets/images/community/comm_highlights/img01.png")}
+                          source={require("../../assets/images/community/highlights/img01.png")}
                           alt={"gardener_img"}
                         />
                       </View>
                       <View style={{gap: 10}}>
                         <Image
-                            source={require("../../assets/images/community/comm_highlights/img02.png")}
+                            source={require("../../assets/images/community/highlights/img02.png")}
                             alt={"gardener_img"}
                         />
                         <Image
-                            source={require("../../assets/images/community/comm_highlights/img03.png")}
+                            source={require("../../assets/images/community/highlights/img03.png")}
                             alt={"gardener_img"}
                         />
                       </View>
                       <View style={{gap: 10}}>
                         <Image
-                            source={require("../../assets/images/community/comm_highlights/img04.png")}
+                            source={require("../../assets/images/community/highlights/img04.png")}
                             alt={"gardener_img"}
                         />
                         <Image
-                            source={require("../../assets/images/community/comm_highlights/img05.png")}
+                            source={require("../../assets/images/community/highlights/img05.png")}
                             alt={"gardener_img"}
                         />
                       </View>
@@ -118,7 +118,7 @@ export default function JoinedCommunity ({navigation}) {
                     <ScheduleCard week='T' day='17' />
                     <Ionicons name="ellipse" size={20} color='#4267FA'/>
                   </View>
-                  <ScheduleCard week='W' day='18' backgroundColor='#000' color='white'/>
+                  <ScheduleCard week='W' day='18' backgroundColor='#000' color="white"/>
                   <View style={{alignItems:'center', gap:5}}>
                     <ScheduleCard week='T' day='19' />
                     <Ionicons name="ellipse" size={20} color='#F25292'/>
@@ -182,9 +182,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 20,
     marginRight: 20
-  },
-  communityHighlights: {
-    
   },
   highlightsText: {
     fontSize: 16,

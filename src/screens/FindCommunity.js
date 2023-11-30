@@ -1,22 +1,25 @@
 import { ScrollView, StyleSheet, Text, View, Pressable, Image, TouchableOpacity} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
+import { SwipeablePanel } from 'rn-swipeable-panel';
  
 // Components
 import Header from '../components/Header';
 import NavBar from "../components/NavBar";
 import ShowMap from '../components/ShowMap';
+import ViewDisclaimer from '../components/ViewDisclaimer';
 
 export default function FindCommunity() {
     const [showMap, setShowMap] = useState(false);
+    const [showDisclaimer, setShowDisclaimer] = useState(false);
 
     return (
         <View>
             {!showMap && 
                 <View>
-                    <Header />
                     <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
+                    <Header />
                     <ScrollView>
                         <View style={styles.container}>
                             <View style={styles.welcomeText}>
@@ -46,21 +49,34 @@ export default function FindCommunity() {
                                     <Ionicons name="alert-circle-outline" size={20} color='black'/>
                                     <Text style={{fontSize: 16}}>Disclaimer</Text>
                                 </View>
-                                <TouchableOpacity style={styles.disclaimerBtn}>
+                                <TouchableOpacity style={styles.disclaimerBtn} onPress={() => setShowDisclaimer(true)}>
                                     <Text style={{color:'white', textAlign:'center'}}>view</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </ScrollView>
                     <NavBar />
+                    <SwipeablePanel
+                        isActive={showDisclaimer}
+                        onClose={() => setShowDisclaimer(false)}
+                        onPressCloseButton={() => setShowDisclaimer(false)}
+                        closeRootSwipeablePanel={() => setShowDisclaimer(false)}
+                        closeSwiper={() => setShowDisclaimer(false)}
+                        fullWidth
+                        closeOnTouchOutside
+                        showCloseButton
+                        noBar
+                        style={{
+                            height: 740
+                        }}
+                    >
+                        <ViewDisclaimer /> 
+                    </SwipeablePanel>
                 </View>
             }
             {showMap && 
                 <View style={{paddingTop: 100}}>
-                    <TouchableOpacity onPress={() => setShowMap(false)}>
-                        <Image style={{marginLeft: 24}} source={require("../../assets/images/community/backIcon.png")}/>
-                    </TouchableOpacity>
-                    <ShowMap />
+                    <ShowMap setShowMap={() => setShowMap(false)} />
                 </View>
             }
         </View>
@@ -70,7 +86,8 @@ export default function FindCommunity() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 100
+        height: 700,
+        marginBottom: 100
     },
     backgroundImage: {
         position: 'absolute',
