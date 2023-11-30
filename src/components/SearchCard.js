@@ -1,47 +1,56 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import FontText from "./FontText";
 
-export default function SearchCard ({data, image, name, scientificName, difficulty}) {
-	const navigation = useNavigation();
-	
-	const handleViewPress = (item) => {
-		navigation.navigate('SearchPlantDetail', { item });
-	};
+export default function SearchCard({ data, name, scientificName, difficulty }) {
+  const navigation = useNavigation();
 
-	const handleAddPress = (item) => {
-		console.log('Add ', item);
-	};
+  const handleViewPress = () => {
+    navigation.navigate('SearchPlantDetail', { item: data });
+  };
 
-	return (
-		<View style={styles.container}>
-			<View style={styles.card}>
-				{/* <Image
-					source={imageMapping[vegetable.name]}
-					style={styles.image}
-				/> */}
-				<View style={styles.cardDetails}>
-					<Text style={styles.cardName}>{name}</Text>
-					<Text style={styles.cardScientific}>{scientificName}</Text>
-					<Text style={styles.cardLevel}>{difficulty}</Text>
-				</View>
-				<View style={styles.buttonContainer}>
-					<TouchableOpacity
-						style={styles.button}
-						onPress={() => handleViewPress(data)}
-					>
-						<Text style={styles.buttonView}>View</Text>
-					</TouchableOpacity>
-					<TouchableOpacity
-						style={styles.button}
-						onPress={() => handleAddPress(name)}
-					>
-						<Text style={styles.buttonAdd}>Add</Text>
-					</TouchableOpacity>
-				</View>
-			</View>
-		</View>
-	);
-};
+  return (
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Image
+          source={{ uri: data.image.img1 }}
+          style={styles.image}
+        />
+        <View style={styles.cardDetails}>
+          <FontText
+          content={name}
+          fontSize={16}
+          fontWeight={700}
+          />
+          <View style={styles.cardScientific}>
+          <FontText
+          content={scientificName}
+          fontSize={12}
+          fontWeight={500}
+          />            
+          </View>
+          <View style={styles.cardLevel}>
+          <FontText
+          content={difficulty}
+          fontSize={10}
+          fontWeight={400}
+          />
+          </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.buttonView}
+            onPress={handleViewPress}
+          >
+            <FontText
+            content={"View"}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {

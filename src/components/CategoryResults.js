@@ -1,52 +1,142 @@
+// import React from "react";
+// import {
+//   View,
+//   Text,
+//   ScrollView,
+//   StyleSheet,
+//   TouchableOpacity,
+//   Image,
+// } from "react-native";
+// import SearchResults from "../../data/SearchResults.json";
+// import FontText from "./FontText";
+
+// const CategoryResults = () => {
+//   const { vegetables } = SearchResults;
+
+//   const handleViewPress = () => {
+//     navigation.navigate('SearchPlantDetail', { item: data });
+//   };
+
+//   const imageMapping = {
+//     Lettuce: require("../../assets/images/lettuce-img.png"),
+//     Spinach: require("../../assets/images/spinach-img.png"),
+//     "Summer Squash": require("../../assets/images/squash-img.png"),
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <Image
+//         source={require("../../assets/images/background-blur-cool-1.png")}
+//         style={styles.bgImg}
+//       />
+//       <ScrollView>
+//         <Text style={styles.resultHeader}>Results (3)</Text>
+//         {vegetables.map((vegetable, index) => (
+//           <View key={index} style={styles.card}>
+//             <Image source={imageMapping[vegetable.name]} style={styles.image} />
+//             <View style={styles.cardDetails}>
+//               <View style={styles.cardName}>
+//                 <FontText
+//                   content={vegetable.name}
+//                   fontSize={16}
+//                   fontWeight={700}
+//                 />
+//               </View>
+//               <View style={styles.cardScientific}>
+//                 <FontText
+//                   content={vegetable.scientificName}
+//                   fontSize={12}
+//                   fontWeight={500}
+//                 />
+//               </View>
+//               <View style={styles.cardLevel}>
+//                 <FontText
+//                   content={vegetable.name}
+//                   fontSize={10}
+//                   fontWeight={400}
+//                 />
+//               </View>
+//             </View>
+//             <View style={styles.buttonContainer}>
+//               <TouchableOpacity
+//                 style={styles.button}
+//                 onPress={() => handleViewPress}
+//               >
+//                 <View style={styles.buttonView}>
+//                   <FontText content={"View"} />
+//                 </View>
+//               </TouchableOpacity>
+//             </View>
+//           </View>
+//         ))}
+//       </ScrollView>
+//     </View>
+//   );
+// };
 import React from "react";
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from "react-native";
 import SearchResults from "../../data/SearchResults.json";
+import FontText from "./FontText";
 
-const CategoryResults = () => {
+const CategoryResults = ({ selectedCategory }) => {
   const { vegetables } = SearchResults;
 
-  const handleViewPress = (vegetable) => {
-    console.log(`View: ${vegetable.name}`);
-  };
+  // Filter vegetables based on the selected category
+  const filteredVegetables = vegetables.filter(vegetable => vegetable.category === selectedCategory);
 
-  const handleAddPress = (vegetable) => {
-    console.log(`Add: ${vegetable.name}`);
+  const handleViewPress = (item) => {
+    navigation.navigate('SearchPlantDetail', { item });
   };
 
   const imageMapping = {
-    "Lettuce": require("../../assets/images/lettuce-img.png"),
-    "Spinach": require("../../assets/images/spinach-img.png"),
+    Lettuce: require("../../assets/images/lettuce-img.png"),
+    Spinach: require("../../assets/images/spinach-img.png"),
     "Summer Squash": require("../../assets/images/squash-img.png"),
+    // Add more mappings as needed
   };
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/background-blur-cool-1.png')} style={styles.bgImg} />
+      <Image
+        source={require("../../assets/images/background-blur-cool-1.png")}
+        style={styles.bgImg}
+      />
       <ScrollView>
-        <Text style={styles.resultHeader}>Results (3)</Text>
-        {vegetables.map((vegetable, index) => (
+        <Text style={styles.resultHeader}>Results ({filteredVegetables.length})</Text>
+        {filteredVegetables.map((vegetable, index) => (
           <View key={index} style={styles.card}>
-            <Image
-              source={imageMapping[vegetable.name]}
-              style={styles.image}
-            />
+            <Image source={imageMapping[vegetable.name]} style={styles.image} />
             <View style={styles.cardDetails}>
-              <Text style={styles.cardName}>{vegetable.name}</Text>
-              <Text style={styles.cardScientific}>{vegetable.scientificName}</Text>
-              <Text style={styles.cardLevel}>{vegetable.difficultyLevel}</Text>
+              <View style={styles.cardName}>
+                <FontText
+                  content={vegetable.name}
+                  fontSize={16}
+                  fontWeight={700}
+                />
+              </View>
+              <View style={styles.cardScientific}>
+                <FontText
+                  content={vegetable.scientificName}
+                  fontSize={12}
+                  fontWeight={500}
+                />
+              </View>
+              <View style={styles.cardLevel}>
+                <FontText
+                  content={vegetable.name}
+                  fontSize={10}
+                  fontWeight={400}
+                />
+              </View>
             </View>
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => handleViewPress(vegetable)}
               >
-                <Text style={styles.buttonView}>View</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => handleAddPress(vegetable)}
-              >
-                <Text style={styles.buttonAdd}>Add</Text>
+                <View style={styles.buttonView}>
+                  <FontText content={"View"} />
+                </View>
               </TouchableOpacity>
             </View>
           </View>
