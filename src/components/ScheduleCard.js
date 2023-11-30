@@ -4,7 +4,7 @@ export default function ScheduleCard({
   week='',
   day='',
   backgroundColor='',
-  color='',
+  color='#000',
 
 }) {
   return (
