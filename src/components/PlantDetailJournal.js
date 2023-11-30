@@ -1,153 +1,287 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Modal, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { View, TextInput, Modal, TouchableOpacity, StyleSheet } from "react-native";
+import { Shadow } from "react-native-shadow-2";
 
+// COMPONENTS
 import FontText from "./FontText";
 
 export default function PlantDetailJournal() {
-  const [entries, setEntries] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [entryTitle, setEntryTitle] = useState("");
-  const [entryContent, setEntryContent] = useState("");
-  const [selectedEntry, setSelectedEntry] = useState(null);
+	const [entries, setEntries] = useState([]);
+	const [entryTitle, setEntryTitle] = useState("");
+	const [entryContent, setEntryContent] = useState("");
+	const [selectedEntry, setSelectedEntry] = useState(null);
+	const [showJournalForm, setShowJournalForm] = useState(false);
 
-  const addEntry = () => {
-    if (entryTitle.trim() !== "" && entryContent.trim() !== "") {
-      const formattedDate = new Date().toDateString();
-      const entry = `${formattedDate}\nTitle: ${entryTitle}\n${entryContent}`;
-      setEntries([...entries, entry]);
-      closeOverlay();
-    }
-  };
+	const ShadowPresets = {
+		inputShadow: {
+			distance: 6,
+			startColor: 'rgba(20, 20, 20, 0.06)',
+			offset: [0, 3],
+			style: {
+				width: '100%'
+			}
+		},
+		cardEntryShadow: {
+			distance: 6,
+			startColor: 'rgba(20, 20, 20, 0.05)',
+			style: {
+				width: '100%',
+			}
+		},
+	};
+	
+	const formattedDate = new Date().toLocaleDateString('en-US', {
+		year: '2-digit',
+		month: '2-digit',
+		day: '2-digit',
+	});
 
-  const openOverlay = () => {
-    setIsModalVisible(true);
-  };
+	const openOverlay = () => {
+		setShowJournalForm(true);
+	};
+	const closeOverlay = () => {
+		setShowJournalForm(false);
+		setEntryTitle("");
+		setEntryContent("");
+		setSelectedEntry(null);
+	};
 
-  const closeOverlay = () => {
-    setIsModalVisible(false);
-    setEntryTitle("");
-    setEntryContent("");
-    setSelectedEntry(null);
-  };
+	const addEntry = () => {
+		if (entryTitle.trim() !== "" && entryContent.trim() !== "") {
+			const entry = {
+				title: entryTitle,
+				content: entryContent,
+				date: formattedDate
+			};
+			setEntries([...entries, entry]);
+			closeOverlay();
+		}
+	};
+	const editEntry = (index) => {
+		const selectedEntryText = entries[index];
+		const title = selectedEntryText.title
+		const content = selectedEntryText.content
+		setEntryTitle(title);
+		setEntryContent(content);
+		setSelectedEntry(index);
+		openOverlay();
+	};
+	const updateEntry = () => {
+		if (selectedEntry !== null && entryTitle.trim() !== "" && entryContent.trim() !== "") {
+			const updatedEntry = {
+				title: entryTitle,
+				content: entryContent,
+				date: formattedDate
+			};
+			const updatedEntries = [...entries];
+			updatedEntries[selectedEntry] = updatedEntry;
+			setEntries(updatedEntries);
+			closeOverlay();
+		}
+	};
+	const deleteEntry = (index) => {
+		const updatedEntries = [...entries];
+		updatedEntries.splice(index, 1);
+		setEntries(updatedEntries);
+	};
 
-  const editEntry = (index) => {
-    const selectedEntryText = entries[index];
-    const [, title, content] = selectedEntryText.split("\n");
-    setEntryTitle(title.split(": ")[1]);
-    setEntryContent(content);
-    setSelectedEntry(index);
-    openOverlay();
-  };
+	return (
+		<View style={styles.container}>
+			<FontText 
+				content={"My Plant Journal"} 
+				textAlign={"center"} 
+				fontSize={24} 
+				fontWeight={700} 
+			/>
+			<FontText 
+				content={"Document growth, track care, and celebrate flourishing moments"} 
+				textAlign={"center"} 
+				fontSize={12} 
+				width={'80%'}
+			/>
 
-  const updateEntry = () => {
-    if (selectedEntry !== null && entryTitle.trim() !== "" && entryContent.trim() !== "") {
-      const formattedDate = new Date().toDateString();
-      const updatedEntry = `${formattedDate}\nTitle: ${entryTitle}\n${entryContent}`;
-      const updatedEntries = [...entries];
-      updatedEntries[selectedEntry] = updatedEntry;
-      setEntries(updatedEntries);
-      closeOverlay();
-    }
-  };
+			{/* Add Entry */}
+			<TouchableOpacity onPress={openOverlay} style={styles.add_entry__btn}>
+				<FontText 
+					content={"Add Entry"} 
+					fontSize={14} 
+					color={'white'}
+					textAlign={'center'}
+				/>
+			</TouchableOpacity>
 
-  const deleteEntry = (index) => {
-    const updatedEntries = [...entries];
-    updatedEntries.splice(index, 1);
-    setEntries(updatedEntries);
-  };
+			{/* Display Entries */}
+			<View style={styles.entry__container}>
+				{entries.map((entry, index) => (
+					<Shadow {...ShadowPresets.cardEntryShadow} key={index}>
+						<View style={styles.entry__card}>
+							<View>
+								<FontText
+									content={entry.title}
+									fontSize={16}
+									fontWeight={700}
+								/>
+								<FontText
+									content={entry.date}
+									fontSize={12}
+									marginTop={-5}
+								/>
+								<FontText
+									content={entry.content}
+									marginTop={5}
+								/>
+							</View>
+							<View style={styles.editButtonsContainer}>
+								<TouchableOpacity 
+									onPress={() => editEntry(index)}
+									style={styles.edit__btn}
+								>
+									<FontText 
+										content={'Edit'}
+										fontSize={12}
+										color={'white'}
+									/>
+								</TouchableOpacity>
+								<TouchableOpacity 
+									onPress={() => deleteEntry(index)}
+									style={[styles.edit__btn, styles.delete__btn]}
+								>
+									<FontText 
+										content={'Delete'}
+										fontSize={12}
+										color={'white'}
+									/>
+								</TouchableOpacity>
+							</View>
+						</View>
+					</Shadow>
+				))}
+			</View>
 
-  return (
-    <View>
-      <FontText content={"My Plant Journal"} textAlign={"left"} fontWeight={700} fontSize={18} />
+			{/* Overlay */}
+			<Modal animationType="slide" transparent={true} visible={showJournalForm}>
+				<View style={styles.modal__overlay}>
+					<View style={styles.modal__container}>
+						<Shadow {...ShadowPresets.inputShadow}>
+							<TextInput
+								style={styles.input}
+								value={entryTitle}
+								onChangeText={(text) => setEntryTitle(text)}
+								placeholder="Entry Title"
+							/>
+						</Shadow>
+						<Shadow {...ShadowPresets.inputShadow}>
+							<TextInput
+								style={styles.input}
+								value={entryContent}
+								onChangeText={(text) => setEntryContent(text)}
+								placeholder="Entry Content"
+								multiline={true}
+								numberOfLines={4}
+							/>
+						</Shadow>
 
-      {/* Open Overlay */}
-      <TouchableOpacity onPress={openOverlay}>
-        <FontText content={"Add entry"} fontSize={14} />
-      </TouchableOpacity>
-
-      {/* Display Entries */}
-      <ScrollView>
-        {entries.map((entry, index) => (
-          <View key={index} style={styles.card}>
-            <FontText content={entry} fontSize={14} />
-            <View style={styles.editButtonsContainer}>
-              <TouchableOpacity onPress={() => editEntry(index)}>
-                <Text style={styles.editButton}>Edit</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => deleteEntry(index)}>
-                <Text style={styles.editButton}>Delete</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        ))}
-      </ScrollView>
-
-      {/* Overlay */}
-      <Modal animationType="slide" transparent={true} visible={isModalVisible}>
-        <View style={styles.overlay}>
-          <View style={styles.modal}>
-            <TextInput
-              style={styles.input}
-              value={entryTitle}
-              onChangeText={(text) => setEntryTitle(text)}
-              placeholder="Entry Title"
-            />
-
-            <TextInput
-              style={[styles.input, { height: 100 }]}
-              value={entryContent}
-              onChangeText={(text) => setEntryContent(text)}
-              placeholder="Entry Content"
-              multiline
-            />
-
-            {selectedEntry !== null ? (
-              <Button title="Update Entry" onPress={updateEntry} />
-            ) : (
-              <Button title="Submit Entry" onPress={addEntry} />
-            )}
-            <Button title="Cancel" onPress={closeOverlay} />
-          </View>
-        </View>
-      </Modal>
-    </View>
-  );
-}
+						{selectedEntry !== null ? (
+							<TouchableOpacity onPress={updateEntry} style={styles.action__btn}>
+								<FontText
+									content={'Update Entry'}
+									color={'white'}
+									textAlign={'center'}
+								/>
+							</TouchableOpacity>
+						) : (
+							<TouchableOpacity onPress={addEntry} style={styles.action__btn}>
+								<FontText
+									content={'Submit Entry'}
+									color={'white'}
+									textAlign={'center'}
+								/>
+							</TouchableOpacity>
+						)}
+							<TouchableOpacity onPress={closeOverlay}>
+								<FontText
+									content={'Cancel'}
+									color={'#828282'}
+									textAlign={'center'}
+									marginTop={12}
+								/>
+							</TouchableOpacity>
+					</View>
+				</View>
+			</Modal>
+		</View>
+	);
+	}
 
 const styles = StyleSheet.create({
-  card: {
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 5,
-    padding: 10,
-    marginVertical: 5,
-    position: "relative",
-  },
-  editButtonsContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-  },
-  editButton: {
-    marginHorizontal: 10,
-    color: "blue",
-  },
-  overlay: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  modal: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 10,
-    width: 300,
-  },
-  input: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
+	container: {
+		paddingHorizontal: 24,
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	add_entry__btn: {
+		marginTop: 25,
+		backgroundColor: '#14171F',
+		paddingHorizontal: 50,
+		paddingVertical: 18,
+		borderRadius: 40,
+		// position: 'absolute',
+		// bottom: 0,
+		// right: 0,
+	},
+
+	entry__container: {
+		marginTop: 40,
+		gap: 20,
+		width: '100%',
+		paddingBottom: 20,
+	},
+	entry__card: {
+		backgroundColor: "white",
+		borderRadius: 10,
+		padding: 20,
+		width: '100%',
+	},
+	editButtonsContainer: {
+		flexDirection: "row",
+		justifyContent: "flex-end",
+		gap: 15,
+		marginTop: 20,
+	},
+	edit__btn: {
+		paddingVertical: 7,
+		paddingHorizontal: 20,
+		backgroundColor: '#14171F',
+		borderRadius: 50,
+	},
+
+	modal__overlay: {
+		flex: 1,
+        justifyContent: "flex-end",
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        color: "#fff",
+        padding: 24,
+	},
+	modal__container: {
+        backgroundColor: "#fff", 
+        borderRadius: 25,
+        paddingHorizontal: 25,
+        paddingVertical: 25,
+		gap: 20,
+	},
+	action__btn: {
+		marginTop: 25,
+		backgroundColor: '#14171F',
+		paddingHorizontal: 50,
+		paddingVertical: 18,
+		borderRadius: 40,
+	},
+
+	input: {
+		backgroundColor: '#F2F2F2',
+		borderRadius: 8,
+		padding: 10,
+		fontSize: 16,
+	},
 });
