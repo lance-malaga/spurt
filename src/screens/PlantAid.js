@@ -14,6 +14,9 @@ import { useNavigation } from "@react-navigation/native";
 import FontText from "../components/FontText";
 import axios from "axios";
 
+//icons
+import SendIcon from '../../assets/icons/send-icon.svg'
+
 
 const PlantAid = () => {
   const [messages, setMessages] = useState([]);
@@ -160,6 +163,7 @@ const PlantAid = () => {
           onPress={sendMessage}
           style={styles.sendIconContainer}
         >
+        <SendIcon/>
         </TouchableOpacity>
       </View>
 
@@ -293,7 +297,8 @@ const styles = StyleSheet.create({
   },
   sendIconContainer: {
     position: "absolute",
-    right: -25,
+    right: 50,
+    top: 50,
   },
   send_icon: {
     width: 20,
