@@ -13,9 +13,6 @@ import FontText from "./FontText";
 // ASSETS
 import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg";
 
-// ASSETS
-import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg";
-
 export default function SearchPlantDetail({ route }) {
   const [showTemperature, setShowTemperature] = useState(false);
   const [showWater, setShowWater] = useState(false);
