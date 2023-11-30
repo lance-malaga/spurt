@@ -1,14 +1,12 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
-export default function ViewCommunityCard() {
-  const navigation = useNavigation();
+export default function ViewCommunityCard({setShowModal, setShowCard}) {
 
   return (
     <View style={styles.viewCommunity}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
           <View style={{flexDirection: 'row', alignItems: "center"}}>
-            <Image source={require("../../assets/images/community/sunflower.png")}/>
+            <Image style={{width: 30, height:40}} source={require("../../assets/images/community/sunflower.png")}/>
             <Text style={{paddingLeft: 10, fontSize: 18, fontWeight: "700"}}>BloomLovers</Text>
           </View>
           <Image source={require("../../assets/images/community/unlock.png")}/>
@@ -20,8 +18,8 @@ export default function ViewCommunityCard() {
           </View>
           <Text style={styles.communityRules}>Group rules & regulations</Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('JoinedCommunity')}>
-          <Text style={styles.communityJoinBtn}>Join</Text>
+        <TouchableOpacity onPress={setShowModal}>
+          <Text style={styles.communityJoinBtn}>view more</Text>
         </TouchableOpacity>
       </View>
   )
@@ -31,7 +29,6 @@ const styles = StyleSheet.create({
     width: 370,
     height: 210,
     position: 'relative',
-    margin: 20,
     paddingHorizontal: 30,
     paddingVertical: 20,
     backgroundColor: 'white', 
@@ -71,7 +68,7 @@ const styles = StyleSheet.create({
     top: 10,
     right: 0,
     textAlign: 'center',
-    width: 80,
+    width: 100,
     paddingHorizontal: 8,
     paddingVertical: 8,
     borderRadius: 30,

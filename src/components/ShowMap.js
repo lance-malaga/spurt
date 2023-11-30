@@ -1,57 +1,103 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, Image, Pressable, TouchableOpacity} from "react-native";
 import { useState } from 'react';
+import { SwipeablePanel } from 'rn-swipeable-panel';
 
-// Component
+// Components
 import SearchBar from "./SearchBar";
 import ViewCommunityCard from "./ViewCommunityCard";
+import CommunityDetail from "./CommunityDetail";
+import CommunityQuestion from "./CommunityQuestion";
 
-export default function ShowMap() {
-  const [showCard, setShowCard] = useState(false)
+// SVG Images
+// import HereIcon from '../../assets/images/community/youRhere.svg';
+
+export default function ShowMap({setShowMap}) {
+  const [showCard, setShowCard] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showQuestionCard, setShowQuestionCard] = useState(false);
 
   return (
-    <View style={{position: 'relative'}}>
-      <TouchableOpacity  onPress={() => setShowCard(false)}>
+    <View style={{position: 'relative', marginTop: -100}}>
+      <Pressable  onPress={() => setShowCard(false)}>
         <Image source={require("../../assets/images/community/map.png")} style={styles.backgroundImage}/>
-      </TouchableOpacity>
-        <View style={styles.titleCard}>
-          <Text style={{fontSize: 24, fontWeight: "700"}}>Find a group near me</Text>
-          <Text  style={{fontSize: 14, fontWeight: "500"}}>Enter your location to find them.</Text>
-          <View style={{}}>
-            <SearchBar />
-          </View>
+      </Pressable>
+      <View style={styles.titleCard}>
+        <TouchableOpacity onPress={setShowMap} >
+            <Image style={styles.backButton} source={require("../../assets/images/community/backIcon.png")}/>
+        </TouchableOpacity>
+        <Text style={{fontSize: 24, fontWeight: "700", paddingTop: 20}}>Find a group near me</Text>
+        <Text  style={{fontSize: 14, fontWeight: "500"}}>Enter your location to find them.</Text>
+        <View style={{}}>
+          <SearchBar />
         </View>
-        <View>
-          <Image style={styles.youRhere} source={require("../../assets/images/community/youRhere.png")} />
+      </View>
+      <View>
+        <Image style={styles.youRhere} source={require("../../assets/images/community/youRhere.png")} />
+        {/* <HereIcon  style={styles.youRhere}/> */}
+        {!showCard ? 
           <TouchableOpacity onPress={() => setShowCard(true)}>
             <Image style={styles.communityFlower} source={require("../../assets/images/community/community01.png")}/>
-          </TouchableOpacity>
-          <Image style={styles.communityTree} source={require("../../assets/images/community/community02.png")}/>
-        </View>
-
+          </TouchableOpacity> :
+          <Image style={styles.clickedCommunityFlower} source={require("../../assets/images/community/community01.png")}/>
+          
+        }
+        <Image style={styles.communityTree} source={require("../../assets/images/community/community02.png")}/>
+        <Pressable onPress={() => setShowQuestionCard(true)}>
+          <Image style={styles.communityQuestion} source={require("../../assets/images/community/question_mark.png")}/>
+        </Pressable>
+      </View>
       {showCard && 
-        <View style={{position: 'absolute', top: 250}}>
-          <ViewCommunityCard />
-          </View>
+        <View style={{ 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          marginTop: 330
+          }}>
+          <ViewCommunityCard 
+            setShowCard={() => setShowCard(true)}
+            setShowModal={() => setShowModal(true)}
+          />
+          <SwipeablePanel
+            isActive={showModal}
+            onClose={() => setShowModal(false)}
+            onPressCloseButton={() => setShowModal(false)}
+            closeRootSwipeablePanel={() => setShowModal(false)}
+            closeSwiper={() => setShowModal(false)}
+            fullWidth
+            onlyLarge
+            closeOnTouchOutside
+            barContainerStyle= {{
+              backgroundColor: "#FBFBFB"
+            }}
+            style={{  
+              position: 'abosulte', 
+              top: 110, 
+              borderColor: '#7C7C7C', 
+              borderWidth: 1,
+            }}
+          >
+            <CommunityDetail /> 
+        </SwipeablePanel>
+        </View>
       }
-      {/* <View style={styles.viewCommunity}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-          <View style={{flexDirection: 'row', alignItems: "center"}}>
-            <Image source={require("../../assets/images/community/sunflower.png")}/>
-            <Text style={{paddingLeft: 10, fontSize: 18, fontWeight: "700"}}>BloomLovers</Text>
-          </View>
-          <Image source={require("../../assets/images/community/unlock.png")}/>
+      <View>
+        <View style={{position: "absolute", top: 600}}>
+          <SwipeablePanel
+              isActive={showQuestionCard}
+              onClose={() => setShowQuestionCard(false)}
+              onPressCloseButton={() => setShowQuestionCard(false)}
+              closeRootSwipeablePanel={() => setShowQuestionCard(false)}
+              closeSwiper={() => setShowQuestionCard(false)}
+              fullWidth
+              closeOnTouchOutside
+              showCloseButton
+              noBar
+              style={{
+              }}
+          >
+              <CommunityQuestion />
+          </SwipeablePanel>
         </View>
-        <View style={{marginTop: 20}}> 
-          <View style={{flexDirection: 'row', gap: 10}}>
-            <Text style={styles.communityMember}>5 members</Text>
-            <Text style={styles.communityAvailability}>5 spaces available</Text>
-          </View>
-          <Text style={styles.communityRules}>Group rules & regulations</Text>
-        </View>
-        <TouchableOpacity>
-          <Text style={styles.communityJoinBtn}>Join</Text>
-        </TouchableOpacity>
-      </View> */}
+      </View>
     </View>
   )
 }
@@ -59,80 +105,47 @@ export default function ShowMap() {
 const styles = StyleSheet.create({
   backgroundImage: {
     position: 'absolute',
-    width: '100%'
+    width: '100%',
+    height: 870,
   },
   titleCard: {
     paddingHorizontal: 24, 
-    paddingBottom: 70, 
+    paddingBottom: 30, 
     backgroundColor: '#ffffffa8',
-    borderBottomRightRadius: 50,
-    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: 30,
+  },
+  backButton: {
+    marginTop: 60,
+    marginBottom: 15
   },
   youRhere: {
     position: "absolute",
-    left: "40%",
-    top: 200
+    left: "45%",
+    top: 125
   },
   communityFlower: {
     position: "absolute",
     right: "7%",
-    top: 320
+    top: 250
+  },
+  clickedCommunityFlower: {
+    position: "absolute",
+    right: "5%",
+    top: 240,
+    width: 65, 
+    height: 65
   },
   communityTree: {
     position: "absolute",
-    left: "10%",
-    top: 150
+    left: "6%",
+    top: 110,
   },
-
-
-  // viewCommunity: {
-  //   height: 210,
-  //   position: 'relative',
-  //   margin: 20,
-  //   paddingHorizontal: 30,
-  //   paddingVertical: 20,
-  //   backgroundColor: 'white', 
-  //   flexDirection: 'column',
-  //   borderRadius: 20
-  // }, 
-  // communityMember: {
-  //   width: 90,
-  //   paddingHorizontal: 8,
-  //   paddingVertical: 5,
-  //   borderRadius: 30,
-  //   borderWidth: 1,
-  //   borderColor: '#F25E5A',
-  //   color: "#F25E5A"
-  // },
-  // communityAvailability: {
-  //   width: 135,
-  //   paddingHorizontal: 8,
-  //   paddingVertical: 5,
-  //   borderRadius: 30,
-  //   borderWidth: 1,
-  //   borderColor: '#169F91',
-  //   color: "#169F91"
-  // },
-  // communityRules: {
-  //   marginTop: 10,
-  //   width: 200,
-  //   paddingHorizontal: 8,
-  //   paddingVertical: 5,
-  //   borderRadius: 30,
-  //   borderWidth: 1,
-  //   borderColor: '#000',
-  //   color: "#000"
-  // },
-  // communityJoinBtn: {
-  //   position: 'absolute',
-  //   top: 10,
-  //   right: 0,
-  //   textAlign: 'center',
-  //   width: 80,
-  //   paddingHorizontal: 8,
-  //   paddingVertical: 8,
-  //   borderRadius: 30,
-  //   backgroundColor: "#169F91",
-  //   color: "white"
-  // }
+  communityQuestion: {
+    position: "absolute",
+    right: "5%",
+    top: 515,
+    width: 65, 
+    height: 65
+  }
 })

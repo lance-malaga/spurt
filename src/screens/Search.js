@@ -49,7 +49,7 @@ export default function Search() {
 						<Image source={require("../../assets/icons/backIcon.png")} />
 					</TouchableOpacity>
 					<TouchableOpacity onPress={handleGoToDashboard}>
-						<Text style={styles.dashboardBtn}>Go to Dashboard</Text>
+						<Text style={styles.dashboardBtn}>Next</Text>
 					</TouchableOpacity>
 				</View>
 			<Image
@@ -60,7 +60,12 @@ export default function Search() {
 				content={'Look For A Plant'}
 				fontSize={24}
 				textAlign={'center'}
-				paddingTop={60}
+				paddingTop={55}
+			/>
+			<FontText 
+				content={'Add new plants to your garden collection'}
+				fontSize={12}
+				textAlign={'center'}
 			/>
 			<View style={styles.searchContainer}>
 				<SearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
