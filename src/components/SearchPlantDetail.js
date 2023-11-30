@@ -211,25 +211,15 @@ export default function SearchPlantDetail({ route }) {
           </View>
 
           {/* SAVE */}
-          <View style={styles.collectionButtonContainer}>
+        </View>
+      </ScrollView>
+      <View style={styles.collectionButtonContainer}>
             <TouchableOpacity>
               <Image
                 source={require("../../assets/icons/add-to-collection.png")}
               />
             </TouchableOpacity>
-            {goToDashboard && (
-              <TouchableOpacity
-                style={styles.goToDashboardButton}
-                onPress={handleGoToDashboard}
-              >
-                <Text style={styles.goToDashboardButtonText}>
-                  Go to Dashboard
-                </Text>
-              </TouchableOpacity>
-            )}
           </View>
-        </View>
-      </ScrollView>
     </View>
   );
 }
@@ -394,7 +384,7 @@ const styles = StyleSheet.create({
   },
   collectionButtonContainer: {
     position: "absolute",
-    bottom: 20,
+    top: "90%",
     left: 80,
   },
   goToDashboardButton: {

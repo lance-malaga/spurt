@@ -8,25 +8,34 @@ import {
   StyleSheet,
 } from "react-native";
 import axios from "axios";
-import FontText from '../components/FontText';
+import FontText from "../components/FontText";
+import ChueyWeather from "../../assets/icons/weather-care-alert.svg";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function AiPrompt() {
-
-  const WEATHER_API_URL ="http://api.weatherapi.com/v1/current.json?key=f3bffa43821a439db9b15409230911&q=vancouver&aqi=yes";
+  const WEATHER_API_URL =
+    "http://api.weatherapi.com/v1/current.json?key=f3bffa43821a439db9b15409230911&q=vancouver&aqi=yes";
   const apiEndpoint = "https://api.openai.com/v1/chat/completions";
   const apiKey = process.env.EXPO_PUBLIC_API_KEY;
   const [currentWeather, setCurrentWeather] = useState("");
   const [currentCondition, setCurrentCondition] = useState("");
   const [plantCareTips, setPlantCareTips] = useState("");
-  const [isChatbotInfoVisible, setChatbotInfoVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const navigation = useNavigation();
 
-  const toggleChatbotInfo = () => {
-    setChatbotInfoVisible(!isChatbotInfoVisible);
+  const toggleAiPrompt = () => {
+    setShowModal(!showModal);
+  };
+  const closeAiPrompt = () => {
+    setShowModal(false);
+  };
+  const openPlantAid = () => {
+    setShowModal(false);
+    navigation.navigate("PlantAidOnboarding");
   };
 
-  const closeChatbotInfo = () => {
-    setChatbotInfoVisible(false);
-  };
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(WEATHER_API_URL)
@@ -46,22 +55,6 @@ export default function AiPrompt() {
       return "afternoon";
     } else {
       return "evening";
-    }
-  };
-
-  const determineWeatherGif = (conditionCode) => {
-    switch (conditionCode) {
-      case "1000": // clear
-        return require("../../assets/icons/weather/snowy_1.gif");
-      case "1003": // partly cloudy
-        return require("../../assets/icons/weather/high_temp.gif");
-      case "1006": // cloudy
-        return require("../../assets/icons/weather/windy_1.gif");
-      case "1030": // mist
-        return require("../../assets/icons/weather/rainy_1.gif");
-      // Add more cases based on your weather condition codes
-      default:
-        return require("../../assets/icons/weather/high_temp.gif");
     }
   };
 
@@ -106,56 +99,93 @@ export default function AiPrompt() {
     }
   }, [currentCondition]);
 
+  const determineWeatherGif = (conditionCode) => {
+    switch (conditionCode) {
+      case "1000": // clear
+        return require("../../assets/icons/weather/snowy_1.gif");
+      case "1003": // partly cloudy
+        return require("../../assets/icons/weather/high_temp.gif");
+      case "1006": // cloudy
+        return require("../../assets/icons/weather/windy_1.gif");
+      case "1030": // mist
+        return require("../../assets/icons/weather/rainy_1.gif");
+      // Add more cases based on your weather condition codes
+      default:
+        return require("../../assets/icons/weather/high_temp.gif");
+    }
+  };
+
   return (
     <View>
-      <TouchableOpacity onPress={() => toggleChatbotInfo()}>
-        <Image
-          source={require("../../assets/icons/chuey-prompt.png")}
-          style={styles.chueyPrompt}
-        />
+      <TouchableOpacity onPress={() => toggleAiPrompt()}>
+        <View style={styles.chueyPrompt}>
+          <ChueyWeather />
+        </View>
       </TouchableOpacity>
-      <Modal
-        visible={isChatbotInfoVisible}
-        animationType="slide"
-        transparent={true}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.weather_gif}>
-            <Image source={determineWeatherGif(currentCondition.code)} />
-          </View>
-          <View style={styles.weather_alert}>
+      <Modal visible={showModal} animationType="slide" transparent={true}>
+        <View style={styles.modal__overlay}>
+          <View style={styles.modal__container}>
+            <View style={styles.weather_gif}>
+              <Image
+                style={{ marginTop: -100 }}
+                source={determineWeatherGif(currentCondition.code)}
+              />
+            </View>
             <FontText
-            content={"Weather Care Alert"}
-            fontSize={16}
-            fontWeight={700}
+              content={"Weather Alert"}
+              fontSize={24}
+              fontWeight={500}
+              marginTop={15}
             />
-          </View>
-          <View style={styles.whiteBox}>
-            <Image
-              source={require("../../assets/icons/chuey-Icon.png")}
-              style={styles.chueyIcon}
-            />
-            <View style={styles.careTip}>
-              {plantCareTips !== "" && (
+            {loading && (
+              <FontText
+                content={`loading...`}
+                fontSize={16}
+                marginTop={15}
+                textAlign={"center"}
+              />
+            )}
+            {plantCareTips && (
+              <View>
                 <FontText
                   content={plantCareTips}
-                  color={"#000"}
-                  fontSize={14}
-                  fontWeight={400}
-                  style={styles.promptContainer}
+                  fontSize={16}
+                  marginTop={15}
+                  textAlign={"justify"}
+                  paddingBottom={30}
                 />
-              )}
-            </View>
-            <View style={styles.blackLine}></View>
-            <TouchableOpacity onPress={() => closeChatbotInfo()}>
-              <View style={styles.closeButton}>
-                <FontText
-                content={"Close"}
-                fontSize={18}
-                fontWeight={400}
-                />
+                <View style={styles.nav__container}>
+                  <FontText
+                    content={"Still have questions?"}
+                    fontWeight={500}
+                    color={"#828282"}
+                    textAlign={"center"}
+                    paddingBottom={10}
+                  />
+                  <TouchableOpacity
+                    style={styles.nav__plant_aid}
+                    onPress={() => openPlantAid()}
+                  >
+                    <FontText
+                      content={"Ask Plant Aid"}
+                      fontSize={18}
+                      fontWeight={500}
+                      color={"#FFFFFF"}
+                      textAlign={"center"}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => closeAiPrompt()}>
+                    <FontText
+                      content={"Ok, got it"}
+                      fontWeight={500}
+                      color={"#828282"}
+                      textAlign={"center"}
+                      marginTop={20}
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
-            </TouchableOpacity>
+            )}
           </View>
         </View>
       </Modal>
@@ -164,72 +194,39 @@ export default function AiPrompt() {
 }
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.6 )",
-    color: "#fff",
-  },
-  closeButton: {
-    color: "black",
-    marginTop: 10,
-    position: "absolute",
-    top:110,
-    right: 135
-  },
   chueyPrompt: {
     position: "absolute",
     bottom: 90,
     left: 270,
   },
-  chueyOverlay: {
-    position: "absolute",
-    top: 330,
-    zIndex: 1,
-  },
-  chueyIcon: {
-    width: 120, 
-    height: 120,
-  },
-  whiteBox: {
-    flexDirection: "row", 
-    alignItems: "center", 
-    backgroundColor: "#fff", 
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    width: 342,
-    height: 350,
-  },
-  weather_alert: {
-    position: "absolute",
-    zIndex: 1,
-    top: 310,
-  },
-  promptContainer: {
-    flexShrink: 1,
-    padding: 10,
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    maxWidth: 50,
-  },
-  careTip: {
-    width: 205,
-  },
-  blackLine: {
-    height: 1,
-    backgroundColor: "#AFAFAF",
-    width: "95%",
-    top: 285,
-    left: 10,
-    position: "absolute"
-  },
   weather_gif: {
     position: "absolute",
     zIndex: 1,
-    top: 140,
-  }
+    top: -15,
+  },
+  modal__overlay: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    color: "#fff",
+    padding: 24,
+  },
+  ai__icon: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+  },
+  modal__container: {
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    paddingHorizontal: 40,
+    paddingVertical: 25,
+  },
+  nav__plant_aid: {
+    width: "100%",
+    paddingVertical: 16,
+    backgroundColor: "#14171F",
+    borderRadius: 50,
+  },
 });

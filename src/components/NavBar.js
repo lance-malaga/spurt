@@ -2,6 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Image, Pressable, Dimensions } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 
+//icons
+// import homeBlack from '../../assets/icons/home-black.svg'
+// import homeBlue from '../../assets/icons/home-blue.svg'
+// import myGardenBlack from '../../icons/my-garden-black.svg'
+// import myGardenBlue from '../../icons/my-garden-blue.svg'
+// import plantAidBlack from '../../icons/plantaid-black.svg'
+// import plantAidBlue from '../../icons/plantaid-blue.svg'
+// import communityBlack from '../../icons/community-black.svg'
+// import communityBlue from '../../icons/community-blue.svg'
+
+
+
 export default function NavBar() {
     const route = useRoute();
     const navigation = useNavigation();
