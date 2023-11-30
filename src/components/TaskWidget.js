@@ -5,6 +5,11 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 // COMPONENTS
 import FontText from "./FontText";
 
+// ASSETS
+import TimerWater from "../../assets/icons/plant-detail/timer-water.svg"
+import TimerFertilize from "../../assets/icons/plant-detail/timer-fertilize.svg"
+import TimerPrune from "../../assets/icons/plant-detail/timer-prune.svg"
+
 export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneStatus, waterTimer, setWaterTimer, fertilizerTimer, setFertilizerTimer, pruneTimer, setPruneTimer, shadowStyle}) {
 
     const formatTime = (seconds) => {
@@ -87,17 +92,13 @@ export default function TaskWidget({task, waterStatus, fertilizeStatus, pruneSta
                                     <Text style={{ color:'transparent', position:'absolute' }}>
                                         {remainingTime}
                                     </Text>
-                                    <Image
-                                        style={{marginRight: -2}}
-                                        source={ task === 'Water' ? 
-                                                require("../../assets/icons/plant-detail/water.png")
-                                            : task === 'Fertilize' ?
-                                                require("../../assets/icons/plant-detail/fertilize.png")
-                                            : 
-                                                require("../../assets/icons/plant-detail/prune.png")
-                                        } 
-                                        alt={`${task}-icon`.toLocaleLowerCase()}
-                                    />
+                                    { task === 'Water' ? 
+                                        <TimerWater style={styles.timer_icon} />
+                                    : task === 'Fertilize' ?
+                                        <TimerFertilize style={styles.timer_icon} />
+                                    : <TimerPrune style={styles.timer_icon} />
+
+                                    }
                                 </>
                             )}
                         </CountdownCircleTimer>
@@ -148,4 +149,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 20,
     },
+    timer_icon : {
+        marginRight: -2,
+    }
 });

@@ -10,6 +10,9 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import FontText from "./FontText";
 
+// ASSETS
+import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg";
+
 export default function SearchPlantDetail({ route }) {
   const [showTemperature, setShowTemperature] = useState(false);
   const [showWater, setShowWater] = useState(false);
@@ -43,34 +46,36 @@ export default function SearchPlantDetail({ route }) {
       setShowLightLevels(false);
     };
 
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          closeOtherSections();
-          toggleFunction(!isShown);
-        }}
-        style={[styles.careSection, isShown && styles.careSectionExpanded]}
-      >
-        <View style={styles.careHeader}>
-          <Image source={iconSource} style={styles.careIcon} />
-          <Text style={styles.headerTabs2}>{name}</Text>
-          <View style={styles.careChevronContainer}>
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/icons/ChevDownIcon.png")}
-                style={[
-                  styles.chevIcon,
-                  isShown && styles.chevIconRotated,
-                  { marginLeft: 10 },
-                ]}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        {isShown && <Text style={styles.care}>{content}</Text>}
-      </TouchableOpacity>
-    );
-  }
+		return (
+			<TouchableOpacity
+			onPress={() => {
+				closeOtherSections();
+				toggleFunction(!isShown);
+			}}
+			style={[
+				styles.careSection,
+				isShown && styles.careSectionExpanded,
+			]}
+			>
+				<View style={styles.careHeader}>
+				<Image source={iconSource} style={styles.careIcon} />
+				<Text style={styles.headerTabs2}>{name}</Text>
+					<View style={styles.careChevronContainer}>
+						<TouchableOpacity>
+						<ChevDownIcon
+							style={[
+								styles.chevIcon,
+								isShown && styles.chevIconRotated,
+								{ marginLeft: 10 },
+							]}
+						/>
+						</TouchableOpacity>
+					</View>
+				</View>
+				{isShown && <Text style={styles.care}>{content}</Text>}
+			</TouchableOpacity>
+		);
+	}
 
   const handleAddToCollection = () => {
     setIsPressed(!isPressed);
