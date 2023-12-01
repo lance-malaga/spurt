@@ -1,14 +1,21 @@
 import { View, Image, StyleSheet } from "react-native";
 
+// COMPONENTS
 import FontText from "./FontText";
 import { Shadow } from "react-native-shadow-2";
 
+// ASSETS
+import OptimalLight from "../../assets/icons/plant-detail/optimal-light.svg"
+import OptimalPhLevel from "../../assets/icons/plant-detail/optimal-ph-level.svg"
+import OptimalSoil from "../../assets/icons/plant-detail/optimal-soil.svg"
+import OptimalTemp from "../../assets/icons/plant-detail/optimal-temp.svg"
+
 export default function OptimalConditions({optimalConditions, shadowStyle}) {
     const optimalConditionImgs = [
-        require('../../assets/icons/plant-detail/temp-icon.png'),
-        require('../../assets/icons/plant-detail/sun-icon.png'),
-        require('../../assets/icons/plant-detail/soil-icon.png'),
-        require('../../assets/icons/plant-detail/ph-level-icon.png'),
+        <OptimalTemp/>,
+        <OptimalLight/>,
+        <OptimalSoil/>,
+        <OptimalPhLevel/>,
     ];
 
     return (
@@ -27,20 +34,17 @@ export default function OptimalConditions({optimalConditions, shadowStyle}) {
                             return (
                                 <View key={index} style={styles.conditions_content}>
                                     <View style={styles.icon}>
-                                        <Image
-                                            source={optimalConditionImgs[index]}
-                                            alt={data.name}
-                                        />
+                                        {optimalConditionImgs[index]}
                                     </View>
                                     <View style={styles.content}>
                                         <FontText 
                                             content={data.type}
-                                            fontSize={12}
                                             fontWeight={500}
                                         />
                                         <FontText 
                                             content={data.condition}
-                                            fontSize={10}
+                                            fontSize={12}
+                                            marginTop={-5}
                                         />
                                     </View>
                                 </View>
@@ -69,12 +73,13 @@ const styles = StyleSheet.create({
         marginTop: 15,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        rowGap: 15,
-        justifyContent: 'space-between'
+        gap: 15,
+        columnGap: 30,
     },
     conditions_content: {
-        width: '50%',
+        width: '45%',
         flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         gap: 10
     },
@@ -82,5 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#d9d9d9',
         borderRadius: 50,
         padding: 9,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });

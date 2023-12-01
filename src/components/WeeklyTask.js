@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Shadow } from "react-native-shadow-2";
 
 // COMPONENTS
 import FontText from "./FontText";
-import { Shadow } from "react-native-shadow-2";
-import { Image } from "react-native";
 import WeeklyTaskItem from './WeeklyTaskItem';
+
+// ASSETS
+import ArrowLeft from "../../assets/icons/plant-detail/arrow-left.svg"
+import ArrowRight from "../../assets/icons/plant-detail/arrow-right.svg"
 
 export default function WeeklyTask({shadowStyle, startTimer, waterStatus, fertilizeStatus, pruneStatus,taskList}) {
     const [currentMonth, setCurrentMonth] = useState();
@@ -38,23 +41,17 @@ export default function WeeklyTask({shadowStyle, startTimer, waterStatus, fertil
                     <View style={styles.header}>
                         <FontText
                             content={'Weekly Tasks'}
-                            fontSize={14}
+                            fontSize={16}
                             fontWeight={700}
                         />
                         <View style={styles.month}>
-                            <Image 
-                                source={require('../../assets/icons/plant-detail/left-arrow.png')}
-                                alt="left-arrow"
-                            />
+                            <ArrowLeft/>
                             <FontText
                                 content={currentMonth}
                                 fontSize={12}
                                 fontWeight={500}
                             />
-                            <Image 
-                                source={require('../../assets/icons/plant-detail/right-arrow.png')}
-                                alt="left-arrow"
-                            />
+                            <ArrowRight/>
                         </View>
                     </View>
                     <View style={styles.dates}>
@@ -81,7 +78,7 @@ export default function WeeklyTask({shadowStyle, startTimer, waterStatus, fertil
                     <FontText 
                         content={'Complete daily tasks, reset your plant care wheel, and get a timed tracker for your next session!'}
                         color={'#707070'}
-                        fontSize={11}
+                        fontSize={12}
                     />
                     <View style={styles.task_item}>
                         {taskList.map((task, index) => (
