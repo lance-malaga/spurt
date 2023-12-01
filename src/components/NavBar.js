@@ -1,79 +1,90 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, Pressable, Dimensions } from 'react-native';
+import { StyleSheet, View, Pressable } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 
-//icons
-// import homeBlack from '../../assets/icons/home-black.svg'
-// import homeBlue from '../../assets/icons/home-blue.svg'
-// import myGardenBlack from '../../icons/my-garden-black.svg'
-// import myGardenBlue from '../../icons/my-garden-blue.svg'
-// import plantAidBlack from '../../icons/plantaid-black.svg'
-// import plantAidBlue from '../../icons/plantaid-blue.svg'
-// import communityBlack from '../../icons/community-black.svg'
-// import communityBlue from '../../icons/community-blue.svg'
+// icons
+import HomeBlack from '../../assets/icons/home-black.svg';
+import HomeBlue from '../../assets/icons/home-blue.svg';
+import MyGardenBlack from '../../assets/icons/my-garden-black.svg';
+import MyGardenBlue from '../../assets/icons/my-garden-blue.svg';
+import PlantAidBlack from '../../assets/icons/plantaid-black.svg';
+import PlantAidBlue from '../../assets/icons/plantaid-blue.svg';
+import CommunityBlack from '../../assets/icons/community-black.svg';
+import CommunityBlue from '../../assets/icons/community-blue.svg';
+import MyGardenDark from '../../assets/icons/my-garden-dark-mode.svg';
+import PlantAidDark from '../../assets/icons/plantaid-dark-mode.svg';
+import CommunityDark from '../../assets/icons/community-dark-mode.svg';
 
+export default function NavBar({ darkMode }) {
+  const route = useRoute();
+  const navigation = useNavigation();
 
+  const dark = (data) => {
+    if (route.name === data.path) {
+      return darkMode ? data.image3 : data.image2;
+    } else {
+      return darkMode ? data.image3 : data.image;
+    }
+  };
 
-export default function NavBar() {
-    const route = useRoute();
-    const navigation = useNavigation();
+  const navList = [
+    {
+      path: 'Dashboard',
+      image: <HomeBlack />,
+      image2: <HomeBlue />,
+      image3: <HomeBlue/>
+    },
+    {
+      path: 'YourGarden',
+      image: <MyGardenBlack />,
+      image2: <MyGardenBlue />,
+      image3: <MyGardenDark />,
+    },
+    {
+      path: 'PlantAidOnboarding',
+      image: <PlantAidBlack />,
+      image2: <PlantAidBlue />,
+      image3: <PlantAidDark />,
+    },
+    {
+      path: 'FindCommunity',
+      image: <CommunityBlack />,
+      image2: <CommunityBlue />,
+      image3: <CommunityDark />,
+    },
+  ];
 
-    const navList = [
-        {
-            path: 'Dashboard',
-            image: require("../../assets/icons/nav_home_black.png"),
-            image2: require("../../assets/icons/nav_home_blue.png"),
-        },
-        {
-            path: 'YourGarden',
-            image: require("../../assets/icons/nav_garden_black.png"),
-            image2: require("../../assets/icons/nav_garden_blue.png"),
-        },
-        {
-            path: 'PlantAidOnboarding',
-            image: require("../../assets/icons/nav_plantaid_black.png"),
-            image2: require("../../assets/icons/nav_plantaid_blue.png"),
-        },
-        {
-            path: 'FindCommunity',
-            image: require("../../assets/icons/nav_community_black.png"),
-            image2: require("../../assets/icons/nav_community_blue.png"),
-        },
-    ];
-
-    return (
-        <View style={styles.container}>
-            {navList.map((data, index) => {
-                return (
-                    <Pressable 
-                        style={[styles.image, {backgroundColor: route.name == data.path ? "rgba(255,255,255,0)" : "transparent"}]}
-                        key={index} 
-                        onPress={() => navigation.navigate(data.path)}
-                    >
-                        <Image 
-                            source={route.name == data.path ? data.image2 : data.image} 
-                        />
-                    </Pressable>
-                );
-            })}
-        </View>
-    )
+  return (
+    <View style={[styles.container, { backgroundColor: darkMode ? '#141B30' : '#fff' }]}>
+      {navList.map((data, index) => {
+        return (
+          <Pressable
+            style={[styles.image, { backgroundColor: route.name === data.path ? 'rgba(255,255,255,0)' : 'transparent' }]}
+            key={index}
+            onPress={() => navigation.navigate(data.path)}
+          >
+            {dark(data)}
+          </Pressable>
+        );
+      })}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        position: 'absolute',
-        bottom: 0,
-        width: "100%",
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "center",
-        height: 100,
-        gap: 35,
-        zIndex: 1,
-        backgroundColor: "#fff",
-        borderTopLeftRadius: 25,
-        borderTopRightRadius: 25,
-        elevation: 10,
-    },
+  container: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    gap: 35,
+    zIndex: 1,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    elevation: 10,
+  },
 });
