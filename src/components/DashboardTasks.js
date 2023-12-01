@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View,  Image,} from "react-native";
-import CustomText from "./CustomText";
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
-// Component
+// Components
 import Timer from './Timer';
+import FontText from "./FontText";
  
-export default function DashboardTasks() {
+export default function DashboardTasks({ darkMode }) {
     const taskList = [
         {
             name: 'Water',
@@ -23,22 +23,18 @@ export default function DashboardTasks() {
     ];
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: darkMode ? "#292D3A" : "rgba(217, 217, 217, 0.0)" }]}>
             <View style={styles.title_header}>
-                <CustomText
-                    text={`Plant Progress`}
+                <FontText
+                    content={"Plant Progress"}
                     fontSize={18}
                     fontWeight={700}
+                    color={darkMode ? '#E4E4E4' : '#000'}
                 />
             </View>
-            <View style={styles.plant_card}>
+            <View style={[styles.plant_card, { backgroundColor: darkMode ? "#30374A" : "white" }]}>
                 <View style={styles.plant_item}>
                     <View style={styles.plant_item__text}>
-                        <CustomText
-                            text={'Tomato Plant'}
-                            fontSize={18}
-                            fontWeight={500}
-                        />
                     <Image 
                         source={require('../../assets/images/plant-card/tomato.png')}
                         alt="tomato" 
@@ -113,6 +109,7 @@ const styles = StyleSheet.create({
         marginRight: 24,
         borderTopEndRadius: 33,
         borderBottomRightRadius: 33,
+        elevation: 1
     },
     plant_item: {
         flexDirection: "column",
