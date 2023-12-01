@@ -33,9 +33,10 @@ export default function Onboard(props) {
         />
         <View style={styles.slogan_text}>
           <FontText
-          content={"Where We Make Gardening Easy."}
-          fontSize={28}
-          fontWeight={700}
+            content={"Where We Make Gardening Easy."}
+            fontSize={28}
+            fontWeight={700}
+            textAlign={'center'}
           />
         </View>
         <Pressable style={({ pressed }) => [styles.button1,{backgroundColor: pressed ? "darkgrey" : "black",},]}onPress={handleYesClick}>

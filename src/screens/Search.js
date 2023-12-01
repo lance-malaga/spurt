@@ -43,7 +43,7 @@ export default function Search() {
 	}, [searchInput]);
 
 	return (
-			<View style={styles.container}>
+		<View style={styles.container}>
 				<View style={styles.header}>
 					<TouchableOpacity onPress={handleGoBack}>
 						<Image source={require("../../assets/icons/backIcon.png")} />
@@ -59,12 +59,12 @@ export default function Search() {
 			<FontText 
 				content={'Look For A Plant'}
 				fontSize={24}
+				fontWeight={700}
 				textAlign={'center'}
-				paddingTop={55}
+				marginTop={25}
 			/>
 			<FontText 
 				content={'Add new plants to your garden collection'}
-				fontSize={12}
 				textAlign={'center'}
 			/>
 			<View style={styles.searchContainer}>
@@ -118,8 +118,6 @@ export default function Search() {
 						/>
 						<FontText 
 							content={'Care guides and tips for every plant'}
-							fontSize={12}
-							marginTop={-5}
 							paddingBottom={20}
 						/>
 					</View>
@@ -128,13 +126,10 @@ export default function Search() {
 					</View>
 				</>
 			)}
-		  </View>
+		</View>
 	);			
 }
 const styles = StyleSheet.create({
-	container: {
-		height: '100%',
-	},
 	header: {
 		flexDirection: "row",
 		justifyContent: "space-between",
@@ -157,8 +152,7 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 	},
 	categoriesCardContainer: {
-		width: "100%",
-		alignItems: "center",
+		paddingHorizontal: 24,
 	},
 	buttonContainer: {
 		flexDirection: "row",
@@ -184,13 +178,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 	},
-	picksContainer: {
-		alignItems: "flex-start",
-		paddingTop: 30,
-		paddingLeft: 30,
-	},
 	categoriesContainer: {
-		paddingLeft: 30,
-		marginTop: 40,
+		paddingHorizontal: 24,
+		marginTop: 30,
 	},
 });
