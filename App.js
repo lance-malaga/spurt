@@ -16,121 +16,124 @@ import PlantAidOnboarding from "./src/screens/PlantAidOnboarding";
 import TakePic from "./src/components/TakePic"
 import SearchPlantDetail from "./src/components/SearchPlantDetail";
 import PlantDetail from "./src/screens/PlantDetail";
+import { DarkModeProvider } from './src/components/DarkModeContext';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboard">
-        <Stack.Screen
-          name="Onboard"
-          component={Onboard}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Search"
-          component={Search}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen
-          name="Card"
-          component={Card}
-          options={{
-            title: "Card",
-          }}
-        />
-        <Stack.Screen
-          name="SearchPlantDetail"
-          component={SearchPlantDetail}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="CategoriesCard"
-          component={CategoriesCard}
-          options={{
-            title: "Categories",
-          }}
-        />
-        <Stack.Screen
-          name="CategoryResults"
-          component={CategoryResults}
-          options={({ route }) => ({
-            title: route.params.category || "Category Results",
-          })}
-        />
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="FindCommunity"
-          component={FindCommunity}
-          options={{
-            headerShown: false,
-            headerTitleAlign: "center",
-            headerStyle: {
-              backgroundColor: "transparent",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="JoinedCommunity"
-          component={JoinedCommunity}
-          options={{
-            headerShown: false,
-            headerTitleAlign: "center",
-            headerStyle: {
-              backgroundColor: "transparent",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="YourGarden"
-          component={YourGarden}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="PlantDetail"
-          component={PlantDetail}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="PlantAidOnboarding"
-          component={PlantAidOnboarding}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="TakePic"
-          component={TakePic}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="PlantAid"
-          component={PlantAid}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <DarkModeProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Onboard">
+          <Stack.Screen
+            name="Onboard"
+            component={Onboard}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Search"
+            component={Search}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="Card"
+            component={Card}
+            options={{
+              title: "Card",
+            }}
+          />
+          <Stack.Screen
+            name="SearchPlantDetail"
+            component={SearchPlantDetail}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="CategoriesCard"
+            component={CategoriesCard}
+            options={{
+              title: "Categories",
+            }}
+          />
+          <Stack.Screen
+            name="CategoryResults"
+            component={CategoryResults}
+            options={({ route }) => ({
+              title: route.params.category || "Category Results",
+            })}
+          />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="FindCommunity"
+            component={FindCommunity}
+            options={{
+              headerShown: false,
+              headerTitleAlign: "center",
+              headerStyle: {
+                backgroundColor: "transparent",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="JoinedCommunity"
+            component={JoinedCommunity}
+            options={{
+              headerShown: false,
+              headerTitleAlign: "center",
+              headerStyle: {
+                backgroundColor: "transparent",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="YourGarden"
+            component={YourGarden}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="PlantDetail"
+            component={PlantDetail}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="PlantAidOnboarding"
+            component={PlantAidOnboarding}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="TakePic"
+            component={TakePic}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="PlantAid"
+            component={PlantAid}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </DarkModeProvider>
   );
 }
 
