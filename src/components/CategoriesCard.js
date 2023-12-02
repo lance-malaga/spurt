@@ -1,7 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import useSearchOnboarding from "../../utils/searchOnboarding";
 
 export default function CategoriesCard() {
 	const navigation = useNavigation();
