@@ -65,6 +65,7 @@ function App() {
             component={CategoryResults}
             options={({ route }) => ({
               title: route.params.category || "Category Results",
+              headerShown: false,
             })}
           />
           <Stack.Screen

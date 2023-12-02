@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "type": "Vegetable",
+    "type": "Vegetables",
     "name": "Lettuce",
     "scientificName": "Lactuca Sativa",
     "difficulty": "Beginner",
@@ -55,7 +55,7 @@
   },
   {
     "id": 2,
-    "type": "Fruit",
+    "type": "Fruits",
     "name": "Tomato",
     "scientificName": "Solanum Lycopersicum",
     "difficulty": "Intermediate",
@@ -161,7 +161,7 @@
   },
   {
     "id": 3,
-    "type": "Fruit",
+    "type": "Fruits",
     "name": "Cucumber",
     "scientificName": "Cucumis sativus",
     "difficulty": "Intermediate",
@@ -298,7 +298,7 @@
   },
   {
     "id": 5,
-    "type": "Vegetable",
+    "type": "Vegetables",
     "name": "Raddish",
     "scientificName": "Raphanus Sativus",
     "difficulty": "Beginner",
@@ -352,7 +352,7 @@
   },
   {
     "id": 6,
-    "type": "Herb",
+    "type": "Herbs",
     "name": "Parsley",
     "scientificName": "Petroselinum Crispum",
     "difficulty": "Beginner",
@@ -402,7 +402,7 @@
   },
   {
     "id": 7,
-    "type": "Floral",
+    "type": "Flowers",
     "name": "Sunflower",
     "scientificName": "Helianthus Annuus",
     "difficulty": "Beginner",
@@ -452,7 +452,7 @@
   },
   {
     "id": 8,
-    "type": "Floral",
+    "type": "Flowers",
     "name": "Rose",
     "scientificName": "Rosa",
     "difficulty": "Beginner-Intermediate",
@@ -506,7 +506,7 @@
   },
   {
     "id": 9,
-    "type": "Floral",
+    "type": "Fruits",
     "name": "Zucchini",
     "scientificName": "Cucurbita Pepo",
     "difficulty": "Beginner",
@@ -557,7 +557,7 @@
   },
   {
     "id": 10,
-    "type": "Fruit",
+    "type": "Fruits",
     "name": "Strawberry",
     "scientificName": "Fragaria X Ananassa",
     "difficulty": "Beginner",
