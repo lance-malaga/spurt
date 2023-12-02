@@ -44,6 +44,11 @@ export default function Search() {
 
 	return (
 		<View style={styles.container}>
+			<Image
+				source={require("../../assets/images/background/background-blur.png")}
+				style={styles.bg_img}
+			/>
+			<ScrollView contentContainerStyle={{paddingBottom: 50}}>
 				<View style={styles.header}>
 					<TouchableOpacity onPress={handleGoBack}>
 						<Image source={require("../../assets/icons/backIcon.png")} />
@@ -52,80 +57,80 @@ export default function Search() {
 						<Text style={styles.dashboardBtn}>Next</Text>
 					</TouchableOpacity>
 				</View>
-			<Image
-				source={require("../../assets/images/background/background-blur.png")}
-				style={styles.bg_img}
-			/>
-			<FontText 
-				content={'Look For A Plant'}
-				fontSize={24}
-				fontWeight={700}
-				textAlign={'center'}
-				marginTop={25}
-			/>
-			<FontText 
-				content={'Add new plants to your garden collection'}
-				textAlign={'center'}
-			/>
-			<View style={styles.searchContainer}>
-				<SearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
-			</View>
-			<View style={styles.buttonContainer}>
-				<View style={styles.buttonGroup}>
-					<Pressable style={styles.button} onPress={() => navigation.navigate("TakePic")}>
-						<Image source={require("../../assets/icons/camera-icon.png")} />
-						<FontText
-							content={'Camera'}
-							color={'#fff'}
-							textAlign= {'center'}
-							paddingLeft={10}
-						/>
-					</Pressable>
+				<FontText 
+					content={'Look For A Plant'}
+					fontSize={24}
+					fontWeight={700}
+					textAlign={'center'}
+					marginTop={25}
+				/>
+				<FontText 
+					content={'Add new plants to your garden collection'}
+					textAlign={'center'}
+				/>
+				<View style={styles.searchContainer}>
+					<SearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
 				</View>
-				<View style={styles.buttonGroup}>
-					<AccessGallery />
-				</View>
-			</View>
-			{searchInput.length ? (
-				<>
-					<FontText
-						content={`Results: ${filteredResults.length}`}
-						fontSize={16}
-						fontWeight={500}
-						paddingTop={20}
-						paddingLeft={25}
-					/>
-					{filteredResults.map((item, index) => {
-						return (
-							<SearchCard
-								key={index}
-								data={item}
-								name={item.name}
-								scientificName={item.scientificName}
-								difficulty={item.difficulty}
-								// image={}
+				<View style={styles.buttonContainer}>
+					<View style={styles.buttonGroup}>
+						<Pressable style={styles.button} onPress={() => navigation.navigate("TakePic")}>
+							<Image source={require("../../assets/icons/camera-icon.png")} />
+							<FontText
+								content={'Camera'}
+								color={'#fff'}
+								textAlign= {'center'}
+								paddingLeft={10}
 							/>
-						);
-					})}
-				</>
-			) : (
-				<>
-					<View style={styles.categoriesContainer}>
-						<FontText 
-							content={'CATEGORIES'}
-							fontSize={18}
-							fontWeight={700}
-						/>
-						<FontText 
-							content={'Care guides and tips for every plant'}
+						</Pressable>
+					</View>
+					<View style={styles.buttonGroup}>
+						<AccessGallery />
+					</View>
+				</View>
+				{searchInput.length ? (
+					<>
+						<FontText
+							content={`Results: ${filteredResults.length} items`}
+							fontSize={16}
+							fontWeight={500}
+							paddingTop={20}
+							paddingLeft={25}
 							paddingBottom={20}
 						/>
-					</View>
-					<View style={styles.categoriesCardContainer}>
-						<CategoriesCard />
-					</View>
-				</>
-			)}
+						<View style={styles.searchResultsContainer}>
+							{filteredResults.map((item, index) => {
+								return (
+									<SearchCard
+										key={index}
+										data={item}
+										name={item.name}
+										scientificName={item.scientificName}
+										difficulty={item.difficulty}
+									/>
+								);
+							})}
+						</View>
+					</>
+				) : (
+					<>
+						<View style={styles.categoriesContainer}>
+							<FontText 
+								content={'CATEGORIES'}
+								fontSize={18}
+								fontWeight={700}
+							/>
+							<FontText 
+								content={'Care guides and tips for every plant'}
+								paddingBottom={20}
+							/>
+						</View>
+						<View style={styles.categoriesCardContainer}>
+							<CategoriesCard />
+						</View>
+					</>
+				)}
+
+			</ScrollView>
 		</View>
 	);			
 }
@@ -182,4 +187,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 24,
 		marginTop: 30,
 	},
+	searchResultsContainer: {
+		paddingHorizontal: 24,
+        gap: 25,
+	}
 });

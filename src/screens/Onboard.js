@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, ScrollView, Image, Pressable } from "react-nati
 import { useNavigation } from "@react-navigation/native";
 import FontText from "../components/FontText";
 
+import OnboardingImg from "../../assets/images/onbooarding-vector.svg"
+
 export default function Onboard(props) {
   const { title = "Get Started" } = props;
   const { title2 = "Skip to Dashboard" } = props;
@@ -19,9 +21,8 @@ export default function Onboard(props) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.image_container}>
-        <Image
-          source={require("../../assets/images/onboarding-vector.png")}
-          alt={"welcome_img"}
+        <OnboardingImg
+          width={'100%'}
           style={styles.onboardingImage}
         />
       </View>
@@ -72,8 +73,6 @@ export default function Onboard(props) {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    alignItems: "center",
-    paddingTop: 100,
     backgroundColor: "#fff"
   },
   slogan_text: {
@@ -83,17 +82,13 @@ const styles = StyleSheet.create({
     alignContent: "center"
   },
   onboardingImage: {
-    paddingHorizontal: 205,
+    width: '100%',
+    backgroundColor: '#F4F3D9',
   },
   slogan_text2: {
     marginTop: -40,
     paddingRight: 0,
     paddingBottom: 35,
-  },
-  image_container: {
-    alignItems: "center",
-    justifyContent: "start",
-    marginTop: -100,
   },
   text_container: {
     alignItems: "center",
