@@ -90,9 +90,9 @@ export default function Search() {
 				{searchInput.length ? (
 					<>
 						<FontText
-							content={`Results: ${filteredResults.length} items`}
+							content={`Results (${filteredResults.length})`}
+							color={'#9B9B9B'}
 							fontSize={16}
-							fontWeight={500}
 							paddingTop={20}
 							paddingLeft={25}
 							paddingBottom={20}
