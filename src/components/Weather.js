@@ -1,12 +1,11 @@
-
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 
 // Components
-import Header from "./Header";
 import CurrentWeather from "./CurrentWeather";
 import CurrentDate from "./CurrentDate";
 import FontText from "./FontText";
+import SideNav from "./SideNav";
 
 export default function Weather() {
 
@@ -16,7 +15,7 @@ export default function Weather() {
     return (
         <>
             <View style={styles.container}>
-                <Header />
+                <SideNav/>
                 <View style={styles.dayInfo}>
                     <View>
                         <FontText 
