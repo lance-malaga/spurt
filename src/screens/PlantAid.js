@@ -17,7 +17,6 @@ import axios from "axios";
 //icons
 import SendIcon from '../../assets/icons/send-icon.svg'
 
-
 const PlantAid = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
@@ -26,7 +25,12 @@ const PlantAid = () => {
   const navigation = useNavigation();
   const handleBack = () => {
   navigation.goBack();
-};
+  };
+
+  const predefinedMessages = [
+    "How often should I water my tomato plant?",
+    "Is my sunflower wilting?",
+  ];
 
   const toggleChatbotInfo = () => {
     setChatbotInfoVisible(!isChatbotInfoVisible);
@@ -40,16 +44,19 @@ const PlantAid = () => {
   };
 
   const sendMessage = async () => {
+    if (!inputMessage.trim()) {
+      return;
+    }
+  
     const apiKey = process.env.EXPO_PUBLIC_API_KEY;
-
     const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+  
     try {
       const userMessage = {
         role: "user",
         content: inputMessage,
-        time: getCurrentTime,
       };
-
+  
       const response = await axios.post(
         apiEndpoint,
         {
@@ -58,7 +65,7 @@ const PlantAid = () => {
             {
               role: "system",
               content:
-                "You are a gardening assistant. You will answer questions in 1-2 sentences and only gardening related questions.If the user’s question is not directly related to the given book, politely reject it.",
+                "You are a gardening assistant. You will answer questions in 1-2 sentences and only gardening related questions. If the user’s question is not directly related to the given book, politely reject it.",
             },
             userMessage,
             {
@@ -75,13 +82,12 @@ const PlantAid = () => {
           },
         }
       );
-
+  
       const botResponse = response.data.choices[0].message.content;
-      // Update the state with both user and bot messages
       setMessages([
         ...messages,
         userMessage,
-        { role: "bot", content: botResponse, time: getCurrentTime() },
+        { role: "bot", content: botResponse, },
       ]);
       setInputMessage("");
     } catch (error) {
@@ -147,6 +153,18 @@ const PlantAid = () => {
         ))}
       </ScrollView>
 
+      {/* Predefined Messages */}
+      <View style={styles.predefinedMessagesContainer}>
+        {predefinedMessages.map((message, index) => (
+        <TouchableOpacity
+          key={index}
+          style={styles.predefinedMessageButton}
+          onPress={() => setInputMessage(message)}
+        >
+      <Text style={styles.predefinedMessageButtonText}>{message}</Text>
+    </TouchableOpacity>
+  ))}
+</View>
       {/* Message Bar */}
       <View style={styles.inputContainer}>
         <TextInput
@@ -163,7 +181,10 @@ const PlantAid = () => {
           onPress={sendMessage}
           style={styles.sendIconContainer}
         >
-        <SendIcon/>
+        <View style={styles.send_icon}>
+          <SendIcon/>          
+        </View>
+
         </TouchableOpacity>
       </View>
 
@@ -267,7 +288,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     alignItems: "center",
     width: "100%",
-    paddingTop: 40,
+    paddingTop: 30,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -304,8 +325,8 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     position: "absolute",
-    right: 35,
-    top: -5,
+    right: 10,
+    top: -10,
   },
   bg_img: {
     zIndex: -1,
@@ -341,6 +362,23 @@ const styles = StyleSheet.create({
   overlayImage: {
     marginTop: -50,
     marginBottom: 35,
+  },
+  predefinedMessagesContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    marginTop: 15,
+    gap:2,
+  },
+  predefinedMessageButton: {
+    backgroundColor: "#05645A",
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginHorizontal: 5,
+  },
+  predefinedMessageButtonText: {
+    color: "#fff",
+    fontSize: 12,
   },
 });
 
