@@ -6,12 +6,15 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import FontText from "./FontText";
 
 // ASSETS
 import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg";
+import AddToCollection from "../../assets/icons/add-to-collection.svg";
+import ModalVectors from "../../assets/images/modal-add-vectors.svg";
 
 export default function SearchPlantDetail({ route }) {
   const [showTemperature, setShowTemperature] = useState(false);
@@ -19,8 +22,8 @@ export default function SearchPlantDetail({ route }) {
   const [showFertilize, setShowFertilize] = useState(false);
   const [showSoil, setShowSoil] = useState(false);
   const [showLightLevels, setShowLightLevels] = useState(false);
-  const [isPressed, setIsPressed] = useState(false);
-  const [goToDashboard, setGoToDashboard] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { item } = route.params;
   const navigation = useNavigation();
 
@@ -29,6 +32,19 @@ export default function SearchPlantDetail({ route }) {
   };
   const handleGoToDashboard = () => {
     navigation.navigate("Dashboard");
+  };
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+    navigation.navigate('Search')
+  };
+
+  const openYourGarden = () => {
+    setShowModal(false);
+    navigation.navigate("YourGarden");
   };
 
   function renderCareSection(
@@ -46,41 +62,33 @@ export default function SearchPlantDetail({ route }) {
       setShowLightLevels(false);
     };
 
-		return (
-			<TouchableOpacity
-			onPress={() => {
-				closeOtherSections();
-				toggleFunction(!isShown);
-			}}
-			style={[
-				styles.careSection,
-				isShown && styles.careSectionExpanded,
-			]}
-			>
-				<View style={styles.careHeader}>
-				<Image source={iconSource} style={styles.careIcon} />
-				<Text style={styles.headerTabs2}>{name}</Text>
-					<View style={styles.careChevronContainer}>
-						<TouchableOpacity>
-						<ChevDownIcon
-							style={[
-								styles.chevIcon,
-								isShown && styles.chevIconRotated,
-								{ marginLeft: 10 },
-							]}
-						/>
-						</TouchableOpacity>
-					</View>
-				</View>
-				{isShown && <Text style={styles.care}>{content}</Text>}
-			</TouchableOpacity>
-		);
-	}
-
-  const handleAddToCollection = () => {
-    setIsPressed(!isPressed);
-    setGoToDashboard(true);
-  };
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          closeOtherSections();
+          toggleFunction(!isShown);
+        }}
+        style={[styles.careSection, isShown && styles.careSectionExpanded]}
+      >
+        <View style={styles.careHeader}>
+          <Image source={iconSource} style={styles.careIcon} />
+          <Text style={styles.headerTabs2}>{name}</Text>
+          <View style={styles.careChevronContainer}>
+            <TouchableOpacity>
+              <ChevDownIcon
+                style={[
+                  styles.chevIcon,
+                  isShown && styles.chevIconRotated,
+                  { marginLeft: 10 },
+                ]}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        {isShown && <Text style={styles.care}>{content}</Text>}
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -94,17 +102,14 @@ export default function SearchPlantDetail({ route }) {
           <TouchableOpacity onPress={handleGoBack}>
             <Image source={require("../../assets/icons/backIcon.png")} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={handleGoToDashboard}>
+          <TouchableOpacity onPress={() => handleGoToDashboard()}>
             <Text style={styles.dashboardBtn}>Next</Text>
           </TouchableOpacity>
         </View>
 
         {/* PLANT PHOTO */}
         <View style={styles.tomatoContainer}>
-		  <Image
-          source={{ uri: item.image.img1 }}
-          style={styles.tomato}
-        />
+          <Image source={{ uri: item.image.img1 }} style={styles.tomato} />
         </View>
 
         {/* DETAILS */}
@@ -170,45 +175,33 @@ export default function SearchPlantDetail({ route }) {
               require("../../assets/icons/temperatureIcon.png")
             )}
             {renderCareSection(
-              <FontText
-                content={"Water"}
-                fontSize={16}
-                fontWeight={600}
-              />,
-			  <FontText content={item.care.water} />,
+              <FontText content={"Water"} fontSize={16} fontWeight={600} />,
+              <FontText content={item.care.water} />,
               showWater,
               setShowWater,
               require("../../assets/icons/waterIcon.png")
             )}
             {renderCareSection(
-              <FontText
-			  content={"Fertilize"}
-			  fontSize={16}
-			  fontWeight={600}
-			/>,
-			<FontText content={item.care.fertilize}/>,
+              <FontText content={"Fertilize"} fontSize={16} fontWeight={600} />,
+              <FontText content={item.care.fertilize} />,
               showFertilize,
               setShowFertilize,
               require("../../assets/icons/fertilizerIcon.png")
             )}
             {renderCareSection(
-              <FontText
-			  content={"Soil"}
-			  fontSize={16}
-			  fontWeight={600}
-			/>,
-			<FontText content={item.care.soil}/>,
+              <FontText content={"Soil"} fontSize={16} fontWeight={600} />,
+              <FontText content={item.care.soil} />,
               showSoil,
               setShowSoil,
               require("../../assets/icons/soilIcon.png")
             )}
             {renderCareSection(
               <FontText
-			  content={"Light Levels"}
-			  fontSize={16}
-			  fontWeight={600}
-			/>,
-			<FontText content={item.care.sunlight}/>,
+                content={"Light Levels"}
+                fontSize={16}
+                fontWeight={600}
+              />,
+              <FontText content={item.care.sunlight} />,
               showLightLevels,
               setShowLightLevels,
               require("../../assets/icons/temperatureIcon.png")
@@ -219,12 +212,72 @@ export default function SearchPlantDetail({ route }) {
         </View>
       </ScrollView>
       <View style={styles.collectionButtonContainer}>
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/icons/add-to-collection.png")}
-              />
-            </TouchableOpacity>
+        <TouchableOpacity onPress={() => toggleModal()}>
+          <View style={styles.chueyPrompt}>
+            <AddToCollection />
           </View>
+        </TouchableOpacity>
+        <Modal visible={showModal} animationType="slide" transparent={true}>
+          <View style={styles.modal__overlay}>
+            <View style={styles.modal__container}>
+              <View style={styles.modal_vectors}>
+                <ModalVectors />
+              </View>
+              <FontText
+                content={"Saved to Your Garden"}
+                fontSize={24}
+                fontWeight={500}
+                marginTop={15}
+              />
+              {loading && (
+                <FontText
+                  content={`loading...`}
+                  fontSize={16}
+                  marginTop={15}
+                  textAlign={"center"}
+                />
+              )}
+              <View>
+                <FontText
+                  content={
+                    "This plant has been added to your garden collection"
+                  }
+                  fontSize={16}
+                  marginTop={15}
+                  textAlign={"center"}
+                  paddingBottom={30}
+                />
+                <View style={styles.nav__container}>
+                  <TouchableOpacity
+                    style={styles.nav__your_garden}
+                    onPress={() => openYourGarden()}
+                  >
+                    <FontText
+                      content={"View Collection"}
+                      fontSize={18}
+                      fontWeight={500}
+                      color={"#FFFFFF"}
+                      textAlign={"center"}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.add_more_plants}
+                    onPress={() => closeModal()}
+                  >
+                    <FontText
+                      content={"Add more plants"}
+                      fontSize={18}
+                      fontWeight={500}
+                      color={"#000"}
+                      textAlign={"center"}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </View>
   );
 }
@@ -406,5 +459,37 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 16,
     textDecorationLine: "underline",
+  },
+
+  //Modal
+  modal_vectors: {
+    marginTop: -70,
+  },
+  modal__overlay: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    color: "#fff",
+    padding: 24,
+  },
+  modal__container: {
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    paddingHorizontal: 40,
+    paddingVertical: 25,
+  },
+  nav__your_garden: {
+    width: "100%",
+    paddingVertical: 16,
+    backgroundColor: "#14171F",
+    borderRadius: 50,
+  },
+  add_more_plants: {
+    width: "100%",
+    paddingVertical: 16,
+    backgroundColor: "#F5F5F5",
+    borderRadius: 50,
+    marginTop: 15,
   },
 });
