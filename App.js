@@ -17,6 +17,7 @@ import TakePic from "./src/components/TakePic"
 import SearchPlantDetail from "./src/components/SearchPlantDetail";
 import PlantDetail from "./src/screens/PlantDetail";
 import { DarkModeProvider } from './src/components/DarkModeContext';
+import CommunityGarden from "./src/screens/CommunityGarden";
 
 const Stack = createStackNavigator();
 
@@ -71,6 +72,13 @@ function App() {
           <Stack.Screen
             name="Dashboard"
             component={Dashboard}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="CommunityGarden"
+            component={CommunityGarden}
             options={{
               headerShown: false,
             }}

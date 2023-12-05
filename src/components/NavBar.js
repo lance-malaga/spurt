@@ -47,7 +47,7 @@ export default function NavBar({ darkMode }) {
       image3: <PlantAidDark />,
     },
     {
-      path: 'FindCommunity',
+      path: 'CommunityGarden',
       image: <CommunityBlack />,
       image2: <CommunityBlue />,
       image3: <CommunityDark />,
