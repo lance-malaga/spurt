@@ -9,7 +9,6 @@ export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}
     setJoinedComm(true);
     setShowForm(false);
     setShowMap(false);
-    // navigation.navigate('PlantAidOnboarding');
   }
 
   return (
