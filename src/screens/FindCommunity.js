@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet, Text, View, Pressable, Image, TouchableOpacity} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
-// import { useNavigation } from "@react-navigation/native";
 import { SwipeablePanel } from 'rn-swipeable-panel';
  
 // Components

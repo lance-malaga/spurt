@@ -8,9 +8,6 @@ import ViewCommunityCard from "./ViewCommunityCard";
 import CommunityDetail from "./CommunityDetail";
 import CommunityQuestion from "./CommunityQuestion";
 
-// SVG Images
-// import HereIcon from '../../assets/images/community/youRhere.svg';
-
 export default function ShowMap({setShowMap}) {
   const [showCard, setShowCard] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -33,7 +30,6 @@ export default function ShowMap({setShowMap}) {
       </View>
       <View>
         <Image style={styles.youRhere} source={require("../../assets/images/community/youRhere.png")} />
-        {/* <HereIcon  style={styles.youRhere}/> */}
         {!showCard ? 
           <TouchableOpacity onPress={() => setShowCard(true)}>
             <Image style={styles.communityFlower} source={require("../../assets/images/community/community01.png")}/>
@@ -53,30 +49,9 @@ export default function ShowMap({setShowMap}) {
           marginTop: 330
           }}>
           <ViewCommunityCard 
-            setShowCard={() => setShowCard(true)}
             setShowModal={() => setShowModal(true)}
           />
-          <SwipeablePanel
-            isActive={showModal}
-            onClose={() => setShowModal(false)}
-            onPressCloseButton={() => setShowModal(false)}
-            closeRootSwipeablePanel={() => setShowModal(false)}
-            closeSwiper={() => setShowModal(false)}
-            fullWidth
-            onlyLarge
-            closeOnTouchOutside
-            barContainerStyle= {{
-              backgroundColor: "#FBFBFB"
-            }}
-            style={{  
-              position: 'abosulte', 
-              top: 110, 
-              borderColor: '#7C7C7C', 
-              borderWidth: 1,
-            }}
-          >
-            <CommunityDetail /> 
-        </SwipeablePanel>
+          {showModal && <CommunityDetail setShowModal={() => setShowModal(false)}/>}
         </View>
       }
       <View>
