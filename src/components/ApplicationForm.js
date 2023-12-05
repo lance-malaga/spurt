@@ -1,10 +1,16 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, Pressable} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SwipeablePanel } from 'rn-swipeable-panel';
+import useFindCommunity from "../../utils/findCommunity";
 
 
-export default function ApplicationForm({setShowForm}) {
-  const navigation = useNavigation();
+export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}) {
+  const handleFormSubmit = () => {
+    setJoinedComm(true);
+    setShowForm(false);
+    setShowMap(false);
+    // navigation.navigate('PlantAidOnboarding');
+  }
 
   return (
     <SwipeablePanel
@@ -27,7 +33,6 @@ export default function ApplicationForm({setShowForm}) {
             <TextInput
               style={styles.input}
               placeholder="Bob"
-              keyboardType="text"
             />
           </View>
           <View>
@@ -35,7 +40,6 @@ export default function ApplicationForm({setShowForm}) {
             <TextInput
               style={styles.input}
               placeholder="Smith"
-              keyboardType="text"
             />
           </View>
           <View>
@@ -43,7 +47,7 @@ export default function ApplicationForm({setShowForm}) {
             <TextInput
               style={styles.input}
               placeholder="(111)-222-3333"
-              keyboardType="tel"
+              keyboardType='number-pad'
             />
           </View>
           <View>
@@ -51,7 +55,7 @@ export default function ApplicationForm({setShowForm}) {
             <TextInput
               style={styles.input}
               placeholder="bobsmith@gmail.com"
-              keyboardType="email"
+              keyboardType='email-address'
             />
           </View>
         </View>
@@ -60,7 +64,7 @@ export default function ApplicationForm({setShowForm}) {
           <Image style={styles.gardenerTwo} source={require("../../assets/images/community/gardener02.png")} />
         </View>
         <Pressable
-          onPress={() => {navigation.navigate('JoinedCommunity'); setShowForm(false)}}
+          onPress={handleFormSubmit}
           style={styles.submitButton}
         >
             <Text style={styles.submitBtnText}>Submit</Text>

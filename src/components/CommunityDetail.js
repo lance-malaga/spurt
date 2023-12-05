@@ -5,16 +5,16 @@ import { SwipeablePanel } from 'rn-swipeable-panel';
 // Component
 import ApplicationForm from "./ApplicationForm";
 
-export default function CommunityDetail({setShowModal}) {
+export default function CommunityDetail({setShowModal, setShowMap, setJoinedComm}) {
   const [showForm, setShowForm] = useState(false);
 
   return (
     <SwipeablePanel
       isActive
-      onClose={() => setShowModal(false)}
-      onPressCloseButton={() => setShowModal(false)}
-      closeRootSwipeablePanel={() => setShowModal(false)}
-      closeSwiper={() => setShowModal(false)}
+      onClose={setShowModal}
+      onPressCloseButton={setShowModal}
+      closeRootSwipeablePanel={setShowModal}
+      closeSwiper={setShowModal}
       fullWidth
       onlyLarge
       closeOnTouchOutside
@@ -67,12 +67,21 @@ export default function CommunityDetail({setShowModal}) {
           </Text>
         </View>
         <TouchableOpacity
-            onPress={() => {setShowForm(true); setShowModal}}
+            onPress={() => {
+              setShowModal,
+              setShowForm(true)
+            }}
             style={styles.joinButton}
         >
             <Text style={styles.joinBtnText}>Join</Text>
         </TouchableOpacity>
-        {showForm && <ApplicationForm setShowForm={() => setShowForm(false)}/>}
+        {showForm && 
+          <ApplicationForm 
+            setShowForm={() => setShowForm(false)}
+            setShowMap={setShowMap}
+            setJoinedComm={setJoinedComm}
+          />
+        }
       </View>
     </SwipeablePanel>
   )

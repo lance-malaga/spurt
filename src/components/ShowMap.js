@@ -8,7 +8,7 @@ import ViewCommunityCard from "./ViewCommunityCard";
 import CommunityDetail from "./CommunityDetail";
 import CommunityQuestion from "./CommunityQuestion";
 
-export default function ShowMap({setShowMap}) {
+export default function ShowMap({setShowMap, setJoinedComm}) {
   const [showCard, setShowCard] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showQuestionCard, setShowQuestionCard] = useState(false);
@@ -51,7 +51,13 @@ export default function ShowMap({setShowMap}) {
           <ViewCommunityCard 
             setShowModal={() => setShowModal(true)}
           />
-          {showModal && <CommunityDetail setShowModal={() => setShowModal(false)}/>}
+          {showModal && 
+            <CommunityDetail 
+              setShowModal={() => setShowModal(false)}
+              setShowMap={setShowMap}
+              setJoinedComm={setJoinedComm}
+            />
+          }
         </View>
       }
       <View>

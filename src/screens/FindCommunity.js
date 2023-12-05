@@ -9,7 +9,7 @@ import NavBar from "../components/NavBar";
 import ShowMap from '../components/ShowMap';
 import ViewDisclaimer from '../components/ViewDisclaimer';
 
-export default function FindCommunity() {
+export default function FindCommunity({setJoinedComm}) {
     const [showMap, setShowMap] = useState(false);
     const [showDisclaimer, setShowDisclaimer] = useState(false);
 
@@ -75,7 +75,7 @@ export default function FindCommunity() {
             }
             {showMap && 
                 <View style={{paddingTop: 100}}>
-                    <ShowMap setShowMap={() => setShowMap(false)} />
+                    <ShowMap setShowMap={() => setShowMap(false)} setJoinedComm={setJoinedComm} />
                 </View>
             }
         </View>
