@@ -5,67 +5,76 @@ import { SwipeablePanel } from 'rn-swipeable-panel';
 // Component
 import ApplicationForm from "./ApplicationForm";
 
-export default function CommunityDetail() {
+export default function CommunityDetail({setShowModal}) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
-      <View style={styles.titleInfo}>
-        <Image style={styles.titleImage} source={require("../../assets/images/community/sunflower.png")}/>
-        <Text style={styles.titleText}>BloomLovers</Text>
-      </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.horizontalImages}>
-          <Image source={require("../../assets/images/community/about/img01.png")}/>
-          <Image source={require("../../assets/images/community/about/img02.png")}/>
-          <Image source={require("../../assets/images/community/about/img03.png")}/>
-          <Image source={require("../../assets/images/community/about/img04.png")}/>
+    <SwipeablePanel
+      isActive
+      onClose={() => setShowModal(false)}
+      onPressCloseButton={() => setShowModal(false)}
+      closeRootSwipeablePanel={() => setShowModal(false)}
+      closeSwiper={() => setShowModal(false)}
+      fullWidth
+      onlyLarge
+      closeOnTouchOutside
+      barContainerStyle= {{
+        backgroundColor: "#FBFBFB"
+      }}
+      style={{  
+        position: 'abosulte', 
+        top: 110, 
+        borderColor: '#7C7C7C', 
+        borderWidth: 1,
+      }}
+    >
+      <View style={styles.container}>
+        <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
+        <View style={styles.titleInfo}>
+          <Image style={styles.titleImage} source={require("../../assets/images/community/sunflower.png")}/>
+          <Text style={styles.titleText}>BloomLovers</Text>
         </View>
-      </ScrollView>
-      <View style={styles.categories}>
-        <View style={{alignItems: 'center'}}> 
-          <Text style={styles.selectedText}>About Us</Text>
-          <View style={styles.textBottomLine}></View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.horizontalImages}>
+            <Image source={require("../../assets/images/community/about/img01.png")}/>
+            <Image source={require("../../assets/images/community/about/img02.png")}/>
+            <Image source={require("../../assets/images/community/about/img03.png")}/>
+            <Image source={require("../../assets/images/community/about/img04.png")}/>
+          </View>
+        </ScrollView>
+        <View style={styles.categories}>
+          <View style={{alignItems: 'center'}}> 
+            <Text style={styles.selectedText}>About Us</Text>
+            <View style={styles.textBottomLine}></View>
+          </View>
+          <Text style={styles.unSelectedText}>Location</Text>
+          <Text style={styles.unSelectedText}>Contact</Text>
+          <Text style={styles.unSelectedText}>Rules</Text>
         </View>
-        <Text style={styles.unSelectedText}>Location</Text>
-        <Text style={styles.unSelectedText}>Contact</Text>
-        <Text style={styles.unSelectedText}>Rules</Text>
+        <View style={styles.infoDisplay}>
+          <Text style={styles.infoText}>
+            At BloomLovers Community Garden, we are passionate about cultivating not just plants but 
+            a sense of togetherness and environmental sustainability. Explore our garden and immerse 
+            yourself in a world of fragrance and beauty. Discover the types of flowers we nurture, 
+            and see how you can join us in creating a floral paradise.
+          </Text>
+          <Text style={styles.infoSubTitle}>What We Grow</Text>
+          <Text  style={styles.infoText}>
+            At BloomLovers Community Garden, we are dedicated to the art of cultivating beautiful 
+            and vibrant flowers. Our garden is a colorful haven filled with various blooms, each with 
+            its unique charm. From roses to daisies, zinnias to sunflowers, our members lovingly tend 
+            to a wide array of flower varieties.
+          </Text>
+        </View>
+        <TouchableOpacity
+            onPress={() => {setShowForm(true); setShowModal}}
+            style={styles.joinButton}
+        >
+            <Text style={styles.joinBtnText}>Join</Text>
+        </TouchableOpacity>
+        {showForm && <ApplicationForm setShowForm={() => setShowForm(false)}/>}
       </View>
-      <View style={styles.infoDisplay}>
-        <Text style={styles.infoText}>
-          At BloomLovers Community Garden, we are passionate about cultivating not just plants but 
-          a sense of togetherness and environmental sustainability. Explore our garden and immerse 
-          yourself in a world of fragrance and beauty. Discover the types of flowers we nurture, 
-          and see how you can join us in creating a floral paradise.
-        </Text>
-        <Text style={styles.infoSubTitle}>What We Grow</Text>
-        <Text  style={styles.infoText}>
-          At BloomLovers Community Garden, we are dedicated to the art of cultivating beautiful 
-          and vibrant flowers. Our garden is a colorful haven filled with various blooms, each with 
-          its unique charm. From roses to daisies, zinnias to sunflowers, our members lovingly tend 
-          to a wide array of flower varieties.
-        </Text>
-      </View>
-      <TouchableOpacity
-          onPress={() => setShowForm(true)}
-          style={styles.joinButton}
-      >
-          <Text style={styles.joinBtnText}>Join</Text>
-      </TouchableOpacity>
-      <SwipeablePanel
-          isActive={showForm}
-          onClose={() => setShowForm(false)}
-          onPressCloseButton={() => setShowForm(false)}
-          closeRootSwipeablePanel={() => setShowForm(false)}
-          closeSwiper={() => setShowForm(false)}
-          fullWidth
-          onlyLarge
-          closeOnTouchOutside
-      >
-        <ApplicationForm />
-      </SwipeablePanel>
-    </View>
+    </SwipeablePanel>
   )
 }
 

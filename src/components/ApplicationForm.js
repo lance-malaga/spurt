@@ -1,68 +1,72 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, Pressable} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { SwipeablePanel } from 'rn-swipeable-panel';
 
-// SVG Images
-// import WorkerOne from "../../assets/images/community/worker01.svg"
-// import WorkerTwo from "../../assets/images/community/worker02.svg"
 
-export default function ApplicationForm() {
+export default function ApplicationForm({setShowForm}) {
   const navigation = useNavigation();
 
-  const OpenJoinedCommunityGarden = setInterval(() => {
-    navigation.navigate('JoinedCommunity')
-  }, 5000)
-
   return (
-    <View style={styles.container}>
-      <Image source={require("../../assets/images/background-blur-cool-1.png")} style={styles.backgroundImage}/>
-      <Text style={styles.headerTitle}>Application Form</Text>
-      <Text style={styles.headerText}>Complete the form with your contact details to join the group</Text>
-      <View>
+    <SwipeablePanel
+        isActive
+        onClose={() => setShowForm(false)}
+        onPressCloseButton={() => setShowForm(false)}
+        closeRootSwipeablePanel={() => setShowForm(false)}
+        closeSwiper={() => setShowForm(false)}
+        fullWidth
+        onlyLarge
+        closeOnTouchOutside
+    >
+      <View style={styles.container}>
+        <Image source={require("../../assets/images/background-blur-cool-1.png")} style={styles.backgroundImage}/>
+        <Text style={styles.headerTitle}>Application Form</Text>
+        <Text style={styles.headerText}>Complete the form with your contact details to join the group</Text>
         <View>
-          <Text style={styles.inputTitle}>First Name</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Bob"
-            keyboardType="text"
-          />
+          <View>
+            <Text style={styles.inputTitle}>First Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Bob"
+              keyboardType="text"
+            />
+          </View>
+          <View>
+            <Text style={styles.inputTitle}>Last Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Smith"
+              keyboardType="text"
+            />
+          </View>
+          <View>
+            <Text style={styles.inputTitle}>Phone Number</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="(111)-222-3333"
+              keyboardType="tel"
+            />
+          </View>
+          <View>
+            <Text style={styles.inputTitle}>Email</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="bobsmith@gmail.com"
+              keyboardType="email"
+            />
+          </View>
         </View>
-        <View>
-          <Text style={styles.inputTitle}>Last Name</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Smith"
-            keyboardType="text"
-          />
+        <View style={styles.gardenerImages}>
+          <Image style={styles.gardenerOne} source={require("../../assets/images/community/gardener01.png")} />
+          <Image style={styles.gardenerTwo} source={require("../../assets/images/community/gardener02.png")} />
         </View>
-        <View>
-          <Text style={styles.inputTitle}>Phone Number</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="(111)-222-3333"
-            keyboardType="tel"
-          />
-        </View>
-        <View>
-          <Text style={styles.inputTitle}>Email</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="bobsmith@gmail.com"
-            keyboardType="email"
-          />
-        </View>
+        <Pressable
+          onPress={() => {navigation.navigate('JoinedCommunity'); setShowForm(false)}}
+          style={styles.submitButton}
+        >
+            <Text style={styles.submitBtnText}>Submit</Text>
+        </Pressable>
       </View>
-      <View style={styles.gardenerImages}>
-        {/* <WorkerOne /> */}
-        <Image style={styles.gardenerOne} source={require("../../assets/images/community/gardener01.png")} />
-        <Image style={styles.gardenerTwo} source={require("../../assets/images/community/gardener02.png")} />
-      </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('JoinedCommunity')}
-        style={styles.submitButton}
-      >
-          <Text style={styles.submitBtnText}>Submit</Text>
-      </TouchableOpacity>
-    </View>
+    </SwipeablePanel>
   )
 };
 
@@ -105,7 +109,6 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 30,
     backgroundColor: '#292929',
-    // marginBottom: 30
   },
   submitBtnText: {
     color:'white', 
