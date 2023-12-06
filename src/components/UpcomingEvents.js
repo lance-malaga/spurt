@@ -86,7 +86,7 @@ export default function UpcomingEvents({ darkMode }) {
                                 <View style={styles.plusCirle}>
                                 <FontText
                                 content={"+2"}
-                                fontSize={12}
+                                fontSize={10}
                                 color={darkMode ? '#E4E4E4' : '#ADADAD'}
                                 />                                 
                                 </View>
@@ -205,8 +205,7 @@ const styles = StyleSheet.create({
     },
     plusCirle: {
         padding: 4,
-        fontSize: 12,
-        color: "#ADADAD",
+        paddingHorizontal: 6,
         borderStyle: "solid",
         borderWidth: 1,
         borderColor: "#ADADAD",
