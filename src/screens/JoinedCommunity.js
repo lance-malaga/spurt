@@ -131,7 +131,6 @@ export default function JoinedCommunity ({navigation}) {
                 </View>
               </View>
             </View>
-            <Button title="Go Back" onPress={() => navigation.goBack()}/>
         </ScrollView>
         <NavBar />
       </View>

@@ -134,6 +134,10 @@ export default function SearchPlantDetail({ route }) {
               <FontText content={"PLANT TYPE"} fontSize={12} fontWeight={600} />
               <FontText content={item.type} />
             </View>
+            <View style={styles.filter_petFriendly}>
+              <FontText content={"LIFESPAN"} fontSize={12} fontWeight={600} />
+              <FontText content={"Annual"} fontSize={14} fontWeight={400} />
+            </View>
             <View style={styles.filter_space}>
               <FontText
                 content={"SPACE REQUIREMENT"}
@@ -145,10 +149,6 @@ export default function SearchPlantDetail({ route }) {
                 fontSize={14}
                 fontWeight={400}
               />
-            </View>
-            <View style={styles.filter_petFriendly}>
-              <FontText content={"LIFESPAN"} fontSize={12} fontWeight={600} />
-              <FontText content={"Annual"} fontSize={14} fontWeight={400} />
             </View>
             <View style={styles.filter_lifeSpan}>
               <FontText content={"OTHER"} fontSize={12} fontWeight={600} />
@@ -375,7 +375,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     gap: 25,
-    marginLeft: 40,
+    // marginLeft: 50,
+    marginHorizontal: 50
   },
   filterTag: {
     backgroundColor: "#AFD1F3",
