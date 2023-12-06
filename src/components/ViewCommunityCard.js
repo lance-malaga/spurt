@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: 'white', 
     flexDirection: 'column',
-    borderRadius: 20
+    borderRadius: 15
   }, 
   communityMember: {
     width: 90,
     paddingHorizontal: 8,
     paddingVertical: 5,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#F25E5A',
     color: "#F25E5A"
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     width: 135,
     paddingHorizontal: 8,
     paddingVertical: 5,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#169F91',
     color: "#169F91"
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     width: 200,
     paddingHorizontal: 8,
     paddingVertical: 5,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#000',
     color: "#000"

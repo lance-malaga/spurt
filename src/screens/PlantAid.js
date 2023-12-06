@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 30,
   },
   sendButton: {
     backgroundColor: "black",
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 125,
-    marginTop: 58,
+    marginTop: 70,
     marginRight: 150,
   },
   profile_icon: {
@@ -369,6 +369,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 15,
     gap:2,
+    width: "82%"
   },
   predefinedMessageButton: {
     backgroundColor: "#05645A",
