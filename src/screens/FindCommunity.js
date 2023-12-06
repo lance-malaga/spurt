@@ -14,9 +14,9 @@ export default function FindCommunity({setJoinedComm}) {
     const [showDisclaimer, setShowDisclaimer] = useState(false);
 
     return (
-        <View>
+        <View style ={{flex: 1}}>
             {!showMap && 
-                <View>
+                <View style={{flex:1, paddingBottom: 25,}}>
                     <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
                     <Header />
                     <ScrollView>

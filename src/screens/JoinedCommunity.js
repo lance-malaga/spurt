@@ -8,7 +8,7 @@ import NavBar from '../components/NavBar';
 
 export default function JoinedCommunity ({navigation}) {
   return(
-      <View>
+      <View style={{flex: 1, paddingBottom: 60,}}>
         <Header />
         <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
         <ScrollView>
