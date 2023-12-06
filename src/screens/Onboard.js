@@ -3,36 +3,48 @@ import { StyleSheet, Text, View, ScrollView, Image, Pressable } from "react-nati
 import { useNavigation } from "@react-navigation/native";
 import FontText from "../components/FontText";
 
-import OnboardingImg from "../../assets/images/onbooarding-vector.svg"
+import OnboardingImg from "../../assets/images/onboarding_vector.svg";
+import { useState, useEffect } from "react";
 
 export default function Onboard(props) {
   const { title = "Get Started" } = props;
   const { title2 = "Skip to Dashboard" } = props;
   const navigation = useNavigation();
+  const [showImage, setShowImage] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowImage(false);
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleYesClick = () => {
     navigation.navigate("Search");
   };
 
   const handleSTDClick = () => {
-    navigation.navigate("Dashboard")
-  }
+    navigation.navigate("Dashboard");
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.image_container}>
-        <OnboardingImg
-          width={'100%'}
-          style={styles.onboardingImage}
-        />
+      {showImage && (
+        <View style={styles.imageContainer}>
+          <Image
+            source={require('../../assets/images/splash_screen.gif')}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
+      )}
+      <View style={styles.onboardingContainer}>
+        <OnboardingImg width={'100%'} style={styles.onboardingImage} />
       </View>
-      <View style={styles.text_container}>
-        <FontText
-        content={"SPURT"}
-        fontSize={16}
-        fontWeight={400}
-        />
-        <View style={styles.slogan_text}>
+      <View style={styles.textContainer}>
+        <FontText content={"SPURT"} fontSize={16} fontWeight={400} />
+        <View style={styles.sloganText}>
           <FontText
             content={"Where We Make Gardening Easy."}
             fontSize={28}
@@ -40,57 +52,70 @@ export default function Onboard(props) {
             textAlign={'center'}
           />
         </View>
-        <Pressable style={({ pressed }) => [styles.button1,{backgroundColor: pressed ? "darkgrey" : "black",},]}onPress={handleYesClick}>
+        <Pressable
+          style={({ pressed }) => [
+            styles.button1,
+            { backgroundColor: pressed ? "darkgrey" : "black" },
+          ]}
+          onPress={handleYesClick}
+        >
           {({ pressed }) => (
-            <Text style={[styles.button1Text,{color: pressed ? "white" : "white",textDecorationLine: "none",},]}>
-              <FontText
-                content={title}
-                fontSize={18}
-                fontWeight={500}
-              />
+            <Text
+              style={[
+                styles.button1Text,
+                {
+                  color: pressed ? "white" : "white",
+                  textDecorationLine: "none",
+                },
+              ]}
+            >
+              <FontText content={title} fontSize={18} fontWeight={500} />
             </Text>
           )}
         </Pressable>
-        <Pressable style={({ pressed }) => [styles.button2,{backgroundColor: pressed ? "transparent" : "transparent",},]}onPress={handleSTDClick}>
+        <Pressable
+          style={({ pressed }) => [
+            styles.button2,
+            { backgroundColor: pressed ? "transparent" : "transparent" },
+          ]}
+          onPress={handleSTDClick}
+        >
           {({ pressed }) => (
             <Text
-              style={[styles.button2Text,{color: pressed ? "blue" : "black",},]}>
-              <FontText
-                content={title2}
-                fontSize={14}
-                fontWeight={400}
-              />
+              style={[
+                styles.button2Text,
+                { color: pressed ? "blue" : "black" },
+              ]}
+            >
+              <FontText content={title2} fontSize={14} fontWeight={400} />
             </Text>
           )}
         </Pressable>
       </View>
-      
     </ScrollView>
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
-  slogan_text: {
+  sloganText: {
     width: 250,
     paddingTop: 25,
     paddingBottom: 30,
-    alignContent: "center"
+    alignItems: "center",
   },
   onboardingImage: {
-    width: '100%',
-    backgroundColor: '#F4F3D9',
+    width: "100%",
+    backgroundColor: "#F4F3D9",
   },
-  slogan_text2: {
-    marginTop: -40,
-    paddingRight: 0,
-    paddingBottom: 35,
+  onboardingContainer: {
+    alignItems: "center",
+    marginTop: 10,
   },
-  text_container: {
+  textContainer: {
     alignItems: "center",
     marginTop: 45,
   },
@@ -120,5 +145,14 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     fontWeight: "regular",
     textDecorationLine: "underline",
+  },
+  imageContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+  },
+  image: {
+    maxWidth: "70%",
+    maxHeight: "50%",
   },
 });
