@@ -29,7 +29,7 @@ const PlantAid = () => {
 
   const predefinedMessages = [
     "How often should I water my tomato plant?",
-    "Is my sunflower wilting?",
+    "What can I do about my wilting sunflower plant that is in the flowering stage?",
   ];
 
   const toggleChatbotInfo = () => {
@@ -301,7 +301,8 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 50,
     borderRadius: 50,
-    paddingLeft: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   sendButton: {
     backgroundColor: "black",
