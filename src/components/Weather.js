@@ -20,7 +20,7 @@ export default function Weather() {
                     <View>
                         <FontText 
                             content={condition}
-                            fontSize={11}
+                            fontSize={13}
                         />
                         <FontText 
                             content={`${temperature} °C`}
@@ -29,7 +29,7 @@ export default function Weather() {
                         />
                         <FontText 
                             content={currentDay}
-                            fontSize={11}
+                            fontSize={13}
                             textTransform={'uppercase'}
                             marginTop={-10}
                         />
