@@ -1,6 +1,7 @@
 
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Shadow } from "react-native-shadow-2";
 
 //Components
 import FontText from "./FontText";
@@ -29,138 +30,150 @@ export default function UpcomingEvents({ darkMode }) {
         },
     ];
 
-    return (
+    const ShadowPresets = {
+        taskWidget: {
+            distance: 6,
+            startColor: 'rgba(20, 20, 20, 0.05)',
+        },
+    };
+
+    return (    
         <View style={styles.container}>
-            <View style={[styles.upcoming_events,{ backgroundColor: darkMode ? "#30374A" : "#fff" }]}>
-                <View style={styles.events_header}>
-                    <FontText
-                        content={'Community Updates'}
-                        fontWeight={600}
-                        fontSize={18}
-                        color={darkMode ? '#E4E4E4' : '#000'}
-                    />
-                </View>
-                <View style={{padding: 18}}>
-                    <View style={styles.infoContainer}>
+            <Shadow
+                style={{width: '100%'}}
+                {...ShadowPresets.taskWidget}
+            >
+                <View style={[styles.upcoming_events,{ backgroundColor: darkMode ? "#30374A" : "#fff" }]}>
+                    <View style={styles.events_header}>
+                        <FontText
+                            content={'Community Updates'}
+                            fontWeight={500}
+                            fontSize={18}
+                            color={darkMode ? '#E4E4E4' : '#000'}
+                        />
+                    </View>
+                    <View style={{padding: 18}}>
+                        <View style={styles.infoContainer}>
+                            <View style={styles.infoDisplay}>
+                                <Image 
+                                    source={require("../../assets/images/avatar01.png")} 
+                                    alt="avatar-image"
+                                />
+                                <View>
+                                    <FontText
+                                    content={"Monika"}
+                                    fontSize={16}
+                                    fontWeight={600}
+                                    color={darkMode ? '#E4E4E4' : '#000'}
+                                    />
+                                    <FontText
+                                    content={"@lab_master"}
+                                    color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                    />                               
+                                </View>
+                            </View>
+                            <View  style={{flexDirection: "row", gap: 5, alignItems: "center"}}>
+                                <FontText
+                                content={"#general"}
+                                fontSize={12}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                />
+                                <FontText
+                                content={"#harvest"}
+                                fontSize={12}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                />                            
+                                <View style={styles.plusCirle}>
+                                <FontText
+                                content={"+2"}
+                                fontSize={12}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                />                                 
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.updateMessage}>
+                        <FontText
+                                content={"Harvest Day! Come join us this weekend for our summer harvest!"}
+                                fontSize={12}
+                                fontWeight={600}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                />                            
+                        </View>
+                        <Image 
+                            style={styles.commUpdateImg}
+                            source={require('../../assets/images/commUpdateImage.png')}
+                            alt="update-image"
+                        />
+                        <View style={[styles.infoContainer, {paddingLeft: 15, paddingRight: 15}]}>
+                            <View style={styles.infoDisplay}>
+                                <FontText
+                                content={"14 Likes"}
+                                fontSize={12}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                />
+                                <FontText
+                                content={"27 Comments"}
+                                fontSize={12}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                                />    
+                            </View>
+                            <FontText
+                                content={"posted 30 mins ago"}
+                                fontSize={13}
+                                color={darkMode ? '#E4E4E4' : '#ADADAD'}
+                            />  
+                        </View>
+                        <View style={getLineStyle(darkMode)}></View>
+                    </View>
+                    <View style={{paddingLeft: 32, paddingRight: 32}}>
                         <View style={styles.infoDisplay}>
                             <Image 
-                                source={require("../../assets/images/avatar01.png")} 
+                                source={require("../../assets/images/avatar02.png")} 
                                 alt="avatar-image"
                             />
                             <View>
                                 <FontText
-                                content={"Monika"}
+                                content={"Shahab"}
                                 fontSize={16}
                                 fontWeight={600}
                                 color={darkMode ? '#E4E4E4' : '#000'}
-                                />
+                                />  
                                 <FontText
-                                content={"@lab_master"}
+                                content={"@shabby_snacks"}
                                 color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                                />                               
+                                />  
                             </View>
                         </View>
-                        <View  style={{flexDirection: "row", gap: 5, alignItems: "center"}}>
-                            <FontText
-                            content={"#general"}
-                            fontSize={12}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />
-                            <FontText
-                            content={"#harvest"}
-                            fontSize={12}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />                            
-                            <View style={styles.plusCirle}>
-                            <FontText
-                            content={"+2"}
-                            fontSize={12}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />                                 
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.updateMessage}>
-                    <FontText
-                            content={"Harvest Day! Come join us this weekend for our summer harvest!"}
-                            fontSize={12}
-                            fontWeight={600}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />                            
-                    </View>
-                    <Image 
-                        style={styles.commUpdateImg}
-                        source={require('../../assets/images/commUpdateImage.png')}
-                        alt="update-image"
-                    />
-                    <View style={[styles.infoContainer, {paddingLeft: 15, paddingRight: 15}]}>
-                        <View style={styles.infoDisplay}>
-                            <FontText
-                            content={"14 Likes"}
-                            fontSize={12}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />
-                            <FontText
-                            content={"27 Comments"}
-                            fontSize={12}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />    
+                        <View style={styles.comment}>
+                        <FontText
+                                content={"Excited to see everyone's harvest!"}
+                                fontSize={10}
+                                fontWeight={400}
+                                color={darkMode ? '#E4E4E4' : '#000'}
+                                />                        
                         </View>
                         <FontText
-                            content={"posted 30 mins ago"}
-                            fontSize={13}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                        />  
-                    </View>
-                    <View style={getLineStyle(darkMode)}></View>
-                </View>
-                <View style={{paddingLeft: 32, paddingRight: 32}}>
-                    <View style={styles.infoDisplay}>
-                        <Image 
-                            source={require("../../assets/images/avatar02.png")} 
-                            alt="avatar-image"
+                        content={"posted 8 mins ago"}
+                        fontSize={10}
+                        textAlign={"right"}
+                        paddingTop={5}
+                        color={darkMode ? '#E4E4E4' : '#ADADAD'}
                         />
-                        <View>
+                        <TouchableOpacity
+                            // onPress={() => navigation.push('JoinedCommunity')}
+                            style={[styles.viewPostBtn, { backgroundColor: darkMode ? '#78B1EC' : 'black' }]}                    >
                             <FontText
-                            content={"Shahab"}
-                            fontSize={16}
-                            fontWeight={600}
-                            color={darkMode ? '#E4E4E4' : '#000'}
-                            />  
-                            <FontText
-                            content={"@shabby_snacks"}
-                            color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                            />  
-                        </View>
+                            content={"View Post"}
+                            fontSize={12}
+                            fontWeight={700}
+                            textAlign={"center"}
+                            color={"#fff"}
+                            />
+                        </TouchableOpacity>
                     </View>
-                    <View style={styles.comment}>
-                    <FontText
-                            content={"Excited to see everyone's harvest!"}
-                            fontSize={10}
-                            fontWeight={400}
-                            color={darkMode ? '#E4E4E4' : '#000'}
-                            />                        
-                    </View>
-                    <FontText
-                    content={"posted 8 mins ago"}
-                    fontSize={10}
-                    textAlign={"right"}
-                    paddingTop={5}
-                    color={darkMode ? '#E4E4E4' : '#ADADAD'}
-                    />
-                    <TouchableOpacity
-                        // onPress={() => navigation.push('JoinedCommunity')}
-                        style={[styles.viewPostBtn, { backgroundColor: darkMode ? '#78B1EC' : 'black' }]}                    >
-                        <FontText
-                        content={"View Post"}
-                        fontSize={12}
-                        fontWeight={700}
-                        textAlign={"center"}
-                        color={"#fff"}
-                        />
-                    </TouchableOpacity>
                 </View>
-            </View>
+            </Shadow>
         </View>
     )
 }
@@ -172,14 +185,15 @@ const getLineStyle = (darkMode) => ({
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 40,
-        marginBottom: 50
+        marginTop: 25,
+        marginBottom: 50,
+        paddingHorizontal: 24,
     },
     upcoming_events: {
         backgroundColor: "white",
         borderRadius: 20,
         paddingVertical: 30,
-        marginHorizontal: 25,
+        width: '100%',
     },
     events_header: {
         alignItems: "center"
