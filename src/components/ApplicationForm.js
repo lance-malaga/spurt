@@ -31,14 +31,14 @@ export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}
             <Text style={styles.inputTitle}>First Name</Text>
             <TextInput
               style={styles.input}
-              placeholder="Bob"
+              placeholder="Katie"
             />
           </View>
           <View>
             <Text style={styles.inputTitle}>Last Name</Text>
             <TextInput
               style={styles.input}
-              placeholder="Smith"
+              placeholder="Johnson"
             />
           </View>
           <View>
@@ -53,7 +53,7 @@ export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}
             <Text style={styles.inputTitle}>Email</Text>
             <TextInput
               style={styles.input}
-              placeholder="bobsmith@gmail.com"
+              placeholder="katie@johnson.com"
               keyboardType='email-address'
             />
           </View>

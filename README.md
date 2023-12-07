@@ -1,5 +1,5 @@
 # Spurt
-Spurt is a go-to app for managing community gardens that aims to tackle the challenges of food insecurity and social inequity, while maintaining sustainable practices.
+Food insecurity has become a big challenge, which is why Spurt is the  go-to app for first time gardeners and managing community gardens. Through the use of AI, it aims to fully utilize the different internal and external qualities that could enhance plant growth.
 
 ## Members
 - Danielle Dela Cruz
@@ -13,27 +13,14 @@ Spurt is a go-to app for managing community gardens that aims to tackle the chal
 ## Coding Language
 - react native expo
 
-## Dependency Installation
-### Node Modules
+## Node Modules
 ```
 - npm i
-- npx expo install expo-image-picker
+- npm install --legacy-peer-deps
 ```
 
-### Expo Installation
-```
-- expo install expo-camera, 
-- expo install expo-sharing
-- expo install expo-media-library
-```
-
-### Expo
+## Expo
 ```
 - npx create-expo-app
 - npx expo start
-```
-
-### Google Fonts
-```
-- npx expo install expo-font @expo-google-fonts/inter 
 ```

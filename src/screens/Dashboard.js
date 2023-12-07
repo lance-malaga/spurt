@@ -32,7 +32,7 @@ export default function Dashboard() {
                   color={darkMode ? '#E4E4E4' : '#000'}
                 />
                 <FontText
-                  content={'Jimmy!'}
+                  content={'Katie!'}
                   fontSize={24}
                   fontWeight={700}
                   color={darkMode ? '#E4E4E4' : '#000'}
