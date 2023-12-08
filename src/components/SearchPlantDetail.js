@@ -15,6 +15,11 @@ import FontText from "./FontText";
 import ChevDownIcon from "../../assets/icons/ChevDownIcon.svg";
 import AddToCollection from "../../assets/icons/add-to-collection.svg";
 import ModalVectors from "../../assets/images/modal-add-vectors.svg";
+import TempIcon from "../../assets/icons/search-plant-detail/temperature.svg"
+import WaterIcon from "../../assets/icons/search-plant-detail/water.svg"
+import FertilizeIcon from "../../assets/icons/search-plant-detail/fertilize.svg"
+import SoilIcon from "../../assets/icons/search-plant-detail/soil.svg"
+import LightIcon from "../../assets/icons/search-plant-detail/light.svg"
 
 export default function SearchPlantDetail({ route }) {
   const [showTemperature, setShowTemperature] = useState(false);
@@ -71,7 +76,7 @@ export default function SearchPlantDetail({ route }) {
         style={[styles.careSection, isShown && styles.careSectionExpanded]}
       >
         <View style={styles.careHeader}>
-          <Image source={iconSource} style={styles.careIcon} />
+          {iconSource}
           <Text style={styles.headerTabs2}>{name}</Text>
           <View style={styles.careChevronContainer}>
             <TouchableOpacity>
@@ -172,28 +177,28 @@ export default function SearchPlantDetail({ route }) {
               <FontText content={item.care.temperature} />,
               showTemperature,
               setShowTemperature,
-              require("../../assets/icons/temperatureIcon.png")
+              <TempIcon style={styles.careIcon}/>
             )}
             {renderCareSection(
               <FontText content={"Water"} fontSize={16} fontWeight={600} />,
               <FontText content={item.care.water} />,
               showWater,
               setShowWater,
-              require("../../assets/icons/waterIcon.png")
+              <WaterIcon style={styles.careIcon}/>
             )}
             {renderCareSection(
               <FontText content={"Fertilize"} fontSize={16} fontWeight={600} />,
               <FontText content={item.care.fertilize} />,
               showFertilize,
               setShowFertilize,
-              require("../../assets/icons/fertilizerIcon.png")
+              <FertilizeIcon style={styles.careIcon}/>
             )}
             {renderCareSection(
               <FontText content={"Soil"} fontSize={16} fontWeight={600} />,
               <FontText content={item.care.soil} />,
               showSoil,
               setShowSoil,
-              require("../../assets/icons/soilIcon.png")
+              <SoilIcon style={styles.careIcon}/>
             )}
             {renderCareSection(
               <FontText
@@ -204,7 +209,7 @@ export default function SearchPlantDetail({ route }) {
               <FontText content={item.care.sunlight} />,
               showLightLevels,
               setShowLightLevels,
-              require("../../assets/icons/temperatureIcon.png")
+              <LightIcon style={styles.careIcon}/>
             )}
           </View>
 
@@ -366,6 +371,9 @@ const styles = StyleSheet.create({
   care: {
     fontSize: 16,
     color: "#000",
+    marginLeft: 30,
+    marginRight: 20,
+    marginTop: 15,
   },
   filterTags: {
     flexDirection: "row",
@@ -392,7 +400,8 @@ const styles = StyleSheet.create({
   careSection: {
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: 35,
+    paddingVertical: 25,
+    paddingHorizontal: 30,
     marginTop: -10,
     paddingLeft: 34,
     borderTopLeftRadius: 16,
@@ -405,9 +414,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   careIcon: {
-    width: 26,
-    height: 30,
-    marginLeft: 5,
+    marginLeft: 30,
   },
   chevIcon: {
     width: 18,

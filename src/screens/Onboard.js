@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
   },
   onboardingContainer: {
     alignItems: "center",
-    marginTop: 10,
   },
   textContainer: {
     alignItems: "center",
