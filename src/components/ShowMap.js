@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import ViewCommunityCard from "./ViewCommunityCard";
 import CommunityDetail from "./CommunityDetail";
 import CommunityQuestion from "./CommunityQuestion";
+import FontText from "./FontText";
 
 export default function ShowMap({setShowMap, setJoinedComm}) {
   const [showCard, setShowCard] = useState(false);
@@ -22,8 +23,16 @@ export default function ShowMap({setShowMap, setJoinedComm}) {
         <TouchableOpacity onPress={setShowMap} >
             <Image style={styles.backButton} source={require("../../assets/images/community/backIcon.png")}/>
         </TouchableOpacity>
-        <Text style={{fontSize: 24, fontWeight: "700", paddingTop: 20}}>Find a group near me</Text>
-        <Text  style={{fontSize: 14, fontWeight: "500"}}>Enter your location to find them.</Text>
+        <FontText
+        content={"Find a group near me"}
+        fontSize={24}
+        fontWeight={500}
+        />
+        <FontText
+        content={"Enter your location to find them."}
+        fontSize={14}
+        fontWeight={500}
+        />
         <View style={{}}>
           <SearchBar />
         </View>

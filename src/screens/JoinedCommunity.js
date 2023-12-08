@@ -5,24 +5,40 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import ScheduleCard from '../components/ScheduleCard';
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
+import FontText from '../components/FontText';
 
 export default function JoinedCommunity ({navigation}) {
   return(
-      <View style={{flex: 1, paddingBottom: 60,}}>
+      <View style={{flex: 1, marginTop:-20}}>
         <Header />
         <Image source={require("../../assets/images/background/blur-cool-2.png")} style={styles.backgroundImage}/>
         <ScrollView>
             <View style={styles.container}>
               {/* Welcome Message */}
               <View style={styles.textContainer}>
-                <Text style={styles.welcomeText} >Welcome to Green Haven’s</Text>
-                <Text style={styles.title}>Community Garden Society</Text>
+                <FontText
+                content={"Welcome to Green Haven's"}
+                fontSize={14}
+                fontWeight={500}
+                color={"#169F91"}
+                />
+                <FontText
+                content={"Community Garden Society"}
+                fontSize={24}
+                fontWeight={500}
+                width={300}
+                />
               </View>
               {/* Horizontal Containers */}
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 <View style={styles.horizontalScroll}>
                   <View style={styles.boxShadow}>
-                    <Text style={styles.highlightsText}>Community Highlights</Text>
+                    <FontText
+                    content={"Community Highlights"}
+                    fontSize={14}
+                    fontWeight={500}
+                    paddingBottom={10}
+                    />
                     <View style={styles.highlightsImages}>
                       <View>
                         <Image
@@ -53,14 +69,38 @@ export default function JoinedCommunity ({navigation}) {
                     </View>
                   </View>
                   <View style={[styles.communityThreads, styles.boxShadow]}>
-                    <Text style={styles.threadsText}>Community Threads</Text>
-                    <Text>Help, what’s wrong with my garlic?</Text>
+                    <FontText
+                    content={"Community Threads"}
+                    fontSize={14}
+                    fontWeight={500}
+                    />
+                    <FontText
+                    content={"Help, what's wrong with my garlic?"}
+                    fontSize={12}
+                    fontWeight={700}
+                    />
                     <View style={{flexDirection:'row', gap: 10}}>
-                      <Text style={{fontSize: 12, opacity: 0.7}}>Posted 1 hour ago by @ju</Text>
-                      <Text style={{fontSize: 12, color: "#F25E5A"}}>2 likes</Text>
-                      <Text style={{fontSize: 12, color: "#169F91"}}>4 comments</Text>
+                      <FontText
+                      content={"Posted 1 hour ago by @ju"}
+                      fontSize={8}
+                      fontWeight={400}
+                      color={"#ADADAD"}
+                      paddingRight={40}
+                      />
+                      <FontText
+                      content={"2 likes"}
+                      fontSize={8}
+                      fontWeight={400}
+                      color={"#ADADAD"}
+                      />
+                      <FontText
+                      content={"4 comments"}
+                      fontSize={8}
+                      fontWeight={400}
+                      color={"#ADADAD"}
+                      />
                     </View>
-                    <View style={{flexDirection:"row", gap: 10, marginBottom: 5}}>
+                    {/* <View style={{flexDirection:"row", gap: 10, marginBottom: 5}}>
                       <Pressable style={styles.unselectedButton}>
                         <Text>general</Text>
                       </Pressable>
@@ -70,8 +110,8 @@ export default function JoinedCommunity ({navigation}) {
                       <Pressable style={styles.moreButton}>
                         <Text>+2</Text>
                       </Pressable>
-                    </View>
-                    <View style={{borderBottomColor: 'black', borderBottomWidth: 2}}></View>
+                    </View> */}
+                    <View style={{borderBottomColor: '#404040', borderBottomWidth: 1, marginTop:5}}></View>
                     <View style={{flexDirection:"row", marginTop: 5, gap: 10, alignItems: 'center'}}>
                       <Image 
                         source={require('../../assets/images/community/user_icon.png')}
@@ -79,36 +119,75 @@ export default function JoinedCommunity ({navigation}) {
                         alt='user_icon'
                       />
                       <View>
-                        <Text style={{opacity:0.6}}>@chris</Text>
-                        <Text>I think you need to water it less.</Text>
+                        <FontText
+                        content={"@chris"}
+                        fontSize={10}
+                        fontWeight={400}
+                        color={"#ADADAD"}
+                        />
+                        <FontText
+                        content={"I think you need to water it less."}
+                        fontSize={12}
+                        fontWeight={400}
+                        />
                       </View>
                     </View>
-                    <Text style={{textAlign:'right', fontWeight:"500"}}>view post</Text>
+                    <FontText
+                    content={"view post"}
+                    textAlign={"right"}
+                    fontSize={12}
+                    fontWeight={700}
+                    marginTop={15}
+                    />
                   </View>
                 </View>
               </ScrollView>
               {/* Gardening Schedule */}
+              <FontText
+              content={"Gardening Schedule"}
+              fontSize={16}
+              fontWeight={500}
+              paddingLeft={20}
+              marginTop={15}
+              />
               <View style={styles.scheduleContainer}>
-                <View style={{flexDirection:'row', justifyContent:'space-between', marginBottom:15}}>
-                  <Text style={{fontSize: 16, fontWeight:'700'}}>Gardening Schedule</Text>
-                  <View style={{flexDirection:'row', alignItems: 'center'}}>
+                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                  <View style={{flexDirection:'row', alignItems: 'center', marginLeft:220, marginBottom:10}}>
                     <Ionicons name="chevron-back-outline" size={20} color='#828282'/>
-                    <Text style={{marginLeft: 10, marginRight: 10, fontWeight:'500'}}>October</Text>
+                    <View style={{marginLeft:20, marginRight:20}}>
+                    <FontText
+                      content={"October"}
+                      fontSize={12}
+                      fontWeight={500}
+                    />                      
+                    </View>
                     <Ionicons name="chevron-forward-outline" size={20} color='#828282'/>
                   </View>
                 </View>
                 <View style={styles.displayEvents}>
                   <View style={styles.scheduleEvent}>
                     <Ionicons name="ellipse" size={20} color='#F25292'/>
-                    <Text>Harvest Day</Text>
+                    <FontText
+                    content={"Harvest Day"}
+                    fontSize={12}
+                    fontWeight={200}
+                    />
                   </View>
                   <View style={styles.scheduleEvent}>
                     <Ionicons name="ellipse" size={20} color='#4267FA'/>
-                    <Text>Water Routine</Text>
+                    <FontText
+                    content={"Water Routine"}
+                    fontSize={12}
+                    fontWeight={200}
+                    />
                   </View>
                   <View style={styles.scheduleEvent}>
                     <Ionicons name="ellipse" size={20} color='#FFC93D'/>
-                    <Text>Clean Up</Text>
+                    <FontText
+                    content={"Clean Up"}
+                    fontSize={12}
+                    fontWeight={200}
+                    />
                   </View>
                 </View>
                 <View style={{flexDirection:"row", gap:10}}>
@@ -179,7 +258,6 @@ const styles = StyleSheet.create({
   // Horizontal Containers
   horizontalScroll: {
     flexDirection: "row",
-    marginTop: 20,
     marginRight: 20
   },
   highlightsText: {
@@ -204,14 +282,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white', 
     borderRadius: 15, 
     padding: 16, 
-    shadowColor: 'black', 
-    shadowOffset: { 
-        width: 0, 
-        height: 4, 
-    }, 
-    shadowOpacity: 0.3, 
-    shadowRadius: 6, 
-    elevation: 14, 
+    elevation: 8, 
   },
   unselectedButton: {
     backgroundColor: 'white',
@@ -240,21 +311,17 @@ const styles = StyleSheet.create({
 
   // Gardening Schedule
   scheduleContainer: {
-    margin: 20,
+    margin: 10,
     backgroundColor: 'white', 
-    borderRadius: 15, 
-    paddingTop: 30, 
+    borderTopLeftRadius:8,
+    borderTopRightRadius:30,
+    borderBottomLeftRadius:15,
+    borderBottomRightRadius:30,
+    paddingTop: 15, 
     paddingLeft: 16,
     paddingRight: 16,
-    paddingBottom: 30, 
-    shadowColor: 'black', 
-    shadowOffset: { 
-        width: 0, 
-        height: 4, 
-    }, 
-    shadowOpacity: 0.3, 
-    shadowRadius: 6, 
-    elevation: 14, 
+    paddingBottom: 15, 
+    elevation: 5, 
   },
   displayEvents: {
     flexDirection: "row", 

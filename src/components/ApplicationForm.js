@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, Pressable} 
 import { useNavigation } from "@react-navigation/native";
 import { SwipeablePanel } from 'rn-swipeable-panel';
 import useFindCommunity from "../../utils/findCommunity";
+import FontText from "./FontText";
 
 
 export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}) {
@@ -24,25 +25,52 @@ export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}
     >
       <View style={styles.container}>
         <Image source={require("../../assets/images/background-blur-cool-1.png")} style={styles.backgroundImage}/>
-        <Text style={styles.headerTitle}>Application Form</Text>
-        <Text style={styles.headerText}>Complete the form with your contact details to join the group</Text>
-        <View>
+        <FontText
+          content={"Application form"}
+          fontSize={24}
+          fontWeight={500}
+          marginTop={-70}
+        />
+        <FontText
+          content={"Complete the form with your contact details to join the group"}
+          fontSize={14}
+          fontWeight={400}
+          textAlign={"center"}
+          width={300}
+          marginTop={10}
+        />
+        <View style={{marginTop: 50}}>
           <View>
-            <Text style={styles.inputTitle}>First Name</Text>
+            <FontText
+            content={"First Name"}
+            fontSize={18}
+            fontWeight={500}
+            marginTop={-20}
+            />
             <TextInput
               style={styles.input}
               placeholder="Katie"
             />
           </View>
           <View>
-            <Text style={styles.inputTitle}>Last Name</Text>
+          <FontText
+            content={"Last Name"}
+            fontSize={18}
+            fontWeight={500}
+            marginTop={10}
+            />
             <TextInput
               style={styles.input}
               placeholder="Johnson"
             />
           </View>
           <View>
-            <Text style={styles.inputTitle}>Phone Number</Text>
+          <FontText
+            content={"Phone Number"}
+            fontSize={18}
+            fontWeight={500}
+            marginTop={10}
+            />
             <TextInput
               style={styles.input}
               placeholder="(111)-222-3333"
@@ -50,7 +78,12 @@ export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}
             />
           </View>
           <View>
-            <Text style={styles.inputTitle}>Email</Text>
+          <FontText
+            content={"Email"}
+            fontSize={18}
+            fontWeight={500}
+            marginTop={10}
+            />
             <TextInput
               style={styles.input}
               placeholder="katie@johnson.com"
@@ -66,7 +99,13 @@ export default function ApplicationForm({setShowForm, setShowMap, setJoinedComm}
           onPress={handleFormSubmit}
           style={styles.submitButton}
         >
-            <Text style={styles.submitBtnText}>Submit</Text>
+            <FontText
+            content={"Submit"}
+            fontSize={16}
+            fontWeight={600}
+            textAlign={"center"}
+            color={"#fff"}
+            />
         </Pressable>
       </View>
     </SwipeablePanel>
@@ -77,7 +116,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 680
+    height: 800,
   },
   backgroundImage: {
     position: 'absolute',
