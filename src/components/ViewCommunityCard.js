@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
+import FontText from "./FontText";
 
 export default function ViewCommunityCard({setShowModal, setShowCard}) {
 
@@ -7,19 +8,53 @@ export default function ViewCommunityCard({setShowModal, setShowCard}) {
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
           <View style={{flexDirection: 'row', alignItems: "center"}}>
             <Image style={{width: 30, height:40}} source={require("../../assets/images/community/sunflower.png")}/>
-            <Text style={{paddingLeft: 10, fontSize: 18, fontWeight: "700"}}>BloomLovers</Text>
+            <FontText
+            content={"BloomLovers"}
+            fontSize={18}
+            fontWeight={400}
+            paddingLeft={20}
+            />
           </View>
           <Image source={require("../../assets/images/community/unlock.png")}/>
         </View>
         <View style={{marginTop: 20}}> 
           <View style={{flexDirection: 'row', gap: 10}}>
-            <Text style={styles.communityMember}>5 members</Text>
-            <Text style={styles.communityAvailability}>5 spaces available</Text>
+            <View style={styles.communityMember}>
+              <FontText
+                content={"5 members"}
+                fontSize={12}
+                fontWeight={400}
+                color={"#F25E5A"}
+              />              
+            </View>
+            <View style={styles.communityAvailability}>
+              <FontText
+                content={"5 spaces available"}
+                fontSize={12}
+                fontWeight={400}
+                color={"#169F91"}              
+              />
+            </View>
           </View>
-          <Text style={styles.communityRules}>Group rules & regulations</Text>
+          <View style={styles.communityRules}>
+          <FontText
+                content={"Group rules & regulations"}
+                fontSize={12}
+                fontWeight={400}
+                color={"#000"}              
+              />            
+          </View>
         </View>
         <TouchableOpacity onPress={setShowModal}>
-          <Text style={styles.communityJoinBtn}>view more</Text>
+          <View style={styles.communityJoinBtn}>
+          <FontText
+          content={"view more"}
+          fontSize={12}
+          fontWeight={400}
+          textAlign={"center"}
+          color={"#fff"}
+          />            
+          </View>
         </TouchableOpacity>
       </View>
   )
@@ -33,13 +68,13 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: 'white', 
     flexDirection: 'column',
-    borderRadius: 20
+    borderRadius: 15
   }, 
   communityMember: {
     width: 90,
     paddingHorizontal: 8,
     paddingVertical: 5,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#F25E5A',
     color: "#F25E5A"
@@ -48,7 +83,7 @@ const styles = StyleSheet.create({
     width: 135,
     paddingHorizontal: 8,
     paddingVertical: 5,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#169F91',
     color: "#169F91"
@@ -58,7 +93,7 @@ const styles = StyleSheet.create({
     width: 200,
     paddingHorizontal: 8,
     paddingVertical: 5,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#000',
     color: "#000"

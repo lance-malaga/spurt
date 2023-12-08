@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import NavBar from "../components/NavBar";
 import ShowMap from '../components/ShowMap';
 import ViewDisclaimer from '../components/ViewDisclaimer';
+import FontText from '../components/FontText';
 
 export default function FindCommunity({setJoinedComm}) {
     const [showMap, setShowMap] = useState(false);
@@ -22,12 +23,28 @@ export default function FindCommunity({setJoinedComm}) {
                     <ScrollView>
                         <View style={styles.container}>
                             <View style={styles.welcomeText}>
-                                <Text style={{fontWeight:"600", fontSize: 24, width: 250}}>Community Garden Society</Text>
+                                <FontText
+                                content={"Community Garden Society"}
+                                fontSize={24}
+                                fontWeight={500}
+                                width={250}
+                                />
                             </View>
                             {/* Find a Group Card */}
                             <View style={styles.findGroup}>
-                                <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15, marginLeft: 10, color: "#169F91"}}>Looking for a group?</Text>
-                                <Text style={{marginLeft: 10, width: 250, fontWeight: '600'}}>Join our community garden group to connect, swap tips, and grow together</Text>
+                                <FontText
+                                content={"Looking for a group?"}
+                                fontSize={18}
+                                fontWeight={600}
+                                color={"#169f91"}
+                                marginTop={15}
+                                marginLeft={10}
+                                />
+                                <FontText
+                                content={"Join our community garden group to connect, swap tips, and grow together"}
+                                fontSize={14}
+                                marginLeft={10}
+                                />
                                 <View style={styles.assets}>
                                     <Image 
                                         style={{marginTop: 20, marginBottom: 20}}
@@ -38,7 +55,13 @@ export default function FindCommunity({setJoinedComm}) {
                                         onPress={() => setShowMap(true)}
                                         style={styles.findButton}
                                     >
-                                        <Text style={{color: 'white', textAlign: 'center'}}>Find a group</Text>
+                                        <FontText
+                                        content={"Find a group"}
+                                        fontSize={14}
+                                        fontWeight={500}
+                                        color={"#fff"}
+                                        textAlign={"center"}
+                                        />
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -46,10 +69,20 @@ export default function FindCommunity({setJoinedComm}) {
                             <View style={styles.disclaimerCont}>
                                 <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
                                     <Ionicons name="alert-circle-outline" size={20} color='black'/>
-                                    <Text style={{fontSize: 16}}>Disclaimer</Text>
+                                    <FontText
+                                    content={"Disclaimer"}
+                                    fontSize={14}
+                                    fontWeight={500}
+                                    />
                                 </View>
                                 <TouchableOpacity style={styles.disclaimerBtn} onPress={() => setShowDisclaimer(true)}>
-                                    <Text style={{color:'white', textAlign:'center'}}>view</Text>
+                                    <FontText
+                                    content={"View"}
+                                    fontSize={12}
+                                    fontWeight={500}
+                                    textAlign={"center"}
+                                    color={"#fff"}
+                                    />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -66,7 +99,8 @@ export default function FindCommunity({setJoinedComm}) {
                         showCloseButton
                         noBar
                         style={{
-                            height: 740
+                            height: 800,
+                            backgroundColor:"#404040",
                         }}
                     >
                         <ViewDisclaimer /> 
@@ -86,20 +120,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         height: 700,
-        marginBottom: 100
     },
     backgroundImage: {
         position: 'absolute',
         width: '100%'
     },
     welcomeText: {
-        margin: 20,
+        marginLeft: 20,
     },
 
     // Find group card
     findGroup: {
         gap: 5,
-        margin: 20,
+        marginTop: 15,
+        marginLeft: 20,
+        width:"90%",
+        height:"68%",
         backgroundColor: 'white', 
         borderRadius: 15, 
         padding: 16, 
@@ -119,7 +155,7 @@ const styles = StyleSheet.create({
     },
     findButton: {
         width: 280,
-        padding: 15,
+        padding: 10,
         borderRadius: 15,
         backgroundColor: 'black',
         marginBottom: 30
@@ -127,12 +163,15 @@ const styles = StyleSheet.create({
 
     // Disclaimer
     disclaimerCont: {
-        margin:20, 
-        padding: 20,
+        marginTop:20, 
+        width:"91%",
+        marginLeft:18,
+        paddingVertical: 15,
+        paddingHorizontal: 20,
         borderRadius: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#FFDF8B'
+        backgroundColor: '#FFDF8B',
     }, 
     disclaimerBtn: {
         width: 80,
